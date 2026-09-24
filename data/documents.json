@@ -1,0 +1,30 @@
+[
+    {
+        "titre": "Introduction à l'algorithmique",
+        "description": "Fiche de révision sur les bases des algorithmes.",
+        "domaine": "Programmation",
+        "fichier": "documents/programmation/intro-algo.pdf",
+        "taille": "245 Ko"
+    },
+    {
+        "titre": "Les bases du réseau",
+        "description": "Modèle OSI, TCP/IP, adressage IP expliqués simplement.",
+        "domaine": "Réseau",
+        "fichier": "documents/reseau/bases-reseau.pdf",
+        "taille": "512 Ko"
+    },
+    {
+        "titre": "Introduction à la cybersécurité",
+        "description": "Les grands principes de la sécurité informatique.",
+        "domaine": "Cybersécurité",
+        "fichier": "documents/cybersecurite/intro-securite.pdf",
+        "taille": "380 Ko"
+    },
+    {
+        "titre": "Introduction au SQL",
+        "description": "Les requêtes de base pour interroger une base de données.",
+        "domaine": "Base de données",
+        "fichier": "documents/base-de-donnees/intro-sql.pdf",
+        "taille": "420 Ko"
+    }
+]

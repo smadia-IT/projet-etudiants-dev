@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz — Étudiants Dev</title>
+    <meta name="description" content="Teste tes connaissances avec le quiz Étudiants Dev.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">
+                🎓 <span>Étudiants Dev</span>
+            </a>
+            <nav class="nav-principale">
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="documents.html">Documents</a>
+                <a href="chat.html">Assistant IA</a>
+                               <a href="quiz.html" class="actif">Quiz</a>
+                <a href="badges.html">Badges</a>
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <h1 class="titre-page">🎮 Quiz technique</h1>
+        <p class="sous-titre-page">
+            Teste tes connaissances et apprends en t'amusant.
+        </p>
+
+        <!-- ÉCRAN D'ACCUEIL -->
+                <section id="ecran-accueil" class="ecran-quiz">
+            <div class="carte-accueil">
+                <div class="icone-accueil">🎯</div>
+                <h2>Prêt à relever le défi ?</h2>
+                <p>
+                    Réponds à des questions sur les mots techniques que tu as appris.
+                    Chaque bonne réponse te rapporte des points !
+                </p>
+                
+                <div id="stats-accueil" class="stats-accueil cache">
+                    <div class="stat-item">
+                        <span class="stat-label">🏆 Meilleur score</span>
+                        <span id="record-accueil" class="stat-valeur">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">🎮 Parties jouées</span>
+                        <span id="parties-accueil" class="stat-valeur">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">🔥 Meilleure série</span>
+                        <span id="streak-record-accueil" class="stat-valeur">0</span>
+                    </div>
+                </div>
+                
+                <button id="btn-commencer" class="btn-primaire btn-large">
+                    🚀 Commencer
+                </button>
+            </div>
+        </section>
+
+        <!-- ÉCRAN DE JEU -->
+        <section id="ecran-jeu" class="ecran-quiz cache">
+            <div class="carte-question">
+                    <div class="entete-question">
+                    <span id="compteur-question">Question 1</span>
+                    <span id="vies">❤️❤️❤️</span>
+                    <span id="streak">🔥 0/3</span>
+                    <span id="score-actuel">Score : 0</span>
+                </div>
+                
+                <div class="barre-timer">
+                    <div id="timer-barre"></div>
+                </div>
+                <p id="timer-texte" class="timer-texte">⏱️ 30s</p>
+                
+                <h2 id="texte-question">Chargement...</h2>
+                
+                <div id="options-reponse" class="options-reponse"></div>
+                
+                <div id="feedback" class="feedback cache"></div>
+                
+                <button id="btn-suivant" class="btn-primaire cache">
+                    Question suivante →
+                </button>
+            </div>
+        </section>
+
+        
+
+                        <!-- ÉCRAN GAME OVER -->
+               <section id="ecran-gameover" class="ecran-quiz cache">
+            <div class="carte-accueil carte-gameover">
+                <div class="icone-accueil">💀</div>
+                <h2>Game Over</h2>
+                <p id="gameover-message">Tu as perdu toutes tes vies !</p>
+                                <p id="gameover-score">Score final : 0 points</p>
+                <p id="gameover-record" class="record-affiche"></p>
+                <p id="gameover-nouveau-record" class="nouveau-record cache">🎉 NOUVEAU RECORD ! 🎉</p>
+                <div class="boutons-fin">
+                    <button id="btn-rejouer-go" class="btn-primaire btn-large">
+                        🔄 Rejouer
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section">
+                <p class="footer-titre">🎓 Étudiants Dev</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="documents.html">Documents</a>
+                <a href="chat.html">Assistant IA</a>
+                                <a href="quiz.html">Quiz</a>
+                <a href="badges.html">Badges</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+        <script src="js/theme.js"></script>
+    <script src="js/badges-data.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers d'éditeur
+.vscode/
+.idea/
+
+# Dépendances
+node_modules/
+
+# Secrets (⚠️ IMPORTANT)
+.env
+config-secret.js
+
+
+# Fichiers temporaires
+*.log
+*.tmp

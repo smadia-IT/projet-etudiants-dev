@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Badges — Étudiants Dev</title>
+    <meta name="description" content="Découvre tous les badges à débloquer sur Étudiants Dev.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">
+                🎓 <span>Étudiants Dev</span>
+            </a>
+            <nav class="nav-principale">
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="documents.html">Documents</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="badges.html" class="actif">Badges</a>
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <h1 class="titre-page">🏆 Badges</h1>
+        <p class="sous-titre-page">
+            Débloque des badges en jouant au quiz et en battant tes records.
+        </p>
+
+        <div id="resume-badges" class="resume-badges">
+            <p id="compteur-badges">Chargement...</p>
+        </div>
+
+        <div id="liste-badges" class="liste-badges"></div>
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section">
+                <p class="footer-titre">🎓 Étudiants Dev</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="documents.html">Documents</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="badges.html">Badges</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+        <script src="js/theme.js"></script>
+    <script src="js/badges-data.js"></script>
+    <script src="js/badges.js"></script>
+</body>
+
+</html>
