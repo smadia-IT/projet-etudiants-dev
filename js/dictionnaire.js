@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     chargerFavoris();
     majCompteurFavoris();
     
-           fetch("http://localhost:3000/api/mots")
+           fetch(`${API_URL}/mots`)
         .then(response => response.json())
         .then(reponse => {
             // L'API renvoie { success, count, data }

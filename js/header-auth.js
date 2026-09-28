@@ -2,7 +2,7 @@
 // AFFICHAGE CONDITIONNEL DANS LE HEADER
 // ============================================
 
-const API_URL_HEADER = "http://localhost:3000/api";
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const user = JSON.parse(localStorage.getItem("user") || "null");
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // ===== BADGE DE MESSAGES NON LUS =====
 async function chargerBadgeMessages(token) {
     try {
-        const reponse = await fetch(`${API_URL_HEADER}/messages/non-lus/count`, {
+        const reponse = await fetch(`${API_URL}/messages/non-lus/count`, {
             headers: { "Authorization": `Bearer ${token}` }
         });
         const data = await reponse.json();
