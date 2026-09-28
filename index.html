@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Étudiants IT — Plateforme pour les étudiants en informatique</title>
+    <meta name="description" content="Dictionnaire technique, documents, assistant IA pour les étudiants en informatique.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">
+                🎓 <span>Étudiants IT</span>
+            </a>
+            <nav class="nav-principale">
+                <a href="index.html" class="actif">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+                 <a href="profil.html">👤 Profil</a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">Plus ▾</button>
+                    <div class="nav-dropdown-menu">
+                        <a href="documents.html">📄 Documents</a>
+                        <a href="badges.html">🏆 Badges</a>
+                        <a href="revision.html">📚 Révision</a>
+                       
+                    </div>
+                </div>
+                
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <!-- HERO -->
+        <section id="hero">
+            <h1>🎓 Bienvenue sur Étudiants IT</h1>
+            <p class="hero-sous-titre">
+                La plateforme qui aide les étudiants en informatique à apprendre, réviser et progresser.
+            </p>
+            <div class="hero-actions">
+                <a href="dictionnaire.html" class="btn-primaire">Explorer le dictionnaire</a>
+                <a href="chat.html" class="btn-secondaire">Demander à l'IA</a>
+            </div>
+        </section>
+
+        <!-- MOT DU JOUR -->
+        <section id="mot-du-jour">
+            <h2>✨ Mot du jour</h2>
+            <div id="contenu-mot-jour">
+                <!-- Rempli par JavaScript -->
+            </div>
+        </section>
+
+        <!-- MA PROGRESSION -->
+        <section id="ma-progression" class="cache">
+            <h2>📊 Ma progression</h2>
+            <div class="grille-progression">
+                <div class="carte-progression">
+                    <div class="progression-icone">🎮</div>
+                    <div class="progression-valeur" id="accueil-parties">0</div>
+                    <div class="progression-label">Parties jouées</div>
+                </div>
+                <div class="carte-progression">
+                    <div class="progression-icone">🏆</div>
+                    <div class="progression-valeur" id="accueil-score">0</div>
+                    <div class="progression-label">Meilleur score</div>
+                </div>
+                <div class="carte-progression">
+                    <div class="progression-icone">🏅</div>
+                    <div class="progression-valeur" id="accueil-badges">0</div>
+                    <div class="progression-label">Badges débloqués</div>
+                </div>
+                <div class="carte-progression">
+                    <div class="progression-icone">⭐</div>
+                    <div class="progression-valeur" id="accueil-favoris">0</div>
+                    <div class="progression-label">Favoris</div>
+                </div>
+            </div>
+            <div class="lien-profil">
+                <a href="profil.html" class="btn-secondaire">Voir mon profil complet →</a>
+            </div>
+        </section>
+
+        <!-- DERNIERS BADGES -->
+        <section id="derniers-badges" class="cache">
+            <h2>🏆 Derniers badges débloqués</h2>
+            <div id="liste-derniers-badges" class="liste-derniers-badges"></div>
+            <div class="lien-badges">
+                <a href="badges.html" class="btn-secondaire">Voir tous les badges →</a>
+            </div>
+        </section>
+
+        <!-- CONTINUER OÙ J'EN ÉTAIS -->
+        <section id="continuer" class="cache">
+            <h2>🎯 Continuer où j'en étais</h2>
+            <div id="contenu-continuer" class="contenu-continuer"></div>
+        </section>
+
+        <!-- APERÇU DES FONCTIONNALITÉS -->
+        <section id="apercu">
+            <h2>Découvrez la plateforme</h2>
+            <div class="grille-apercu">
+
+                <a href="dictionnaire.html" class="carte-apercu">
+                    <div class="apercu-icone">📖</div>
+                    <h3>Dictionnaire</h3>
+                    <p>Des centaines de mots techniques expliqués simplement.</p>
+                </a>
+
+                <a href="documents.html" class="carte-apercu">
+                    <div class="apercu-icone">📄</div>
+                    <h3>Documents</h3>
+                    <p>Fiches de révision et résumés à télécharger.</p>
+                </a>
+
+                <a href="chat.html" class="carte-apercu">
+                    <div class="apercu-icone">🤖</div>
+                    <h3>Assistant IA</h3>
+                    <p>Pose tes questions techniques à une intelligence artificielle.</p>
+                </a>
+
+                <a href="forum.html" class="carte-apercu">
+                    <div class="apercu-icone">📝</div>
+                    <h3>Forum</h3>
+                    <p>Pose tes questions et aide les autres étudiants.</p>
+                </a>
+
+                <a href="quiz.html" class="carte-apercu">
+                    <div class="apercu-icone">🎮</div>
+                    <h3>Quiz</h3>
+                    <p>Teste tes connaissances et gagne des badges.</p>
+                </a>
+
+                <a href="amis.html" class="carte-apercu">
+                    <div class="apercu-icone">👥</div>
+                    <h3>Amis</h3>
+                    <p>Connecte-toi avec d'autres étudiants et discute.</p>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section">
+                <p class="footer-titre">🎓 Étudiants IT</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Ressources</p>
+                <a href="documents.html">📄 Documents</a>
+                <a href="badges.html">🏆 Badges</a>
+                <a href="revision.html">📚 Révision</a>
+                <a href="profil.html">👤 Mon profil</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+     <script src="js/config.js"></script>       <!-- ← NOUVEAU -->
+    <script src="js/chargement.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav-dropdown.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/badges-data.js"></script>
+    <script src="js/accueil.js"></script>
+    <script src="js/accueil-dynamique.js"></script>
+</body>
+
+</html>

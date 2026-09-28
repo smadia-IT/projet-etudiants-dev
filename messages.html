@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Messages — Étudiants IT</title>
+    <meta name="description" content="Discute avec tes amis sur Étudiants IT.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">
+                🎓 <span>Étudiants IT</span>
+            </a>
+            <nav class="nav-principale">
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html" class="actif">Messages</a>
+                 <a href="profil.html">👤 Profil</a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">Plus ▾</button>
+                    <div class="nav-dropdown-menu">
+                        <a href="documents.html">📄 Documents</a>
+                        <a href="badges.html">🏆 Badges</a>
+                        <a href="revision.html">📚 Révision</a>
+                       
+                    </div>
+                </div>
+                
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <h1 class="titre-page">💬 Messages</h1>
+        <p class="sous-titre-page">
+            Discute avec tes amis.
+        </p>
+
+        <!-- ÉCRAN NON CONNECTÉ -->
+        <section id="ecran-non-connecte" class="cache">
+            <div class="carte-accueil">
+                <div class="icone-accueil">🔒</div>
+                <h2>Connexion requise</h2>
+                <p>Tu dois être connecté pour accéder à ta messagerie.</p>
+                <a href="auth.html" class="btn-primaire btn-large">🔓 Se connecter</a>
+            </div>
+        </section>
+
+        <!-- ÉCRAN PRINCIPAL -->
+        <section id="ecran-principal" class="cache">
+            <div class="messages-layout">
+
+                <!-- SIDEBAR CONVERSATIONS -->
+                <aside class="messages-sidebar">
+                    <div class="sidebar-entete">
+                        <h3>💬 Conversations</h3>
+                        <button id="btn-nouveau-message" class="btn-nouveau-message" title="Nouveau message">
+                            ➕
+                        </button>
+                    </div>
+                    <div id="liste-conversations" class="liste-conversations">
+                        <!-- Rempli par JS -->
+                    </div>
+                </aside>
+
+                <!-- ZONE PRINCIPALE -->
+                <div class="messages-principal">
+                    
+                    <!-- ÉCRAN VIDE -->
+                    <div id="messages-vide" class="messages-vide">
+                        <div class="icone-accueil">💬</div>
+                        <h2>Choisis une conversation</h2>
+                        <p>Sélectionne un ami dans la liste pour commencer à discuter.</p>
+                    </div>
+
+                    <!-- CONVERSATION ACTIVE -->
+                    <div id="conversation-active" class="conversation-active cache">
+                        
+                        <!-- En-tête de la conversation -->
+                        <div class="conversation-entete">
+                            <div class="conversation-user">
+                                <div class="avatar-utilisateur" id="avatar-conversation">?</div>
+                                <div>
+                                    <div class="conversation-username" id="username-conversation">...</div>
+                                    <div class="conversation-status" id="status-conversation">Ami</div>
+                                </div>
+                            </div>
+                            <a href="amis.html" class="btn-action-small">👥 Voir mes amis</a>
+                        </div>
+
+                        <!-- Historique des messages -->
+                        <div id="historique-messages" class="historique-messages">
+                            <!-- Rempli par JS -->
+                        </div>
+
+                        <!-- Formulaire d'envoi -->
+                        <form id="form-envoi" class="form-envoi">
+                            <input 
+                                type="text" 
+                                id="input-message" 
+                                placeholder="Écris ton message..." 
+                                autocomplete="off"
+                                required
+                            >
+                            <button type="submit" id="btn-envoyer-message" class="btn-envoyer-message">
+                                ➤
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- MODALE : Nouveau message -->
+        <div id="modale-nouveau-message" class="modale-overlay cache">
+            <div class="modale">
+                <div class="modale-entete">
+                    <h3>➕ Nouveau message</h3>
+                    <button id="btn-fermer-modale" class="btn-fermer-modale">✕</button>
+                </div>
+                <p class="modale-hint">Choisis un ami pour démarrer une conversation :</p>
+                <div id="liste-amis-modale" class="liste-amis-modale">
+                    <!-- Rempli par JS -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section">
+                <p class="footer-titre">🎓 Étudiants IT</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Ressources</p>
+                <a href="documents.html">📄 Documents</a>
+                <a href="badges.html">🏆 Badges</a>
+                <a href="revision.html">📚 Révision</a>
+                <a href="profil.html">👤 Mon profil</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+     <script src="js/config.js"></script>       <!-- ← NOUVEAU -->
+    <script src="js/chargement.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav-dropdown.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/messages.js"></script>
+</body>
+
+</html>

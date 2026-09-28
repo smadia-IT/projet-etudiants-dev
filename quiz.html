@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz — Étudiants IT</title>
+    <meta name="description" content="Teste tes connaissances avec le quiz Étudiants IT.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">
+                🎓 <span>Étudiants IT</span>
+            </a>
+            <nav class="nav-principale">
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html" class="actif">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+                 <a href="profil.html">👤 Profil</a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">Plus ▾</button>
+                    <div class="nav-dropdown-menu">
+                        <a href="documents.html">📄 Documents</a>
+                        <a href="badges.html">🏆 Badges</a>
+                        <a href="revision.html">📚 Révision</a>
+                       
+                    </div>
+                </div>
+                
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <h1 class="titre-page">🎮 Quiz technique</h1>
+        <p class="sous-titre-page">
+            Teste tes connaissances et apprends en t'amusant.
+        </p>
+
+        <!-- ÉCRAN D'ACCUEIL -->
+        <section id="ecran-accueil" class="ecran-quiz">
+            <div class="carte-accueil">
+                <div class="icone-accueil">🎯</div>
+                <h2>Prêt à relever le défi ?</h2>
+                <p>
+                    Réponds à des questions sur les mots techniques que tu as appris.
+                    Chaque bonne réponse te rapporte des points !
+                </p>
+                
+                <div id="stats-accueil" class="stats-accueil cache">
+                    <div class="stat-item">
+                        <span class="stat-label">🏆 Meilleur score</span>
+                        <span id="record-accueil" class="stat-valeur">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">🎮 Parties jouées</span>
+                        <span id="parties-accueil" class="stat-valeur">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">🔥 Meilleure série</span>
+                        <span id="streak-record-accueil" class="stat-valeur">0</span>
+                    </div>
+                </div>
+
+                <!-- Choix de la difficulté -->
+                <div class="choix-difficulte">
+                    <h3>🎯 Difficulté</h3>
+                    <div class="grille-difficulte">
+                        <button class="btn-difficulte actif" data-difficulte="facile">
+                            <span class="difficulte-icone">😊</span>
+                            <span class="difficulte-nom">Facile</span>
+                            <span class="difficulte-desc">30s · 3 vies</span>
+                        </button>
+                        <button class="btn-difficulte" data-difficulte="difficile">
+                            <span class="difficulte-icone">🔥</span>
+                            <span class="difficulte-nom">Difficile</span>
+                            <span class="difficulte-desc">20s · 3 vies · x2 points</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Choix du domaine -->
+                <div class="choix-domaine">
+                    <h3>📚 Choisis ton mode de jeu</h3>
+                    <div class="grille-domaines">
+                        <button class="btn-domaine actif" data-domaine="tous">
+                            <span class="domaine-icone">🎲</span>
+                            <span class="domaine-nom">Tous les domaines</span>
+                        </button>
+                        <button class="btn-domaine" data-domaine="Programmation">
+                            <span class="domaine-icone">💻</span>
+                            <span class="domaine-nom">Programmation</span>
+                        </button>
+                        <button class="btn-domaine" data-domaine="Réseau">
+                            <span class="domaine-icone">🌐</span>
+                            <span class="domaine-nom">Réseau</span>
+                        </button>
+                        <button class="btn-domaine" data-domaine="Cybersécurité">
+                            <span class="domaine-icone">🔒</span>
+                            <span class="domaine-nom">Cybersécurité</span>
+                        </button>
+                        <button class="btn-domaine" data-domaine="Base de données">
+                            <span class="domaine-icone">🗄️</span>
+                            <span class="domaine-nom">Base de données</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="btn-commencer" class="btn-primaire btn-large">
+                    🚀 Commencer
+                </button>
+            </div>
+        </section>
+
+        <!-- ÉCRAN DE JEU -->
+        <section id="ecran-jeu" class="ecran-quiz cache">
+            <div class="carte-question">
+                <div class="entete-question">
+                    <span id="compteur-question">Question 1</span>
+                    <span id="vies">❤️❤️❤️</span>
+                    <span id="streak">🔥 0/3</span>
+                    <span id="score-actuel">Score : 0</span>
+                </div>
+                
+                <div class="barre-timer">
+                    <div id="timer-barre"></div>
+                </div>
+                <p id="timer-texte" class="timer-texte">⏱️ 30s</p>
+                
+                <h2 id="texte-question">Chargement...</h2>
+                
+                <div id="options-reponse" class="options-reponse"></div>
+                
+                <div id="feedback" class="feedback cache"></div>
+                
+                <button id="btn-suivant" class="btn-primaire cache">
+                    Question suivante →
+                </button>
+            </div>
+        </section>
+
+        <!-- ÉCRAN GAME OVER -->
+        <section id="ecran-gameover" class="ecran-quiz cache">
+            <div class="carte-accueil carte-gameover">
+                <div class="icone-accueil">💀</div>
+                <h2>Game Over</h2>
+                <p id="gameover-message">Tu as perdu toutes tes vies !</p>
+                <p id="gameover-score">Score final : 0 points</p>
+                <p id="gameover-record" class="record-affiche"></p>
+                <p id="gameover-nouveau-record" class="nouveau-record cache">🎉 NOUVEAU RECORD ! 🎉</p>
+                <div class="boutons-fin">
+                    <button id="btn-rejouer-go" class="btn-primaire btn-large">
+                        🔄 Rejouer
+                    </button>
+                    <button id="btn-accueil-go" class="btn-secondaire btn-large">
+                        🏠 Menu du jeu
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section">
+                <p class="footer-titre">🎓 Étudiants IT</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Ressources</p>
+                <a href="documents.html">📄 Documents</a>
+                <a href="badges.html">🏆 Badges</a>
+                <a href="revision.html">📚 Révision</a>
+                <a href="profil.html">👤 Mon profil</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+     <script src="js/config.js"></script>       <!-- ← NOUVEAU -->
+    <script src="js/chargement.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav-dropdown.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/sons.js"></script>
+    <script src="js/badges-data.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+
+</html>

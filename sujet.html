@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sujet — Étudiants IT</title>
+    <meta name="description" content="Discussion sur le forum Étudiants IT.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">
+                🎓 <span>Étudiants IT</span>
+            </a>
+            <nav class="nav-principale">
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html" class="actif">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+                  <a href="profil.html">👤 Profil</a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">Plus ▾</button>
+                    <div class="nav-dropdown-menu">
+                        <a href="documents.html">📄 Documents</a>
+                        <a href="badges.html">🏆 Badges</a>
+                        <a href="revision.html">📚 Révision</a>
+                      
+                    </div>
+                </div>
+                
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <!-- CHARGEMENT -->
+        <section id="ecran-chargement" class="ecran-quiz">
+            <div class="carte-accueil">
+                <div class="icone-accueil">⏳</div>
+                <h2>Chargement du sujet...</h2>
+            </div>
+        </section>
+
+        <!-- ERREUR -->
+        <section id="ecran-erreur" class="ecran-quiz cache">
+            <div class="carte-accueil">
+                <div class="icone-accueil">❌</div>
+                <h2>Sujet introuvable</h2>
+                <p id="erreur-message">Ce sujet n'existe pas ou a été supprimé.</p>
+                <a href="forum.html" class="btn-primaire btn-large">← Retour au forum</a>
+            </div>
+        </section>
+
+        <!-- SUJET -->
+        <section id="ecran-sujet" class="cache">
+
+            <!-- Retour -->
+            <a href="forum.html" class="lien-retour">← Retour au forum</a>
+
+            <!-- SUJET PRINCIPAL -->
+            <article class="sujet-principal">
+                <div class="sujet-principal-entete">
+                    <span class="sujet-domaine-grand" id="sujet-domaine">...</span>
+                    <h1 id="sujet-titre">...</h1>
+                </div>
+                
+                <div class="sujet-auteur">
+                    <a href="#" id="sujet-auteur-lien" class="sujet-auteur-lien">
+                        <div class="avatar-utilisateur" id="sujet-avatar">?</div>
+                        <div>
+                            <div class="sujet-auteur-nom" id="sujet-auteur">...</div>
+                            <div class="sujet-auteur-date" id="sujet-date">...</div>
+                        </div>
+                    </a>
+                    <button id="btn-supprimer-sujet" class="btn-supprimer cache">🗑️ Supprimer</button>
+                </div>
+
+                <div class="sujet-contenu" id="sujet-contenu">...</div>
+            </article>
+
+            <!-- COMMENTAIRES -->
+            <section class="section-commentaires">
+                <h2 class="titre-commentaires">
+                    💬 Réponses (<span id="nb-commentaires">0</span>)
+                </h2>
+
+                <div id="liste-commentaires" class="liste-commentaires">
+                    <!-- Rempli par JS -->
+                </div>
+
+                <!-- FORMULAIRE DE COMMENTAIRE -->
+                <form id="form-commentaire" class="form-commentaire cache">
+                    <label for="commentaire-contenu">Ajouter une réponse :</label>
+                    <textarea 
+                        id="commentaire-contenu" 
+                        placeholder="Écris ta réponse..." 
+                        required
+                        minlength="2"
+                        maxlength="2000"
+                        rows="4"
+                    ></textarea>
+                    <div class="form-commentaire-actions">
+                        <button type="submit" class="btn-primaire">💬 Publier</button>
+                    </div>
+                </form>
+
+                <!-- MESSAGE SI NON CONNECTÉ -->
+                <div id="message-non-connecte" class="message-non-connecte cache">
+                    <p>🔒 Connecte-toi pour répondre à ce sujet.</p>
+                    <a href="auth.html" class="btn-primaire">Se connecter</a>
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section">
+                <p class="footer-titre">🎓 Étudiants IT</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Ressources</p>
+                <a href="documents.html">📄 Documents</a>
+                <a href="badges.html">🏆 Badges</a>
+                <a href="revision.html">📚 Révision</a>
+                <a href="profil.html">👤 Mon profil</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+     <script src="js/config.js"></script>       <!-- ← NOUVEAU -->
+    <script src="js/chargement.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav-dropdown.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/sujet.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forum — Étudiants IT</title>
+    <meta name="description" content="Forum d'entraide pour les étudiants en informatique.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">
+                🎓 <span>Étudiants IT</span>
+            </a>
+            <nav class="nav-principale">
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html" class="actif">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+                 <a href="profil.html">👤 Profil</a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">Plus ▾</button>
+                    <div class="nav-dropdown-menu">
+                        <a href="documents.html">📄 Documents</a>
+                        <a href="badges.html">🏆 Badges</a>
+                        <a href="revision.html">📚 Révision</a>
+                       
+                    </div>
+                </div>
+                
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <h1 class="titre-page">📝 Forum d'entraide</h1>
+        <p class="sous-titre-page">
+            Pose tes questions, aide les autres, partage tes connaissances.
+        </p>
+
+        <!-- STATS DU FORUM -->
+        <div class="forum-stats">
+            <div class="stat-forum">
+                <div class="stat-forum-icone">📝</div>
+                <div class="stat-forum-valeur" id="stat-posts">0</div>
+                <div class="stat-forum-label">Sujets</div>
+            </div>
+            <div class="stat-forum">
+                <div class="stat-forum-icone">💬</div>
+                <div class="stat-forum-valeur" id="stat-commentaires">0</div>
+                <div class="stat-forum-label">Réponses</div>
+            </div>
+            <div class="stat-forum">
+                <div class="stat-forum-icone">👥</div>
+                <div class="stat-forum-valeur" id="stat-membres">0</div>
+                <div class="stat-forum-label">Membres</div>
+            </div>
+        </div>
+
+        <!-- BARRE D'ACTIONS -->
+        <div class="forum-actions">
+            <input 
+                type="text" 
+                id="recherche-forum" 
+                placeholder="🔍 Rechercher un sujet..."
+                class="input-recherche-forum"
+            >
+            <button id="btn-nouveau-sujet" class="btn-primaire btn-large cache">
+                ➕ Nouveau sujet
+            </button>
+        </div>
+
+        <!-- FILTRES PAR DOMAINE -->
+        <div class="forum-filtres">
+            <button class="btn-filtre-forum actif" data-domaine="tous">Tous</button>
+            <button class="btn-filtre-forum" data-domaine="Programmation">💻 Programmation</button>
+            <button class="btn-filtre-forum" data-domaine="Réseau">🌐 Réseau</button>
+            <button class="btn-filtre-forum" data-domaine="Cybersécurité">🔒 Cybersécurité</button>
+            <button class="btn-filtre-forum" data-domaine="Base de données">🗄️ Base de données</button>
+            <button class="btn-filtre-forum" data-domaine="Autre">💬 Autre</button>
+        </div>
+
+        <!-- LISTE DES SUJETS -->
+        <div id="liste-sujets" class="liste-sujets">
+            <!-- Rempli par JS -->
+        </div>
+
+    </main>
+
+    <!-- MODALE : Nouveau sujet -->
+    <div id="modale-nouveau-sujet" class="modale-overlay cache">
+        <div class="modale">
+            <div class="modale-entete">
+                <h3>➕ Nouveau sujet</h3>
+                <button id="btn-fermer-modale-sujet" class="btn-fermer-modale">✕</button>
+            </div>
+            
+            <form id="form-nouveau-sujet" class="form-sujet">
+                <label for="sujet-titre">Titre du sujet *</label>
+                <input 
+                    type="text" 
+                    id="sujet-titre" 
+                    placeholder="Ex: Comment créer une API REST ?" 
+                    required
+                    minlength="5"
+                    maxlength="200"
+                >
+                
+                <label for="sujet-domaine">Domaine *</label>
+                <select id="sujet-domaine" required>
+                    <option value="">-- Choisir un domaine --</option>
+                    <option value="Programmation">💻 Programmation</option>
+                    <option value="Réseau">🌐 Réseau</option>
+                    <option value="Cybersécurité">🔒 Cybersécurité</option>
+                    <option value="Base de données">🗄️ Base de données</option>
+                    <option value="Autre">💬 Autre</option>
+                </select>
+                
+                <label for="sujet-contenu">Contenu *</label>
+                <textarea 
+                    id="sujet-contenu" 
+                    placeholder="Décris ta question en détail..." 
+                    required
+                    minlength="10"
+                    maxlength="5000"
+                    rows="6"
+                ></textarea>
+                
+                <div class="modale-actions">
+                    <button type="button" id="btn-annuler-sujet" class="btn-secondaire">Annuler</button>
+                    <button type="submit" class="btn-primaire">📝 Publier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section">
+                <p class="footer-titre">🎓 Étudiants IT</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Ressources</p>
+                <a href="documents.html">📄 Documents</a>
+                <a href="badges.html">🏆 Badges</a>
+                <a href="revision.html">📚 Révision</a>
+                <a href="profil.html">👤 Mon profil</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+     <script src="js/config.js"></script>       <!-- ← NOUVEAU -->
+    <script src="js/chargement.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav-dropdown.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/forum.js"></script>
+</body>
+
+</html>

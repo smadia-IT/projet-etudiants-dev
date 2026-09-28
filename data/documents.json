@@ -1,0 +1,56 @@
+[
+    {
+        "titre": "Introduction à l'algorithmique",
+        "description": "Fiche de révision sur les bases des algorithmes.",
+        "domaine": "Programmation",
+        "type": "Fiche",
+        "fichier": "documents/programmation/intro-algo.pdf",
+        "taille": "245 Ko",
+        "date": "2026-09-15"
+    },
+    {
+        "titre": "Les bases du réseau",
+        "description": "Modèle OSI, TCP/IP, adressage IP expliqués simplement.",
+        "domaine": "Réseau",
+        "type": "Fiche",
+        "fichier": "documents/reseau/bases-reseau.pdf",
+        "taille": "512 Ko",
+        "date": "2026-09-10"
+    },
+    {
+        "titre": "Introduction à la cybersécurité",
+        "description": "Les grands principes de la sécurité informatique.",
+        "domaine": "Cybersécurité",
+        "type": "Résumé",
+        "fichier": "documents/cybersecurite/intro-securite.pdf",
+        "taille": "380 Ko",
+        "date": "2026-09-20"
+    },
+    {
+        "titre": "Introduction au SQL",
+        "description": "Les requêtes de base pour interroger une base de données.",
+        "domaine": "Base de données",
+        "type": "Fiche",
+        "fichier": "documents/base-de-donnees/intro-sql.pdf",
+        "taille": "420 Ko",
+        "date": "2026-09-18"
+    },
+    {
+        "titre": "Exercices d'algorithmique",
+        "description": "10 exercices corrigés sur les boucles et conditions.",
+        "domaine": "Programmation",
+        "type": "Exercice",
+        "fichier": "documents/programmation/exercices-algo.pdf",
+        "taille": "320 Ko",
+        "date": "2026-09-22"
+    },
+    {
+        "titre": "Annales 2025 - Réseau",
+        "description": "Sujets d'examen des années précédentes.",
+        "domaine": "Réseau",
+        "type": "Annale",
+        "fichier": "documents/reseau/annales-2025.pdf",
+        "taille": "680 Ko",
+        "date": "2026-09-05"
+    }
+]

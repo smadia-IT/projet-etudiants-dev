@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mon profil — Étudiants IT</title>
+    <meta name="description" content="Consulte tes statistiques sur Étudiants IT.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">
+                🎓 <span>Étudiants IT</span>
+            </a>
+            <nav class="nav-principale">
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+                   <a href="profil.html" class="actif">👤 Profil</a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">Plus ▾</button>
+                    <div class="nav-dropdown-menu">
+                        <a href="documents.html">📄 Documents</a>
+                        <a href="badges.html">🏆 Badges</a>
+                        <a href="revision.html">📚 Révision</a>
+                     
+                    </div>
+                </div>
+                
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <h1 class="titre-page">👤 Mon profil</h1>
+        <p class="sous-titre-page">
+            Retrouve toutes tes statistiques sur Étudiants IT.
+        </p>
+
+        <!-- SECTION QUIZ -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">🎮 Quiz</h2>
+            <div class="grille-stats">
+                <div class="carte-stat">
+                    <div class="stat-icone">🎯</div>
+                    <div class="stat-valeur" id="stat-parties">0</div>
+                    <div class="stat-label">Parties jouées</div>
+                </div>
+                <div class="carte-stat">
+                    <div class="stat-icone">🏆</div>
+                    <div class="stat-valeur" id="stat-meilleur-score">0</div>
+                    <div class="stat-label">Meilleur score</div>
+                </div>
+                <div class="carte-stat">
+                    <div class="stat-icone">🔥</div>
+                    <div class="stat-valeur" id="stat-meilleur-streak">0</div>
+                    <div class="stat-label">Meilleure série</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DICTIONNAIRE -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">📖 Dictionnaire</h2>
+            <div class="grille-stats">
+                <div class="carte-stat">
+                    <div class="stat-icone">⭐</div>
+                    <div class="stat-valeur" id="stat-favoris">0</div>
+                    <div class="stat-label">Favoris</div>
+                </div>
+                <div class="carte-stat">
+                    <div class="stat-icone">📚</div>
+                    <div class="stat-valeur" id="stat-revision">0</div>
+                    <div class="stat-label">Mots en révision</div>
+                </div>
+                <div class="carte-stat">
+                    <div class="stat-icone">✅</div>
+                    <div class="stat-valeur" id="stat-maitrises">0</div>
+                    <div class="stat-label">Mots maîtrisés</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION BADGES -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">🏆 Badges</h2>
+            <div class="carte-badges-profil">
+                <div class="badges-valeur">
+                    <span id="stat-badges">0</span> / <span id="stat-badges-total">12</span>
+                </div>
+                <div class="badges-barre">
+                    <div class="badges-barre-remplie" id="barre-badges"></div>
+                </div>
+                <a href="badges.html" class="btn-secondaire">Voir tous les badges →</a>
+            </div>
+        </section>
+
+        <!-- SECTION DANGER -->
+        <section class="section-profil section-danger">
+            <h2 class="titre-section-profil">⚠️ Zone de danger</h2>
+            <p class="texte-danger">
+                Réinitialiser tes données effacera <strong>toutes</strong> tes statistiques :
+                scores, badges, favoris, mots en révision...
+            </p>
+            <button id="btn-reset" class="btn-danger">🗑️ Réinitialiser mes données</button>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section">
+                <p class="footer-titre">🎓 Étudiants IT</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">Ressources</p>
+                <a href="documents.html">📄 Documents</a>
+                <a href="badges.html">🏆 Badges</a>
+                <a href="revision.html">📚 Révision</a>
+                <a href="profil.html">👤 Mon profil</a>
+            </div>
+            <div class="footer-section">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+     <script src="js/config.js"></script>       <!-- ← NOUVEAU -->
+    <script src="js/chargement.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav-dropdown.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/badges-data.js"></script>
+    <script src="js/revision-data.js"></script>
+    <script src="js/profil.js"></script>
+</body>
+
+</html>
