@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         genererFiltresDomaines();  // ← NOUVEAU
         afficherMotsFiltres();
-    })s
+    })
         .catch(erreur => console.error("Erreur :", erreur));
     // Recherche
     champRecherche.addEventListener("input", function() {
