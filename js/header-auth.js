@@ -32,9 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
         lienAuth.href = "#";
         lienAuth.classList.add("connecte");
         
-        // Charger le nombre de messages non lus
-        chargerBadgeMessages(token);
-        
+              // Charger le nombre de messages non lus (avec rafraîchissement auto)
+        demarrerRafraichissementBadge(token);
         // Créer le menu déroulant
         let menuUser = document.getElementById("menu-user");
         if (!menuUser) {
@@ -106,4 +105,14 @@ async function chargerBadgeMessages(token) {
     } catch (erreur) {
         console.error("Erreur badge messages:", erreur);
     }
+}
+// Rafraîchir le badge toutes les 30 secondes
+function demarrerRafraichissementBadge(token) {
+    // Rafraîchir immédiatement
+    chargerBadgeMessages(token);
+    
+    // Puis toutes les 30 secondes
+    setInterval(() => {
+        chargerBadgeMessages(token);
+    }, 30000); // 30000 ms = 30 secondes
 }
