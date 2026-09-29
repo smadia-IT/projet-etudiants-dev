@@ -89,7 +89,9 @@ async function chargerBadgeMessages(token) {
         if (!data.success) return;
         
         // Trouver ou créer le badge sur le lien Messages
-        const lienMessages = document.querySelector('a[href="messages.html"]');
+       // On cherche UNIQUEMENT dans la nav principale
+const navPrincipale = document.querySelector(".nav-principale");
+const lienMessages = navPrincipale ? navPrincipale.querySelector('a[href="messages.html"]') : null;
         if (!lienMessages) return;
         
         // Supprimer l'ancien badge s'il existe
