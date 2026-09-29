@@ -53,8 +53,13 @@
 
         <input type="text" id="recherche" placeholder="🔍 Rechercher un mot...">
 
-        <div id="filtres">
-    <!-- Rempli dynamiquement par JavaScript -->
+        <div id="filtres" class="filtres-container">
+    <button id="btn-filtre-principal" class="btn-filtre-principal">
+        📁 Choisir un domaine <span id="filtre-actuel-label">(Tous)</span> ▾
+    </button>
+    <div id="menu-filtres" class="menu-filtres cache">
+        <!-- Rempli dynamiquement par JavaScript -->
+    </div>
 </div>
 
         <div id="filtres-favoris">

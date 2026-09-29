@@ -4027,6 +4027,174 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     .footer-propos p:first-child {
         display: none;
     }
-}===================================================
-   FIN DU FICHIER
-   ============================================================ */
+}
+
+/* ============================================
+   FILTRE PAR DOMAINE - MENU DÉROULANT
+   ============================================ */
+
+.filtres-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--espace-moyen);
+    z-index: 100;
+}
+
+/* Bouton principal */
+.btn-filtre-principal {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-petit);
+    padding: 12px 20px;
+    background-color: var(--couleur-carte);
+    border: 2px solid var(--couleur-principale);
+    border-radius: 25px;
+    color: var(--couleur-principale);
+    font-size: 15px;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-rapide);
+}
+
+.btn-filtre-principal:hover {
+    background-color: var(--couleur-principale-claire);
+    transform: translateY(-2px);
+    box-shadow: var(--ombre-legere);
+}
+
+#filtre-actuel-label {
+    color: var(--couleur-texte);
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Menu déroulant */
+.menu-filtres {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background-color: var(--couleur-carte);
+    border: 2px solid var(--couleur-bordure);
+    border-radius: var(--rayon-moyen);
+    box-shadow: var(--ombre-moyenne);
+    min-width: 280px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    padding: var(--espace-petit);
+    animation: menu-apparition 0.2s ease;
+}
+
+/* Item du menu */
+.menu-filtres .item-domaine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: var(--rayon-petit);
+    cursor: pointer;
+    transition: background-color var(--transition-rapide);
+    font-size: 14px;
+    color: var(--couleur-texte);
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+}
+
+.menu-filtres .item-domaine:hover {
+    background-color: var(--couleur-principale-claire);
+}
+
+.menu-filtres .item-domaine.actif {
+    background-color: var(--couleur-principale);
+    color: white;
+    font-weight: bold;
+}
+
+.menu-filtres .item-domaine .compteur-domaine {
+    font-size: 12px;
+    opacity: 0.7;
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte-clair);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.menu-filtres .item-domaine.actif .compteur-domaine {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+/* Séparateur */
+.menu-filtres .separateur-menu {
+    height: 1px;
+    background-color: var(--couleur-bordure);
+    margin: var(--espace-petit) 0;
+}
+
+/* Scrollbar personnalisée pour le menu */
+.menu-filtres::-webkit-scrollbar {
+    width: 6px;
+}
+
+.menu-filtres::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.menu-filtres::-webkit-scrollbar-thumb {
+    background: var(--couleur-bordure);
+    border-radius: 3px;
+}
+
+/* Mode sombre */
+body.dark .btn-filtre-principal {
+    background-color: var(--couleur-carte);
+    border-color: var(--couleur-principale);
+    color: var(--couleur-principale);
+}
+
+body.dark .btn-filtre-principal:hover {
+    background-color: var(--couleur-principale-claire);
+}
+
+body.dark .menu-filtres {
+    background-color: var(--couleur-carte);
+    border-color: var(--couleur-bordure);
+}
+
+body.dark .menu-filtres .item-domaine:hover {
+    background-color: var(--couleur-principale-claire);
+}
+
+body.dark .menu-filtres .item-domaine.actif {
+    background-color: var(--couleur-principale);
+    color: #0f0f1e;
+}
+
+body.dark .menu-filtres .item-domaine .compteur-domaine {
+    background-color: #0f0f1e;
+    color: var(--couleur-texte-clair);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .filtres-container {
+        display: block;
+        width: 100%;
+    }
+    
+    .btn-filtre-principal {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .menu-filtres {
+        left: 0;
+        right: 0;
+        min-width: auto;
+        width: 100%;
+    }
+}
