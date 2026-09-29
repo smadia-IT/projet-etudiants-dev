@@ -47,15 +47,15 @@ document.addEventListener("DOMContentLoaded", function() {
         // Charger les favoris
     chargerFavoris();
     majCompteurFavoris();
-    
-           fetch(`${API_URL}/mots`)
-        .then(response => response.json())
-        .then(reponse => {
-            // L'API renvoie { success, count, data }
-            tousLesMots = reponse.data;
-            console.log(`${tousLesMots.length} mots chargés depuis l'API`);
-            afficherMotsFiltres();
-        })
+    fetch(`${API_URL}/mots`)
+    .then(response => response.json())
+    .then(reponse => {
+        tousLesMots = reponse.data;
+        console.log(`${tousLesMots.length} mots chargés depuis l'API`);
+        
+        genererFiltresDomaines();  // ← NOUVEAU
+        afficherMotsFiltres();
+    })s
         .catch(erreur => console.error("Erreur :", erreur));
     // Recherche
     champRecherche.addEventListener("input", function() {
@@ -92,6 +92,59 @@ document.addEventListener("DOMContentLoaded", function() {
         afficherMotsFiltres();
     });
     
+    // ===== GÉNÉRATION DES FILTRES DE DOMAINE =====
+function genererFiltresDomaines() {
+    const conteneurFiltres = document.getElementById("filtres");
+    if (!conteneurFiltres) return;
+    
+    conteneurFiltres.innerHTML = "";
+    
+    // Bouton "Tous"
+    const btnTous = document.createElement("button");
+    btnTous.className = "btn-filtre actif";
+    btnTous.dataset.domaine = "tous";
+    btnTous.textContent = "Tous";
+    btnTous.addEventListener("click", function() {
+        filtrerParDomaine("tous", btnTous);
+    });
+    conteneurFiltres.appendChild(btnTous);
+    
+    // Récupérer tous les domaines uniques
+    const domainesUniques = [...new Set(tousLesMots.map(m => m.domaine))];
+    
+    // Trier alphabétiquement
+    domainesUniques.sort((a, b) => a.localeCompare(b));
+    
+    // Créer un bouton par domaine
+    domainesUniques.forEach(function(domaine) {
+        const btn = document.createElement("button");
+        btn.className = "btn-filtre";
+        btn.dataset.domaine = domaine;
+        btn.textContent = domaine;
+        btn.addEventListener("click", function() {
+            filtrerParDomaine(domaine, btn);
+        });
+        conteneurFiltres.appendChild(btn);
+    });
+    
+    console.log(`${domainesUniques.length} domaines trouvés`);
+}
+
+// ===== FILTRER PAR DOMAINE =====
+function filtrerParDomaine(domaine, btnClique) {
+    filtreActif = domaine;
+    
+    // Retirer "actif" de tous les boutons
+    document.querySelectorAll("#filtres .btn-filtre").forEach(function(b) {
+        b.classList.remove("actif");
+    });
+    
+    // Ajouter "actif" au bouton cliqué
+    btnClique.classList.add("actif");
+    
+    // Rafraîchir l'affichage
+    afficherMotsFiltres();
+}
           function afficherMotsFiltres() {
         const resultats = tousLesMots.filter(function(unMot) {
             const correspondDomaine = 
