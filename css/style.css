@@ -3952,6 +3952,81 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     }
 }
 
-/* ============================================================
+/* =========/* ============================================
+   FOOTER MINIMALISTE SUR MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Réduire le padding global du footer */
+    #footer {
+        padding: var(--espace-grand) var(--espace-moyen) var(--espace-moyen);
+        margin-top: var(--espace-grand);
+    }
+    
+    /* Réduire l'espacement entre sections */
+    .footer-contenu {
+        grid-template-columns: 1fr;
+        gap: var(--espace-moyen);
+        text-align: center;
+    }
+    
+    /* Cacher les sections non essentielles */
+    .footer-nav .footer-titre,
+    .footer-ressources .footer-titre {
+        display: none;
+    }
+    
+    .footer-ressources {
+        display: none;
+    }
+    
+    /* Cacher les liens non essentiels dans Navigation */
+    .footer-nav a:not(.footer-lien-essentiel) {
+        display: none;
+    }
+    
+    /* Afficher les liens essentiels en ligne */
+    .footer-nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--espace-petit);
+    }
+    
+    .footer-nav a.footer-lien-essentiel {
+        display: inline-block;
+        padding: 4px 8px;
+        font-size: 13px;
+    }
+    
+    /* Séparateur entre les liens */
+    .footer-nav a.footer-lien-essentiel:not(:last-child)::after {
+        content: "·";
+        margin-left: var(--espace-petit);
+        color: #bdc3c7;
+    }
+    
+    /* Réduire la taille du logo */
+    .footer-logo .footer-titre {
+        font-size: 15px;
+        margin-bottom: 4px;
+    }
+    
+    .footer-logo p {
+        font-size: 12px;
+    }
+    
+    /* À propos plus compact */
+    .footer-propos p {
+        font-size: 11px;
+        margin: 2px 0;
+    }
+    
+    /* Cacher le "Projet en construction" sur mobile (optionnel) */
+    .footer-propos p:first-child {
+        display: none;
+    }
+}===================================================
    FIN DU FICHIER
    ============================================================ */
