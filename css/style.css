@@ -3898,6 +3898,59 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     .domaine-icone { font-size: 22px; }
     .domaine-nom { font-size: 11px; }
 }
+/* ============================================
+   NAVIGATION MOBILE / DESKTOP
+   ============================================ */
+
+/* Par défaut : tout visible */
+.mobile-only {
+    display: none;
+}
+
+/* Sur desktop : cacher mobile-only, montrer desktop-only */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
+    .desktop-only {
+        display: inline-block;
+    }
+}
+
+/* Sur mobile : cacher desktop-only, montrer mobile-only */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+    .mobile-only {
+        display: inline-block;
+    }
+}
+
+/* Ajuster l'affichage de la nav sur mobile */
+@media (max-width: 768px) {
+    .nav-principale {
+        gap: 4px;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .nav-principale > a,
+    .nav-dropdown-btn {
+        padding: 6px 8px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    
+    .nav-dropdown-menu {
+        position: fixed;
+        left: var(--espace-moyen);
+        right: var(--espace-moyen);
+        top: auto;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+}
 
 /* ============================================================
    FIN DU FICHIER
