@@ -2974,8 +2974,9 @@ body.dark .btn-message { color: #0f0f1e; }
     line-height: 1.4;
     max-width: 100%;
     white-space: pre-wrap;
-    text-align: left;    /* ← le texte commence à gauche dans la bulle */
-    display: inline-block; /* ← la bulle s'ajuste à la taille du texte */
+    text-align: left;
+    display: inline-block !important;   /* ← force l'affichage en inline-block */
+    width: auto !important;             /* ← empêche l'étirement */
 }
 
 .message-bulle.moi {
