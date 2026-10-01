@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================
     // CRÉER UN ITEM DE CONVERSATION
     // ============================================
-    function creerItemConversation(conv) {
+        function creerItemConversation(conv) {
         const item = document.createElement("div");
         item.className = "conv-item";
         if (conv.user_id === conversationActuelleId) {
@@ -95,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function() {
             : conv.dernier_message;
         const prefixe = conv.dernier_expediteur === user.id ? "Toi : " : "";
         
-        // Formater la date
         const date = new Date(conv.date_dernier);
         const maintenant = new Date();
         const diffHeures = (maintenant - date) / (1000 * 60 * 60);
@@ -118,14 +117,55 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="conv-meta">
                 <span class="conv-date">${dateAffichage}</span>
                 ${conv.nb_non_lus > 0 ? `<span class="conv-badge">${conv.nb_non_lus}</span>` : ""}
+                <button class="conv-supprimer" title="Masquer la conversation" data-user-id="${conv.user_id}">🗑️</button>
             </div>
         `;
         
-        item.addEventListener("click", () => ouvrirConversation(conv.user_id, conv.username));
+        // Clic sur l'item → ouvrir
+        item.addEventListener("click", (e) => {
+            if (e.target.closest(".conv-supprimer")) return; // ne pas ouvrir si on clique sur supprimer
+            ouvrirConversation(conv.user_id, conv.username);
+        });
+        
+        // Clic sur le bouton supprimer
+        const btnSupprimer = item.querySelector(".conv-supprimer");
+        btnSupprimer.addEventListener("click", async (e) => {
+            e.stopPropagation();
+            await masquerConversation(conv.user_id, conv.username);
+        });
         
         return item;
     }
     
+    // ===== MASQUER UNE CONVERSATION =====
+    async function masquerConversation(userId, username) {
+        if (!confirm(`Masquer la conversation avec ${username} ?\n\nElle réapparaîtra si ${username} t'envoie un nouveau message.`)) {
+            return;
+        }
+        
+        try {
+            const reponse = await fetch(`${API_URL}/messages/conversations/${userId}`, {
+                method: "DELETE",
+                headers
+            });
+            const data = await reponse.json();
+            
+            if (!data.success) throw new Error(data.error);
+            
+            // Si la conv était ouverte, on la ferme
+            if (conversationActuelleId === userId) {
+                conversationActuelleId = null;
+                conversationActuelleUser = null;
+                messagesVide.classList.remove("cache");
+                conversationActive.classList.add("cache");
+            }
+            
+            // Rafraîchir la liste
+            chargerConversations();
+        } catch (erreur) {
+            alert("Erreur : " + erreur.message);
+        }
+    }
     // ============================================
     // OUVRIR UNE CONVERSATION
     // ============================================

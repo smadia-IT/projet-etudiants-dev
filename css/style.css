@@ -2965,12 +2965,15 @@ body.dark .btn-message { color: #0f0f1e; }
 }
 
 .message-bulle {
-    max-width: 70%;
     padding: 10px 15px;
     border-radius: 15px;
     font-size: 14px;
     word-wrap: break-word;
+    word-break: normal;
+    overflow-wrap: anywhere;
     line-height: 1.4;
+    max-width: 100%;
+    white-space: pre-wrap;
 }
 
 .message-bulle.moi {
@@ -4367,4 +4370,39 @@ body.dark .btn-charger-plus {
 body.dark .btn-charger-plus:hover {
     background-color: var(--couleur-principale);
     color: #0f0f1e;
+}
+/* ============================================
+   BOUTON SUPPRIMER CONVERSATION
+   ============================================ */
+.conv-supprimer {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: all var(--transition-rapide);
+    margin-left: 4px;
+    color: var(--couleur-texte-clair);
+}
+
+.conv-item:hover .conv-supprimer {
+    opacity: 1;
+}
+
+.conv-supprimer:hover {
+    background-color: #ffebee;
+    transform: scale(1.15);
+}
+
+body.dark .conv-supprimer:hover {
+    background-color: #3a1020;
+}
+
+/* Sur mobile : toujours visible (pas de hover) */
+@media (max-width: 768px) {
+    .conv-supprimer {
+        opacity: 0.6;
+    }
 }
