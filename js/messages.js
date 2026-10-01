@@ -366,31 +366,18 @@ document.addEventListener("DOMContentLoaded", function() {
     // CRÉER UN MESSAGE AVEC AVATAR
     // ============================================
     function creerMessageAvecAvatar(msg) {
-        const ligne = document.createElement("div");
-        const estMoi = msg.expediteur_id === user.id;
-        ligne.className = "message-ligne " + (estMoi ? "moi" : "lui");
-        
-        const initiale = msg.expediteur_username 
-            ? msg.expediteur_username.charAt(0).toUpperCase() 
-            : "?";
-        
-        const date = new Date(msg.date);
-        const heureStr = date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
-        
-        ligne.innerHTML = `
-            <div class="message-avatar">${initiale}</div>
-            <div class="message-contenu">
-                <div class="message-bulle ${estMoi ? "moi" : "lui"}">
-                    ${escapeHtml(msg.contenu)}
-                </div>
-                <div class="message-statut">
-                    <span>${heureStr}</span>
-                </div>
-            </div>
-        `;
-        
-        return ligne;
-    }
+    // Structure ULTRA simple : une seule bulle, comme le chat IA
+    const bulle = document.createElement("div");
+    const estMoi = msg.expediteur_id === user.id;
+    bulle.className = estMoi ? "message-bulle moi" : "message-bulle lui";
+    
+    const date = new Date(msg.date);
+    const heureStr = date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    
+    bulle.innerHTML = `${escapeHtml(msg.contenu)}<span class="message-date">${heureStr}</span>`;
+    
+    return bulle;
+}
     
     // ============================================
     // ENVOYER UN MESSAGE

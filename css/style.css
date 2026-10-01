@@ -4089,7 +4089,8 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
 }
 
 /* ============================================================
-   30. AMÉLIORATIONS MESSAGERIE (historique + bulles)
+ /* ============================================================
+   30. AMÉLIORATIONS MESSAGERIE (bulles façon chat IA)
    ============================================================ */
 
 /* Conteneur du bouton "Charger plus" */
@@ -4131,6 +4132,7 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     text-align: center;
     margin: var(--espace-moyen) 0;
     position: relative;
+    width: 100%;
 }
 
 .separateur-date::before {
@@ -4156,68 +4158,8 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
 }
 
 /* ============================================
-   LIGNE DE MESSAGE (avatar + bulle)
+   BULLES DE MESSAGE (façon chat IA)
    ============================================ */
-.message-ligne {
-    display: flex;
-    gap: var(--espace-petit);
-    align-items: flex-end;
-    max-width: 75%;
-    animation: message-apparition 0.3s ease;
-}
-
-.message-ligne.moi {
-    align-self: flex-end;
-    flex-direction: row-reverse;
-}
-
-.message-ligne.lui {
-    align-self: flex-start;
-}
-
-@keyframes message-apparition {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Avatar */
-.message-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--couleur-principale), var(--couleur-principale-fonce));
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: bold;
-    flex-shrink: 0;
-    text-transform: uppercase;
-}
-
-.message-ligne.moi .message-avatar {
-    background: linear-gradient(135deg, #28a745, #218838);
-}
-
-/* Conteneur de la bulle + statut (prend l'espace dispo) */
-.message-contenu {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
-    flex: 1;
-}
-
-.message-ligne.moi .message-contenu {
-    align-items: flex-end;
-}
-
-.message-ligne.lui .message-contenu {
-    align-items: flex-start;
-}
-
-/* La bulle elle-même */
 .message-bulle {
     padding: 10px 15px;
     border-radius: 15px;
@@ -4227,37 +4169,37 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     overflow-wrap: break-word;
     word-break: normal;
     white-space: pre-wrap;
-    max-width: 100%;
+    max-width: 70%;         /* ← comme le chat IA */
     text-align: left;
-    display: inline-block;
-    box-sizing: border-box;
+    animation: message-apparition 0.3s ease;
 }
 
 .message-bulle.moi {
+    align-self: flex-end;
     background-color: var(--couleur-principale);
     color: white;
     border-radius: 15px 15px 0 15px;
 }
 
 .message-bulle.lui {
+    align-self: flex-start;
     background-color: var(--couleur-carte);
     color: var(--couleur-texte);
     border-radius: 15px 15px 15px 0;
     box-shadow: var(--ombre-legere);
 }
 
-/* Statut (heure) */
-.message-statut {
-    font-size: 10px;
-    color: var(--couleur-texte-clair);
-    margin-top: 2px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+@keyframes message-apparition {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.message-statut.lu {
-    color: var(--couleur-principale);
+.message-date {
+    font-size: 10px;
+    opacity: 0.7;
+    margin-top: 4px;
+    display: block;
+    text-align: right;
 }
 
 /* Textarea d'envoi */
@@ -4278,10 +4220,6 @@ body.dark .separateur-date span {
 body.dark .message-bulle.lui {
     background-color: #2a3a5c;
     color: var(--couleur-texte);
-}
-
-body.dark .message-statut {
-    color: var(--couleur-texte-clair);
 }
 
 body.dark .btn-charger-plus {
