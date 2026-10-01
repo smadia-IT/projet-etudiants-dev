@@ -4266,3 +4266,208 @@ body.dark .conv-supprimer:hover {
         opacity: 0.6;
     }
 }
+
+/* ============================================================
+   31. CLOCHE DE NOTIFICATIONS
+   ============================================================ */
+
+.cloche-notifs {
+    position: relative;
+    display: inline-block;
+    margin-left: var(--espace-petit);
+}
+
+.cloche-btn {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all var(--transition-rapide);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cloche-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.cloche-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: #dc3545;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1;
+    pointer-events: none;
+    box-shadow: 0 0 0 2px var(--couleur-principale);
+    z-index: 10;
+}
+
+/* Panneau déroulant */
+.cloche-panneau {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: -60px;
+    width: 350px;
+    max-width: 90vw;
+    background-color: var(--couleur-carte);
+    border-radius: var(--rayon-moyen);
+    box-shadow: var(--ombre-forte);
+    z-index: 1002;
+    overflow: hidden;
+    animation: menu-apparition 0.2s ease;
+}
+
+.cloche-entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--espace-moyen) var(--espace-grand);
+    border-bottom: 2px solid var(--couleur-bordure);
+}
+
+.cloche-entete h3 {
+    margin: 0;
+    color: var(--couleur-principale);
+    font-size: 15px;
+    border: none;
+    padding: 0;
+}
+
+.cloche-tout-lu {
+    background: none;
+    border: none;
+    color: var(--couleur-principale);
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--rayon-petit);
+    transition: all var(--transition-rapide);
+    font-family: inherit;
+}
+
+.cloche-tout-lu:hover {
+    background-color: var(--couleur-principale-claire);
+}
+
+.cloche-liste {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cloche-vide {
+    padding: var(--espace-tres-grand) var(--espace-moyen);
+    text-align: center;
+    color: var(--couleur-texte-clair);
+    font-style: italic;
+    font-size: 13px;
+    margin: 0;
+}
+
+.cloche-item {
+    display: flex;
+    gap: var(--espace-moyen);
+    padding: var(--espace-moyen) var(--espace-grand);
+    cursor: pointer;
+    transition: background-color var(--transition-rapide);
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.cloche-item:last-child {
+    border-bottom: none;
+}
+
+.cloche-item:hover {
+    background-color: var(--couleur-fond);
+}
+
+.cloche-item.non-lu {
+    background-color: var(--couleur-principale-claire);
+}
+
+.cloche-item.non-lu:hover {
+    background-color: var(--couleur-principale-claire);
+    filter: brightness(0.95);
+}
+
+.cloche-item-icone {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.cloche-item-contenu {
+    flex: 1;
+    min-width: 0;
+}
+
+.cloche-item-titre {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--couleur-texte);
+    margin-bottom: 2px;
+    line-height: 1.3;
+}
+
+.cloche-item-message {
+    font-size: 12px;
+    color: var(--couleur-texte-clair);
+    line-height: 1.4;
+    margin-bottom: 4px;
+    word-wrap: break-word;
+}
+
+.cloche-item-date {
+    font-size: 11px;
+    color: var(--couleur-texte-clair);
+    font-style: italic;
+}
+
+/* Mode sombre */
+body.dark .cloche-panneau {
+    background-color: var(--couleur-carte);
+}
+
+body.dark .cloche-item:hover {
+    background-color: #0f0f1e;
+}
+
+body.dark .cloche-item.non-lu {
+    background-color: var(--couleur-principale-claire);
+}
+
+body.dark .cloche-tout-lu:hover {
+    background-color: var(--couleur-principale-claire);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cloche-panneau {
+        right: -20px;
+        width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cloche-panneau {
+        position: fixed;
+        left: var(--espace-moyen);
+        right: var(--espace-moyen);
+        top: 80px;
+        width: auto;
+        max-width: none;
+    }
+}
