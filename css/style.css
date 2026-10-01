@@ -251,6 +251,7 @@ body.dark #header {
     border-radius: var(--rayon-petit);
     font-size: 15px;
     transition: background-color var(--transition-rapide);
+    position: relative; /* ← nécessaire pour que le badge se cale sur ce lien et pas sur toute la navbar */
 }
 
 .nav-principale > a:hover {
@@ -436,8 +437,10 @@ body.dark #header {
     min-width: 18px;
     text-align: center;
     line-height: 1;
+    pointer-events: none;   /* le clic passe à travers, c'est le lien qui reste cliquable */
+    box-shadow: 0 0 0 2px var(--couleur-principale); /* petit contour qui suit la couleur du header */
+    z-index: 10;
 }
-
 /* ============================================================
    6. FOOTER
    ============================================================ */
