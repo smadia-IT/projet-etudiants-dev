@@ -2974,6 +2974,8 @@ body.dark .btn-message { color: #0f0f1e; }
     line-height: 1.4;
     max-width: 100%;
     white-space: pre-wrap;
+    text-align: left;    /* ← le texte commence à gauche dans la bulle */
+    display: inline-block; /* ← la bulle s'ajuste à la taille du texte */
 }
 
 .message-bulle.moi {
@@ -4271,13 +4273,13 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
 /* Bulles avec avatar */
 .message-ligne {
     display: flex;
     gap: var(--espace-petit);
     align-items: flex-end;
     max-width: 75%;
+    min-width: 0;      /* ← permet au contenu de se réduire correctement */
     animation: message-apparition 0.3s ease;
 }
 
@@ -4319,6 +4321,13 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    min-width: 0;
+    align-items: flex-start;   /* ← la bulle s'ajuste au contenu et se cale à gauche */
+}
+
+/* Pour TES messages : bulle alignée à droite */
+.message-ligne.moi .message-contenu {
+    align-items: flex-end;
 }
 
 .message-statut {
