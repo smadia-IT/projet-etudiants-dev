@@ -2963,7 +2963,6 @@ body.dark .btn-message { color: #0f0f1e; }
     gap: var(--espace-petit);
     background-color: var(--couleur-fond);
 }
-
 .message-bulle {
     padding: 10px 15px;
     border-radius: 15px;
@@ -2975,8 +2974,15 @@ body.dark .btn-message { color: #0f0f1e; }
     max-width: 100%;
     white-space: pre-wrap;
     text-align: left;
-    display: inline-block !important;   /* ← force l'affichage en inline-block */
-    width: auto !important;             /* ← empêche l'étirement */
+    display: inline-block;
+    width: auto;
+    box-sizing: border-box;
+}
+
+/* Limite la bulle à la largeur du conteneur même pour du texte sans espaces */
+.message-ligne.lui .message-bulle,
+.message-ligne.moi .message-bulle {
+    max-width: min(100%, 500px);
 }
 
 .message-bulle.moi {
@@ -4279,11 +4285,10 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     display: flex;
     gap: var(--espace-petit);
     align-items: flex-end;
-    max-width: 75%;
-    min-width: 0;      /* ← permet au contenu de se réduire correctement */
+    max-width: 100%;       /* ← CHANGÉ : 75% → 100% */
+    min-width: 0;
     animation: message-apparition 0.3s ease;
 }
-
 .message-ligne.moi {
     align-self: flex-end;
     flex-direction: row-reverse;
@@ -4317,16 +4322,15 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     background: linear-gradient(135deg, #28a745, #218838);
 }
 
-/* Contenu de la bulle avec statut "lu" */
 .message-contenu {
     display: flex;
     flex-direction: column;
     gap: 2px;
     min-width: 0;
-    align-items: flex-start;   /* ← la bulle s'ajuste au contenu et se cale à gauche */
+    align-items: flex-start;
+    flex: none;              /* ← AJOUTÉ : empêche l'étirement */
 }
 
-/* Pour TES messages : bulle alignée à droite */
 .message-ligne.moi .message-contenu {
     align-items: flex-end;
 }
