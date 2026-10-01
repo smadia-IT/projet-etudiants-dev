@@ -2,8 +2,6 @@
 // PAGE MESSAGES - GESTION DE LA MESSAGERIE
 // ============================================
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
     
     // ===== VÉRIFIER CONNEXION =====
@@ -36,17 +34,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const formEnvoi = document.getElementById("form-envoi");
     const inputMessage = document.getElementById("input-message");
     const btnEnvoyer = document.getElementById("btn-envoyer-message");
-        const btnNouveauMessage = document.getElementById("btn-nouveau-message");
+    const btnNouveauMessage = document.getElementById("btn-nouveau-message");
     const modaleNouveauMessage = document.getElementById("modale-nouveau-message");
     const btnFermerModale = document.getElementById("btn-fermer-modale");
     const listeAmisModale = document.getElementById("liste-amis-modale");
+    const btnChargerPlus = document.getElementById("btn-charger-plus");
+    const chargerPlusContainer = document.getElementById("charger-plus-container");
     
     // ===== ÉTAT =====
     let conversationActuelleId = null;
     let conversationActuelleUser = null;
     let intervalRefresh = null;
+    let dernierMessageId = 0;       // ID du dernier message affiché (pour l'auto-refresh)
+    let plusAncienMessageId = null; // ID du plus ancien message chargé (pour la pagination)
+    let aPlusDeMessages = false;    // Y a-t-il des messages plus anciens à charger ?
     
-    // ===== CHARGER LES CONVERSATIONS =====
+    // ============================================
+    // CHARGER LES CONVERSATIONS
+    // ============================================
     async function chargerConversations() {
         try {
             const reponse = await fetch(`${API_URL}/messages/conversations`, { headers });
@@ -74,7 +79,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     
-    // ===== CRÉER UN ITEM DE CONVERSATION =====
+    // ============================================
+    // CRÉER UN ITEM DE CONVERSATION
+    // ============================================
     function creerItemConversation(conv) {
         const item = document.createElement("div");
         item.className = "conv-item";
@@ -119,7 +126,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return item;
     }
     
-    // ===== OUVRIR UNE CONVERSATION =====
+    // ============================================
+    // OUVRIR UNE CONVERSATION
+    // ============================================
     async function ouvrirConversation(userId, username) {
         conversationActuelleId = userId;
         conversationActuelleUser = username;
@@ -150,13 +159,22 @@ document.addEventListener("DOMContentLoaded", function() {
         inputMessage.focus();
     }
     
-    // ===== CHARGER LES MESSAGES =====
+    // ============================================
+    // CHARGER LES MESSAGES (avec pagination)
+    // ============================================
     async function chargerMessages(userId) {
         try {
-            const reponse = await fetch(`${API_URL}/messages/${userId}`, { headers });
+            const reponse = await fetch(`${API_URL}/messages/${userId}?limit=30`, { headers });
             const data = await reponse.json();
             
             if (!data.success) throw new Error(data.error);
+            
+            historiqueMessages.innerHTML = "";
+            
+            // Reset des flags de pagination
+            aPlusDeMessages = data.has_more;
+            plusAncienMessageId = data.plus_ancien_id;
+            dernierMessageId = data.data.length > 0 ? data.data[data.data.length - 1].id : 0;
             
             if (data.count === 0) {
                 historiqueMessages.innerHTML = `
@@ -164,13 +182,21 @@ document.addEventListener("DOMContentLoaded", function() {
                         <p>Aucun message pour l'instant.<br>Envoie le premier ! 👋</p>
                     </div>
                 `;
+                if (chargerPlusContainer) chargerPlusContainer.classList.add("cache");
                 return;
             }
             
-            historiqueMessages.innerHTML = "";
-            data.data.forEach(msg => {
-                historiqueMessages.appendChild(creerMessageBulle(msg));
-            });
+            // Afficher ou cacher le bouton "Charger plus"
+            if (chargerPlusContainer) {
+                if (aPlusDeMessages) {
+                    chargerPlusContainer.classList.remove("cache");
+                } else {
+                    chargerPlusContainer.classList.add("cache");
+                }
+            }
+            
+            // Insérer les messages groupés par date
+            insererMessagesGroupes(data.data, false);
             
             // Scroller vers le bas
             historiqueMessages.scrollTop = historiqueMessages.scrollHeight;
@@ -179,25 +205,156 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     
-    // ===== CRÉER UNE BULLE DE MESSAGE =====
-    function creerMessageBulle(msg) {
-        const bulle = document.createElement("div");
-        const estMoi = msg.expediteur_id === user.id;
-        bulle.className = "message-bulle " + (estMoi ? "moi" : "lui");
+    // ============================================
+    // CHARGER PLUS DE MESSAGES (scroll infini)
+    // ============================================
+    async function chargerPlusAnciens() {
+        if (!aPlusDeMessages || !plusAncienMessageId || !conversationActuelleId) return;
         
-        // Formater la date
-        const date = new Date(msg.date);
-        const dateStr = date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+        if (btnChargerPlus) {
+            btnChargerPlus.disabled = true;
+            btnChargerPlus.textContent = "⏳ Chargement...";
+        }
         
-        bulle.innerHTML = `
-            ${escapeHtml(msg.contenu)}
-            <span class="message-date">${dateStr}</span>
-        `;
-        
-        return bulle;
+        try {
+            const reponse = await fetch(
+                `${API_URL}/messages/${conversationActuelleId}?limit=30&before=${plusAncienMessageId}`,
+                { headers }
+            );
+            const data = await reponse.json();
+            
+            if (!data.success) throw new Error(data.error);
+            
+            aPlusDeMessages = data.has_more;
+            plusAncienMessageId = data.plus_ancien_id;
+            
+            // Mémoriser la position de scroll pour ne pas sauter
+            const ancienScrollHeight = historiqueMessages.scrollHeight;
+            
+            // Insérer les messages en haut
+            insererMessagesGroupes(data.data, true);
+            
+            // Restaurer la position de scroll (rester sur le même message)
+            const nouveauScrollHeight = historiqueMessages.scrollHeight;
+            historiqueMessages.scrollTop = nouveauScrollHeight - ancienScrollHeight;
+            
+            // Cacher le bouton si plus de messages
+            if (!aPlusDeMessages && chargerPlusContainer) {
+                chargerPlusContainer.classList.add("cache");
+            }
+        } catch (erreur) {
+            console.error("Erreur chargement plus anciens:", erreur);
+        } finally {
+            if (btnChargerPlus) {
+                btnChargerPlus.disabled = false;
+                btnChargerPlus.textContent = "⬆️ Charger les messages plus anciens";
+            }
+        }
     }
     
-    // ===== ENVOYER UN MESSAGE =====
+    // ============================================
+    // INSÉRER DES MESSAGES GROUPÉS PAR DATE
+    // ============================================
+    function insererMessagesGroupes(messages, enHaut) {
+        const fragment = document.createDocumentFragment();
+        let derniereDateAffichee = null;
+        
+        // Récupérer la dernière date affichée si on insère en bas
+        if (!enHaut) {
+            const derniersSeps = historiqueMessages.querySelectorAll(".separateur-date span");
+            if (derniersSeps.length > 0) {
+                derniereDateAffichee = derniersSeps[derniersSeps.length - 1].textContent;
+            }
+        }
+        
+        messages.forEach(msg => {
+            const dateJour = formaterDateJour(msg.date);
+            if (dateJour !== derniereDateAffichee) {
+                fragment.appendChild(creerSeparateurDate(dateJour));
+                derniereDateAffichee = dateJour;
+            }
+            fragment.appendChild(creerMessageAvecAvatar(msg));
+        });
+        
+        if (enHaut) {
+            // Insérer après le conteneur "Charger plus"
+            if (chargerPlusContainer) {
+                chargerPlusContainer.after(fragment);
+            } else {
+                historiqueMessages.prepend(fragment);
+            }
+        } else {
+            historiqueMessages.appendChild(fragment);
+        }
+    }
+    
+    // ============================================
+    // CRÉER UN SÉPARATEUR DE DATE
+    // ============================================
+    function creerSeparateurDate(dateStr) {
+        const sep = document.createElement("div");
+        sep.className = "separateur-date";
+        sep.innerHTML = `<span>${dateStr}</span>`;
+        return sep;
+    }
+    
+    // ============================================
+    // FORMATER LA DATE DU JOUR
+    // ============================================
+    function formaterDateJour(dateISO) {
+        const date = new Date(dateISO);
+        const aujourdhui = new Date();
+        const hier = new Date();
+        hier.setDate(hier.getDate() - 1);
+        
+        const memeJour = (d1, d2) => 
+            d1.getDate() === d2.getDate() &&
+            d1.getMonth() === d2.getMonth() &&
+            d1.getFullYear() === d2.getFullYear();
+        
+        if (memeJour(date, aujourdhui)) return "Aujourd'hui";
+        if (memeJour(date, hier)) return "Hier";
+        
+        return date.toLocaleDateString("fr-FR", {
+            day: "numeric",
+            month: "long",
+            year: date.getFullYear() !== aujourdhui.getFullYear() ? "numeric" : undefined
+        });
+    }
+    
+    // ============================================
+    // CRÉER UN MESSAGE AVEC AVATAR
+    // ============================================
+    function creerMessageAvecAvatar(msg) {
+        const ligne = document.createElement("div");
+        const estMoi = msg.expediteur_id === user.id;
+        ligne.className = "message-ligne " + (estMoi ? "moi" : "lui");
+        
+        const initiale = msg.expediteur_username 
+            ? msg.expediteur_username.charAt(0).toUpperCase() 
+            : "?";
+        
+        const date = new Date(msg.date);
+        const heureStr = date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+        
+        ligne.innerHTML = `
+            <div class="message-avatar">${initiale}</div>
+            <div class="message-contenu">
+                <div class="message-bulle ${estMoi ? "moi" : "lui"}">
+                    ${escapeHtml(msg.contenu)}
+                </div>
+                <div class="message-statut">
+                    <span>${heureStr}</span>
+                </div>
+            </div>
+        `;
+        
+        return ligne;
+    }
+    
+    // ============================================
+    // ENVOYER UN MESSAGE
+    // ============================================
     formEnvoi.addEventListener("submit", async function(e) {
         e.preventDefault();
         
@@ -219,11 +376,17 @@ document.addEventListener("DOMContentLoaded", function() {
             if (!data.success) throw new Error(data.error);
             
             // Ajouter le message à l'historique
-            historiqueMessages.appendChild(creerMessageBulle(data.data));
+            historiqueMessages.appendChild(creerMessageAvecAvatar(data.data));
             historiqueMessages.scrollTop = historiqueMessages.scrollHeight;
             
-            // Vider l'input
+            // Mettre à jour dernierMessageId
+            if (data.data.id > dernierMessageId) {
+                dernierMessageId = data.data.id;
+            }
+            
+            // Vider l'input et réinitialiser sa hauteur
             inputMessage.value = "";
+            inputMessage.style.height = "auto";
             
             // Rafraîchir les conversations
             chargerConversations();
@@ -236,7 +399,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     
-    // ===== MARQUER COMME LU =====
+    // ============================================
+    // MARQUER COMME LU
+    // ============================================
     async function marquerCommeLu(userId) {
         try {
             await fetch(`${API_URL}/messages/${userId}/lu`, {
@@ -252,14 +417,40 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     
-    // ===== AUTO-REFRESH =====
+    // ============================================
+    // AUTO-REFRESH INTELLIGENT (ne charge que les nouveaux)
+    // ============================================
     function demarrerAutoRefresh() {
         arreterAutoRefresh();
-        intervalRefresh = setInterval(() => {
-            if (conversationActuelleId) {
-                chargerMessages(conversationActuelleId);
+        intervalRefresh = setInterval(async () => {
+            if (!conversationActuelleId || !dernierMessageId) return;
+            
+            try {
+                const reponse = await fetch(
+                    `${API_URL}/messages/${conversationActuelleId}/nouveaux?after=${dernierMessageId}`,
+                    { headers }
+                );
+                const data = await reponse.json();
+                
+                if (data.success && data.count > 0) {
+                    // Ajouter seulement les nouveaux
+                    data.data.forEach(msg => {
+                        historiqueMessages.appendChild(creerMessageAvecAvatar(msg));
+                        dernierMessageId = Math.max(dernierMessageId, msg.id);
+                    });
+                    // Scroll en bas
+                    historiqueMessages.scrollTop = historiqueMessages.scrollHeight;
+                    
+                    // Marquer comme lu
+                    marquerCommeLu(conversationActuelleId);
+                    
+                    // Rafraîchir les conversations pour mettre à jour les aperçus
+                    chargerConversations();
+                }
+            } catch (erreur) {
+                console.error("Erreur auto-refresh:", erreur);
             }
-        }, 5000);  // Toutes les 5 sec
+        }, 3000);
     }
     
     function arreterAutoRefresh() {
@@ -269,18 +460,22 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     
-    // ===== UTILITAIRE : ÉCHAPPER LE HTML =====
+    // ============================================
+    // UTILITAIRE : ÉCHAPPER LE HTML
+    // ============================================
     function escapeHtml(text) {
         const div = document.createElement("div");
         div.textContent = text;
         return div.innerHTML;
     }
-        // ===== MODALE NOUVEAU MESSAGE =====
+    
+    // ============================================
+    // MODALE NOUVEAU MESSAGE
+    // ============================================
     btnNouveauMessage.addEventListener("click", ouvrirModale);
     btnFermerModale.addEventListener("click", fermerModale);
     
     modaleNouveauMessage.addEventListener("click", function(e) {
-        // Fermer si on clique sur l'overlay (pas sur la modale)
         if (e.target === modaleNouveauMessage) {
             fermerModale();
         }
@@ -348,21 +543,53 @@ document.addEventListener("DOMContentLoaded", function() {
         modaleNouveauMessage.classList.add("cache");
     }
     
-       // ===== GESTION DES PARAMÈTRES D'URL =====
+    // ============================================
+    // GESTION DES PARAMÈTRES D'URL
+    // ============================================
     function lireParametresURL() {
         const params = new URLSearchParams(window.location.search);
         const userId = params.get("user");
         const username = params.get("username");
         
         if (userId && username) {
-            // Ouvrir automatiquement la conversation
             ouvrirConversation(parseInt(userId), decodeURIComponent(username));
         }
     }
     
-    // ===== CHARGEMENT INITIAL =====
+    // ============================================
+    // BOUTON CHARGER PLUS + SCROLL INFINI
+    // ============================================
+    if (btnChargerPlus) {
+        btnChargerPlus.addEventListener("click", chargerPlusAnciens);
+    }
+    
+    // Scroll infini : charger quand on remonte tout en haut
+    historiqueMessages.addEventListener("scroll", function() {
+        if (historiqueMessages.scrollTop < 50 && aPlusDeMessages && conversationActuelleId) {
+            chargerPlusAnciens();
+        }
+    });
+    
+    // ============================================
+    // TEXTAREA : MAJ+ENTRÉE = SAUT DE LIGNE, ENTRÉE = ENVOYER
+    // ============================================
+    inputMessage.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            formEnvoi.dispatchEvent(new Event("submit"));
+        }
+    });
+    
+    // Auto-resize du textarea selon le contenu
+    inputMessage.addEventListener("input", function() {
+        this.style.height = "auto";
+        this.style.height = Math.min(this.scrollHeight, 120) + "px";
+    });
+    
+    // ============================================
+    // CHARGEMENT INITIAL
+    // ============================================
     chargerConversations().then(() => {
-        // Après avoir chargé les conversations, vérifier s'il faut en ouvrir une
         lireParametresURL();
     });
     

@@ -102,21 +102,26 @@
                             </div>
                             <a href="amis.html" class="btn-action-small">👥 Voir mes amis</a>
                         </div>
-
-                        <!-- Historique des messages -->
+                            <!-- Historique des messages -->
                         <div id="historique-messages" class="historique-messages">
+                            <!-- Bouton "Charger plus" en haut (scroll infini) -->
+                            <div id="charger-plus-container" class="charger-plus-container cache">
+                                <button id="btn-charger-plus" class="btn-charger-plus">
+                                    ⬆️ Charger les messages plus anciens
+                                </button>
+                            </div>
                             <!-- Rempli par JS -->
                         </div>
 
                         <!-- Formulaire d'envoi -->
-                        <form id="form-envoi" class="form-envoi">
-                            <input 
-                                type="text" 
+                                                <form id="form-envoi" class="form-envoi">
+                            <textarea 
                                 id="input-message" 
-                                placeholder="Écris ton message..." 
+                                placeholder="Écris ton message... (Maj+Entrée pour un saut de ligne)" 
                                 autocomplete="off"
+                                rows="1"
                                 required
-                            >
+                            ></textarea>
                             <button type="submit" id="btn-envoyer-message" class="btn-envoyer-message">
                                 ➤
                             </button>
