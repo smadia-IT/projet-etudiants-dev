@@ -6,39 +6,32 @@
    1. VARIABLES GLOBALES
    ============================================================ */
 :root {
-    /* Couleurs principales */
     --couleur-principale: #1a73e8;
     --couleur-principale-fonce: #0d5bbd;
     --couleur-principale-claire: #e8f0fe;
     --couleur-accent: #ffc107;
     
-    /* Couleurs neutres */
     --couleur-fond: #f0f4f8;
     --couleur-carte: #ffffff;
     --couleur-texte: #333333;
     --couleur-texte-clair: #4a4a4a;
     --couleur-bordure: #e0e0e0;
     
-    /* Typographie */
     --police-principale: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
-    /* Espacements */
     --espace-petit: 8px;
     --espace-moyen: 16px;
     --espace-grand: 24px;
     --espace-tres-grand: 40px;
     
-    /* Arrondis */
     --rayon-petit: 6px;
     --rayon-moyen: 12px;
     --rayon-grand: 20px;
     
-    /* Ombres */
     --ombre-legere: 0 2px 5px rgba(0, 0, 0, 0.08);
     --ombre-moyenne: 0 4px 15px rgba(0, 0, 0, 0.1);
     --ombre-forte: 0 8px 25px rgba(0, 0, 0, 0.15);
     
-    /* Transitions */
     --transition-rapide: 0.15s ease;
     --transition-normale: 0.3s ease;
 }
@@ -72,9 +65,6 @@ html {
     scroll-padding-top: 80px;
 }
 
-
-
-/* Titres génériques */
 h1 {
     color: var(--couleur-principale);
     font-size: 32px;
@@ -101,7 +91,6 @@ h3 {
     padding: 0;
 }
 
-/* Liens */
 a {
     color: var(--couleur-principale);
     text-decoration: none;
@@ -111,7 +100,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Utilitaires */
 .cache {
     display: none !important;
 }
@@ -128,7 +116,6 @@ a:hover {
     border: 0;
 }
 
-/* Focus visible (accessibilité) */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -138,13 +125,11 @@ select:focus-visible {
     outline-offset: 2px;
 }
 
-/* Sélection de texte */
 ::selection {
     background-color: var(--couleur-principale);
     color: white;
 }
 
-/* Scrollbar personnalisée */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -251,7 +236,7 @@ body.dark #header {
     border-radius: var(--rayon-petit);
     font-size: 15px;
     transition: background-color var(--transition-rapide);
-    position: relative; /* ← nécessaire pour que le badge se cale sur ce lien et pas sur toute la navbar */
+    position: relative;
 }
 
 .nav-principale > a:hover {
@@ -265,7 +250,6 @@ body.dark #header {
     font-weight: bold;
 }
 
-/* Menu déroulant "Plus" */
 .nav-dropdown {
     position: relative;
     display: inline-block;
@@ -335,7 +319,6 @@ body.dark #header {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Bouton de changement de thème */
 .btn-theme {
     background-color: rgba(255, 255, 255, 0.15);
     color: white;
@@ -357,7 +340,6 @@ body.dark #header {
     transform: scale(1.1);
 }
 
-/* Menu utilisateur */
 #lien-auth {
     cursor: pointer;
 }
@@ -423,7 +405,6 @@ body.dark #header {
     background-color: #ffebee;
 }
 
-/* Badge de notification */
 .badge-notif {
     position: absolute;
     top: -4px;
@@ -437,10 +418,11 @@ body.dark #header {
     min-width: 18px;
     text-align: center;
     line-height: 1;
-    pointer-events: none;   /* le clic passe à travers, c'est le lien qui reste cliquable */
-    box-shadow: 0 0 0 2px var(--couleur-principale); /* petit contour qui suit la couleur du header */
+    pointer-events: none;
+    box-shadow: 0 0 0 2px var(--couleur-principale);
     z-index: 10;
 }
+
 /* ============================================================
    6. FOOTER
    ============================================================ */
@@ -561,7 +543,7 @@ body.dark .btn-secondaire:hover {
 }
 
 /* ============================================================
-   8. CARTES GÉNÉRIQUES (carte-accueil, carte-mot, carte-doc)
+   8. CARTES GÉNÉRIQUES
    ============================================================ */
 .carte-accueil {
     background-color: var(--couleur-carte);
@@ -594,7 +576,6 @@ body.dark .btn-secondaire:hover {
     line-height: 1.6;
 }
 
-/* Carte de mot (dictionnaire) */
 .carte-mot {
     background-color: var(--couleur-carte);
     border-radius: var(--rayon-moyen);
@@ -640,7 +621,6 @@ body.dark .btn-secondaire:hover {
     gap: var(--espace-petit);
 }
 
-/* Carte de document */
 .carte-doc {
     background-color: var(--couleur-carte);
     border-radius: var(--rayon-moyen);
@@ -671,7 +651,6 @@ body.dark .btn-secondaire:hover {
     flex-grow: 1;
 }
 
-/* État vide */
 .etat-vide {
     text-align: center;
     padding: var(--espace-tres-grand);
@@ -706,35 +685,13 @@ body.dark .btn-secondaire:hover {
     font-weight: bold;
 }
 
-.niveau-débutant {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-}
+.niveau-débutant { background-color: #e8f5e9; color: #2e7d32; }
+.niveau-intermédiaire { background-color: #fff3e0; color: #e65100; }
+.niveau-avancé { background-color: #fce4ec; color: #c2185b; }
 
-.niveau-intermédiaire {
-    background-color: #fff3e0;
-    color: #e65100;
-}
-
-.niveau-avancé {
-    background-color: #fce4ec;
-    color: #c2185b;
-}
-
-body.dark .niveau-débutant {
-    background-color: #1b3a1e;
-    color: #81c784;
-}
-
-body.dark .niveau-intermédiaire {
-    background-color: #3a2410;
-    color: #ffb74d;
-}
-
-body.dark .niveau-avancé {
-    background-color: #3a1020;
-    color: #f48fb1;
-}
+body.dark .niveau-débutant { background-color: #1b3a1e; color: #81c784; }
+body.dark .niveau-intermédiaire { background-color: #3a2410; color: #ffb74d; }
+body.dark .niveau-avancé { background-color: #3a1020; color: #f48fb1; }
 
 /* ============================================================
    10. FORMULAIRES GÉNÉRIQUES
@@ -890,7 +847,6 @@ body.dark #hero {
     flex-wrap: wrap;
 }
 
-/* Mot du jour */
 #mot-du-jour {
     background: linear-gradient(135deg, var(--couleur-principale), #4285f4);
     color: white;
@@ -932,7 +888,6 @@ body.dark #hero {
     color: white;
 }
 
-/* Progression */
 #ma-progression { margin-top: var(--espace-tres-grand); }
 
 .grille-progression {
@@ -963,7 +918,6 @@ body.dark #hero {
 .lien-profil,
 .lien-badges { text-align: center; margin-top: var(--espace-moyen); }
 
-/* Derniers badges */
 #derniers-badges { margin-top: var(--espace-tres-grand); }
 
 .liste-derniers-badges {
@@ -987,7 +941,6 @@ body.dark #hero {
 .badge-accueil-nom { font-size: 14px; font-weight: bold; color: var(--couleur-texte); }
 .badge-accueil-desc { font-size: 12px; color: var(--couleur-texte-clair); line-height: 1.4; }
 
-/* Continuer */
 #continuer { margin-top: var(--espace-tres-grand); }
 
 .contenu-continuer {
@@ -1022,7 +975,6 @@ body.dark #hero {
 .continuer-texte { font-size: 14px; color: var(--couleur-texte-clair); line-height: 1.5; }
 .continuer-action { font-size: 14px; font-weight: bold; color: var(--couleur-principale); margin-top: auto; }
 
-/* Aperçu */
 #apercu { margin-top: var(--espace-tres-grand); }
 #apercu h2 { text-align: center; }
 
@@ -1157,7 +1109,6 @@ body.dark .btn-filtre-doc.actif {
     color: #0f0f1e;
 }
 
-/* Favoris */
 #filtres-favoris {
     display: flex;
     align-items: center;
@@ -1213,7 +1164,6 @@ body.dark .btn-filtre-doc.actif {
     animation: pulse-favori 0.3s ease;
 }
 
-/* Bouton réviser */
 .btn-reviser {
     background-color: transparent;
     border: 1px solid var(--couleur-principale);
@@ -1616,7 +1566,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Choix du domaine */
 .choix-domaine {
     margin: var(--espace-grand) 0;
     text-align: center;
@@ -1668,7 +1617,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
 .domaine-icone { font-size: 28px; }
 .domaine-nom { font-size: 13px; font-weight: bold; text-align: center; }
 
-/* Choix de la difficulté */
 .choix-difficulte {
     margin: var(--espace-grand) 0;
     text-align: center;
@@ -1727,7 +1675,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
 .difficulte-nom { font-size: 15px; font-weight: bold; }
 .difficulte-desc { font-size: 11px; opacity: 0.8; }
 
-/* Carte de question */
 .carte-question {
     background-color: var(--couleur-carte);
     border-radius: var(--rayon-moyen);
@@ -1790,7 +1737,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     50% { transform: scale(1.15) rotate(3deg); }
 }
 
-/* Barre de timer */
 .barre-timer {
     width: 100%;
     height: 8px;
@@ -1840,7 +1786,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     50% { opacity: 0.5; }
 }
 
-/* Texte de la question */
 #texte-question {
     color: var(--couleur-texte);
     font-size: 22px;
@@ -1853,7 +1798,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     padding: 0;
 }
 
-/* Options de réponse */
 .options-reponse {
     display: grid;
     gap: var(--espace-petit);
@@ -1923,7 +1867,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     font-weight: bold;
 }
 
-/* Feedback */
 .feedback {
     padding: var(--espace-moyen);
     border-radius: var(--rayon-petit);
@@ -1955,7 +1898,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
 .feedback strong { font-size: 1.1em; }
 .feedback span { display: block; margin-top: 6px; opacity: 0.9; }
 
-/* Compteur de question */
 #compteur-question.anim {
     animation: compteur-slide 0.3s ease;
 }
@@ -1965,7 +1907,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Score qui pulse */
 #score-actuel.pulse {
     animation: pulse-score 0.4s ease;
 }
@@ -1976,7 +1917,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     100% { transform: scale(1); }
 }
 
-/* Cœur qui pulse */
 #vies.gain-vie {
     animation: coeur-pulse 0.5s ease;
     color: #28a745;
@@ -1988,7 +1928,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     100% { transform: scale(1); }
 }
 
-/* Carte qui flashe rouge */
 .carte-question.perte-vie {
     animation: flash-rouge 0.5s ease;
 }
@@ -1998,7 +1937,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     50% { background-color: rgba(244, 67, 54, 0.3); }
 }
 
-/* Stats d'accueil */
 .stats-accueil {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2029,7 +1967,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     color: var(--couleur-principale);
 }
 
-/* Game Over */
 .carte-gameover {
     border: 3px solid #dc3545;
 }
@@ -2066,7 +2003,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     to { transform: scale(1.03); box-shadow: 0 0 20px rgba(255, 107, 53, 0.4); }
 }
 
-/* Boutons de fin */
 .boutons-fin {
     display: flex;
     gap: var(--espace-moyen);
@@ -2085,7 +2021,6 @@ body.dark .btn-reessayer { color: #0f0f1e; }
     justify-content: center;
 }
 
-/* Dark mode quiz */
 body.dark .carte-question,
 body.dark .carte-accueil {
     background-color: var(--couleur-carte);
@@ -2230,7 +2165,6 @@ body.dark #streak.complet { color: #f48fb1; background-color: #3a1020; }
     color: #666;
 }
 
-/* Notification de badge */
 .notification-badge {
     position: fixed;
     bottom: 20px;
@@ -2819,7 +2753,7 @@ body.dark .amis-onglet.actif { color: var(--couleur-principale); }
 body.dark .btn-message { color: #0f0f1e; }
 
 /* ============================================================
-   24. PAGE MESSAGES
+   24. PAGE MESSAGES (structure générale)
    ============================================================ */
 .messages-layout {
     display: grid;
@@ -2962,42 +2896,6 @@ body.dark .btn-message { color: #0f0f1e; }
     flex-direction: column;
     gap: var(--espace-petit);
     background-color: var(--couleur-fond);
-}
-.message-bulle {
-    padding: 10px 15px;
-    border-radius: 15px;
-    font-size: 14px;
-    word-wrap: break-word;
-    word-break: normal;
-    overflow-wrap: anywhere;
-    line-height: 1.4;
-    max-width: 100%;
-    white-space: pre-wrap;
-    text-align: left;
-    display: inline-block;
-    width: auto;
-    box-sizing: border-box;
-}
-
-/* Limite la bulle à la largeur du conteneur même pour du texte sans espaces */
-.message-ligne.lui .message-bulle,
-.message-ligne.moi .message-bulle {
-    max-width: min(100%, 500px);
-}
-
-.message-bulle.moi {
-    align-self: flex-end;
-    background-color: var(--couleur-principale);
-    color: white;
-    border-radius: 15px 15px 0 15px;
-}
-
-.message-bulle.lui {
-    align-self: flex-start;
-    background-color: var(--couleur-carte);
-    color: var(--couleur-texte);
-    border-radius: 15px 15px 15px 0;
-    box-shadow: var(--ombre-legere);
 }
 
 .message-date {
@@ -3236,7 +3134,6 @@ body.dark .conv-item:hover { background-color: #0f0f1e; }
 body.dark .conv-item.actif { background-color: var(--couleur-principale-claire); }
 body.dark .conversation-entete { background-color: #0f0f1e; }
 body.dark .historique-messages { background-color: #0f0f1e; }
-body.dark .message-bulle.lui { background-color: #2a3a5c; color: var(--couleur-texte); }
 body.dark #input-message {
     background-color: #0f0f1e;
     color: var(--couleur-texte);
@@ -3852,7 +3749,6 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     .messages-layout { grid-template-columns: 1fr; height: auto; }
     .messages-sidebar { max-height: 250px; }
     .messages-principal { min-height: 500px; }
-    .message-bulle { max-width: 85%; }
     .conversation-entete {
         flex-direction: column;
         gap: var(--espace-petit);
@@ -3913,16 +3809,14 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     .domaine-icone { font-size: 22px; }
     .domaine-nom { font-size: 11px; }
 }
+
 /* ============================================
    NAVIGATION MOBILE / DESKTOP
    ============================================ */
-
-/* Par défaut : tout visible */
 .mobile-only {
     display: none;
 }
 
-/* Sur desktop : cacher mobile-only, montrer desktop-only */
 @media (min-width: 769px) {
     .mobile-only {
         display: none !important;
@@ -3932,7 +3826,6 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     }
 }
 
-/* Sur mobile : cacher desktop-only, montrer mobile-only */
 @media (max-width: 768px) {
     .desktop-only {
         display: none !important;
@@ -3942,7 +3835,6 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     }
 }
 
-/* Ajuster l'affichage de la nav sur mobile */
 @media (max-width: 768px) {
     .nav-principale {
         gap: 4px;
@@ -3967,25 +3859,21 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     }
 }
 
-/* =========/* ============================================
+/* ============================================
    FOOTER MINIMALISTE SUR MOBILE
    ============================================ */
-
 @media (max-width: 768px) {
-    /* Réduire le padding global du footer */
     #footer {
         padding: var(--espace-grand) var(--espace-moyen) var(--espace-moyen);
         margin-top: var(--espace-grand);
     }
     
-    /* Réduire l'espacement entre sections */
     .footer-contenu {
         grid-template-columns: 1fr;
         gap: var(--espace-moyen);
         text-align: center;
     }
     
-    /* Cacher les sections non essentielles */
     .footer-nav .footer-titre,
     .footer-ressources .footer-titre {
         display: none;
@@ -3995,12 +3883,10 @@ body.dark .titre-404 { color: var(--couleur-principale); }
         display: none;
     }
     
-    /* Cacher les liens non essentiels dans Navigation */
     .footer-nav a:not(.footer-lien-essentiel) {
         display: none;
     }
     
-    /* Afficher les liens essentiels en ligne */
     .footer-nav {
         display: flex;
         flex-direction: row;
@@ -4015,14 +3901,12 @@ body.dark .titre-404 { color: var(--couleur-principale); }
         font-size: 13px;
     }
     
-    /* Séparateur entre les liens */
     .footer-nav a.footer-lien-essentiel:not(:last-child)::after {
         content: "·";
         margin-left: var(--espace-petit);
         color: #bdc3c7;
     }
     
-    /* Réduire la taille du logo */
     .footer-logo .footer-titre {
         font-size: 15px;
         margin-bottom: 4px;
@@ -4032,13 +3916,11 @@ body.dark .titre-404 { color: var(--couleur-principale); }
         font-size: 12px;
     }
     
-    /* À propos plus compact */
     .footer-propos p {
         font-size: 11px;
         margin: 2px 0;
     }
     
-    /* Cacher le "Projet en construction" sur mobile (optionnel) */
     .footer-propos p:first-child {
         display: none;
     }
@@ -4047,7 +3929,6 @@ body.dark .titre-404 { color: var(--couleur-principale); }
 /* ============================================
    FILTRE PAR DOMAINE - MENU DÉROULANT
    ============================================ */
-
 .filtres-container {
     position: relative;
     display: inline-block;
@@ -4055,7 +3936,6 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     z-index: 100;
 }
 
-/* Bouton principal */
 .btn-filtre-principal {
     display: flex;
     align-items: center;
@@ -4084,7 +3964,6 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     font-style: italic;
 }
 
-/* Menu déroulant */
 .menu-filtres {
     position: absolute;
     top: calc(100% + 8px);
@@ -4101,7 +3980,6 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     animation: menu-apparition 0.2s ease;
 }
 
-/* Item du menu */
 .menu-filtres .item-domaine {
     display: flex;
     justify-content: space-between;
@@ -4143,14 +4021,12 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     color: white;
 }
 
-/* Séparateur */
 .menu-filtres .separateur-menu {
     height: 1px;
     background-color: var(--couleur-bordure);
     margin: var(--espace-petit) 0;
 }
 
-/* Scrollbar personnalisée pour le menu */
 .menu-filtres::-webkit-scrollbar {
     width: 6px;
 }
@@ -4164,7 +4040,6 @@ body.dark .titre-404 { color: var(--couleur-principale); }
     border-radius: 3px;
 }
 
-/* Mode sombre */
 body.dark .btn-filtre-principal {
     background-color: var(--couleur-carte);
     border-color: var(--couleur-principale);
@@ -4194,7 +4069,6 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     color: var(--couleur-texte-clair);
 }
 
-/* Responsive */
 @media (max-width: 480px) {
     .filtres-container {
         display: block;
@@ -4280,15 +4154,18 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-/* Bulles avec avatar */
+
+/* ============================================
+   LIGNE DE MESSAGE (avatar + bulle)
+   ============================================ */
 .message-ligne {
     display: flex;
     gap: var(--espace-petit);
     align-items: flex-end;
-    max-width: 100%;       /* ← CHANGÉ : 75% → 100% */
-    min-width: 0;
+    max-width: 75%;
     animation: message-apparition 0.3s ease;
 }
+
 .message-ligne.moi {
     align-self: flex-end;
     flex-direction: row-reverse;
@@ -4303,6 +4180,7 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Avatar */
 .message-avatar {
     width: 32px;
     height: 32px;
@@ -4322,38 +4200,67 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     background: linear-gradient(135deg, #28a745, #218838);
 }
 
+/* Conteneur de la bulle + statut (prend l'espace dispo) */
 .message-contenu {
     display: flex;
     flex-direction: column;
     gap: 2px;
     min-width: 0;
-    align-items: flex-start;
-    flex: none;              /* ← AJOUTÉ : empêche l'étirement */
+    flex: 1;
 }
 
 .message-ligne.moi .message-contenu {
     align-items: flex-end;
 }
 
+.message-ligne.lui .message-contenu {
+    align-items: flex-start;
+}
+
+/* La bulle elle-même */
+.message-bulle {
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
+    white-space: pre-wrap;
+    max-width: 100%;
+    text-align: left;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.message-bulle.moi {
+    background-color: var(--couleur-principale);
+    color: white;
+    border-radius: 15px 15px 0 15px;
+}
+
+.message-bulle.lui {
+    background-color: var(--couleur-carte);
+    color: var(--couleur-texte);
+    border-radius: 15px 15px 15px 0;
+    box-shadow: var(--ombre-legere);
+}
+
+/* Statut (heure) */
 .message-statut {
     font-size: 10px;
     color: var(--couleur-texte-clair);
-    align-self: flex-end;
     margin-top: 2px;
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-.message-statut .coche {
-    font-size: 12px;
-}
-
 .message-statut.lu {
     color: var(--couleur-principale);
 }
 
-/* Textarea pour l'envoi */
+/* Textarea d'envoi */
 #input-message {
     resize: none;
     max-height: 120px;
@@ -4368,12 +4275,13 @@ body.dark .separateur-date span {
     background-color: #0f0f1e;
 }
 
-body.dark .message-statut {
-    color: var(--couleur-texte-clair);
+body.dark .message-bulle.lui {
+    background-color: #2a3a5c;
+    color: var(--couleur-texte);
 }
 
-body.dark .message-statut.lu {
-    color: var(--couleur-principale);
+body.dark .message-statut {
+    color: var(--couleur-texte-clair);
 }
 
 body.dark .btn-charger-plus {
@@ -4385,6 +4293,7 @@ body.dark .btn-charger-plus:hover {
     background-color: var(--couleur-principale);
     color: #0f0f1e;
 }
+
 /* ============================================
    BOUTON SUPPRIMER CONVERSATION
    ============================================ */
@@ -4414,7 +4323,6 @@ body.dark .conv-supprimer:hover {
     background-color: #3a1020;
 }
 
-/* Sur mobile : toujours visible (pas de hover) */
 @media (max-width: 768px) {
     .conv-supprimer {
         opacity: 0.6;
