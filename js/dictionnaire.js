@@ -215,14 +215,14 @@ document.addEventListener("DOMContentLoaded", function() {
     function afficherMots(mots) {
         listeMots.innerHTML = "";
         
-           if (compteur) {
+            if (compteur) {
         compteur.classList.add("cache");
     }
         
-        if (mots.length === 0) {
-            listeMots.innerHTML = "<p>Aucun mot trouvé 😕</p>";
-            return;
-        }
+       // if (mots.length === 0) {
+      //      listeMots.innerHTML = "<p>Aucun mot trouvé 😕</p>";
+      //      return;
+      //  }
         
         mots.forEach(function(unMot) {
             const carte = document.createElement("div");
