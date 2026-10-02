@@ -60,16 +60,16 @@ document.addEventListener("DOMContentLoaded", function() {
     chargerFavoris();
     majCompteurFavoris();
     
-    fetch(`${API_URL}/mots`)
+       fetch("data/dictionnaire.json")
         .then(response => response.json())
-        .then(reponse => {
-            tousLesMots = reponse.data;
-            console.log(`${tousLesMots.length} mots chargés depuis l'API`);
+        .then(mots => {
+            tousLesMots = mots;
+            console.log(`${tousLesMots.length} mots chargés depuis le JSON`);
             
             genererFiltresDomaines();
             afficherMotsFiltres();
         })
-        .catch(erreur => console.error("Erreur :", erreur));
+        .catch(erreur => console.error("Erreur chargement dictionnaire :", erreur));
     
     // ============================================
     // RECHERCHE
