@@ -228,9 +228,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function afficherMots(mots) {
         listeMots.innerHTML = "";
         
-        if (compteur) {
-            compteur.textContent = `${mots.length} mot(s) affiché(s)`;
-        }
+            if (compteur) {
+        compteur.classList.add("cache");
+    }
         
         if (mots.length === 0) {
             listeMots.innerHTML = "<p>Aucun mot trouvé 😕</p>";
