@@ -199,34 +199,25 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================
     // FILTRAGE ET AFFICHAGE
     // ============================================
-    function afficherMotsFiltres() {
-        const resultats = tousLesMots.filter(function(unMot) {
-            const correspondDomaine = 
-                filtreActif === "tous" || unMot.domaine === filtreActif;
-            
-            const correspondNiveau = 
-                filtreNiveauActif === "tous" || unMot.niveau === filtreNiveauActif;
-            
-            const correspondTexte = 
-                unMot.mot.toLowerCase().includes(texteRecherche) ||
-                unMot.definition.toLowerCase().includes(texteRecherche);
-            
-            const correspondFavoris = 
-                !filtreFavorisActif || estFavori(unMot.mot);
-            
-            return correspondDomaine && correspondNiveau && 
-                   correspondTexte && correspondFavoris;
-        });
-        
-        afficherMots(resultats);
-    }
+   function afficherMotsFiltres() {
+    const resultats = tousLesMots.filter(function(unMot) {
+        // ... (ne touche pas à ce bloc)
+    });
+    
+    // ✅ AJOUT : tri alphabétique (insensible à la casse et aux accents)
+    resultats.sort(function(a, b) {
+        return a.mot.localeCompare(b.mot, "fr", { sensitivity: "base" });
+    });
+    
+    afficherMots(resultats);
+}
     
     function afficherMots(mots) {
         listeMots.innerHTML = "";
         
-        if (compteur) {
-            compteur.textContent = `${mots.length} mot(s) affiché(s)`;
-        }
+           if (compteur) {
+        compteur.classList.add("cache");
+    }
         
         if (mots.length === 0) {
             listeMots.innerHTML = "<p>Aucun mot trouvé 😕</p>";
