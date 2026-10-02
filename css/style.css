@@ -177,6 +177,7 @@ select:focus-visible {
     color: var(--couleur-texte-clair);
     font-style: italic;
     margin-bottom: var(--espace-moyen);
+    display: none !important;
 }
 
 /* ============================================================
@@ -4471,3 +4472,187 @@ body.dark .cloche-tout-lu:hover {
         max-width: none;
     }
 }
+
+/* ============================================================
+   31. PAGE RÉVISION — MODES APPRENTISSAGE & QUIZ
+   ============================================================ */
+
+/* Choix des modes (Accueil) */
+.choix-modes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espace-moyen);
+    margin: var(--espace-tres-grand) 0;
+}
+
+@media (max-width: 600px) {
+    .choix-modes { grid-template-columns: 1fr; }
+}
+
+.carte-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espace-petit);
+    padding: var(--espace-grand);
+    background-color: var(--couleur-fond);
+    border: 3px solid transparent;
+    border-radius: var(--rayon-moyen);
+    cursor: pointer;
+    transition: all var(--transition-normale);
+    font-family: inherit;
+    color: var(--couleur-texte);
+    text-align: center;
+}
+
+.carte-mode:hover {
+    transform: translateY(-5px);
+    border-color: var(--couleur-principale);
+    background-color: var(--couleur-principale-claire);
+    box-shadow: var(--ombre-moyenne);
+}
+
+.mode-icone { font-size: 48px; margin-bottom: var(--espace-petit); }
+.mode-titre { font-size: 20px; font-weight: bold; color: var(--couleur-principale); }
+.mode-desc { font-size: 13px; color: var(--couleur-texte-clair); line-height: 1.4; }
+
+.lien-vider { text-align: center; margin-top: var(--espace-grand); }
+
+.lien-danger {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: inherit;
+    padding: 6px 12px;
+    border-radius: var(--rayon-petit);
+    transition: background-color var(--transition-rapide);
+}
+
+.lien-danger:hover { background-color: #ffebee; }
+
+/* ============================================
+   ÉCRAN APPRENTISSAGE
+   ============================================ */
+.carte-apprentissage {
+    background-color: var(--couleur-carte);
+    border-radius: var(--rayon-moyen);
+    padding: var(--espace-tres-grand);
+    box-shadow: var(--ombre-moyenne);
+    max-width: 700px;
+    margin: 0 auto;
+    animation: slide-in-question 0.4s ease;
+}
+
+.apprentissage-mot { text-align: center; margin-bottom: var(--espace-grand); }
+
+.apprentissage-mot h2 {
+    color: var(--couleur-principale);
+    font-size: 32px;
+    margin: 0 0 var(--espace-petit) 0;
+    border: none;
+    padding: 0;
+    text-align: center;
+}
+
+.apprentissage-tags {
+    display: flex;
+    justify-content: center;
+    gap: var(--espace-petit);
+    flex-wrap: wrap;
+}
+
+.bloc-definition,
+.bloc-explication,
+.bloc-exemple {
+    background-color: var(--couleur-fond);
+    padding: var(--espace-moyen) var(--espace-grand);
+    border-radius: var(--rayon-moyen);
+    margin-bottom: var(--espace-moyen);
+    border-left: 4px solid var(--couleur-principale);
+}
+
+.bloc-explication { border-left-color: #ffc107; }
+.bloc-exemple { border-left-color: #28a745; }
+
+.bloc-titre {
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--couleur-texte-clair);
+    margin-bottom: var(--espace-petit);
+}
+
+.bloc-definition p,
+.bloc-explication p,
+.bloc-exemple p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--couleur-texte);
+    margin: 0;
+}
+
+.navigation-apprentissage {
+    display: flex;
+    gap: var(--espace-moyen);
+    justify-content: space-between;
+    margin-top: var(--espace-grand);
+    flex-wrap: wrap;
+}
+
+.navigation-apprentissage button { flex: 1; min-width: 140px; }
+.navigation-apprentissage button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-quitter {
+    background: none;
+    border: none;
+    color: var(--couleur-texte-clair);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--rayon-petit);
+    font-family: inherit;
+}
+
+.btn-quitter:hover { background-color: #ffebee; color: #dc3545; }
+
+/* ============================================
+   FEEDBACK ENRICHI DU QUIZ
+   ============================================ */
+.feedback-titre { font-size: 16px; margin-bottom: var(--espace-petit); }
+.feedback-detail { font-size: 14px; line-height: 1.5; }
+.feedback-explication {
+    margin-top: var(--espace-petit);
+    padding: var(--espace-petit) var(--espace-moyen);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: var(--rayon-petit);
+    font-style: italic;
+}
+.feedback-exemple {
+    margin-top: var(--espace-petit);
+    padding: var(--espace-petit) var(--espace-moyen);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: var(--rayon-petit);
+    font-size: 13px;
+}
+
+body.dark .feedback-explication,
+body.dark .feedback-exemple {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   MODE SOMBRE
+   ============================================ */
+body.dark .carte-mode { background-color: #0f0f1e; color: var(--couleur-texte); }
+body.dark .carte-mode:hover { background-color: var(--couleur-principale-claire); }
+body.dark .carte-apprentissage { background-color: var(--couleur-carte); }
+body.dark .bloc-definition,
+body.dark .bloc-explication,
+body.dark .bloc-exemple { background-color: #0f0f1e; }
+body.dark .bloc-definition p,
+body.dark .bloc-explication p,
+body.dark .bloc-exemple p { color: var(--couleur-texte); }

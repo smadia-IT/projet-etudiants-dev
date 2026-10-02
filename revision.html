@@ -18,37 +18,37 @@
                 🎓 <span>Étudiants IT</span>
             </a>
             <nav class="nav-principale">
-    <a href="index.html">Accueil</a>
-    <a href="dictionnaire.html">Dictionnaire</a>
-    <a href="chat.html" class="desktop-only">Assistant IA</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="forum.html" class="desktop-only">Forum</a>
-    <a href="amis.html">Amis</a>
-    <a href="messages.html">Messages</a>
-    <a href="profil.html" class="mobile-only">Profil</a>
-    
-    <div class="nav-dropdown">
-        <button class="nav-dropdown-btn">Plus ▾</button>
-        <div class="nav-dropdown-menu">
-            <a href="chat.html" class="mobile-only">🤖 Assistant IA</a>
-            <a href="forum.html" class="mobile-only">📝 Forum</a>
-            <a href="documents.html">📄 Documents</a>
-            <a href="badges.html">🏆 Badges</a>
-            <a href="revision.html" class="actif">📚 Révision</a>
-            <a href="profil.html" class="desktop-only">👤 Profil</a>
-        </div>
-    </div>
-    
-    <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
-</nav>
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="chat.html" class="desktop-only">Assistant IA</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="forum.html" class="desktop-only">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+                <a href="profil.html" class="mobile-only">Profil</a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">Plus ▾</button>
+                    <div class="nav-dropdown-menu">
+                        <a href="chat.html" class="mobile-only">🤖 Assistant IA</a>
+                        <a href="forum.html" class="mobile-only">📝 Forum</a>
+                        <a href="documents.html">📄 Documents</a>
+                        <a href="badges.html">🏆 Badges</a>
+                        <a href="revision.html" class="actif">📚 Révision</a>
+                        <a href="profil.html" class="desktop-only">👤 Profil</a>
+                    </div>
+                </div>
+                
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
         </div>
     </header>
 
     <main class="conteneur">
 
-        <h1 class="titre-page">🎮 Mode Révision</h1>
+        <h1 class="titre-page">📚 Mode Révision</h1>
         <p class="sous-titre-page">
-            Révise les mots que tu as choisis, à ton rythme.
+            Apprends les mots que tu as choisis, puis teste tes connaissances.
         </p>
 
         <!-- ÉCRAN VIDE -->
@@ -69,27 +69,73 @@
         <!-- ÉCRAN ACCUEIL -->
         <section id="ecran-accueil" class="ecran-quiz cache">
             <div class="carte-accueil">
-                <div class="icone-accueil">📚</div>
+                <div class="icone-accueil">🎯</div>
                 <h2>Prêt à réviser ?</h2>
-                <p id="stats-revision">
-                    Tu as <strong>0 mots</strong> dans ta liste de révision.
-                </p>
-                <div class="actions-revision">
-                    <button id="btn-commencer-revision" class="btn-primaire btn-large">
-                        🚀 Commencer la révision
+                <p id="stats-revision">Tu as <strong>0 mots</strong> dans ta liste.</p>
+                
+                <div class="choix-modes">
+                    <button id="btn-mode-apprentissage" class="carte-mode">
+                        <div class="mode-icone">📖</div>
+                        <div class="mode-titre">Apprentissage</div>
+                        <div class="mode-desc">Découvre chaque mot avec sa définition, une explication simple et un exemple.</div>
                     </button>
-                    <button id="btn-tout-effacer" class="btn-secondaire btn-large">
-                        🗑️ Vider la liste
+                    
+                    <button id="btn-mode-quiz" class="carte-mode">
+                        <div class="mode-icone">🎯</div>
+                        <div class="mode-titre">Quiz</div>
+                        <div class="mode-desc">Teste tes connaissances. Attention, ton score est enregistré !</div>
                     </button>
+                </div>
+
+                <div class="lien-vider">
+                    <button id="btn-tout-effacer" class="lien-danger">🗑️ Vider ma liste de révision</button>
                 </div>
             </div>
         </section>
 
-        <!-- ÉCRAN DE RÉVISION -->
+        <!-- ÉCRAN APPRENTISSAGE -->
+        <section id="ecran-apprentissage" class="ecran-quiz cache">
+            <div class="carte-apprentissage">
+                <div class="entete-question">
+                    <span id="compteur-apprentissage">Mot 1 / 0</span>
+                    <button id="btn-quitter-apprentissage" class="btn-quitter">✕ Quitter</button>
+                </div>
+
+                <div class="apprentissage-mot">
+                    <h2 id="apprentissage-mot-titre">Chargement...</h2>
+                    <div class="apprentissage-tags">
+                        <span id="apprentissage-domaine" class="domaine">...</span>
+                        <span id="apprentissage-niveau" class="niveau">...</span>
+                    </div>
+                </div>
+
+                <div class="bloc-definition">
+                    <div class="bloc-titre">📘 Définition</div>
+                    <p id="apprentissage-definition">...</p>
+                </div>
+
+                <div class="bloc-explication">
+                    <div class="bloc-titre">💡 Explication simple</div>
+                    <p id="apprentissage-explication">...</p>
+                </div>
+
+                <div class="bloc-exemple">
+                    <div class="bloc-titre">🎯 Exemple concret</div>
+                    <p id="apprentissage-exemple">...</p>
+                </div>
+
+                <div class="navigation-apprentissage">
+                    <button id="btn-precedent-apprentissage" class="btn-secondaire">← Précédent</button>
+                    <button id="btn-suivant-apprentissage" class="btn-primaire">Suivant →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÉCRAN QUIZ -->
         <section id="ecran-revision" class="ecran-quiz cache">
             <div class="carte-question">
                 <div class="entete-question">
-                    <span id="compteur-revision">Mot 1</span>
+                    <span id="compteur-revision">Mot 1 / 0</span>
                     <span id="progression-revision">0 / 0 maîtrisés</span>
                 </div>
                 
@@ -105,11 +151,11 @@
             </div>
         </section>
 
-        <!-- ÉCRAN DE FIN DE RÉVISION -->
+        <!-- ÉCRAN DE FIN -->
         <section id="ecran-fin-revision" class="ecran-quiz cache">
             <div class="carte-accueil">
-                <div class="icone-accueil">🎉</div>
-                <h2>Révision terminée !</h2>
+                <div class="icone-accueil" id="fin-emoji">🎉</div>
+                <h2 id="fin-titre">Révision terminée !</h2>
                 <p id="resume-revision">Tu as révisé 0 mots.</p>
                 <div class="actions-revision">
                     <button id="btn-recommencer-revision" class="btn-primaire btn-large">
@@ -124,38 +170,38 @@
 
     </main>
 
-  <footer id="footer">
-    <div class="footer-contenu">
-        <div class="footer-section footer-logo">
-            <p class="footer-titre">🎓 Étudiants IT</p>
-            <p>La plateforme des étudiants en informatique.</p>
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section footer-logo">
+                <p class="footer-titre">🎓 Étudiants IT</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section footer-nav">
+                <p class="footer-titre">Navigation</p>
+                <a href="index.html" class="footer-lien-essentiel">Accueil</a>
+                <a href="dictionnaire.html" class="footer-lien-essentiel">Dictionnaire</a>
+                <a href="chat.html">Assistant IA</a>
+                <a href="quiz.html" class="footer-lien-essentiel">Quiz</a>
+                <a href="forum.html">Forum</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+            </div>
+            <div class="footer-section footer-ressources">
+                <p class="footer-titre">Ressources</p>
+                <a href="documents.html">📄 Documents</a>
+                <a href="badges.html">🏆 Badges</a>
+                <a href="revision.html">📚 Révision</a>
+                <a href="profil.html" class="footer-lien-essentiel">👤 Mon profil</a>
+            </div>
+            <div class="footer-section footer-propos">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
         </div>
-        <div class="footer-section footer-nav">
-            <p class="footer-titre">Navigation</p>
-            <a href="index.html" class="footer-lien-essentiel">Accueil</a>
-            <a href="dictionnaire.html" class="footer-lien-essentiel">Dictionnaire</a>
-            <a href="chat.html">Assistant IA</a>
-            <a href="quiz.html" class="footer-lien-essentiel">Quiz</a>
-            <a href="forum.html">Forum</a>
-            <a href="amis.html">Amis</a>
-            <a href="messages.html">Messages</a>
-        </div>
-        <div class="footer-section footer-ressources">
-            <p class="footer-titre">Ressources</p>
-            <a href="documents.html">📄 Documents</a>
-            <a href="badges.html">🏆 Badges</a>
-            <a href="revision.html">📚 Révision</a>
-            <a href="profil.html" class="footer-lien-essentiel">👤 Mon profil</a>
-        </div>
-        <div class="footer-section footer-propos">
-            <p class="footer-titre">À propos</p>
-            <p>Projet en construction 🚀</p>
-            <p>© 2026 - Tous droits réservés</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-     <script src="js/config.js"></script>       <!-- ← NOUVEAU -->
+    <script src="js/config.js"></script>
     <script src="js/chargement.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/nav-dropdown.js"></script>
