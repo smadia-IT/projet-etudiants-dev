@@ -6,8 +6,10 @@ const PushManager = {
     
     // ============================================
     // ENREGISTRER LE SERVICE WORKER
-    // ============================================
-    async init() {
+        async init() {
+        // Si déjà enregistré, ne pas refaire
+        if (this.registration) return true;
+
         if (!("serviceWorker" in navigator)) {
             console.warn("Service Worker non supporté");
             return false;
@@ -123,10 +125,21 @@ const PushManager = {
     // ============================================
     // VÉRIFIER SI DÉJÀ ABONNÉ
     // ============================================
-    async estAbonne() {
+       async estAbonne() {
+        // Si le service worker n'est pas encore enregistré, on attend
+        if (!this.registration) {
+            await this.init();
+        }
+        
         if (!this.registration) return false;
-        const subscription = await this.registration.pushManager.getSubscription();
-        return !!subscription;
+        
+        try {
+            const subscription = await this.registration.pushManager.getSubscription();
+            return !!subscription;
+        } catch (e) {
+            console.error("Erreur estAbonne:", e);
+            return false;
+        }
     },
 
     // ============================================

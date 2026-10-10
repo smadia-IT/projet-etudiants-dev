@@ -270,7 +270,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const ok = await PushManager.unsubscribe();
             if (ok) {
                 alert("✅ Notifications désactivées");
-                majStatutNotifs();
+                   // Attendre que le PushManager soit prêt avant de vérifier
+    setTimeout(majStatutNotifs, 1000);
             }
         });
     }
