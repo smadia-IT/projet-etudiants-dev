@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Envoi au serveur
             const formData = new FormData();
-            formData.append("fileUpload", inputAvatar.files[0]);
+    formData.append("avatar", inputAvatar.files[0]);
             
             try {
                 const reponse = await fetch(`${API_URL}/utilisateurs/avatar`, {
@@ -109,8 +109,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (!data.success) throw new Error(data.error || "Erreur");
                 
                 // Mettre à jour le user en localStorage
-                const userMaj = { ...user, avatar_url: data.avatar_url };
+                const userActuel = JSON.parse(localStorage.getItem("user") || "{}");
+                const userMaj = { ...userActuel, avatar_url: data.avatar_url };
                 localStorage.setItem("user", JSON.stringify(userMaj));
+                
+                // ✅ Mettre à jour l'affichage immédiatement
+                if (profilAvatar) {
+                    afficherAvatar(data.avatar_url, userMaj.prenom || userMaj.username);
+                }
                 
                 alert("✅ Photo mise à jour !");
                 
