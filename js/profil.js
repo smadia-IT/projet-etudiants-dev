@@ -75,3 +75,33 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     
 });
+const formAvatar = document.getElementById("form-avatar");
+const inputAvatar = document.getElementById("avatar-input");
+
+if (formAvatar) {
+    formAvatar.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        if (!inputAvatar.files[0]) return;
+
+        const formData = new FormData();
+        formData.append("fileUpload", inputAvatar.files[0]); // Le name doit être "fileUpload"
+
+        try {
+            const token = localStorage.getItem("token");
+            const reponse = await fetch(`${API_URL}/utilisateurs/avatar`, {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${token}` }, // Pas de Content-Type, le navigateur le gère
+                body: formData
+            });
+
+            const data = await reponse.json();
+            if (!data.success) throw new Error(data.error || "Erreur");
+
+            alert("✅ Photo mise à jour !");
+            window.location.reload();
+        } catch (erreur) {
+            alert("❌ " + erreur.message);
+        }
+    });
+}
