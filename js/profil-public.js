@@ -71,8 +71,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const amis = data.amis;
         
         // En-tête
-        profilAvatar.textContent = u.username.charAt(0).toUpperCase();
-        profilUsername.textContent = u.username;
+        profilAvatar.outerHTML = genererAvatarHTML(u, "grand");
+        profilUsername.textContent = getNomComplet(u);
         
         // Date d'inscription
         const date = new Date(u.created_at);

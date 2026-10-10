@@ -242,10 +242,10 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         
-        // ✅ Carte SANS email
+        // ✅ Carte SANS email + avatar avec photo
         carte.innerHTML = `
             <div class="carte-utilisateur-entete">
-                <a href="profil-public.html?id=${u.id}" class="avatar-utilisateur" style="text-decoration:none;">${initiale}</a>
+                <a href="profil-public.html?id=${u.id}" style="text-decoration:none;">${genererAvatarHTML(u, "moyen")}</a>
                 <div>
                     <a href="profil-public.html?id=${u.id}" class="carte-utilisateur-nom" style="text-decoration:none;color:inherit;">${nomComplet}</a>
                 </div>

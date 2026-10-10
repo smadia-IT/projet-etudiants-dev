@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
             <p class="sujet-apercu">${escapeHtml(post.apercu)}</p>
             <div class="sujet-meta">
-                <span class="sujet-meta-item">👤 ${escapeHtml(post.username)}</span>
+                <span class="sujet-meta-item">👤 ${escapeHtml(getNomComplet(post))}</span>
                 <span class="sujet-meta-item">📅 ${dateStr}</span>
                 <span class="sujet-meta-item">💬 ${post.nb_commentaires} réponse(s)</span>
             </div>

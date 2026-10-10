@@ -4757,3 +4757,60 @@ body.dark .bloc-exemple p { color: var(--couleur-texte); }
         font-size: 22px;
     }
 }
+/* ============================================================
+   33. AVATARS RÉUTILISABLES PARTOUT
+   ============================================================ */
+
+.avatar-utilisateur-photo,
+.avatar-utilisateur-initiale {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.avatar-utilisateur-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-utilisateur-photo {
+    background-color: var(--couleur-fond);
+}
+
+.avatar-utilisateur-initiale {
+    background: linear-gradient(135deg, var(--couleur-principale), var(--couleur-principale-fonce));
+    color: white;
+}
+
+/* Tailles */
+.avatar-petit {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+}
+
+.avatar-moyen {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+}
+
+.avatar-grand {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+}
+
+@media (max-width: 480px) {
+    .avatar-grand {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+}

@@ -62,9 +62,8 @@ document.addEventListener("DOMContentLoaded", function() {
         sujetTitre.textContent = post.titre;
         
         // Auteur
-        const initiale = post.username.charAt(0).toUpperCase();
-        sujetAvatar.textContent = initiale;
-        sujetAuteur.textContent = post.username;
+        sujetAvatar.outerHTML = genererAvatarHTML(post, "grand");
+        sujetAuteur.textContent = getNomComplet(post);
         sujetAuteurLien.href = `profil-public.html?id=${post.user_id}`;
         
         // Date
@@ -140,9 +139,9 @@ document.addEventListener("DOMContentLoaded", function() {
         carte.innerHTML = `
             <div class="commentaire-entete">
                 <a href="profil-public.html?id=${com.user_id}" class="commentaire-auteur">
-                    <div class="avatar-utilisateur">${initiale}</div>
+                    ${genererAvatarHTML(com, "petit")}
                     <div>
-                        <div class="commentaire-auteur-nom">${escapeHtml(com.username)}</div>
+                        <div class="commentaire-auteur-nom">${escapeHtml(getNomComplet(com))}</div>
                         <div class="commentaire-date">${dateStr}</div>
                     </div>
                 </a>
