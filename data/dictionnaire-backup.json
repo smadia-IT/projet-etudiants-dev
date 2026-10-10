@@ -1,0 +1,3394 @@
+[
+  {
+    "mot": "Algorithme",
+    "definition": "Suite finie d'instructions qui permet de résoudre un problème.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "C'est une recette de cuisine : une liste d'étapes précises pour arriver au résultat.",
+    "exemple": "Pour trier une liste de nombres du plus petit au plus grand, on suit l'algorithme du tri à bulles."
+  },
+  {
+    "mot": "Variable",
+    "definition": "Espace mémoire nommé qui stocke une valeur pouvant changer au cours de l'exécution.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "C'est comme une boîte étiquetée dans laquelle on met une donnée.",
+    "exemple": "Déclarer 'age = 18' permet de conserver la valeur 18 dans la variable 'age'."
+  },
+  {
+    "mot": "Boucle",
+    "definition": "Structure de contrôle qui répète un bloc d'instructions tant qu'une condition est remplie.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Ça m'évite de réécrire plusieurs fois les mêmes lignes de code.",
+    "exemple": "Une boucle 'for' permet d'afficher les nombres de 1 à 100 en trois lignes."
+  },
+  {
+    "mot": "Fonction",
+    "definition": "Bloc de code autonome et réutilisable effectuant une tâche précise.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Un petit sous-programme auquel on donne des entrées et qui retourne un résultat.",
+    "exemple": "Une fonction 'calculerMoyenne(notes)' retourne la moyenne d'un tableau de notes."
+  },
+  {
+    "mot": "Tableau",
+    "definition": "Structure de données stockant une collection d'éléments ordonnés accessibles par un indice.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "C'est une rangée de casiers numérotés à partir de zéro.",
+    "exemple": "Dans le tableau 'fruits = [pomme, banane]', 'fruits[0]' renvoie 'pomme'."
+  },
+  {
+    "mot": "Objet",
+    "definition": "Instance d'une classe regroupant des données (attributs) et des comportements (méthodes).",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "C'est un élément concret créé à partir d'un moule générique.",
+    "exemple": "Si 'Voiture' est le moule, 'maVoiture' de couleur rouge est un objet concret."
+  },
+  {
+    "mot": "API",
+    "definition": "Interface logicielle permettant à deux applications de communiquer entre elles.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "C'est un serveur au restaurant qui prend votre commande et ramène la nourriture de la cuisine.",
+    "exemple": "Une application météo utilise l'API d'un service météorologique pour afficher la température."
+  },
+  {
+    "mot": "Framework",
+    "definition": "Cadre de travail logiciel offrant une structure et des outils pour développer plus vite.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "C'est le châssis préconstruit d'une maison sur lequel on monte les murs.",
+    "exemple": "Django et Spring Boot sont des frameworks pour le développement d'applications."
+  },
+  {
+    "mot": "Code source",
+    "definition": "Ensemble des instructions lisibles par un humain rédigées dans un langage de programmation.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Le texte brut écrit par le développeur avant d'être traduit pour la machine.",
+    "exemple": "Le fichier 'main.py' contient le code source Python de notre projet."
+  },
+  {
+    "mot": "Débogage",
+    "definition": "Processus d'identification, d'analyse et de correction des erreurs dans un programme.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Une enquête minutieuse pour trouver pourquoi le programme ne fait pas ce qu'on veut.",
+    "exemple": "Le développeur utilise un débogueur pour exécuter le code ligne par ligne et suivre la valeur des variables."
+  },
+  {
+    "mot": "Bibliothèque",
+    "definition": "Ensemble de fonctions et modules préécrits disponibles pour être intégrés dans un projet.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Une boîte à outils déjà prête pour éviter de réinventer la roue.",
+    "exemple": "En Python, la bibliothèque 'Math' fournit la fonction 'sqrt' pour la racine carrée."
+  },
+  {
+    "mot": "Git",
+    "definition": "Système de contrôle de version distribué permettant de suivre les modifications du code.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Une machine à voyager dans le temps pour le code source.",
+    "exemple": "Grâce à Git, on peut revenir à une version de son code qui fonctionnait hier."
+  },
+  {
+    "mot": "Python",
+    "definition": "Langage de programmation interprété, haut niveau et multi-usage.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Un langage très populaire apprécié pour sa syntaxe simple et lisible.",
+    "exemple": "Python est massivement utilisé en science des données et en intelligence artificielle."
+  },
+  {
+    "mot": "Java",
+    "definition": "Langage de programmation orienté objet compilé sous forme de bytecode exécuté par une JVM.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Un langage robuste conçu selon le principe 'écrire une fois, exécuter partout'.",
+    "exemple": "Beaucoup d'applications d'entreprise et d'applications Android sont développées en Java."
+  },
+  {
+    "mot": "C",
+    "definition": "Langage de programmation impératif et procédural de bas niveau proche du matériel.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Le langage fondateur qui offre un contrôle direct sur la mémoire système.",
+    "exemple": "Le noyau de Linux est majoritairement écrit en C pour des raisons de performance."
+  },
+  {
+    "mot": "C++",
+    "definition": "Extension du langage C ajoutant les fonctionnalités de programmation orientée objet.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Un langage combinant puissance système et modélisation par objets.",
+    "exemple": "Les moteurs de jeux vidéo comme Unreal Engine sont écrits en C++."
+  },
+  {
+    "mot": "TypeScript",
+    "definition": "Sur-ensemble typé de JavaScript qui se compile en JavaScript pur.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "JavaScript avec un contrôle rigoureux des types de données pour éviter les bugs.",
+    "exemple": "TypeScript signale une erreur immédiatement si l'on passe du texte à une fonction attendant un nombre."
+  },
+  {
+    "mot": "Classe",
+    "definition": "Modèle ou plan de construction servant à fabriquer des objets en POO.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Le schéma d'architecte qui décrit les caractéristiques d'une future maison.",
+    "exemple": "La classe 'Utilisateur' définit qu'un utilisateur a un nom, un email et un mot de passe."
+  },
+  {
+    "mot": "Attribut",
+    "definition": "Variable interne définie au sein d'une classe ou d'un objet.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Une caractéristique propre à un objet.",
+    "exemple": "L'attribut 'couleur' de l'objet 'Voiture' a pour valeur 'Bleu'."
+  },
+  {
+    "mot": "Méthode",
+    "definition": "Fonction associée à une classe ou un objet.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Une action qu'un objet est capable de réaliser.",
+    "exemple": "La méthode 'demarrer()' permet de lancer le moteur de la voiture."
+  },
+  {
+    "mot": "Condition",
+    "definition": "Structure logique exécutant un bloc d'instructions selon la véracité d'un test.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Prendre un embranchement 'Si ... Alors ... Sinon'.",
+    "exemple": "Si le mot de passe est correct, autoriser l'accès, sinon afficher une erreur."
+  },
+  {
+    "mot": "Opérateur",
+    "definition": "Symbole indiquant une opération arithmétique, logique ou de comparaison.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Les signes mathématiques et logiques du code.",
+    "exemple": "Les symboles '+', '==', '&&' sont des opérateurs."
+  },
+  {
+    "mot": "Booléen",
+    "definition": "Type de donnée binaire ne pouvant prendre que deux valeurs : vrai ou faux.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Un interrupteur de lumière : allumé (True) ou éteint (False).",
+    "exemple": "La variable 'estConnecte' est un booléen qui vaut 'true' quand l'utilisateur se connecte."
+  },
+  {
+    "mot": "Chaîne de caractères",
+    "definition": "Séquence ordonnée de caractères représentant du texte.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Du texte encadré par des guillemets dans le programme.",
+    "exemple": "'Bonjour tout le monde' est une chaîne de caractères (ou String)."
+  },
+  {
+    "mot": "Entier",
+    "definition": "Type de donnée représentant un nombre sans partie décimale.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Un nombre entier positif ou négatif.",
+    "exemple": "Les valeurs 42 et -5 sont de type entier (integer)."
+  },
+  {
+    "mot": "Développeur",
+    "definition": "Professionnel qui conçoit, écrit et maintient des logiciels et applications.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "La personne qui traduit des besoins humains en instructions logiques.",
+    "exemple": "Le développeur backend conçoit la logique serveur de l'application."
+  },
+  {
+    "mot": "IDE",
+    "definition": "Environnement de développement intégré regroupant éditeur, compilateur et débogueur.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "L'atelier de travail complet du programmeur.",
+    "exemple": "VS Code, IntelliJ IDEA et Eclipse sont des IDE."
+  },
+  {
+    "mot": "Bug",
+    "definition": "Défaut de conception ou erreur dans le code provoquant un dysfonctionnement.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Un bug fait planter l'application ou produit un résultat incorrect.",
+    "exemple": "Un bouton qui ne répond pas au clic est causé par un bug JavaScript."
+  },
+  {
+    "mot": "Dépôt",
+    "definition": "Espace de stockage hébergeant l'ensemble des fichiers d'un projet et leur historique Git.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Le dossier officiel où réside le projet avec son historique.",
+    "exemple": "On télécharge le projet en clonant son dépôt GitHub."
+  },
+  {
+    "mot": "Dépendance",
+    "definition": "Composant ou module externe nécessaire au bon fonctionnement d'un programme.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Un morceau de code externe qu'on importe dans le projet.",
+    "exemple": "L'application dépend de la bibliothèque 'axios' pour effectuer des requêtes."
+  },
+  {
+    "mot": "Compilation",
+    "definition": "Traduction du code source écrit par le développeur en langage machine directement exécutable.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Convertir le texte humainement lisible en 0 et 1 pour le processeur.",
+    "exemple": "Le compilateur gcc transforme le fichier main.c en un exécutable binaire."
+  },
+  {
+    "mot": "Compilation croisée",
+    "definition": "Action de compiler du code sur un système pour une architecture matérielle différente.",
+    "domaine": "Programmation",
+    "niveau": "Avancé",
+    "explication": "Créer sur un PC Windows un binaire destiné à tourner sur une carte Raspberry Pi.",
+    "exemple": "La compilation croisée est fondamentale dans le développement de systèmes embarqués."
+  },
+  {
+    "mot": "Pointeur",
+    "definition": "Variable qui stocke l'adresse mémoire d'une autre variable.",
+    "domaine": "Programmation",
+    "niveau": "Avancé",
+    "explication": "Une donnée qui pointe vers un emplacement exact dans la RAM.",
+    "exemple": "En C, l'opérateur '&' permet d'obtenir l'adresse mémoire d'une variable."
+  },
+  {
+    "mot": "Récursivité",
+    "definition": "Technique où une fonction s'appelle elle-même jusqu'à atteindre une condition d'arrêt.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Des poupées russes logiques où chaque niveau effectue une sous-tâche.",
+    "exemple": "Le calcul de la factorielle d'un nombre s'écrit de manière élégante par récursivité."
+  },
+  {
+    "mot": "Héritage",
+    "definition": "Manière d'étendre une classe pour qu'elle récupère les propriétés d'une classe parente.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Un enfant qui hérite automatiquement des caractéristiques de ses parents.",
+    "exemple": "La classe 'Chien' hérite de la classe 'Animal' et récupère la méthode 'manger()'."
+  },
+  {
+    "mot": "Polymorphisme",
+    "definition": "Capacité d'une même méthode à se comporter différemment selon l'objet qui l'appelle.",
+    "domaine": "Programmation",
+    "niveau": "Avancé",
+    "explication": "Une même commande donne un résultat adapté à chaque sous-type.",
+    "exemple": "La méthode 'crier()' fait 'Wouf' pour un Chien et 'Miaou' pour un Chat."
+  },
+  {
+    "mot": "Encapsulation",
+    "definition": "Principe de masquage des détails internes d'un objet en restreignant l'accès direct à ses données.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Isoler les données sensibles à l'intérieur de l'objet.",
+    "exemple": "On passe par des méthodes 'getters' et 'setters' pour modifier un attribut privé."
+  },
+  {
+    "mot": "Abstraction",
+    "definition": "Action de simplifier un système complexe en ne montrant que les fonctionnalités essentielles.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Conduire une voiture sans avoir besoin de comprendre la thermodynamique du moteur.",
+    "exemple": "Une interface abstraite définit le 'quoi' sans imposer le 'comment'."
+  },
+  {
+    "mot": "Asynchronisme",
+    "definition": "Mode d'exécution permettant de lancer une tâche longue sans bloquer le reste du programme.",
+    "domaine": "Programmation",
+    "niveau": "Avancé",
+    "explication": "Commander un café et attendre qu'on vous appelle au lieu de bloquer la file.",
+    "exemple": "En JavaScript, 'async/await' gère le chargement de données distantes de façon fluide."
+  },
+  {
+    "mot": "Thread",
+    "definition": "Unité de fil d'exécution au sein d'un processus exécutée séquentiellement par le processeur.",
+    "domaine": "Programmation",
+    "niveau": "Avancé",
+    "explication": "Un travailleur individuel à l'intérieur d'un atelier plus vaste.",
+    "exemple": "Un thread télécharge un fichier pendant qu'un autre rafraîchit l'interface graphique."
+  },
+  {
+    "mot": "Garbage Collector",
+    "definition": "Gestionnaire mémoire automatique qui libère les emplacements mémoires inutilisés.",
+    "domaine": "Programmation",
+    "niveau": "Avancé",
+    "explication": "Un camion poubelle automatique qui nettoie la mémoire RAM.",
+    "exemple": "Java et Python possèdent un Garbage Collector pour éviter le nettoyage manuel."
+  },
+  {
+    "mot": "Test unitaire",
+    "definition": "Procédure automatisée vérifiant le bon fonctionnement d'une portion isolée de code.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Tester chaque pièce détachée avant d'assembler la machine complète.",
+    "exemple": "Un test unitaire s'assure que 'somme(2, 3)' renvoie toujours 5."
+  },
+  {
+    "mot": "Refactoring",
+    "definition": "Réécriture du code source pour en améliorer la structure sans en modifier le comportement.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Ranger et nettoyer une pièce sans changer la place des meubles principaux.",
+    "exemple": "Le refactoring rend le code plus propre et plus facile à lire."
+  },
+  {
+    "mot": "Design Pattern",
+    "definition": "Schéma de conception éprouvé répondant à un problème récurrent d'architecture logicielle.",
+    "domaine": "Programmation",
+    "niveau": "Avancé",
+    "explication": "Une solution standardisée et validée à un problème d'organisation classique.",
+    "exemple": "Le pattern 'Singleton' garantit qu'une classe n'a qu'une seule instance dans tout le programme."
+  },
+  {
+    "mot": "SDK",
+    "definition": "Ensemble d'outils de développement regroupés pour cibler une plateforme spécifique.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "La mallette d'outils complète fournie par le constructeur.",
+    "exemple": "Le Android SDK fournit tout le nécessaire pour construire des applications mobiles Android."
+  },
+  {
+    "mot": "Lambda",
+    "definition": "Fonction anonyme définie de façon concise directement à l'endroit où elle est utilisée.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Une fonction rapide écrite sur une seule ligne sans nom.",
+    "exemple": "En Python, 'lambda x: x * 2' est une fonction anonyme qui double la valeur transmise."
+  },
+  {
+    "mot": "Typage statique",
+    "definition": "Vérification de la conformité des types lors de la compilation avant l'exécution.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Obligation de déclarer si une variable est un nombre ou un texte dès le départ.",
+    "exemple": "C, C++ et Java utilisent un typage statique rigoureux."
+  },
+  {
+    "mot": "Typage dynamique",
+    "definition": "Détermination automatique du type des variables au moment de l'exécution du programme.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Une variable peut changer de type à tout moment au cours du programme.",
+    "exemple": "En Python, une variable peut contenir un nombre puis une chaîne de texte."
+  },
+  {
+    "mot": "Interprète",
+    "definition": "Programme exécutant le code source ligne par ligne sans passer par une étape de compilation complète.",
+    "domaine": "Programmation",
+    "niveau": "Intermédiaire",
+    "explication": "Un traducteur en temps réel qui lit le texte au fur et à mesure.",
+    "exemple": "L'interprète Python lit les lignes de code une par une."
+  },
+  {
+    "mot": "Linting",
+    "definition": "Analyse statique du code pour détecter les fautes de syntaxe et mauvaises pratiques.",
+    "domaine": "Programmation",
+    "niveau": "Débutant",
+    "explication": "Un correcteur orthographique pour le code source.",
+    "exemple": "ESLint analyse le code JavaScript et indique les erreurs de formatage."
+  },
+  {
+    "mot": "Routeur",
+    "definition": "Équipement réseau qui achemine les paquets de données entre différents réseaux.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Un aiguilleur du trafic Internet qui relie votre réseau local au monde extérieur.",
+    "exemple": "La box Internet de votre domicile joue le rôle de routeur."
+  },
+  {
+    "mot": "Commutateur",
+    "definition": "Équipement de niveau 2 reliant plusieurs appareils au sein d'un même réseau local (LAN).",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Une multiprise intelligente pour connecter plusieurs câbles Ethernet.",
+    "exemple": "Dans un bureau, les ordinateurs sont reliés par un commutateur (switch)."
+  },
+  {
+    "mot": "IP",
+    "definition": "Protocole d'adressage qui attribue un identifiant numérique à chaque appareil sur un réseau.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "L'adresse postale de votre ordinateur sur le réseau.",
+    "exemple": "L'adresse '192.168.1.1' est une adresse IP locale courante."
+  },
+  {
+    "mot": "DNS",
+    "definition": "Système traduit les noms de domaine lisibles en adresses IP numériques.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "L'annuaire téléphonique d'Internet.",
+    "exemple": "Le DNS traduit 'google.com' en l'adresse IP correspondante."
+  },
+  {
+    "mot": "HTTP",
+    "definition": "Protocole réseau de couche application permettant le transfert de documents hypermédias.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "La langue standard pour demander et recevoir des pages web.",
+    "exemple": "Le navigateur envoie une requête HTTP GET au serveur web."
+  },
+  {
+    "mot": "HTTPS",
+    "definition": "Version sécurisée du protocole HTTP chiffrée à l'aide de TLS/SSL.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Un protocole HTTP sous enveloppe scellée incassable.",
+    "exemple": "Les sites de paiement utilisent HTTPS pour sécuriser la saisie bancaire."
+  },
+  {
+    "mot": "LAN",
+    "definition": "Réseau informatique local reliant des équipements dans une zone géographique restreinte.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Le réseau interne d'un logement ou d'un bâtiment.",
+    "exemple": "Les PC du laboratoire de l'école sont interconnectés sur un même LAN."
+  },
+  {
+    "mot": "VPN",
+    "definition": "Tunnel sécurisé et chiffré établi sur un réseau public.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Un passage souterrain privé à l'intérieur d'une autoroute publique.",
+    "exemple": "Un employé en télétravail utilise un VPN pour accéder aux serveurs de son entreprise."
+  },
+  {
+    "mot": "Serveur",
+    "definition": "Dispositif informatique fournissant des services, données ou ressources à des clients.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Un ordinateur puissant configuré pour répondre aux requêtes.",
+    "exemple": "Un serveur web stocke et distribue les pages d'un site."
+  },
+  {
+    "mot": "Client",
+    "definition": "Programme ou ordinateur qui demande des ressources à un serveur réseau.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "L'appareil qui formule la demande auprès du serveur.",
+    "exemple": "Un navigateur web est un client qui demande la page d'un site."
+  },
+  {
+    "mot": "Adresse MAC",
+    "definition": "Identifiant physique unique attribué en usine à chaque carte réseau.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "L'empreinte digitale ou le numéro de châssis de la carte réseau.",
+    "exemple": "Une adresse MAC s'écrit sous la forme '00:1A:2B:3C:4D:5E'."
+  },
+  {
+    "mot": "Wi-Fi",
+    "definition": "Ensemble de normes de transmission sans fil par ondes radioélectriques.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Une connexion sans fil pour rejoindre le réseau local.",
+    "exemple": "Connecter son smartphone au Wi-Fi permet d'économiser son forfait mobile."
+  },
+  {
+    "mot": "Bluetooth",
+    "definition": "Technologie de réseau sans fil à courte portée pour l'échange de données à proximité.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Un câble invisible courte distance entre deux appareils.",
+    "exemple": "Relier des écouteurs sans fil à un téléphone via Bluetooth."
+  },
+  {
+    "mot": "Ethernet",
+    "definition": "Norme de câblage et de transmission de données pour réseaux locaux filaires.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Le câble réseau classique RJ45.",
+    "exemple": "Brancher son PC en Ethernet garantit une connexion plus stable qu'en Wi-Fi."
+  },
+  {
+    "mot": "Modem",
+    "definition": "Équipement qui convertit les signaux numériques en signaux analogiques et inversement.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Le traducteur entre la ligne de l'opérateur et votre réseau interne.",
+    "exemple": "Le modem permet de recevoir le signal fibre ou ADSL chez soi."
+  },
+  {
+    "mot": "Internet",
+    "definition": "Réseau mondial d'interconnexion d'équipements informatiques basé sur la suite TCP/IP.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "La toile d'araignée géante qui connecte tous les réseaux du monde.",
+    "exemple": "Internet permet de communiquer instantanément d'un continent à l'autre."
+  },
+  {
+    "mot": "Port réseau",
+    "definition": "Numéro logique identifiant une application ou un service spécifique sur un hôte.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "La porte d'entrée spécifique d'un immeuble réseau.",
+    "exemple": "Le port 80 est dédié au trafic HTTP et le port 443 au trafic HTTPS."
+  },
+  {
+    "mot": "Protocole",
+    "definition": "Ensemble de règles formelles régissant l'échange d'informations entre deux équipements.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Une langue commune parlée par les appareils connectés.",
+    "exemple": "TCP et IP sont des protocoles de communication de base."
+  },
+  {
+    "mot": "Sous-réseau",
+    "definition": "Division logique d'un réseau IP en plusieurs segments plus petits.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Segmenter une grande entreprise en bureaux séparés.",
+    "exemple": "Définir un sous-réseau spécifique pour isoler les serveurs du reste des utilisateurs."
+  },
+  {
+    "mot": "IPv4",
+    "definition": "Version du protocole IP codée sur 32 bits, fournissant environ 4,3 milliards d'adresses.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "L'ancien format d'adresse IP à quatre nombres séparés par des points.",
+    "exemple": "'172.16.254.1' est une adresse IPv4."
+  },
+  {
+    "mot": "IPv6",
+    "definition": "Version du protocole IP codée sur 128 bits offrant un espace d'adressage immense.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Le nouveau format d'adresse IP à base de caractères hexadécimaux.",
+    "exemple": "IPv6 évite la pénurie mondiale d'adresses IP grâce à son grand format."
+  },
+  {
+    "mot": "DHCP",
+    "definition": "Service qui attribue automatiquement la configuration réseau aux appareils se connectant.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Le guichet automatique qui distribue une adresse IP à tout nouvel arrivant.",
+    "exemple": "Quand vous allumez le Wi-Fi, le serveur DHCP vous attribue une adresse IP."
+  },
+  {
+    "mot": "TCP",
+    "definition": "Protocole de transport orienté connexion garantissant la livraison ordonnée des paquets.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Envoi par courrier recommandé avec accusé de réception.",
+    "exemple": "TCP vérifie que toutes les pièces d'un fichier sont bien arrivées avant validation."
+  },
+  {
+    "mot": "UDP",
+    "definition": "Protocole de transport non orienté connexion privilégiant la rapidité à la fiabilité.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Envoi par carte postale simple sans garantie de livraison.",
+    "exemple": "Le streaming vidéo et le jeu en ligne privilégient UDP pour sa vitesse."
+  },
+  {
+    "mot": "FTP",
+    "definition": "Protocole applicatif dédié au transfert de fichiers entre un client et un serveur.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Un service de déménagement de fichiers volumineux à travers le réseau.",
+    "exemple": "Utiliser un client FTP pour mettre en ligne les fichiers d'un site web."
+  },
+  {
+    "mot": "SSH",
+    "definition": "Protocole sécurisé permettant de contrôler une machine à distance en ligne de commande.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Prendre les commandes à distance d'un serveur dans un terminal chiffré.",
+    "exemple": "Un administrateur utilise SSH pour configurer un serveur Linux distant."
+  },
+  {
+    "mot": "Ping",
+    "definition": "Commande réseau mesurant le temps d'aller-retour des paquets vers un hôte.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Lancer un écho sonore pour vérifier si la machine en face répond.",
+    "exemple": "Faire un 'ping 8.8.8.8' permet de tester si l'accès Internet fonctionne."
+  },
+  {
+    "mot": "Paquet",
+    "definition": "Unité de données structurée acheminée sur un réseau à commutation de paquets.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Un petit morceau d'information emballé avec une adresse d'expédition et de destination.",
+    "exemple": "Un fichier est découpé en milliers de paquets pour voyager sur Internet."
+  },
+  {
+    "mot": "Bande passante",
+    "definition": "Capacité maximale de transfert d'informations d'une connexion réseau par unité de temps.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "La largeur d'une tuyauterie : plus elle est large, plus le débit d'eau est important.",
+    "exemple": "Une connexion fibre offre une bande passante de 1 Gbit/s."
+  },
+  {
+    "mot": "Latence",
+    "definition": "Délai nécessaire à l'acheminement d'une donnée d'un point A à un point B du réseau.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Le temps de réaction du réseau, souvent exprimé en millisecondes.",
+    "exemple": "Une latence faible est essentielle pour éviter les décalages dans les jeux en ligne."
+  },
+  {
+    "mot": "Proxy",
+    "definition": "Serveur relais s'interposant entre des clients locaux et un réseau externe.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Un intermédiaire qui passe vos commandes réseau à votre place.",
+    "exemple": "Un serveur proxy d'entreprise permet de filtrer et mettre en cache les pages visitées."
+  },
+  {
+    "mot": "Intranet",
+    "definition": "Réseau informatique interne à une organisation réservé à l'usage de ses membres.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Un Internet privé accessible uniquement aux employés d'une entreprise.",
+    "exemple": "Consulter ses fiches de paie sur l'intranet de l'entreprise."
+  },
+  {
+    "mot": "Masque de sous-réseau",
+    "definition": "Valeur binaire séparant la partie réseau de la partie hôte d'une adresse IP.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Un filtre indiquant quelle portion de l'adresse IP désigne le réseau global.",
+    "exemple": "Le masque '255.255.255.0' est très répandu dans les réseaux domestiques."
+  },
+  {
+    "mot": "Passerelle",
+    "definition": "Équipement permettant d'interconnecter deux réseaux utilisant des protocoles différents.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "La porte de sortie par laquelle toutes vos requêtes quittent le réseau local.",
+    "exemple": "L'adresse IP de la passerelle est souvent l'adresse locale du routeur."
+  },
+  {
+    "mot": "NAT",
+    "definition": "Moteur de traduction qui réécrit les adresses IP sources/destinations dans les paquets.",
+    "domaine": "Réseau",
+    "niveau": "Avancé",
+    "explication": "Faire passer tout un groupe de personnes par une seule adresse publique.",
+    "exemple": "Le NAT permet à tous vos appareils domestiques de partager une seule adresse IP publique."
+  },
+  {
+    "mot": "VLAN",
+    "definition": "Réseau local virtuel regroupant des équipements de manière logique indépendamment de leur disposition physique.",
+    "domaine": "Réseau",
+    "niveau": "Avancé",
+    "explication": "Créer des sous-réseaux étanches au sein du même commutateur réseau.",
+    "exemple": "Isoler le réseau de la comptabilité du réseau des visiteurs grâce à un VLAN."
+  },
+  {
+    "mot": "Spanning Tree Protocol",
+    "definition": "Protocole réseau de niveau 2 évitant les boucles dans un réseau commuté.",
+    "domaine": "Réseau",
+    "niveau": "Avancé",
+    "explication": "Désactiver temporairement les chemins redondants pour éviter les embouteillages infinis.",
+    "exemple": "Le protocole STP bloque les ports secondaires pour empêcher les tempêtes de broadcast."
+  },
+  {
+    "mot": "BGP",
+    "definition": "Protocole de routage dynamique servant à l'échange d'informations entre systèmes autonomes sur Internet.",
+    "domaine": "Réseau",
+    "niveau": "Avancé",
+    "explication": "Le système de navigation GPS qui relie les grands opérateurs mondiaux.",
+    "exemple": "BGP oriente le trafic mondial entre les réseaux des grands fournisseurs d'accès."
+  },
+  {
+    "mot": "Modèle OSI",
+    "definition": "Cadre conceptuel en 7 couches standardisant la communication entre systèmes informatiques.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "L'escalier théorique à 7 marches décrivant la vie d'une donnée du câble jusqu'à l'écran.",
+    "exemple": "La couche 3 du modèle OSI est la couche Réseau s'occupant de l'adressage IP."
+  },
+  {
+    "mot": "Traceroute",
+    "definition": "Outil de diagnostic réseau affichant l'itinéraire détaillé suivi par les paquets.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Afficher la liste de tous les péages traversés par votre paquet d'informations.",
+    "exemple": "Lancer un traceroute identifie le routeur précis qui pose problème en cas de lenteur."
+  },
+  {
+    "mot": "Fibre optique",
+    "definition": "Support de transmission physique guidant la lumière pour véhiculer des données à très haut débit.",
+    "domaine": "Réseau",
+    "niveau": "Débutant",
+    "explication": "Un fil en verre très fin transportant des informations à la vitesse de la lumière.",
+    "exemple": "La fibre optique remplace progressivement les anciens câbles en cuivre."
+  },
+  {
+    "mot": "Bande de fréquence",
+    "definition": "Plage d'ondes radio attribuée à la transmission d'informations sans fil.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Le canal hertzien emprunté par les ondes réseau.",
+    "exemple": "Le Wi-Fi utilise principalement les bandes de fréquence 2,4 GHz et 5 GHz."
+  },
+  {
+    "mot": "Qualité de Service",
+    "definition": "Mécanisme de priorisation du trafic réseau pour garantir des performances aux flux critiques.",
+    "domaine": "Réseau",
+    "niveau": "Avancé",
+    "explication": "Donner un gyrophare prioritaire à certains paquets urgents.",
+    "exemple": "La voix sur IP (téléphonie) passe avant le téléchargement de fichiers lourds grâce à la QoS."
+  },
+  {
+    "mot": "Broadcast",
+    "definition": "Mode de transmission envoyant un paquet de données à l'ensemble des hôtes d'un réseau.",
+    "domaine": "Réseau",
+    "niveau": "Intermédiaire",
+    "explication": "Parler dans un haut-parleur pour que tout le monde entende en même temps.",
+    "exemple": "Une requête ARP est envoyée en broadcast pour localiser l'adresse MAC associée à une IP."
+  },
+  {
+    "mot": "Multicast",
+    "definition": "Technique de transmission acheminant un flux de données vers un groupe ciblé d'abonnés.",
+    "domaine": "Réseau",
+    "niveau": "Avancé",
+    "explication": "Diffuser une émission de radio réservée uniquement aux auditeurs abonnés.",
+    "exemple": "La diffusion de télévision par ADSL s'appuie souvent sur des flux multicast."
+  },
+  {
+    "mot": "Multiplexage",
+    "definition": "Technique faisant passer plusieurs signaux distincts sur un même canal de transmission.",
+    "domaine": "Réseau",
+    "niveau": "Avancé",
+    "explication": "Faire circuler plusieurs conversations distinctes dans un seul tuyau.",
+    "exemple": "Le multiplexage permet à plusieurs connexions internet de partager la même fibre."
+  },
+  {
+    "mot": "Pare-feu",
+    "definition": "Dispositif de sécurité contrôlant et filtrant le trafic réseau selon des règles établies.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Le vigile à l'entrée d'un bâtiment qui contrôle les badges d'accès.",
+    "exemple": "Le pare-feu bloque les tentatives de connexion suspectes venant de l'extérieur."
+  },
+  {
+    "mot": "Firewall",
+    "definition": "Terme anglophone équivalent à pare-feu.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Système de filtrage du trafic réseau.",
+    "exemple": "Configurer le firewall pour interdire le port 21."
+  },
+  {
+    "mot": "Phishing",
+    "definition": "Technique d'ingénierie sociale visant à usurper l'identité d'un tiers pour voler des identifiants.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Envoyer un faux email très ressemblant pour vous faire mordre à l'hameçon.",
+    "exemple": "Un faux mail bancaire vous demandant de resaisir d'urgence votre mot de passe."
+  },
+  {
+    "mot": "Virus",
+    "definition": "Code malveillant s'attachant à des programmes exécutables pour se propager et nuire.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Un parasite qui contamine vos fichiers sains.",
+    "exemple": "Un virus téléchargeable masqué dans une pièce jointe exécutable."
+  },
+  {
+    "mot": "Authentification",
+    "definition": "Procédure par laquelle un système valide la véracité de l'identité revendiquée par un utilisateur.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Prouver qui vous êtes au moyen d'une preuve contrôlée.",
+    "exemple": "Saisir son mot de passe et un code SMS constitue une étape d'authentification."
+  },
+  {
+    "mot": "Mot de passe",
+    "definition": "Série de caractères secrète garantissant l'accès individuel à une ressource protégée.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "La clé secrète de votre coffre-fort informatique.",
+    "exemple": "Utiliser un mot de passe robuste incluant des majuscules, chiffres et symboles."
+  },
+  {
+    "mot": "Identifiant",
+    "definition": "Information publique ou partagée désignant de façon unique un utilisateur.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Votre nom d'utilisateur ou adresse email sur un service.",
+    "exemple": "L'identifiant est souvent l'adresse email enregistrée."
+  },
+  {
+    "mot": "Double authentification",
+    "definition": "Méthode exigeant deux facteurs de vérification distincts pour valider un accès.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Présenter sa clé ET son empreinte digitale pour ouvrir une porte.",
+    "exemple": "Entrer son mot de passe habituel puis valider la notification reçue sur son smartphone."
+  },
+  {
+    "mot": "Antivirus",
+    "definition": "Logiciel analysant les systèmes pour identifier, bloquer et neutraliser les malwares.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Le médecin de garde de votre système informatique.",
+    "exemple": "L'antivirus lance une analyse quotidienne de l'intégralité du disque dur."
+  },
+  {
+    "mot": "Malware",
+    "definition": "Terme générique regroupant l'ensemble des logiciels développés dans un but nuisible.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Un programme informatique malveillant.",
+    "exemple": "Les virus, ransomwares et spywares sont tous des malwares."
+  },
+  {
+    "mot": "Cheval de Troie",
+    "definition": "Programme en apparence inoffensif cachant une fonctionnalité malveillante.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Un cadeau piégé qui ouvre une porte dérobée aux pirates une fois installé.",
+    "exemple": "Télécharger un faux jeu gratuit qui installe un espion en arrière-plan."
+  },
+  {
+    "mot": "Spyware",
+    "definition": "Logiciel espion collectant à l'insu de l'utilisateur des données personnelles ou de navigation.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Un espion discret qui note tous vos faits et gestes.",
+    "exemple": "Un spyware enregistre les frappes au clavier pour voler les données bancaires."
+  },
+  {
+    "mot": "Adware",
+    "definition": "Programme affichant automatiquement des publicités intempestives parfois agressives.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Une machine à fenêtres publicitaires forcées.",
+    "exemple": "Des fenêtres pop-up s'ouvrent sans arrêt après l'installation d'un composant indésirable."
+  },
+  {
+    "mot": "Ransomware",
+    "definition": "Logiciel malveillant chiffrant les données d'un système et réclamant une rançon pour les débloquer.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Prendre vos fichiers en otage et demander une somme d'argent pour la clé.",
+    "exemple": "Un ransomware bloque l'accès aux serveurs de l'hôpital et exige des bitcoins."
+  },
+  {
+    "mot": "Chiffrement",
+    "definition": "Procédé cryptographique rendant une information inintelligible sans la clé de déchiffrement.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Transformer du texte lisible en un code secret indéchiffrable.",
+    "exemple": "Le chiffrement AES-256 protège les données confidentielles stockées sur le disque."
+  },
+  {
+    "mot": "Déchiffrement",
+    "definition": "Action de restituer le texte original à partir du contenu chiffré grâce à la bonne clé.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Déverrouiller le message secret avec la clé autorisée.",
+    "exemple": "Le destinataire utilise sa clé privée pour déchiffrer l'email reçu."
+  },
+  {
+    "mot": "Ingénierie sociale",
+    "definition": "Manipulation psychologique visant à amener des individus à divulguer des informations confidentielles.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Pirater le cerveau humain plutôt que le système informatique.",
+    "exemple": "Se faire passer pour le service informatique au téléphone pour se faire donner un mot de passe."
+  },
+  {
+    "mot": "Attaque DDoS",
+    "definition": "Attaque visant à rendre un service indisponible en le submergeant de requêtes via un réseau de machines infectées.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Provoquer une cohue monstre devant un magasin pour en bloquer l'accès.",
+    "exemple": "Des milliers d'ordinateurs piratés envoient simultanément des requêtes pour faire tomber un site."
+  },
+  {
+    "mot": "Zero-day",
+    "definition": "Vulnérabilité logicielle fraîchement découverte ne disposant encore d'aucun correctif.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé",
+    "explication": "Une faille de sécurité inconnue des créateurs du logiciel.",
+    "exemple": "Une attaque exploite une faille zero-day avant que l'éditeur ne puisse créer un patch."
+  },
+  {
+    "mot": "Ingénierie inverse",
+    "definition": "Processus de déconstruction d'un logiciel pour en comprendre le fonctionnement interne.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé",
+    "explication": "Démonter une horloge pour comprendre comment chaque rouage s'articule.",
+    "exemple": "Les chercheurs en sécurité analysent un malware par ingénierie inverse pour annuler ses effets."
+  },
+  {
+    "mot": "Attaque Man-in-the-Middle",
+    "definition": "Interception non autorisée des communications entre deux parties sans qu'elles ne s'en aperçoivent.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Un espion discret qui lit et modifie le courrier avant de le transmettre.",
+    "exemple": "Pirater un réseau Wi-Fi public non sécurisé pour intercepter le trafic des usagers."
+  },
+  {
+    "mot": "Attaque par force brute",
+    "definition": "Méthode consistant à tester systématiquement toutes les combinaisons possibles pour deviner un mot de passe.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Tester toutes les clés du trousseau une par une jusqu'à trouver la bonne.",
+    "exemple": "Un programme essaye des millions de mots de passe à la seconde pour forcer un compte."
+  },
+  {
+    "mot": "Keylogger",
+    "definition": "Dispositif matériel ou logiciel enregistrant discrètement chaque frappe effectuée sur un clavier.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Un magnétophone silencieux branché sur votre clavier.",
+    "exemple": "Le keylogger a permis aux pirates de voler le mot de passe maître."
+  },
+  {
+    "mot": "Botnet",
+    "definition": "Réseau de machines piratées contrôlées à distance à l'insu de leurs propriétaires.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Une armée d'ordinateurs zombies commandée par un maître.",
+    "exemple": "Un botnet est utilisé pour lancer des attaques DDoS massives."
+  },
+  {
+    "mot": "Pentest",
+    "definition": "Test d'intrusion consistant à simuler une attaque contre un système pour en révéler les failles.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Payer un faux cambrioleur pour tester la solidité de ses portes.",
+    "exemple": "L'entreprise commande un pentest pour valider la sécurité de sa nouvelle application."
+  },
+  {
+    "mot": "Hachage",
+    "definition": "Transformation irréversible d'une donnée de taille variable en une empreinte de taille fixe.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Passer un document au hachoir : on obtient une empreinte unique, mais impossible de refaire le document initial.",
+    "exemple": "On stocke le hash d'un mot de passe (SHA-256) en base de données plutôt que le texte en clair."
+  },
+  {
+    "mot": "Certificat SSL/TLS",
+    "definition": "Fichier de données liant cryptographiquement une clé à l'identité d'une organisation.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Une carte d'identité numérique officielle pour les sites web.",
+    "exemple": "Le cadenas vert dans la barre d'adresse confirme la présence d'un certificat TLS valide."
+  },
+  {
+    "mot": "Cryptographie asymétrique",
+    "definition": "Système cryptographique utilisant une paire de clés : une clé publique pour chiffrer, une clé privée pour déchiffrer.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé",
+    "explication": "Une boîte aux lettres ouverte où tout le monde peut déposer un mot, mais seul le propriétaire possède la clé pour l'ouvrir.",
+    "exemple": "RSA est un algorithme classique de cryptographie asymétrique."
+  },
+  {
+    "mot": "Cryptographie symétrique",
+    "definition": "Méthode de chiffrement utilisant une seule et unique clé partagée pour chiffrer et déchiffrer.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "La même clé physique qui verrouille et déverrouille la serrure.",
+    "exemple": "AES utilise le chiffrement symétrique pour des performances de calcul rapides."
+  },
+  {
+    "mot": "Gestionnaire de mots de passe",
+    "definition": "Application sécurisée stockant et chiffrant l'ensemble des identifiants d'un utilisateur.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Un coffre-fort virtuel protégé par un unique mot de passe maître.",
+    "exemple": "Bitwarden ou 1Password génèrent des mots de passe complexes et uniques."
+  },
+  {
+    "mot": "Système de détection d'intrusion",
+    "definition": "Dispositif qui surveille l'activité réseau pour détecter d'éventuelles intrusions suspectes.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé",
+    "explication": "Une alarme silencieuse qui détecte les comportements anormaux.",
+    "exemple": "Un IDS génère une alerte s'il détecte un balayage de ports réseau non autorisé."
+  },
+  {
+    "mot": "Rootkit",
+    "definition": "Ensemble d'outils malveillants conçus pour maintenir un accès furtif d'administration sur un système.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé",
+    "explication": "Un intrus qui s'installe au cœur du moteur et se rend invisible à l'antivirus.",
+    "exemple": "Le rootkit masque sa présence au système d'exploitation en modifiant le noyau."
+  },
+  {
+    "mot": "SOC",
+    "definition": "Centre opérationnel de sécurité assurant la surveillance constante des systèmes de sécurité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé",
+    "explication": "La tour de contrôle où des analystes surveillent la sécurité 24h/24.",
+    "exemple": "Le SOC analyse les alertes de sécurité en temps réel pour contrer les attaques."
+  },
+  {
+    "mot": "Exfiltration de données",
+    "definition": "Transfert non autorisé de données hors des frontières d'une organisation.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Faire sortir discrètement des documents confidentiels vers l'extérieur.",
+    "exemple": "Un attaquant exfiltre la base clients par petites tranches chiffrées."
+  },
+  {
+    "mot": "Dépassement de tampon",
+    "definition": "Anomalie où un programme écrit au-delà du bloc mémoire alloué, risquant une exécution de code arbitraire.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé",
+    "explication": "Verser trop d'eau dans un verre au point de déborder sur la table et mouiller les dossiers voisins.",
+    "exemple": "L'exploitation d'un buffer overflow permet à un pirate de prendre le contrôle d'une application."
+  },
+  {
+    "mot": "Scam",
+    "definition": "Escroquerie financière en ligne cherchant à extorquer de l'argent sous de faux prétextes.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Une arnaque promettant un faux gain en échange d'un versement préalable.",
+    "exemple": "Les fausses loteries en ligne sont une forme courante de scam."
+  },
+  {
+    "mot": "Hameçonnage ciblé",
+    "definition": "Variante sophistiquée du phishing personnalisée sur une personne ou entreprise visée.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Un piège confectionné sur mesure pour tromper une victime précise.",
+    "exemple": "Envoyer un email ciblé au comptable en imitant la signature exacte du directeur."
+  },
+  {
+    "mot": "Logiciel de rançon",
+    "definition": "Équivalent français du terme ransomware.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Programme qui bloque vos accès pour réclamer un paiement.",
+    "exemple": "Des sauvegardes régulières permettent de faire face aux logiciels de rançon."
+  },
+  {
+    "mot": "Contrôle d'accès",
+    "definition": "Système régulant l'accès des utilisateurs aux ressources selon leurs habilitations.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Accorder ou refuser l'accès aux différentes pièces d'un bâtiment.",
+    "exemple": "Le contrôle d'accès basé sur les rôles garantit qu'un employé ne voit que ses données."
+  },
+  {
+    "mot": "Authentification multifacteur",
+    "definition": "Exigence de cumul de preuves distinctes pour valider une identité.",
+    "domaine": "Cybersécurité",
+    "niveau": "Débutant",
+    "explication": "Associer mot de passe, code d'application et validation biométrique.",
+    "exemple": "L'MFA bloque l'accès même si un attaquant a trouvé votre mot de passe."
+  },
+  {
+    "mot": "Zero Trust",
+    "definition": "Modèle de sécurité supposant qu'aucun utilisateur ni appareil ne doit bénéficier d'une confiance implicite.",
+    "domaine": "Cybersécurité",
+    "niveau": "Avancé",
+    "explication": "Ne faire confiance à personne par défaut, vérifier constamment chaque demande.",
+    "exemple": "En architecture Zero Trust, chaque accès à une application fait l'objet d'une vérification stricte."
+  },
+  {
+    "mot": "Hacker éthique",
+    "definition": "Spécialiste en cybersécurité utilisant ses compétences pour identifier et combler les failles.",
+    "domaine": "Cybersécurité",
+    "niveau": "Intermédiaire",
+    "explication": "Un pirate bienveillant qui aide à renforcer les défenses.",
+    "exemple": "Les hackers éthiques participent à des programmes de 'bug bounty' pour signaler des vulnérabilités."
+  },
+  {
+    "mot": "Navigateur",
+    "definition": "Logiciel servant à consulter et explorer des sites web.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "La fenêtre qui permet de visiter les pages sur Internet.",
+    "exemple": "Chrome, Firefox et Safari sont des navigateurs web."
+  },
+  {
+    "mot": "HTML",
+    "definition": "Langage de balisage servant à structurer le contenu des pages web.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Le squelette de la page web : titres, paragraphes et images.",
+    "exemple": "La balise '<h1>' sert à afficher le titre principal de la page."
+  },
+  {
+    "mot": "CSS",
+    "definition": "Langage de feuilles de style utilisé pour la mise en forme graphique des documents HTML.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "L'habillage graphique de la page : couleurs, polices et disposition.",
+    "exemple": "Le code CSS définit la couleur bleue pour tous les liens."
+  },
+  {
+    "mot": "JavaScript",
+    "definition": "Langage de programmation de scripts rendant les pages web dynamiques et interactives.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Les muscles de la page web pour créer des animations et réagir aux actions.",
+    "exemple": "Un script JavaScript ouvre un menu déroulant au clic sur un bouton."
+  },
+  {
+    "mot": "Domaine",
+    "definition": "Nom usuel et lisible pointant vers l'adresse IP d'un site web.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "L'enseigne visible de votre site sur Internet.",
+    "exemple": "'wikipedia.org' est un nom de domaine."
+  },
+  {
+    "mot": "Cookie",
+    "definition": "Fichier texte stocké sur le terminal de l'utilisateur par le navigateur à la demande d'un site.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Un post-it laissé par le site pour se souvenir de votre passage.",
+    "exemple": "Un cookie conserve les articles stockés dans votre panier d'achat."
+  },
+  {
+    "mot": "URL",
+    "definition": "Adresse standardisée identifiant de manière unique une ressource sur le Web.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "L'adresse complète saisie dans la barre du navigateur.",
+    "exemple": "'https://site.com/dossier/page.html' est une URL."
+  },
+  {
+    "mot": "WWW",
+    "definition": "Système hypertexte mondial fonctionnant sur le réseau Internet.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "L'ensemble des pages et sites web interconnectés par des liens.",
+    "exemple": "Le World Wide Web a été inventé par Tim Berners-Lee."
+  },
+  {
+    "mot": "Page web",
+    "definition": "Document électronique lisible dans un navigateur web.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Une feuille individuelle au sein d'un site web.",
+    "exemple": "La page d'accueil d'un journal d'actualités."
+  },
+  {
+    "mot": "Site web",
+    "definition": "Ensemble structuré de pages web hébergées à une même adresse de domaine.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Le livre complet réunissant plusieurs pages web.",
+    "exemple": "Un site web de commerce en ligne comporte des fiches produits, un panier et une page de contact."
+  },
+  {
+    "mot": "Responsive",
+    "definition": "Capacité d'un design web à s'adapter automatiquement à l'écran du terminal de consultation.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Une page web élastique qui s'affiche aussi bien sur PC que sur téléphone.",
+    "exemple": "Un site responsive réordonne ses blocs en une seule colonne sur smartphone."
+  },
+  {
+    "mot": "Formulaire",
+    "definition": "Composant HTML regroupant des champs permettant d'envoyer des données au serveur.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Une fiche d'inscription à remplir en ligne.",
+    "exemple": "Un formulaire de connexion comprend un champ identifiant et un champ mot de passe."
+  },
+  {
+    "mot": "Lien hypertexte",
+    "definition": "Élément interactif permettant de naviguer d'un document web vers un autre au clic.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Un pont cliquable qui transporte l'utilisateur d'une page à une autre.",
+    "exemple": "Cliquer sur un texte bleu souligné pour ouvrir une source complémentaire."
+  },
+  {
+    "mot": "Session",
+    "definition": "Mécanisme conservant l'état d'un utilisateur connecté le temps de sa visite sur un site.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Garder la mémoire de qui vous êtes pendant que vous passez d'une page à l'autre.",
+    "exemple": "Votre session reste active tant que vous ne cliquez pas sur 'Déconnexion'."
+  },
+  {
+    "mot": "JSON",
+    "definition": "Format d'échange de données textuel et structuré simple à lire pour les humains et les machines.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "La norme internationale de notation pour s'échanger des données web.",
+    "exemple": "Un appel d'API retourne les données du profil au format JSON."
+  },
+  {
+    "mot": "XML",
+    "definition": "Langage de balisage générique conçu pour structurer, stocker et échanger des données.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Un format de fichier à balises personnalisées.",
+    "exemple": "Les flux de syndication RSS sont rédigés en XML."
+  },
+  {
+    "mot": "PHP",
+    "definition": "Langage de script exécuté côté serveur principalement dédié à la création de sites web dynamiques.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Un moteur d'assemblage qui fabrique les pages HTML à la volée sur le serveur.",
+    "exemple": "Le CMS WordPress est entièrement écrit en PHP."
+  },
+  {
+    "mot": "API REST",
+    "definition": "Style d'architecture d'API s'appuyant sur le protocole HTTP et ses méthodes standard.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Une norme d'API organisée autour d'URL claires et des verbes HTTP (GET, POST, PUT, DELETE).",
+    "exemple": "Faire une requête GET sur '/api/users' pour récupérer la liste des comptes."
+  },
+  {
+    "mot": "Serveur web",
+    "definition": "Logiciel qui réceptionne les requêtes HTTP et renvoie les ressources associées au client.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "La machine qui distribue les pages web sur demande.",
+    "exemple": "Nginx et Apache sont deux serveurs web extrêmement répandus."
+  },
+  {
+    "mot": "Front-end",
+    "definition": "Ensemble des technologies web s'exécutant directement dans le navigateur de l'utilisateur.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "La partie émergée de l'iceberg : tout ce qu'on voit à l'écran.",
+    "exemple": "HTML, CSS et React sont des outils du développement Front-end."
+  },
+  {
+    "mot": "Back-end",
+    "definition": "Partie serveur d'une application web responsable de la logique, de la sécurité et des données.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "La partie cachée sous le capot qui fait tourner la mécanique.",
+    "exemple": "La gestion de la base de données et des paiements s'effectue sur le Back-end."
+  },
+  {
+    "mot": "DOM",
+    "definition": "Représentation en arbre structuré du document HTML manipulable par du code.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "L'arbre logique de la page web que JavaScript peut modifier en direct.",
+    "exemple": "JavaScript modifie le DOM pour masquer un élément de la page sans recharger."
+  },
+  {
+    "mot": "AJAX",
+    "definition": "Technique permettant de rafraîchir des parties d'une page web sans rechargement complet.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Mettre à jour un morceau de page en arrière-plan sans coupure.",
+    "exemple": "L'affichage automatique des suggestions de recherche s'appuie sur AJAX."
+  },
+  {
+    "mot": "Single Page Application",
+    "definition": "Application web tenant sur une seule page HTML dont le contenu se met à jour dynamiquement.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Un site qui se comporte comme un logiciel fluide sans aucun rechargement complet.",
+    "exemple": "Gmail et Twitter sont des Single Page Applications."
+  },
+  {
+    "mot": "WebAssembly",
+    "definition": "Format de code binaire exécutable haute performance à l'intérieur des navigateurs web.",
+    "domaine": "Web",
+    "niveau": "Avancé",
+    "explication": "Faire tourner du code C++ ou Rust dans le navigateur à vitesse quasi native.",
+    "exemple": "Des logiciels de retouche photo lourds s'exécutent directement dans le navigateur grâce à WebAssembly."
+  },
+  {
+    "mot": "WebSocket",
+    "definition": "Protocole de communication bidirectionnel et persistant en temps réel entre client et serveur.",
+    "domaine": "Web",
+    "niveau": "Avancé",
+    "explication": "Une ligne téléphonique ouverte en continu entre le site et le serveur.",
+    "exemple": "Les messageries instantanées en ligne utilisent WebSocket pour afficher les messages sans délai."
+  },
+  {
+    "mot": "CORS",
+    "definition": "Mécanisme de sécurité restreignant les requêtes web provenant de domaines différents.",
+    "domaine": "Web",
+    "niveau": "Avancé",
+    "explication": "Les règles d'autorisation pour qu'un site A accepte de partager des ressources avec un site B.",
+    "exemple": "Bloquer un appel AJAX s'il provient d'un domaine tiers non autorisé."
+  },
+  {
+    "mot": "SEO",
+    "definition": "Ensemble des techniques visant à optimiser le positionnement d'un site dans les moteurs de recherche.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Optimiser un site pour apparaître en premier sur Google.",
+    "exemple": "Insérer des mots-clés pertinents et accélérer le chargement améliore le SEO."
+  },
+  {
+    "mot": "CMS",
+    "definition": "Système de gestion de contenu permettant de créer et administrer un site sans tout coder.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Une interface clé en main pour gérer les articles et visuels d'un site.",
+    "exemple": "WordPress et Shopify sont des CMS très populaires."
+  },
+  {
+    "mot": "GraphQL",
+    "definition": "Langage de requête pour API permettant au client de demander exactement les données voulues.",
+    "domaine": "Web",
+    "niveau": "Avancé",
+    "explication": "Un menu sur mesure où le client choisit au millimètre près la composition de sa réponse.",
+    "exemple": "GraphQL permet d'éviter de récupérer des champs inutiles lors d'un appel d'API."
+  },
+  {
+    "mot": "PWA",
+    "definition": "Application web combinant les fonctionnalités d'un site et l'expérience d'une application mobile.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Un site web qu'on peut installer sur son écran d'accueil et consulter hors-ligne.",
+    "exemple": "Une PWA permet de consulter du contenu sauvegardé sans connexion internet."
+  },
+  {
+    "mot": "WebHook",
+    "definition": "Mécanisme où une application envoie une notification automatique vers une URL lors d'un événement.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Raccrocher une sonnette qui retentit dès qu'une action se produit sur un service tiers.",
+    "exemple": "Un WebHook Stripe prévient votre serveur dès qu'un paiement bancaire est validé."
+  },
+  {
+    "mot": "Webmaster",
+    "definition": "Personne responsable de la maintenance et du suivi d'un site web.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "L'administrateur en charge de garder le site en bon état.",
+    "exemple": "Le webmaster met à jour les extensions du site."
+  },
+  {
+    "mot": "Favicon",
+    "definition": "Petite icône associée à un site web affichée dans l'onglet du navigateur.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Le mini logo visuel d'un site dans l'onglet.",
+    "exemple": "Le petit logo Wikipédia en haut de l'onglet du navigateur."
+  },
+  {
+    "mot": "Lien mort",
+    "definition": "Lien hypertexte pointant vers une page ou ressource inexistante, renvoyant souvent une erreur 404.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Un lien cassé qui mène à une impasse.",
+    "exemple": "Cliquer sur une page supprimée affiche l'erreur 404 du lien mort."
+  },
+  {
+    "mot": "Sitemap",
+    "definition": "Fichier XML listant l'ensemble des URL d'un site web pour faciliter l'indexation.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "La carte globale du site destinée aux moteurs de recherche.",
+    "exemple": "Soumettre son sitemap XML dans Google Search Console."
+  },
+  {
+    "mot": "Iframe",
+    "definition": "Balise HTML permettant d'intégrer un document HTML secondaire dans la page courante.",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Une télé miniature qui affiche le contenu d'un autre site.",
+    "exemple": "Insérer une vidéo YouTube dans un article via un code Iframe."
+  },
+  {
+    "mot": "Redirection",
+    "definition": "Procédé renvoyant automatiquement un utilisateur visitant une URL vers une autre.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Faire suivre le courrier vers la nouvelle adresse.",
+    "exemple": "Une redirection 301 redirige définitivement l'ancienne page vers la nouvelle."
+  },
+  {
+    "mot": "Flexbox",
+    "definition": "Modèle de mise en page CSS facilitant l'alignement et la distribution d'éléments.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Un aligneur de blocs flexible en ligne ou colonne.",
+    "exemple": "Utiliser 'display: flex' pour centrer verticalement du contenu."
+  },
+  {
+    "mot": "Grid CSS",
+    "definition": "Système de mise en page CSS bidimensionnel par grille de lignes et de colonnes.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Un quadrillage complet pour composer des maquettes web complexes.",
+    "exemple": "Créer un tableau de bord à 3 colonnes grâce au Grid CSS."
+  },
+  {
+    "mot": "Minification",
+    "definition": "Suppression de tous les caractères inutiles d'un code source pour réduire la taille des fichiers.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Comprimer le code en supprimant espaces, retours à la ligne et commentaires.",
+    "exemple": "Le fichier 'style.min.css' se charge plus vite car il est minifié."
+  },
+  {
+    "mot": "Transpilation",
+    "definition": "Conversion d'un code source écrit dans un langage vers un langage de niveau équivalent.",
+    "domaine": "Web",
+    "niveau": "Avancé",
+    "explication": "Traduire du JavaScript moderne en ancienne version pour compatibilité.",
+    "exemple": "Babel transpile le code ES6+ pour qu'il s'exécute sur les anciens navigateurs."
+  },
+  {
+    "mot": "Asset",
+    "definition": "Ressource statique utilisée par un site web (images, polices, fichiers CSS).",
+    "domaine": "Web",
+    "niveau": "Débutant",
+    "explication": "Un élément média ou de style qui accompagne la structure HTML.",
+    "exemple": "Les logos et les images sont stockés dans le dossier des assets."
+  },
+  {
+    "mot": "Lighthouse",
+    "definition": "Outil automatisé d'analyse des performances, de l'accessibilité et du SEO des pages web.",
+    "domaine": "Web",
+    "niveau": "Intermédiaire",
+    "explication": "Un contrôle technique global pour votre page web.",
+    "exemple": "Lancer un audit Lighthouse pour repérer les éléments qui ralentissent le site."
+  },
+  {
+    "mot": "SSR",
+    "definition": "Rendu de page web généré sur le serveur avant transmission du code HTML final au navigateur.",
+    "domaine": "Web",
+    "niveau": "Avancé",
+    "explication": "Préparer la page complètement en cuisine avant de la poser sur la table.",
+    "exemple": "Le Server-Side Rendering améliore les performances d'affichage et le SEO."
+  },
+  {
+    "mot": "Hydratation",
+    "definition": "Processus d'attachement des écouteurs d'événements au HTML statique généré côté serveur.",
+    "domaine": "Web",
+    "niveau": "Avancé",
+    "explication": "Rendre réactive une page HTML arrivée figée du serveur.",
+    "exemple": "L'hydratation transforme la structure fixe envoyée par le serveur en application réactive."
+  },
+  {
+    "mot": "Base de données",
+    "definition": "Ensemble organisé d'informations structurées stockées et accessibles électroniquement.",
+    "domaine": "Base de données",
+    "niveau": "Débutant",
+    "explication": "Une armoire à archives numérique ordonnée.",
+    "exemple": "Le système de la banque utilise une base de données pour enregistrer le solde des comptes."
+  },
+  {
+    "mot": "SQL",
+    "definition": "Langage informatique standardisé utilisé pour interroger et manipuler des bases de données relationnelles.",
+    "domaine": "Base de données",
+    "niveau": "Débutant",
+    "explication": "La langue parlée pour poser des questions à la base de données.",
+    "exemple": "Saisir la requête 'SELECT * FROM clients' pour lister les clients."
+  },
+  {
+    "mot": "Table",
+    "definition": "Structure d'une base de données organisée sous forme de lignes et de colonnes.",
+    "domaine": "Base de données",
+    "niveau": "Débutant",
+    "explication": "Une grille type tableau Excel dédiée à une catégorie d'informations.",
+    "exemple": "La table 'Produits' contient la liste complète des articles du magasin."
+  },
+  {
+    "mot": "SGBD",
+    "definition": "Système de gestion de base de données servant à manipuler et structurer les données.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Le logiciel chef d'orchestre qui gère les fichiers de la base de données.",
+    "exemple": "PostgreSQL et MySQL sont des SGBD."
+  },
+  {
+    "mot": "Enregistrement",
+    "definition": "Ligne individuelle d'une table regroupant un jeu complet d'informations.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Une fiche individuelle complète dans un classeur.",
+    "exemple": "L'enregistrement correspondant à l'utilisateur numéro 42."
+  },
+  {
+    "mot": "Champ",
+    "definition": "Colonne d'une table correspondant à une propriété particulière des enregistrements.",
+    "domaine": "Base de données",
+    "niveau": "Débutant",
+    "explication": "L'entête de colonne définissant le type d'information.",
+    "exemple": "Le champ 'date_de_naissance' ne contient que des dates."
+  },
+  {
+    "mot": "Clé étrangère",
+    "definition": "Champ d'une table faisant référence à la clé primaire d'une autre table pour établir une relation.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Un fil de liaison pointant vers la clé unique d'une autre fiche.",
+    "exemple": "Le champ 'client_id' dans la table 'Commandes' est une clé étrangère."
+  },
+  {
+    "mot": "Relation",
+    "definition": "Lien logique établi entre deux tables au sein d'une base de données relationnelle.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Associer des fiches entre deux classeurs différents.",
+    "exemple": "Une relation un-à-plusieurs associe un client à ses différentes factures."
+  },
+  {
+    "mot": "Clé primaire",
+    "definition": "Champ ou combinaison de champs identifiant de manière unique chaque ligne d'une table.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "L'identifiant unique incassable et non répétable de chaque fiche.",
+    "exemple": "Le numéro de sécurité sociale ou l'ID auto-incrémenté est utilisé comme clé primaire."
+  },
+  {
+    "mot": "Index",
+    "definition": "Structure de données accélérant la recherche des enregistrements dans une table.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "L'index alphabétique à la fin d'un livre qui évite de lire toutes les pages.",
+    "exemple": "Créer un index sur la colonne 'email' accélère la vérification des accès."
+  },
+  {
+    "mot": "Jointure",
+    "definition": "Opération SQL permettant d'associer les données de plusieurs tables en fonction de champs communs.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Fusionner temporairement les colonnes de deux tables pour un résultat complet.",
+    "exemple": "Une requête 'INNER JOIN' associe chaque commande au nom du client correspondant."
+  },
+  {
+    "mot": "NoSQL",
+    "definition": "Ensemble de bases de données non relationnelles conçues pour des modèles de données flexibles.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Des systèmes de stockage affranchis des contraintes des tables rigides.",
+    "exemple": "MongoDB est une base de données NoSQL orientée documents."
+  },
+  {
+    "mot": "Transaction",
+    "definition": "Unité de travail regroupant une suite d'opérations exécutées entièrement ou annulées complètement.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Un paquet de modifications : tout réussit ou tout est annulé.",
+    "exemple": "Lors d'un virement, débiter un compte et créditer l'autre se fait au sein d'une unique transaction."
+  },
+  {
+    "mot": "Propriétés ACID",
+    "definition": "Ensemble de garanties (Atomicité, Cohérence, Isolation, Durabilité) assurant la fiabilité des transactions.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Le cahier des charges de la sécurité des données d'un SGBD.",
+    "exemple": "L'atomicité garantit qu'une transaction incomplète s'annule complètement."
+  },
+  {
+    "mot": "Normalisation",
+    "definition": "Démarche d'organisation des structures de bases de données évitant la répétition et les anomalies.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Ranger les données sans répétitions inutiles.",
+    "exemple": "Découper une table trop lourde pour respecter la 3ème forme normale."
+  },
+  {
+    "mot": "Requête",
+    "definition": "Commande formulée auprès d'une base de données pour en extraire ou modifier le contenu.",
+    "domaine": "Base de données",
+    "niveau": "Débutant",
+    "explication": "La question posée à la base de données.",
+    "exemple": "Exécuter une requête 'UPDATE' pour corriger une adresse."
+  },
+  {
+    "mot": "Vue",
+    "definition": "Table virtuelle résultant de l'exécution d'une requête SQL préenregistrée.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Un filtre préenregistré donnant accès à des colonnes spécifiques.",
+    "exemple": "Une vue masque les colonnes confidentielles aux opérateurs de saisie."
+  },
+  {
+    "mot": "Procédure stockée",
+    "definition": "Ensemble d'instructions SQL compilé et conservé au sein de la base de données.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Un script conservé directement dans la base de données.",
+    "exemple": "Exécuter la procédure stockée 'calculer_chiffre_affaires' toutes les nuits."
+  },
+  {
+    "mot": "Trigger",
+    "definition": "Script se déclenchant automatiquement en réaction à un événement sur la base de données.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Un piège automatique déclenché lors d'un ajout, modification ou suppression.",
+    "exemple": "Un trigger met à jour l'historique de modification dès qu'une ligne change."
+  },
+  {
+    "mot": "Curseur",
+    "definition": "Moteur permettant de parcourir ligne à ligne les résultats d'une requête.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Un pointeur qui avance ligne par ligne dans le résultat d'une recherche.",
+    "exemple": "Utiliser un curseur pour appliquer un traitement individuel sur chaque ligne."
+  },
+  {
+    "mot": "SGBDR",
+    "definition": "Système de Gestion de Base de Données Relationnelle basé sur le modèle relationnel.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Le moteur classique gérant des tables interconnectées.",
+    "exemple": "Oracle, MySQL et SQL Server sont des SGBDR."
+  },
+  {
+    "mot": "Réplication",
+    "definition": "Mécanisme de copie et synchronisation continue des données sur plusieurs serveurs.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Dupliquer en temps réel une base sur un second serveur en miroir.",
+    "exemple": "La réplication Master-Slave assure un basculement immédiat en cas de panne."
+  },
+  {
+    "mot": "Sharding",
+    "definition": "Technique de partitionnement horizontal distribuant des jeux de données sur plusieurs serveurs.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Répartir une table gigantesque sur plusieurs serveurs physiques.",
+    "exemple": "Stocker les utilisateurs A-M sur un serveur et N-Z sur un second."
+  },
+  {
+    "mot": "Modèle Entité-Association",
+    "definition": "Représentation conceptuelle décrivant les entités du système et leurs liaisons.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Le schéma préparatoire d'une base de données avant sa création.",
+    "exemple": "Concevoir le diagramme Merise pour valider les liaisons de la base."
+  },
+  {
+    "mot": "ORM",
+    "definition": "Outil convertissant les données de la base en objets manipulables par le code.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Un traducteur magique entre les lignes SQL et les objets de programmation.",
+    "exemple": "Hibernate ou SQLAlchemy permettent d'interroger la base sans écrire de SQL brut."
+  },
+  {
+    "mot": "Base Orientée Documents",
+    "definition": "Base NoSQL stockant les informations sous forme de documents semi-structurés (JSON/BSON).",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Ranger des fiches JSON complètes plutôt que de remplir des grilles.",
+    "exemple": "MongoDB stocke des fiches profils sous forme de documents JSON."
+  },
+  {
+    "mot": "Base Clé-Valeur",
+    "definition": "Base de données NoSQL ultra-rapide associant une clé unique à une donnée.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Un casier avec une étiquette unique pour un accès direct.",
+    "exemple": "Redis sert souvent de cache rapide clé-valeur en mémoire RAM."
+  },
+  {
+    "mot": "Base Orientée Graphe",
+    "definition": "Base de données utilisant des nœuds et des relations pour représenter des réseaux d'informations.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Une carte de réseaux interconnectés où les liaisons ont autant d'importance que les données.",
+    "exemple": "Neo4j est utilisé pour modéliser les réseaux sociaux et leurs connexions d'amis."
+  },
+  {
+    "mot": "Data Warehouse",
+    "definition": "Entrepôt centralisé regroupant des données historiques hétérogènes pour l'analyse décisionnelle.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Une immense bibliothèque d'archivage d'entreprise conçue pour les rapports analytiques.",
+    "exemple": "Les équipes décisionnelles interrogent le Data Warehouse pour étudier l'évolution des ventes."
+  },
+  {
+    "mot": "ETL",
+    "definition": "Processus d'Extraction, Transformation et Chargement de données entre systèmes.",
+    "domaine": "Base de données",
+    "niveau": "Avancé",
+    "explication": "Extraire les informations, les nettoyer, puis les injecter dans le système d'analyse.",
+    "exemple": "Un ETL récupère les ventes quotidiennes des caisses pour alimenter la base centrale."
+  },
+  {
+    "mot": "Contrainte d'intégrité",
+    "definition": "Règle appliquée aux données d'une table pour garantir la cohérence des enregistrements.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Un verrou interdisant la saisie de valeurs absurdes.",
+    "exemple": "La contrainte 'NOT NULL' empêche de valider un champ sans valeur."
+  },
+  {
+    "mot": "Rollback",
+    "definition": "Annulation de toutes les modifications effectuées au cours d'une transaction non finalisée.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Remettre le plateau de jeu à son état initial si un problème survient.",
+    "exemple": "Si le serveur plante au milieu de la transaction, le SGBD effectue un rollback."
+  },
+  {
+    "mot": "Commit",
+    "definition": "Validation définitive en base des modifications d'une transaction.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Graver définitivement les modifications dans le marbre.",
+    "exemple": "Après la dernière vérification, la commande 'COMMIT' enregistre l'opération."
+  },
+  {
+    "mot": "Séquence",
+    "definition": "Objet générant une suite automatique de nombres entiers uniques.",
+    "domaine": "Base de données",
+    "niveau": "Intermédiaire",
+    "explication": "Un compteur automatique pour numéroter chaque nouvelle ligne.",
+    "exemple": "Utiliser une séquence pour numéroter automatiquement les factures."
+  },
+  {
+    "mot": "Dump",
+    "definition": "Export complet de la structure et du contenu d'une base sous forme de fichier texte.",
+    "domaine": "Base de données",
+    "niveau": "Débutant",
+    "explication": "Une photographie intégrale de la base sauvegardée dans un fichier.",
+    "exemple": "Réaliser un dump SQL chaque soir pour assurer la sauvegarde des données."
+  },
+  {
+    "mot": "Système d'exploitation",
+    "definition": "Ensemble des programmes fondamentaux gérant les ressources matérielles et logicielles d'une machine.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Le chef d'orchestre global d'un ordinateur sans lequel rien ne fonctionne.",
+    "exemple": "Windows, macOS et Linux sont des systèmes d'exploitation."
+  },
+  {
+    "mot": "Linux",
+    "definition": "Noyau de système d'exploitation libre et open source au cœur de nombreuses distributions.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Un système gratuit et personnalisable massivement utilisé sur les serveurs.",
+    "exemple": "Ubuntu et Debian sont des distributions Linux."
+  },
+  {
+    "mot": "Windows",
+    "definition": "Gamme de systèmes d'exploitation propriétaires développés par Microsoft.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Le système d'exploitation grand public le plus répandu sur les ordinateurs personnels.",
+    "exemple": "Windows 11 gère le bureau, les fichiers et l'exécution des logiciels."
+  },
+  {
+    "mot": "Sauvegarde",
+    "definition": "Copie de sécurité de données conservée sur un support distinct en vue de leur restauration.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Une double clé ou un double de vos papiers importants.",
+    "exemple": "Effectuer une sauvegarde hebdomadaire sur un disque dur externe."
+  },
+  {
+    "mot": "Fichier",
+    "definition": "Conteneur numérique enregistrant des informations sur un support de stockage.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Un document individuel posé sur le disque.",
+    "exemple": "Un document texte '.docx' ou une photo '.jpg' est un fichier."
+  },
+  {
+    "mot": "Dossier",
+    "definition": "Conteneur logique permettant de regrouper et d'organiser des fichiers et d'autres sous-dossiers.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Une chemise cartonnée de rangement.",
+    "exemple": "Créer un dossier 'Factures_2026' pour organiser ses documents."
+  },
+  {
+    "mot": "Pilote",
+    "definition": "Programme assurant la communication entre le système d'exploitation et un périphérique.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Le traducteur entre le système d'exploitation et le composant physique.",
+    "exemple": "Mettre à jour le pilote de sa carte graphique pour améliorer les performances."
+  },
+  {
+    "mot": "Installation",
+    "definition": "Processus de copie et de configuration d'un logiciel sur un système d'exploitation.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Déballer et monter un équipement pour pouvoir s'en servir.",
+    "exemple": "L'installation du logiciel se valide en acceptant la licence d'utilisation."
+  },
+  {
+    "mot": "Désinstallation",
+    "definition": "Suppression propre d'un programme et de ses composants associés du système.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Retirer complètement un appareil et nettoyer sa place.",
+    "exemple": "Passer par le panneau de configuration pour lancer la désinstallation d'un jeu."
+  },
+  {
+    "mot": "Processus",
+    "definition": "Programme informatique en cours d'exécution au sein du système d'exploitation.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Une tâche active occupée à tourner en mémoire.",
+    "exemple": "Le gestionnaire de tâches permet de lister l'ensemble des processus actifs."
+  },
+  {
+    "mot": "Tâche",
+    "definition": "Unité d'exécution prise en charge par le système d'exploitation.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Une opération planifiée ou en cours.",
+    "exemple": "Le planificateur de tâches exécute l'analyse le dimanche à minuit."
+  },
+  {
+    "mot": "Terminal",
+    "definition": "Interface en ligne de commande permettant de piloter le système par du texte.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "La console noire où l'on tape directement des ordres au système.",
+    "exemple": "Ouvrir un terminal sous Linux pour saisir la commande de mise à jour."
+  },
+  {
+    "mot": "Commande",
+    "definition": "Instruction textuelle transmise au système d'exploitation pour exécution.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Un ordre écrit d'un mot.",
+    "exemple": "La commande 'ls' sous Linux affiche le contenu du dossier courant."
+  },
+  {
+    "mot": "Invite de commande",
+    "definition": "Interface textuelle historique du système Windows (cmd.exe).",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Le terminal d'ordres d'origine de Windows.",
+    "exemple": "Saisir 'ipconfig' dans l'invite de commande pour connaître son adresse IP."
+  },
+  {
+    "mot": "Chemin",
+    "definition": "Chaîne de texte précisant la localisation d'un fichier dans l'arborescence du disque.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "L'adresse complète de rangement d'un document.",
+    "exemple": "'C:\\Utilisateurs\\Documents\\fichier.txt' est un chemin absolu."
+  },
+  {
+    "mot": "Administrateur",
+    "definition": "Compte utilisateur bénéficiant des privilèges maximaux d'administration du système.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Le super-utilisateur ayant toutes les clés de la maison.",
+    "exemple": "Exécuter l'installation en tant qu'administrateur pour modifier le système."
+  },
+  {
+    "mot": "Compte utilisateur",
+    "definition": "Profil nominatif regroupant des données et des droits d'accès sur le système.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Un espace personnel protégé par mot de passe.",
+    "exemple": "Chaque membre de la famille possède son propre compte utilisateur sur l'ordinateur."
+  },
+  {
+    "mot": "Erreur système",
+    "definition": "Dysfonctionnement critique survenant au cœur du système d'exploitation.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Un blocage majeur du moteur du système.",
+    "exemple": "Un écran bleu de la mort (BSOD) signale une erreur système grave sous Windows."
+  },
+  {
+    "mot": "Redémarrage",
+    "definition": "Réinitialisation matérielle ou logicielle interrompant et relançant le système.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Éteindre et rallumer pour repartir sur des bases propres.",
+    "exemple": "Le système demande un redémarrage pour finaliser l'installation des mises à jour."
+  },
+  {
+    "mot": "Machine virtuelle",
+    "definition": "Environnement logiciel simulant un ordinateur complet au-dessus du système hôte.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Un système d'exploitation complet qui tourne dans une fenêtre de votre PC.",
+    "exemple": "VirtualBox permet de faire tourner un système Linux dans une machine virtuelle sous Windows."
+  },
+  {
+    "mot": "Permissions",
+    "definition": "Droits attribués aux comptes pour lire, écrire ou exécuter un fichier.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Les droits d'accès associés à chaque document.",
+    "exemple": "La commande 'chmod 755' ajuste les permissions d'un fichier sous Linux."
+  },
+  {
+    "mot": "Virtualisation",
+    "definition": "Technologie permettant d'exécuter plusieurs systèmes virtuels isolés sur une seule machine physique.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Découper un gros serveur physique en plusieurs serveurs virtuels indépendants.",
+    "exemple": "La virtualisation optimise le rendement des serveurs en entreprise."
+  },
+  {
+    "mot": "Noyau",
+    "definition": "Composant central du système d'exploitation gérant les échanges entre matériel et logiciel.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "Le cœur du système qui attribue le processeur et la mémoire.",
+    "exemple": "Le noyau Linux gère directement les interruptions matérielles."
+  },
+  {
+    "mot": "Système de fichiers",
+    "definition": "Structure d'organisation décrivant comment les données sont enregistrées et nommées sur un disque.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "La méthode de classement des dossiers sur la partition.",
+    "exemple": "NTFS est le système de fichiers principal de Windows et EXT4 celui de Linux."
+  },
+  {
+    "mot": "Ordonnanceur",
+    "definition": "Composant du noyau répartissant le temps d'exécution processeur entre les différents processus.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "Le chef de gare qui distribue les accès au processeur microseconde par microseconde.",
+    "exemple": "L'ordonnanceur donne la priorité aux applications interactives à l'écran."
+  },
+  {
+    "mot": "Partition",
+    "definition": "Division logique d'un disque dur physique traitée comme un disque indépendant par le système.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Monter une cloison dans un grand garage pour en faire deux pièces.",
+    "exemple": "Séparer son disque en une partition Système (C:) et une partition Données (D:)."
+  },
+  {
+    "mot": "Mémoire virtuelle",
+    "definition": "Espace du disque dur utilisé par le système pour simuler un supplément de mémoire RAM.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Un tiroir de secours sur le disque dur quand la RAM est pleine.",
+    "exemple": "Le fichier 'pagefile.sys' gère la mémoire virtuelle sous Windows."
+  },
+  {
+    "mot": "Appel système",
+    "definition": "Mécanisme permettant à un programme de solliciter un service auprès du noyau du système.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "Toquer à la porte du noyau pour lui demander d'écrire un fichier sur le disque.",
+    "exemple": "L'appel système 'open()' demande au noyau l'accès à un fichier."
+  },
+  {
+    "mot": "Verrouillage",
+    "definition": "Mécanisme de synchronisation évitant les accès simultanés conflictuels à une même ressource.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "Mettre un panneau 'Occupé' sur une ressource pour éviter les télécollisions.",
+    "exemple": "Un mutex est un verrou utilisé en programmation système."
+  },
+  {
+    "mot": "Mise en veille",
+    "definition": "État d'économie d'énergie conservant l'état du système en mémoire RAM à faible consommation.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Mettre la machine en sommeil léger pour une reprise instantanée.",
+    "exemple": "Fermer le capot de l'ordinateur portable le bascule en mise en veille."
+  },
+  {
+    "mot": "Secteur d'amorçage",
+    "definition": "Zone réservée d'un disque contenant le code d'initialisation du chargement du système.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "La toute première impulsion qui démarre le système d'exploitation.",
+    "exemple": "Le secteur d'amorçage MBR ou la partition EFI est lu dès l'allumage du PC."
+  },
+  {
+    "mot": "Gestionnaire de tâches",
+    "definition": "Outil système fournissant des informations sur les processus actifs et la consommation de ressources.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Le tableau de bord de surveillance des programmes en cours.",
+    "exemple": "Ouvrir le gestionnaire de tâches pour forcer la fermeture d'un programme bloqué."
+  },
+  {
+    "mot": "Variable d'environnement",
+    "definition": "Valeur dynamique configurée au niveau du système et accessible aux processus.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Des variables globales lues par tous les programmes de la machine.",
+    "exemple": "La variable d'environnement 'PATH' indique au système où trouver les exécutables."
+  },
+  {
+    "mot": "Daemon",
+    "definition": "Processus s'exécutant en arrière-plan sans intervention directe de l'utilisateur.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Un programme fantôme silencieux qui rend des services en coulisses.",
+    "exemple": "Un serveur d'impression fonctionne sous forme de daemon sous Linux."
+  },
+  {
+    "mot": "Espace utilisateur",
+    "definition": "Zone de la mémoire système réservée à l'exécution des applications standard sans privilèges directs du noyau.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "La pièce réservée aux invités pour protéger la machinerie centrale.",
+    "exemple": "Les navigateurs et les jeux s'exécutent dans l'espace utilisateur pour plus de sécurité."
+  },
+  {
+    "mot": "Espace noyau",
+    "definition": "Zone mémoire strictement protégée réservée à l'exécution des fonctions du noyau.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "La salle des machines hautement sécurisée.",
+    "exemple": "Les pilotes de carte mère tournent au cœur de l'espace noyau."
+  },
+  {
+    "mot": "Interruption",
+    "definition": "Signal envoyé au processeur par un composant pour solliciter un traitement immédiat.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "Taper sur l'épaule du processeur pour lui signaler un événement urgent.",
+    "exemple": "Un clic de souris génère une interruption matérielle pour déplacer le pointeur."
+  },
+  {
+    "mot": "Journalisation",
+    "definition": "Enregistrement chronologique des événements survenus au sein du système.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Tenir le journal de bord quotidien du système.",
+    "exemple": "Consulter les fichiers journaux (logs) pour comprendre la cause d'un plantage."
+  },
+  {
+    "mot": "Registre Windows",
+    "definition": "Base de données centrale contenant la configuration système et logicielle sous Windows.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Le grand livre de réglages internes de Windows.",
+    "exemple": "Modifier une clé dans le registre Windows pour ajuster un paramètre système."
+  },
+  {
+    "mot": "Distribution Linux",
+    "definition": "Ensemble comprenant le noyau Linux, des utilitaires système et des logiciels applicatifs.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Débutant",
+    "explication": "Une version clé en main de Linux personnalisée pour un usage précis.",
+    "exemple": "Ubuntu est une distribution Linux idéale pour les débutants."
+  },
+  {
+    "mot": "BIOS",
+    "definition": "Programme de base ancré dans la carte mère pour amorcer le matériel au démarrage.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Le tout premier programme qui réveille les composants physiques.",
+    "exemple": "Accéder au BIOS pour modifier l'ordre de démarrage des disques."
+  },
+  {
+    "mot": "UEFI",
+    "definition": "Interface moderne remplaçant le BIOS traditionnel avec une meilleure prise en charge des grands disques et de la sécurité.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "Le successeur graphique et sécurisé du BIOS classique.",
+    "exemple": "L'UEFI intègre le démarrage sécurisé Secure Boot."
+  },
+  {
+    "mot": "Chroot",
+    "definition": "Commande Linux isolant un processus en changeant son répertoire racine virtuel.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Avancé",
+    "explication": "Confiner un programme dans une sous-pièce dont il ne peut plus sortir.",
+    "exemple": "Utiliser un environnement chroot pour réparer un système endommagé."
+  },
+  {
+    "mot": "Swap",
+    "definition": "Espace ou fichier dédié à la mémoire virtuelle sur les systèmes Linux.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "La partition de délestage de la mémoire RAM sous Linux.",
+    "exemple": "Le système déplace les données peu utilisées dans le swap quand la RAM frôle la saturation."
+  },
+  {
+    "mot": "Shell",
+    "definition": "Interprète de commandes servant d'interface entre l'utilisateur et le système d'exploitation.",
+    "domaine": "Système d'exploitation",
+    "niveau": "Intermédiaire",
+    "explication": "L'enveloppe texte qui traduit vos commandes au noyau.",
+    "exemple": "Bash et Zsh sont des shells emblématiques de Linux et macOS."
+  },
+  {
+    "mot": "Processeur",
+    "definition": "Circuit électronique exécutant les instructions des programmes informatiques.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Le cerveau principal de l'ordinateur qui effectue tous les calculs.",
+    "exemple": "Un processeur Intel Core i7 ou AMD Ryzen."
+  },
+  {
+    "mot": "Mémoire vive",
+    "definition": "Mémoire volatile à accès rapide stockant temporairement les données en cours d'utilisation.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La table de travail de l'ordinateur : plus elle est grande, plus on étale de dossiers en même temps.",
+    "exemple": "Ajouter des barrettes de RAM pour accélérer le fonctionnement de sa machine."
+  },
+  {
+    "mot": "Disque dur",
+    "definition": "Support de stockage magnétique conservant les données de façon permanente.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Le meuble de rangement mécanique à disques tournants.",
+    "exemple": "Un disque dur de 2 Téraoctets pour stocker ses archives vidéo."
+  },
+  {
+    "mot": "SSD",
+    "definition": "Support de stockage électronique à mémoire flash très rapide sans mécanique.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Une grosse clé USB interne ultra-rapide en remplacement du disque dur.",
+    "exemple": "Installer son système d'exploitation sur un SSD divise le temps de démarrage par dix."
+  },
+  {
+    "mot": "Carte mère",
+    "definition": "Circuit imprimé principal interconnectant tous les composants électroniques de l'ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La colonne vertébrale sur laquelle se branchent la RAM, le processeur et les cartes.",
+    "exemple": "La carte mère regroupe les puces réseau, audio et les bus de données."
+  },
+  {
+    "mot": "Carte graphique",
+    "definition": "Composant spécialisé dans le calcul et le rendu des images et signaux vidéo.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Le moteur de rendu visuel pour l'affichage écran et la 3D.",
+    "exemple": "Une carte graphique dédiée est indispensable pour jouer aux jeux 3D récents."
+  },
+  {
+    "mot": "Périphérique",
+    "definition": "Dispositif externe relié à l'unité centrale pour saisir ou restituer des informations.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Tout appareil raccordé autour de la tour de l'ordinateur.",
+    "exemple": "L'imprimante et le clavier sont des périphériques."
+  },
+  {
+    "mot": "Clavier",
+    "definition": "Périphérique de saisie comportant des touches pour entrer du texte et des commandes.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La machine à écrire moderne connectée à l'ordinateur.",
+    "exemple": "Un clavier mécanique AZERTY pour la saisie."
+  },
+  {
+    "mot": "Souris",
+    "definition": "Périphérique de pointage manuel pour interagir avec les éléments graphiques de l'écran.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Le pointeur physique guidé à la main.",
+    "exemple": "Cliquer sur un bouton grâce à la souris."
+  },
+  {
+    "mot": "Écran",
+    "definition": "Périphérique d'affichage restituant visuellement le signal envoyé par la carte graphique.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La fenêtre visuelle de l'ordinateur.",
+    "exemple": "Un écran 4K de 27 pouces pour le graphisme."
+  },
+  {
+    "mot": "Imprimante",
+    "definition": "Périphérique de sortie transposant des documents numériques sur du papier.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "L'appareil qui sort vos fichiers sur papier.",
+    "exemple": "Une imprimante multifonction à jet d'encre."
+  },
+  {
+    "mot": "Scanner",
+    "definition": "Périphérique de numérisation convertissant un document papier en fichier numérique.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La photocopieuse qui envoie directement l'image dans l'ordinateur.",
+    "exemple": "Scanner un contrat papier pour l'envoyer par email."
+  },
+  {
+    "mot": "Webcam",
+    "definition": "Caméra vidéo conçue pour capter des flux visuels transmis via l'ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La petite caméra vidéo dédiée aux visioconférences.",
+    "exemple": "Activer la webcam lors d'une réunion à distance."
+  },
+  {
+    "mot": "Microphone",
+    "definition": "Périphérique d'entrée convertissant les ondes sonores en signal électrique numérique.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Le capteur de voix de l'ordinateur.",
+    "exemple": "Parler dans le microphone pendant un appel."
+  },
+  {
+    "mot": "Haut-parleur",
+    "definition": "Périphérique de sortie traduisant les signaux sonores numériques en ondes acoustiques.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "L'enceinte audio qui restitue le son du PC.",
+    "exemple": "Monter le volume des haut-parleurs pour écouter de la musique."
+  },
+  {
+    "mot": "USB",
+    "definition": "Norme de bus série servant à connecter des périphériques et échanger des données ou de l'énergie.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La prise universelle de branchage des appareils externes.",
+    "exemple": "Un port USB-C charge le téléphone et transfère les données à haute vitesse."
+  },
+  {
+    "mot": "Alimentation",
+    "definition": "Bloc électrique convertissant le courant du secteur en tensions continues adaptées aux composants du PC.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Le transformateur électrique interne de la machine.",
+    "exemple": "Une alimentation de 650 Watts certifiée 80 Plus."
+  },
+  {
+    "mot": "Refroidisseur",
+    "definition": "Dispositif thermique évacuant la chaleur dégagée par les composants électroniques.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "Le radiateur et le ventilateur collés sur le processeur pour éviter la surchauffe.",
+    "exemple": "Un refroidisseur liquide (Watercooling) garde le processeur à basse température."
+  },
+  {
+    "mot": "Socket",
+    "definition": "Connecteur physique fixé sur la carte mère pour recevoir le processeur.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "L'emplacement d'accueil spécifique du processeur.",
+    "exemple": "Le processeur doit correspondre au socket de la carte mère pour pouvoir être installé."
+  },
+  {
+    "mot": "Bus",
+    "definition": "Ensemble de lignes de communication acheminant les signaux électroniques entre composants.",
+    "domaine": "Matériel",
+    "niveau": "Avancé",
+    "explication": "L'autoroute de cuivre qui relie le processeur à la mémoire RAM.",
+    "exemple": "Le bus PCIe permet des échanges de données ultra-rapides avec la carte graphique."
+  },
+  {
+    "mot": "Chipset",
+    "definition": "Jeu de puces électroniques sur la carte mère gérant les flux de données entre les éléments du PC.",
+    "domaine": "Matériel",
+    "niveau": "Avancé",
+    "explication": "L'assistant principal de la carte mère qui oriente la circulation interne.",
+    "exemple": "Le chipset détermine les fonctionnalités et la vitesse des ports USB et PCIe."
+  },
+  {
+    "mot": "Onduleur",
+    "definition": "Dispositif protégeant les équipements contre les micro-coupures et surtensions grâce à une batterie intégrée.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "La batterie de secours qui garde l'ordinateur allumé en cas de coupure de courant.",
+    "exemple": "L'onduleur donne le temps d'enregistrer ses fichiers lors d'une panne de secteur."
+  },
+  {
+    "mot": "NPU",
+    "definition": "Processeur spécialisé accélérant l'exécution des algorithmes de réseaux de neurones.",
+    "domaine": "Matériel",
+    "niveau": "Avancé",
+    "explication": "Une puce matérielle conçue sur mesure pour traiter les tâches d'intelligence artificielle.",
+    "exemple": "Les processeurs récents intègrent un NPU pour accélérer le traitement d'IA en local."
+  },
+  {
+    "mot": "Carte réseau",
+    "definition": "Composant physique permettant à un ordinateur de se brancher à un réseau filaire ou Wi-Fi.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La prise ou l'antenne qui connecte la machine au réseau.",
+    "exemple": "Une carte réseau Ethernet Gigabit intégrée."
+  },
+  {
+    "mot": "Barette de mémoire",
+    "definition": "Module physique regroupant des puces de mémoire RAM.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La plaquette électronique qu'on clipse sur la carte mère.",
+    "exemple": "Installer deux barrettes de 8 Go pour atteindre 16 Go de RAM."
+  },
+  {
+    "mot": "Port HDMI",
+    "definition": "Connecteur numérique transportant simultanément le signal vidéo haute définition et le son.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Le câble standard pour relier un écran ou un téléviseur.",
+    "exemple": "Relier son ordinateur à la télévision via un câble HDMI."
+  },
+  {
+    "mot": "Boîtier",
+    "definition": "Châssis métallique ou plastique renfermant et protégeant les composants internes d'un PC.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La tour physique qui contient l'ensemble des éléments.",
+    "exemple": "Un boîtier bien ventilé limite la poussière et la chaleur."
+  },
+  {
+    "mot": "Pâte thermique",
+    "definition": "Substance conductrice appliquée entre le processeur et son radiateur pour optimiser le transfert de chaleur.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "La graisse spéciale qui comble les minuscules défauts d'air entre le processeur et le ventilateur.",
+    "exemple": "Changer la pâte thermique pour réduire la température de son PC."
+  },
+  {
+    "mot": "Docking Station",
+    "definition": "Station d'accueil étendant la connectique d'un ordinateur portable au moyen d'un câble unique.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Un boîtier de regroupement pour brancher facilement plusieurs écrans et claviers sur son portable.",
+    "exemple": "Brancher son portable à la docking station du bureau pour tout connecter d'un coup."
+  },
+  {
+    "mot": "NVMe",
+    "definition": "Protocole de communication optimisé pour l'accès aux SSD connectés directement sur le bus PCIe.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "La norme de communication ultra-rapide des disques SSD modernes.",
+    "exemple": "Un SSD NVMe atteint des débits de plus de 5000 Mo/s."
+  },
+  {
+    "mot": "RAID",
+    "definition": "Technologie associant plusieurs disques durs physiques pour améliorer les performances ou la sécurité des données.",
+    "domaine": "Matériel",
+    "niveau": "Avancé",
+    "explication": "Cloner ou découper ses données sur plusieurs disques pour parer à la panne matérielle.",
+    "exemple": "Un tableau RAID 1 écrit la même donnée sur deux disques miroirs."
+  },
+  {
+    "mot": "KVM",
+    "definition": "Commutateur matériel permettant de contrôler plusieurs ordinateurs avec un seul ensemble écran-clavier-souris.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "Un boîtier pour passer d'un PC à un autre avec le même écran.",
+    "exemple": "Le technicien utilise un KVM pour piloter les serveurs de la baie informatique."
+  },
+  {
+    "mot": "Clé USB",
+    "definition": "Petit support de stockage amovible à mémoire flash.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La petite cartouche amovible pour transporter ses fichiers dans sa poche.",
+    "exemple": "Copier une présentation sur une clé USB."
+  },
+  {
+    "mot": "GPU",
+    "definition": "Processeur de calcul ultra-parallèle spécialisé pour les traitements graphiques et matriciels.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "Le cœur de calcul dédié aux images et aux opérations scientifiques lourdes.",
+    "exemple": "L'entraînement des modèles d'IA s'effectue sur des GPU très puissants."
+  },
+  {
+    "mot": "Carte son",
+    "definition": "Composant traitant les signaux audio en entrée et sortie de l'ordinateur.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "La puce qui transforme le fichier informatique en musique dans le casque.",
+    "exemple": "Une carte son externe garantit un enregistrement audio sans bruit de fond."
+  },
+  {
+    "mot": "Lecteur optique",
+    "definition": "Dispositif de lecture et gravure de disques laser (CD, DVD, Blu-Ray).",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Le tiroir pour insérer des disques physiques.",
+    "exemple": "Les ordinateurs récents comportent de moins en moins de lecteur optique."
+  },
+  {
+    "mot": "Overclocking",
+    "definition": "Augmentation de la fréquence d'horloge d'un composant au-delà de ses spécifications d'usine.",
+    "domaine": "Matériel",
+    "niveau": "Avancé",
+    "explication": "Pousser le moteur au-delà de sa limite d'origine pour gagner en puissance.",
+    "exemple": "L'overclocking exige un système de refroidissement de haute performance."
+  },
+  {
+    "mot": "DisplayPort",
+    "definition": "Interface de connexion vidéo numérique haute performance conçue pour les moniteurs.",
+    "domaine": "Matériel",
+    "niveau": "Débutant",
+    "explication": "Une prise d'affichage alternative au port HDMI très appréciée des graphistes.",
+    "exemple": "Relier son moniteur de jeu via DisplayPort pour profiter d'un rafraîchissement élevé."
+  },
+  {
+    "mot": "Form factor",
+    "definition": "Spécification normalisée définissant les dimensions et la forme d'un composant informatique.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "Le format physique standardisé des pièces.",
+    "exemple": "ATX et Micro-ATX sont des formats de carte mère."
+  },
+  {
+    "mot": "Thermal Throttling",
+    "definition": "Réduction automatique de la vitesse du processeur pour prévenir une surchauffe destructrice.",
+    "domaine": "Matériel",
+    "niveau": "Avancé",
+    "explication": "Le processeur lève le pied automatiquement pour éviter de fondre sous la chaleur.",
+    "exemple": "Si le ventilateur est encrassé, le thermal throttling ralentit le PC."
+  },
+  {
+    "mot": "Fréquence d'horloge",
+    "definition": "Vitesse à laquelle un composant électronique exécute ses cycles d'instructions.",
+    "domaine": "Matériel",
+    "niveau": "Intermédiaire",
+    "explication": "Le rythme des battements de cœur du processeur, mesuré en GigaHertz.",
+    "exemple": "Un processeur cadencé à une fréquence d'horloge de 4,2 GHz."
+  },
+  {
+    "mot": "Cloud",
+    "definition": "Délivrance de services informatiques (serveurs, stockage, bases de données) via Internet.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Débutant",
+    "explication": "Accéder à des ordinateurs et serveurs à distance sans les posséder chez soi.",
+    "exemple": "Sauvegarder ses photos sur le Cloud d'un grand fournisseur."
+  },
+  {
+    "mot": "Conteneur",
+    "definition": "Unité logicielle autonome embarquant une application et ses dépendances.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Un conteneur de fret étanche contenant tout ce dont le logiciel a besoin pour fonctionner.",
+    "exemple": "Un conteneur tourne de la même façon sur le PC d'un développeur et sur les serveurs de production."
+  },
+  {
+    "mot": "Docker",
+    "definition": "Plateforme libre permettant de créer, déployer et exécuter des conteneurs applicatifs.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "L'outil de référence pour empaqueter et faire tourner des conteneurs.",
+    "exemple": "Utiliser un fichier Dockerfile pour construire l'image de son application."
+  },
+  {
+    "mot": "Kubernetes",
+    "definition": "Système open source d'orchestration pour automatiser le déploiement et la gestion de conteneurs.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Le capitaine de navire qui supervise et gère des milliers de conteneurs.",
+    "exemple": "Kubernetes relance automatiquement un conteneur en cas de plantage."
+  },
+  {
+    "mot": "DevOps",
+    "definition": "Culture et ensemble de pratiques réunissant développement (Dev) et exploitation système (Ops).",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Faire travailler main dans la main ceux qui créent le logiciel et ceux qui le maintiennent.",
+    "exemple": "L'approche DevOps accélère la livraison des mises à jour applicatives."
+  },
+  {
+    "mot": "CI/CD",
+    "definition": "Pipeline d'Intégration Continue et de Déploiement Continu automatisant les tests et la livraison.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "L'usine automatisée qui teste, prépare et déploie le code au moindre changement.",
+    "exemple": "Chaque mise à jour sur Git déclenche un pipeline CI/CD pour vérifier et mettre en ligne le site."
+  },
+  {
+    "mot": "IaaS",
+    "definition": "Infrastructure as a Service : fourniture d'infrastructures informatiques brutes virtuelles dans le Cloud.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Louer des serveurs et du réseau bruts à la demande.",
+    "exemple": "Amazon EC2 est une offre cloud de type IaaS."
+  },
+  {
+    "mot": "PaaS",
+    "definition": "Platform as a Service : mise à disposition d'un environnement prêt à accueillir des applications sans gestion du système.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Déposer simplement son code, le cloud s'occupe de gérer les serveurs et le système d'exploitation.",
+    "exemple": "Heroku et Google App Engine sont des offres PaaS."
+  },
+  {
+    "mot": "SaaS",
+    "definition": "Software as a Service : modèle de distribution où les applications sont consommées directement en ligne.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Débutant",
+    "explication": "Utiliser directement un logiciel via un navigateur web sans rien installer.",
+    "exemple": "Microsoft 365 et Google Workspace fonctionnent en SaaS."
+  },
+  {
+    "mot": "Infrastructure as Code",
+    "definition": "Gestion et approvisionnement de l'infrastructure informatique au moyen de fichiers de configuration.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Écrire un texte descriptif pour commander la création automatique de 10 serveurs.",
+    "exemple": "Terraform est un outil populaire d'Infrastructure as Code."
+  },
+  {
+    "mot": "Serverless",
+    "definition": "Modèle d'exécution cloud où le fournisseur gère dynamiquement l'allocation des ressources à la requête.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Ne payer que pour les millisecondes durant lesquelles votre code s'exécute.",
+    "exemple": "AWS Lambda est un service de calcul Serverless."
+  },
+  {
+    "mot": "Microservices",
+    "definition": "Architecture logicielle découpant une application en un ensemble de services indépendants.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Remplacer un gros logiciel monolithique par une équipe de mini-services autonomes.",
+    "exemple": "Séparer le service de paiement du service de catalogue dans un site de vente."
+  },
+  {
+    "mot": "Ansible",
+    "definition": "Outil d'automatisation servant à la configuration système et au déploiement d'applications.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Une télécommande universelle pour configurer automatiquement un parc de serveurs.",
+    "exemple": "Lancer un playbook Ansible pour installer la même sécurité sur 50 machines."
+  },
+  {
+    "mot": "Terraform",
+    "definition": "Outil open source permettant de définir et construire des infrastructures multi-cloud par du code.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "L'outil universel de création automatique d'environnements cloud par scripts.",
+    "exemple": "Déployer une base de données et deux serveurs web en lançant la commande 'terraform apply'."
+  },
+  {
+    "mot": "Prometheus",
+    "definition": "Système de surveillance et d'alerte open source adapté aux environnements cloud.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Le thermomètre global de vos serveurs pour mesurer leur état de santé.",
+    "exemple": "Prometheus remonte une alerte dès qu'un serveur dépasse 90% d'utilisation mémoire."
+  },
+  {
+    "mot": "Grafana",
+    "definition": "Outil de visualisation graphique permettant de créer des tableaux de bord de métriques.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "L'écran d'affichage regroupant tous les beaux graphiques de vos serveurs.",
+    "exemple": "Consulter un tableau de bord Grafana pour suivre la charge réseau en direct."
+  },
+  {
+    "mot": "Auto Scaling",
+    "definition": "Capacité à ajuster automatiquement le nombre de ressources cloud selon la charge de trafic.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Ajouter des serveurs lors d'un pic de fréquentation et les éteindre la nuit.",
+    "exemple": "L'Auto Scaling ajoute deux serveurs durant le premier jour des soldes."
+  },
+  {
+    "mot": "Cloud Hybride",
+    "definition": "Environnement combinant des infrastructures cloud privées sur site et des services cloud publics.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Garder ses données ultra-sensibles chez soi tout en profitant du cloud public pour la puissance.",
+    "exemple": "Une entreprise financière opte pour une stratégie de cloud hybride."
+  },
+  {
+    "mot": "Cloud Privé",
+    "definition": "Infrastructure cloud dédiée exclusivement à une seule organisation.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Un cloud sur mesure installé dans son propre centre de données.",
+    "exemple": "Construire un cloud privé au sein de son entreprise pour un contrôle total."
+  },
+  {
+    "mot": "Cloud Public",
+    "definition": "Services cloud mutualisés hébergés par un prestataire tiers et ouverts au public.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Débutant",
+    "explication": "Louer des machines sur un grand parc partagé mondial.",
+    "exemple": "AWS, Google Cloud et Azure proposent des plateformes de cloud public."
+  },
+  {
+    "mot": "Registre de conteneurs",
+    "definition": "Dépôt centralisé hébergeant et distribuant des images de conteneurs.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Le magasin central où l'on télécharge et dépose ses modèles de conteneurs.",
+    "exemple": "Docker Hub est un registre de conteneurs très utilisé."
+  },
+  {
+    "mot": "Helm",
+    "definition": "Gestionnaire de paquets dédié à Kubernetes facilitant la définition et le déploiement d'applications.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "L'installateur d'applications de Kubernetes.",
+    "exemple": "Installer une pile applicative complète sur Kubernetes avec 'helm install'."
+  },
+  {
+    "mot": "Observabilité",
+    "definition": "Capacité à mesurer l'état interne d'un système à partir de ses données externes (logs, métriques, traces).",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Comprendre les entrailles d'un système complexe en recoupant ses indices de fonctionnement.",
+    "exemple": "Une bonne observabilité permet d'isoler rapidement une panne réseau."
+  },
+  {
+    "mot": "Blue-Green Deployment",
+    "definition": "Technique de mise en ligne réduisant les risques en faisant basculer le trafic d'un environnement 'Bleu' vers un 'Vert'.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Préparer la nouvelle version à côté sans gêner personne, puis tourner l'aiguillage en une seconde.",
+    "exemple": "La méthode Blue-Green élimine les interruptions de service pendant les mises à jour."
+  },
+  {
+    "mot": "Service Mesh",
+    "definition": "Couche d'infrastructure dédiée à la gestion des communications de service à service dans une architecture microservices.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Le réseau de circulation interne gérant les échanges entre vos microservices.",
+    "exemple": "Istio est un Service Mesh populaire pour Kubernetes."
+  },
+  {
+    "mot": "FinOps",
+    "definition": "Pratique de gestion financière visant à optimiser les coûts liés à l'usage des services Cloud.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "La maîtrise des dépenses de location cloud pour éviter les mauvaises surprises.",
+    "exemple": "L'expert FinOps repère et éteint les serveurs cloud de test inutilisés."
+  },
+  {
+    "mot": "GitOps",
+    "definition": "Modèle opérationnel où les dépôts Git constituent la source unique de vérité pour la gestion d'infrastructure.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Piloter tout le cloud uniquement en effectuant des modifications sur Git.",
+    "exemple": "Valider une modification de code sur Git déploie automatiquement l'infrastructure."
+  },
+  {
+    "mot": "Canary Deployment",
+    "definition": "Déploiement progressif d'une nouvelle version auprès d'un petit pourcentage d'utilisateurs.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Tester la nouvelle version sur un échantillon réduit avant de l'ouvrir à tout le monde.",
+    "exemple": "Déployer la mise à jour auprès de 5% des usagers pour contrôler la stabilité."
+  },
+  {
+    "mot": "Load Balancer",
+    "definition": "Équipement ou service qui répartit la charge du trafic entrant sur un groupe de serveurs.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "L'aiguilleur à l'entrée qui répartit équitablement les visiteurs sur les serveurs disponibles.",
+    "exemple": "Un répartiteur de charge évite qu'un serveur unique ne soit débordé."
+  },
+  {
+    "mot": "Bascule automatique",
+    "definition": "Mécanisme de sécurité basculant les opérations vers un système secondaire en cas de défaillance.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Prendre le relais immédiatement sur un deuxième moteur si le premier tombe en panne.",
+    "exemple": "La bascule automatique (failover) garantit une haute disponibilité."
+  },
+  {
+    "mot": "Image de conteneur",
+    "definition": "Fichier immuable contenant le code, le runtime et les bibliothèques requis pour lancer un conteneur.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Le moule à gâteau figé à partir duquel on lance un conteneur.",
+    "exemple": "Télécharger l'image officielle de la base de données PostgreSQL."
+  },
+  {
+    "mot": "SRE",
+    "definition": "Site Reliability Engineering : discipline appliquant les principes de l'ingénierie logicielle à l'exploitation système.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Avancé",
+    "explication": "Des ingénieurs logiciels dédiés à la fiabilité extrême des infrastructures.",
+    "exemple": "L'équipe SRE s'assure que le service respecte son taux de disponibilité cible."
+  },
+  {
+    "mot": "Multi-Cloud",
+    "definition": "Stratégie consistant à utiliser les services de plusieurs fournisseurs cloud concurrents.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Ne pas mettre tous ses œufs dans le même panier en répartissant ses données chez plusieurs hébergeurs.",
+    "exemple": "Utiliser AWS pour le stockage et Google Cloud pour le traitement d'IA."
+  },
+  {
+    "mot": "Pipeline",
+    "definition": "Ensemble d'étapes enchaînées automatiquement pour compiler, tester et déployer une application.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "Le tapis roulant automatisé de fabrication logicielle.",
+    "exemple": "Le pipeline s'arrête immédiatement si un test unitaire échoue."
+  },
+  {
+    "mot": "SLA",
+    "definition": "Service Level Agreement : engagement contractuel définissant le niveau de service garanti.",
+    "domaine": "Cloud & DevOps",
+    "niveau": "Intermédiaire",
+    "explication": "La promesse signée du taux de bon fonctionnement annuel de votre hébergeur.",
+    "exemple": "Un SLA garantissant une disponibilité de 99,99% des serveurs."
+  },
+  {
+    "mot": "Intelligence artificielle",
+    "definition": "Domaine de l'informatique visant à concevoir des systèmes capables de simuler des compétences humaines.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "Créer des machines capables de raisonner, apprendre et résoudre des problèmes.",
+    "exemple": "L'IA permet aux voitures autonomes de reconnaître les panneaux."
+  },
+  {
+    "mot": "Apprentissage automatique",
+    "definition": "Sous-domaine de l'IA donnant aux machines la capacité d'apprendre à partir de données.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "Entraîner un ordinateur à repérer des tendances plutôt que de lui programmer des règles fixes.",
+    "exemple": "L'apprentissage automatique (Machine Learning) permet de filtrer les emails indésirables."
+  },
+  {
+    "mot": "Apprentissage profond",
+    "definition": "Méthode d'apprentissage s'appuyant sur des réseaux de neurones artificiels à multiples couches.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Une forme d'IA inspirée de l'organisation complexe du cerveau humain.",
+    "exemple": "Le Deep Learning excelle dans la reconnaissance faciale."
+  },
+  {
+    "mot": "Réseau de neurones",
+    "definition": "Modèle de calcul composé de nœuds interconnectés organisés en couches successives.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Des calques informatiques interconnectés qui traitent les informations par niveaux.",
+    "exemple": "Un réseau de neurones artificiels analyse une photo pixel par pixel."
+  },
+  {
+    "mot": "Grand modèle de langage",
+    "definition": "Modèle d'IA entraîné sur un volume massif de données textuelles pour comprendre et générer du langage.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Un modèle géant capable de rédiger et dialoguer naturellement.",
+    "exemple": "Un LLM peut résumer un livre ou écrire du code informatique."
+  },
+  {
+    "mot": "Prompt",
+    "definition": "Instruction ou texte d'entrée fourni à un modèle d'IA pour guider sa réponse.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "La consigne rédigée que vous donnez à l'IA.",
+    "exemple": "Formuler un prompt clair pour obtenir un résumé d'article."
+  },
+  {
+    "mot": "Transformer",
+    "definition": "Architecture de réseau de neurones basée sur des mécanismes d'attention, fondamentale pour les LLM.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "La structure logicielle moderne qui a révolutionné la compréhension du texte par l'IA.",
+    "exemple": "L'architecture Transformer est au cœur des modèles de langage récents."
+  },
+  {
+    "mot": "Overfitting",
+    "definition": "Surapprentissage où un modèle apprend par cœur les données d'entraînement au détriment de la généralisation.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Apprendre un livre par cœur sans en comprendre le sens, échouant dès que la question varie.",
+    "exemple": "L'overfitting fait chuter les performances de l'IA sur de nouvelles images."
+  },
+  {
+    "mot": "Vision par ordinateur",
+    "definition": "Domaine de l'IA permettant aux machines d'analyser, traiter et comprendre des images et vidéos.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Donner des yeux et un cerveau à l'ordinateur pour décoder le monde visuel.",
+    "exemple": "La vision par ordinateur identifie les anomalies sur des radiographies médicales."
+  },
+  {
+    "mot": "Traitement du langage naturel",
+    "definition": "Discipline de l'IA axée sur l'interaction entre les ordinateurs et le langage humain.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Apprendre à l'ordinateur à lire, comprendre et parler nos langues.",
+    "exemple": "La traduction automatique repose sur le NLP."
+  },
+  {
+    "mot": "Fine-tuning",
+    "definition": "Ajustement d'un modèle préentraîné sur un jeu de données spécifique pour une tâche précise.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Spécialiser un étudiant généraliste dans un domaine précis.",
+    "exemple": "Le fine-tuning adapte un modèle de texte au jargon juridique."
+  },
+  {
+    "mot": "Hallucination",
+    "definition": "Comportement où un modèle d'IA génère des informations factuellement fausses avec assurance.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "Quand l'IA invente une réponse inexacte en lui donnant l'air vraie.",
+    "exemple": "Le modèle a fait une hallucination en citant une date historique erronée."
+  },
+  {
+    "mot": "IA Générative",
+    "definition": "Type d'IA capable de produire du contenu inédit (texte, image, son, vidéo).",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "L'IA qui crée de nouveaux contenus originaux.",
+    "exemple": "Générer une illustration inédite à partir d'une description textuelle."
+  },
+  {
+    "mot": "Apprentissage supervisé",
+    "definition": "Entraînement d'un modèle à partir de données étiquetées comprenant les réponses attendues.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Apprendre avec un professeur qui vous fournit les exercices et leur corrigé.",
+    "exemple": "Fournir des milliers de photos marquées 'chat' ou 'chien' pour entraîner le système."
+  },
+  {
+    "mot": "Apprentissage non supervisé",
+    "definition": "Entraînement d'un modèle sur des données non étiquetées pour y découvrir des structures cachées.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Laisser la machine regrouper elle-même les objets par ressemblance sans aide.",
+    "exemple": "Rapprocher automatiquement des profils de clients aux comportements d'achat similaires."
+  },
+  {
+    "mot": "Apprentissage par renforcement",
+    "definition": "Entraînement d'un agent interagissant avec un environnement au moyen de récompenses et de pénalités.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Dresser un modèle par système de bonnes et mauvaises notes.",
+    "exemple": "Un robot apprend à marcher en ajustant ses mouvements selon ses chutes et réussites."
+  },
+  {
+    "mot": "RAG",
+    "definition": "Génération augmentée par récupération d'informations externes combinée aux réponses d'un LLM.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Donner un livre de référence récent à l'IA avant qu'elle ne réponde à votre question.",
+    "exemple": "Utiliser le RAG pour que l'IA réponde en s'appuyant strictement sur les documents internes de l'entreprise."
+  },
+  {
+    "mot": "Inférence",
+    "definition": "Phase où un modèle entraîné applique ses connaissances pour traiter de nouvelles données.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Mettre l'IA à l'épreuve sur le terrain une fois son entraînement terminé.",
+    "exemple": "Le temps d'inférence est le délai nécessaire à l'IA pour générer sa réponse."
+  },
+  {
+    "mot": "Biais algorithmique",
+    "definition": "Erreur systématique dans les décisions d'un modèle découlant de préjugés dans les données d'apprentissage.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Un modèle qui reproduit les discriminations ou imperfections présentes dans son manuel d'apprentissage.",
+    "exemple": "Un biais algorithmique dans la sélection automatique de CV."
+  },
+  {
+    "mot": "Embedding",
+    "definition": "Représentation vectorielle de concepts ou de mots sous forme de coordonnées numériques.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Placer des mots sur une carte géographique 3D où les mots proches par le sens se touchent.",
+    "exemple": "Les mots 'roi' et 'reine' possèdent des embeddings très proches."
+  },
+  {
+    "mot": "Quantification",
+    "definition": "Technique réduisant la précision des poids d'un modèle pour en comprimer la taille.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Réduire la précision des nombres pour faire tourner l'IA sur un téléphone portable.",
+    "exemple": "Un modèle quantifié en 4-bit consomme beaucoup moins de mémoire RAM."
+  },
+  {
+    "mot": "Mécanisme d'attention",
+    "definition": "Technique permettant au réseau de concentrer ses calculs sur les parties les plus pertinentes des données.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Savoir sur quel mot se focaliser pour comprendre le sens global d'une phrase.",
+    "exemple": "L'attention permet au modèle de lier le mot 'il' au bon nom placé plus haut dans le paragraphe."
+  },
+  {
+    "mot": "Ingénierie de prompt",
+    "definition": "Art de concevoir et structurer les consignes textuelles pour maximiser la qualité des réponses d'un LLM.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "Savoir poser les questions de la manière la plus efficace pour guider l'IA.",
+    "exemple": "L'ingénierie de prompt permet d'éviter les réponses vagues."
+  },
+  {
+    "mot": "Agent autonome",
+    "definition": "Système d'IA capable d'enchaîner seul des actions pour atteindre un objectif complexe.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Une IA à qui l'on donne une mission et qui s'organise toute seule étape par étape.",
+    "exemple": "Un agent autonome peut faire une recherche web, synthétiser les données et rédiger le rapport final."
+  },
+  {
+    "mot": "Jeu de données",
+    "definition": "Collection organisée d'informations servant à entraîner ou tester des modèles d'IA.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "La bibliothèque d'exercices fournie à la machine.",
+    "exemple": "Un jeu de données contenant 100 000 images de fruits."
+  },
+  {
+    "mot": "Matrice de confusion",
+    "definition": "Outil d'évaluation mesurant la précision des prédictions d'un modèle de classification.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Un tableau récapitulatif comptabilisant les réussites et les fausses alarmes de l'IA.",
+    "exemple": "Consulter la matrice de confusion pour vérifier les faux positifs de l'IA."
+  },
+  {
+    "mot": "Hyperparamètre",
+    "definition": "Réglage de configuration défini avant le lancement du processus d'entraînement d'un modèle.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Les boutons de réglage fixés sur le tableau de bord avant de démarrer l'entraînement.",
+    "exemple": "Ajuster le taux d'apprentissage (learning rate) comme hyperparamètre."
+  },
+  {
+    "mot": "Gradient Descent",
+    "definition": "Algorithme d'optimisation minimisant les erreurs d'un modèle en ajustant progressivement ses poids.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Descendre une montagne dans le brouillard en cherchant la pente la plus raide pour atteindre le fond.",
+    "exemple": "La descente de gradient permet de régler les milliards de paramètres du modèle."
+  },
+  {
+    "mot": "MLOps",
+    "definition": "Ensemble de pratiques visant à déployer et maintenir des modèles d'apprentissage automatique en production.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Avancé",
+    "explication": "Le DevOps appliqué spécifiquement au cycle de vie des modèles d'IA.",
+    "exemple": "Le MLOps automatise le réentraînement du modèle quand les données évoluent."
+  },
+  {
+    "mot": "Modèle multimodal",
+    "definition": "Système d'IA capable de traiter et combiner simultanément plusieurs types de médias.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Une IA qui sait voir, écouter et lire simultanément.",
+    "exemple": "Un modèle multimodal peut commenter ce qu'il voit sur une image."
+  },
+  {
+    "mot": "Époch",
+    "definition": "Passage complet de l'intégralité du jeu de données d'entraînement à travers le réseau de neurones.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "Avoir relu le manuel d'apprentissage une fois en entier.",
+    "exemple": "Entraîner le réseau sur 50 épochs pour stabiliser ses résultats."
+  },
+  {
+    "mot": "IA Forte",
+    "definition": "Concept d'intelligence artificielle théorique dotée d'une conscience et d'une capacité de compréhension globale.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "Une machine ayant une intelligence identique ou supérieure à celle de l'être humain.",
+    "exemple": "L'IA forte reste pour le moment un sujet de science-fiction."
+  },
+  {
+    "mot": "IA Faible",
+    "definition": "Système d'IA conçu et entraîné pour réaliser une tâche spécifique délimitée.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "Une IA experte sur un domaine précis mais incapable de faire autre chose.",
+    "exemple": "Un programme d'échecs est une IA faible car il ne sait rien faire d'autre."
+  },
+  {
+    "mot": "Fenêtre de contexte",
+    "definition": "Capacité maximale de tokens ou de texte qu'un LLM peut traiter simultanément en entrée.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Intermédiaire",
+    "explication": "La taille de la mémoire à court terme de l'IA pendant la discussion.",
+    "exemple": "Une grande fenêtre de contexte permet d'analyser un livre entier en un seul envoi."
+  },
+  {
+    "mot": "Token",
+    "definition": "Sous-unité de texte (mot ou morceau de mot) manipulée par les modèles de langage.",
+    "domaine": "Intelligence artificielle",
+    "niveau": "Débutant",
+    "explication": "Les jetons de mots découpés que l'IA compte pour lire et écrire.",
+    "exemple": "Un mot long peut être découpé en deux ou trois tokens par le modèle."
+  },
+  {
+    "mot": "Logiciel",
+    "definition": "Ensemble des programmes et procédures nécessaires au fonctionnement d'un système informatique.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Tout ce qui est virtuel dans l'ordinateur, par opposition au matériel physique.",
+    "exemple": "Un traitement de texte est un logiciel."
+  },
+  {
+    "mot": "Octet",
+    "definition": "Unité d'information adressable composée d'une séquence de 8 bits.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Le bloc de base pour mesurer la taille d'un fichier.",
+    "exemple": "Un caractère de texte occupe généralement un octet en mémoire."
+  },
+  {
+    "mot": "Bit",
+    "definition": "Plus petite unité d'information binaire ne pouvant prendre que la valeur 0 ou 1.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "L'atome élémentaire de l'informatique : un interrupteur ouvert ou fermé.",
+    "exemple": "Un octet est constitué d'un groupe de 8 bits."
+  },
+  {
+    "mot": "Kilooctet",
+    "definition": "Unité de mesure de capacité mémoire équivalant à 1000 octets.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Un petit poids de données.",
+    "exemple": "Un fichier texte simple pèse quelques kilooctets (Ko)."
+  },
+  {
+    "mot": "Mégaoctet",
+    "definition": "Unité de mesure de capacité mémoire équivalant à 1 000 000 d'octets.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "L'unité de mesure standard des photos et chansons.",
+    "exemple": "Une chanson MP3 pèse environ 5 Mégaoctets (Mo)."
+  },
+  {
+    "mot": "Gigaoctet",
+    "definition": "Unité de mesure de capacité mémoire équivalant à 1 000 000 000 d'octets.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "L'unité courante pour mesurer la taille de la RAM et des films HD.",
+    "exemple": "Un film en haute définition occupe environ 4 Gigaoctets (Go)."
+  },
+  {
+    "mot": "Téraoctet",
+    "definition": "Unité de mesure de capacité mémoire équivalant à 1 000 000 000 000 d'octets.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "La mesure des grands disques durs d'archivage.",
+    "exemple": "Un disque dur externe de 2 Téraoctets (To)."
+  },
+  {
+    "mot": "Entrée",
+    "definition": "Donnée ou signal transmis à un système informatique en vue d'un traitement.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Ce que vous fournissez à la machine.",
+    "exemple": "La frappe d'une touche sur le clavier constitue une entrée."
+  },
+  {
+    "mot": "Sortie",
+    "definition": "Résultat produit par un système informatique à l'issue d'un traitement.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Ce que la machine vous restitue.",
+    "exemple": "L'impression d'un document est une sortie."
+  },
+  {
+    "mot": "Cache",
+    "definition": "Mémoire tampon à accès très rapide stockant temporairement des données fréquemment demandées.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Une étagère à portée de main pour éviter de retourner chercher la donnée au fond de la réserve.",
+    "exemple": "Vider le cache du système pour libérer de l'espace de stockage."
+  },
+  {
+    "mot": "Extension",
+    "definition": "Suffixe ajouté au nom d'un fichier pour en indiquer le format et le type.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "La signature de trois ou quatre lettres au bout du nom du fichier.",
+    "exemple": "Les fichiers '.pdf' s'ouvrent avec un lecteur de documents."
+  },
+  {
+    "mot": "Application",
+    "definition": "Programme informatique conçu pour aider un utilisateur à accomplir une tâche spécifique.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Un outil logiciel prêt à l'emploi.",
+    "exemple": "Une application de calculatrice ou de retouche d'image."
+  },
+  {
+    "mot": "Open source",
+    "definition": "Qualifie un logiciel dont le code source est accessible, modifiable et redistribuable librement.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Un logiciel dont la recette de fabrication est publique et partagée.",
+    "exemple": "Le logiciel VLC est un logiciel libre et open source."
+  },
+  {
+    "mot": "Licence logicielle",
+    "definition": "Contrat régissant les droits d'utilisation, de modification et de distribution d'un logiciel.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Les règles du jeu fixées par le créateur pour utiliser son programme.",
+    "exemple": "La licence GPL autorise la redistribution libre du code."
+  },
+  {
+    "mot": "Version",
+    "definition": "Numéro d'identification marquant l'état d'évolution d'un logiciel.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Le numéro de révision d'un logiciel.",
+    "exemple": "Passer à la version 2.0 pour profiter des nouvelles fonctionnalités."
+  },
+  {
+    "mot": "Sauvegarde intégrale",
+    "definition": "Copie complète de l'ensemble des données sélectionnées d'un système.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Dupliquer l'intégralité du contenu sans exception.",
+    "exemple": "Réaliser une sauvegarde intégrale avant le changement de matériel."
+  },
+  {
+    "mot": "Formatage",
+    "definition": "Action de préparer un support de stockage en y créant un système de fichiers, effaçant les données existantes.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Remettre un disque à neuf en effaçant tout son contenu.",
+    "exemple": "Le formatage d'une clé USB supprime tous les dossiers présents."
+  },
+  {
+    "mot": "Numérique",
+    "definition": "Mode de représentation des informations par des valeurs discrètes (0 et 1).",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Ce qui est traduit en valeurs mathématiques binaires.",
+    "exemple": "La photographie numérique a remplacé la pellicule argentique."
+  },
+  {
+    "mot": "Analogique",
+    "definition": "Mode de représentation des informations par des signaux physiques continus.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Un signal physique en onde continue.",
+    "exemple": "Le vinyle utilise une gravure analogique de la musique."
+  },
+  {
+    "mot": "Système d'information",
+    "definition": "Ensemble structuré de ressources humaines, matérielles et logicielles gérant l'information d'une organisation.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Tout l'écosystème numérique d'une entreprise.",
+    "exemple": "Le directeur du système d'information supervise les serveurs et le réseau."
+  },
+  {
+    "mot": "Maintenance",
+    "definition": "Ensemble des actions de contrôle, de réparation et d'optimisation d'un parc informatique.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "L'entretien régulier des machines et des applications.",
+    "exemple": "Une coupure programmée pour la maintenance des serveurs."
+  },
+  {
+    "mot": "Interface",
+    "definition": "Zone de contact et d'échange permettant l'interaction entre deux systèmes ou avec un humain.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Le point de rencontre qui permet à deux éléments de communiquer.",
+    "exemple": "L'interface utilisateur graphique permet de cliquer sur des icônes."
+  },
+  {
+    "mot": "Portabilité",
+    "definition": "Capacité d'un logiciel à s'exécuter sur différents environnements matériels ou systèmes.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "La faculté d'un programme à voyager d'une machine à une autre sans problème.",
+    "exemple": "La portabilité du langage Java lui permet de tourner sur PC et téléphone."
+  },
+  {
+    "mot": "Mise à l'échelle",
+    "definition": "Capacité d'un système à adapter sa puissance pour absorber une augmentation de charge.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Grandir sans rompre quand la demande augmente fortement.",
+    "exemple": "L'application offre une excellente mise à l'échelle pour gérer des millions d'utilisateurs."
+  },
+  {
+    "mot": "Arborescence",
+    "definition": "Organisation des données selon une structure hiérarchique en arbre (racine, branches, feuilles).",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "L'organisation des dossiers emboîtés les uns dans les autres.",
+    "exemple": "Naviguer dans l'arborescence du disque dur pour retrouver son fichier."
+  },
+  {
+    "mot": "Informatique quantique",
+    "definition": "Branche de l'informatique exploitant les propriétés de la mécanique quantique (qubits).",
+    "domaine": "Général",
+    "niveau": "Avancé",
+    "explication": "Une nouvelle manière de calculer basée sur la physique quantique pour une vitesse extrême.",
+    "exemple": "L'informatique quantique permettra de résoudre des calculs complexes en quelques secondes."
+  },
+  {
+    "mot": "Algorithmique",
+    "definition": "Science et étude systématique des règles et logiques de résolution de problèmes.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "La théorie et la science derrière la construction des algorithmes.",
+    "exemple": "Un cours d'algorithmique pour apprendre la logique de programmation."
+  },
+  {
+    "mot": "Architecture informatique",
+    "definition": "Structure théorique et organisationnelle des composants d'un système informatique.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Le plan d'ensemble décrivant l'assemblage des parties logicielles et matérielles.",
+    "exemple": "L'architecture client-serveur sépare la gestion des données de leur affichage."
+  },
+  {
+    "mot": "Cryptanalyse",
+    "definition": "Étude des méthodes permettant de déchiffrer des messages chiffrés sans posséder la clé.",
+    "domaine": "Général",
+    "niveau": "Avancé",
+    "explication": "La science du décodage de codes secrets.",
+    "exemple": "La cryptanalyse a permis de casser le code Enigma durant la Seconde Guerre mondiale."
+  },
+  {
+    "mot": "Fichiers journaux",
+    "definition": "Fichiers enregistrant l'historique chronologique des actions et événements d'un système.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "La boîte noire informatique qui note tous les événements survenus.",
+    "exemple": "Consulter les fichiers journaux du serveur web pour analyser le trafic."
+  },
+  {
+    "mot": "Processeur multi-cœur",
+    "definition": "Processeur physique regroupant plusieurs unités de calcul autonomes sur une seule puce.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Mettre plusieurs cerveaux de calcul dans la même puce.",
+    "exemple": "Un processeur quad-cœur traite quatre tâches physiques en même temps."
+  },
+  {
+    "mot": "Temps réel",
+    "definition": "Traitement de l'information garanti dans un délai maximal contraint et immédiat.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Mener un traitement de données sans le moindre décalage.",
+    "exemple": "Les systèmes d'airbag de voiture fonctionnent en temps réel."
+  },
+  {
+    "mot": "Bande passante mémoire",
+    "definition": "Vitesse maximale à laquelle le processeur peut lire ou écrire des données dans la RAM.",
+    "domaine": "Général",
+    "niveau": "Avancé",
+    "explication": "Le débit maximal d'échange entre le processeur et la mémoire.",
+    "exemple": "Une forte bande passante mémoire accélère les traitements de calculs massifs."
+  },
+  {
+    "mot": "Donnée brute",
+    "definition": "Information recueillie n'ayant subi aucun traitement, nettoyage ou organisation.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "L'information à l'état sauvage non triée.",
+    "exemple": "Les relevés bruts d'un capteur de température."
+  },
+  {
+    "mot": "Métadonnée",
+    "definition": "Donnée servant à décrire, définir ou contextualiser une autre donnée.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "L'étiquette descriptive collée sur une donnée (date, auteur, appareil).",
+    "exemple": "La date et le lieu enregistrés dans un fichier photo sont des métadonnées."
+  },
+  {
+    "mot": "Compression de données",
+    "definition": "Technique visant à réduire la taille de stockage de données par codage optimisé.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Rassembler et compacter un dossier pour qu'il prenne moins de place.",
+    "exemple": "Créer une archive ZIP pour compresser un paquet de documents."
+  },
+  {
+    "mot": "Pilote virtuel",
+    "definition": "Émulation logicielle simulant la présence d'un composant matériel.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Faire croire au système qu'un composant physique est branché.",
+    "exemple": "Un lecteur de disque virtuel permet de lire un fichier ISO."
+  },
+  {
+    "mot": "Empreinte numérique",
+    "definition": "Traces d'informations laissées par l'utilisation de services et d'équipements informatiques.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "L'ensemble des traces invisibles déposées lors de la navigation.",
+    "exemple": "Limiter son empreinte numérique en utilisant des outils respectueux de la vie privée."
+  },
+  {
+    "mot": "Système propriétaire",
+    "definition": "Technologie protégée par un brevet ou droit d'auteur restreignant son utilisation ou modification.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Un système fermé dont les secrets d'architecture appartiennent à une entreprise privée.",
+    "exemple": "macOS est un système d'exploitation propriétaire."
+  },
+  {
+    "mot": "Périphérique d'entrée-sortie",
+    "definition": "Équipement capable d'envoyer et de recevoir des données d'un ordinateur.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Un appareil à double sens qui transmet et reçoit des informations.",
+    "exemple": "Un écran tactile est un périphérique d'entrée-sortie."
+  },
+  {
+    "mot": "Architecture client-serveur",
+    "definition": "Modèle d'organisation réseau séparant les demandeurs de services (clients) des fournisseurs (serveurs).",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "La structure classique où les terminaux interrogent un ordinateur central.",
+    "exemple": "Le web repose sur une architecture client-serveur."
+  },
+  {
+    "mot": "Hébergement",
+    "definition": "Service consistant à mettre à disposition des serveurs connectés pour diffuser des données sur le réseau.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Louer un emplacement serveur en ligne pour y stocker un site web.",
+    "exemple": "Souscrire un hébergement web pour publier son site internet."
+  },
+  {
+    "mot": "Benchmark",
+    "definition": "Test d'évaluation standardisé mesurant les performances d'un composant ou d'un logiciel.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Un examen physique visant à mesurer le score de puissance d'une machine.",
+    "exemple": "Exécuter un benchmark pour comparer la vitesse de deux cartes graphiques."
+  },
+  {
+    "mot": "Incompatibilité",
+    "definition": "Incapacité de deux éléments logiciels ou matériels à fonctionner ensemble.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Deux pièces ou logiciels qui refusent de travailler ensemble.",
+    "exemple": "L'incompatibilité entre un ancien logiciel et la nouvelle version du système."
+  },
+  {
+    "mot": "Rétrocompatibilité",
+    "definition": "Capacité d'un système récent à exécuter des éléments conçus pour des versions antérieures.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "La faculté d'une nouvelle machine à lire les anciens formats.",
+    "exemple": "La rétrocompatibilité d'une console permettant de lire les jeux des générations précédentes."
+  },
+  {
+    "mot": "Migration",
+    "definition": "Processus de transfert d'applications ou de données d'un environnement vers un autre.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Déménager l'ensemble de ses installations informatiques vers une nouvelle plateforme.",
+    "exemple": "La migration de la messagerie vers un nouveau serveur cloud."
+  },
+  {
+    "mot": "Tolérance aux pannes",
+    "definition": "Capacité d'un système à continuer de fonctionner malgré la défaillance d'un composant.",
+    "domaine": "Général",
+    "niveau": "Avancé",
+    "explication": "Une structure conçue pour continuer de tourner même en cas de casse interne.",
+    "exemple": "La tolérance aux pannes est garantie par le doublement des alimentations sur le serveur."
+  },
+  {
+    "mot": "Disponibilité",
+    "definition": "Proportion de temps durant laquelle un système reste opérationnel et accessible.",
+    "domaine": "Général",
+    "niveau": "Intermédiaire",
+    "explication": "Le pourcentage d'allumage sans interruption d'un service.",
+    "exemple": "Un service garantissant une disponibilité de 99,9% sur l'année."
+  },
+  {
+    "mot": "Numérisation",
+    "definition": "Conversion d'une information physique ou analogique en un format binaire numérique.",
+    "domaine": "Général",
+    "niveau": "Débutant",
+    "explication": "Passer du monde physique au fichier informatique.",
+    "exemple": "La numérisation des archives papier de la mairie."
+  }
+]

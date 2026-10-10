@@ -4814,3 +4814,33 @@ body.dark .bloc-exemple p { color: var(--couleur-texte); }
         font-size: 32px;
     }
 }
+/* ============================================================
+   34. SECTION NOTIFICATIONS PUSH (profil)
+   ============================================================ */
+
+.carte-notif-profil {
+    background-color: var(--couleur-carte);
+    border-radius: var(--rayon-moyen);
+    padding: var(--espace-grand);
+    box-shadow: var(--ombre-legere);
+    text-align: center;
+}
+
+.texte-notif {
+    color: var(--couleur-texte-clair);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: var(--espace-grand);
+}
+
+.carte-notif-profil .btn-primaire,
+.carte-notif-profil .btn-secondaire {
+    margin: var(--espace-petit);
+}
+
+.statut-notifs {
+    margin-top: var(--espace-moyen);
+    font-size: 13px;
+    color: var(--couleur-texte-clair);
+    font-weight: bold;
+}

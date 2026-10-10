@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -125,6 +126,23 @@
                 <a href="badges.html" class="btn-secondaire">Voir tous les badges →</a>
             </div>
         </section>
+                <!-- SECTION NOTIFICATIONS -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">🔔 Notifications</h2>
+            <div class="carte-notif-profil">
+                <p class="texte-notif">
+                    Reçois une notification sur ton téléphone ou ton ordinateur 
+                    quand quelqu'un t'envoie un message, une demande d'ami ou répond à un sujet.
+                </p>
+                <button id="btn-activer-notifs" class="btn-primaire">
+                    🔔 Activer les notifications
+                </button>
+                <button id="btn-desactiver-notifs" class="btn-secondaire cache">
+                    🔕 Désactiver les notifications
+                </button>
+                <p id="statut-notifs" class="statut-notifs"></p>
+            </div>
+        </section>
 
         <!-- SECTION DANGER -->
         <section class="section-profil section-danger">
@@ -168,6 +186,7 @@
         </div>
     </div>
 </footer>
+<script src="js/push.js"></script> 
 <script src="js/avatar-utils.js"></script>
     <script src="js/config.js"></script>
     <script src="js/chargement.js"></script>

@@ -205,5 +205,76 @@ document.addEventListener("DOMContentLoaded", function() {
         alert("✅ Tes données ont été réinitialisées.");
         location.reload();
     });
+        // ============================================
+    // NOTIFICATIONS PUSH
+    // ============================================
+    const btnActiverNotifs = document.getElementById("btn-activer-notifs");
+    const btnDesactiverNotifs = document.getElementById("btn-desactiver-notifs");
+    const statutNotifs = document.getElementById("statut-notifs");
+
+    async function majStatutNotifs() {
+        if (!statutNotifs) return;
+        
+        if (!("Notification" in window)) {
+            statutNotifs.textContent = "❌ Non supporté par ton navigateur";
+            return;
+        }
+
+        const permission = Notification.permission;
+        const abonne = await PushManager.estAbonne();
+
+        if (permission === "denied") {
+            statutNotifs.textContent = "🚫 Notifications bloquées. Autorise-les dans les paramètres de ton navigateur.";
+            btnActiverNotifs.classList.add("cache");
+            btnDesactiverNotifs.classList.add("cache");
+        } else if (abonne) {
+            statutNotifs.textContent = "✅ Notifications activées";
+            btnActiverNotifs.classList.add("cache");
+            btnDesactiverNotifs.classList.remove("cache");
+        } else {
+            statutNotifs.textContent = "";
+            btnActiverNotifs.classList.remove("cache");
+            btnDesactiverNotifs.classList.add("cache");
+        }
+    }
+
+    if (btnActiverNotifs) {
+        btnActiverNotifs.addEventListener("click", async () => {
+            btnActiverNotifs.disabled = true;
+            btnActiverNotifs.textContent = "⏳ Activation...";
+            
+            const permission = await PushManager.demanderPermission();
+            if (!permission) {
+                alert("❌ Tu as refusé les notifications. Autorise-les dans les paramètres du navigateur.");
+                btnActiverNotifs.disabled = false;
+                btnActiverNotifs.textContent = "🔔 Activer les notifications";
+                return;
+            }
+
+            const ok = await PushManager.subscribe();
+            btnActiverNotifs.disabled = false;
+            btnActiverNotifs.textContent = "🔔 Activer les notifications";
+
+            if (ok) {
+                alert("✅ Notifications activées !");
+                majStatutNotifs();
+            } else {
+                alert("❌ Erreur lors de l'activation");
+            }
+        });
+    }
+
+    if (btnDesactiverNotifs) {
+        btnDesactiverNotifs.addEventListener("click", async () => {
+            if (!confirm("Désactiver les notifications ?")) return;
+            const ok = await PushManager.unsubscribe();
+            if (ok) {
+                alert("✅ Notifications désactivées");
+                majStatutNotifs();
+            }
+        });
+    }
+
+    majStatutNotifs();
     
 });
