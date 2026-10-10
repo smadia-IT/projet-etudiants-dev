@@ -170,17 +170,24 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // ===== CRÉATION DE CARTE UTILISATEUR =====
+        // ===== CRÉATION DE CARTE UTILISATEUR =====
     function creerCarteUtilisateur(u, type) {
         const carte = document.createElement("div");
         carte.className = "carte-utilisateur";
         
-        const initiale = u.username.charAt(0).toUpperCase();
+        // ✅ Nom complet : prenom + nom, sinon fallback sur username
+        const nomComplet = (u.prenom && u.nom) 
+            ? `${u.prenom} ${u.nom}` 
+            : u.username;
+        
+        // Initiale pour l'avatar
+        const initiale = (u.prenom || u.username).charAt(0).toUpperCase();
         
         let actionsHTML = "";
         
-               if (type === "ami") {
+        if (type === "ami") {
             actionsHTML = `
-                <button class="btn-action btn-message" data-action="message" data-user="${u.id}" data-username="${u.username}">
+                <button class="btn-action btn-message" data-action="message" data-user="${u.id}" data-username="${nomComplet}">
                     💬 Message
                 </button>
                 <button class="btn-action btn-retirer" data-action="retirer" data-amitie="${u.amitie_id}">
@@ -196,14 +203,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     ❌ Refuser
                 </button>
             `;
-                } else if (type === "demande-envoyee") {
+        } else if (type === "demande-envoyee") {
             actionsHTML = `
                 <button class="btn-action btn-en-attente" disabled>
                     ⏳ En attente
                 </button>
             `;
         } else if (type === "decouvrir") {
-            // Selon le statut d'amitié
             if (u.statutAmitie === "acceptee") {
                 actionsHTML = `
                     <button class="btn-action btn-en-attente" disabled>
@@ -236,17 +242,20 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         
-               carte.innerHTML = `
+        // ✅ Carte SANS email
+        carte.innerHTML = `
             <div class="carte-utilisateur-entete">
                 <a href="profil-public.html?id=${u.id}" class="avatar-utilisateur" style="text-decoration:none;">${initiale}</a>
                 <div>
-                    <a href="profil-public.html?id=${u.id}" class="carte-utilisateur-nom" style="text-decoration:none;color:inherit;">${u.username}</a>
-                    ${u.email ? `<div class="carte-utilisateur-email">${u.email}</div>` : ""}
+                    <a href="profil-public.html?id=${u.id}" class="carte-utilisateur-nom" style="text-decoration:none;color:inherit;">${nomComplet}</a>
                 </div>
+            </div>
+            <div class="actions-utilisateur">
+                ${actionsHTML}
             </div>
         `;
         
-                   // Écouteurs sur les boutons
+        // Écouteurs sur les boutons
         carte.querySelectorAll("[data-action]").forEach(btn => {
             btn.addEventListener("click", () => {
                 const action = btn.dataset.action;
