@@ -72,19 +72,27 @@
                     🔓 Se connecter
                 </button>
             </form>
-
             <!-- FORMULAIRE INSCRIPTION -->
             <form id="form-inscription" class="auth-form cache">
+                <label for="register-prenom">Prénom</label>
+                <input type="text" id="register-prenom" placeholder="Sylvain" required minlength="2">
+
+                <label for="register-nom">Nom de famille</label>
+                <input type="text" id="register-nom" placeholder="Madia" required minlength="2">
+
                 <label for="register-username">Nom d'utilisateur</label>
                 <input type="text" id="register-username" placeholder="sylvain" required minlength="3">
 
                 <label for="register-email">Email</label>
-                <input type="email" id="register-email" placeholder="sylvain@exemple.com
-                " required>
+                <input type="email" id="register-email" placeholder="sylvain@exemple.com" required>
+
+                <label for="register-telephone">Numéro de téléphone</label>
+                <input type="tel" id="register-telephone" placeholder="+243-823456789" required pattern="^\+\d{1,4}-\d{6,15}$">
+                <p class="auth-hint">Format : indicatif pays - numéro (ex: +243-823456789)</p>
 
                 <label for="register-password">Mot de passe</label>
                 <input type="password" id="register-password" placeholder="••••••••" required minlength="8">
-               <p class="auth-hint">Au moins 8 caractères, dont une majuscule et un chiffre.</p>
+                <p class="auth-hint">Au moins 8 caractères, dont une majuscule et un chiffre.</p>
 
                 <button type="submit" class="btn-primaire btn-large">
                     ✨ Créer mon compte
@@ -102,6 +110,33 @@
                 </div>
             </div>
 
+        </div>
+                <!-- MODALE : Compléter le profil -->
+        <div id="modale-profil" class="modale-overlay cache">
+            <div class="modale">
+                <div class="modale-entete">
+                    <h3>✍️ Compléter mon profil</h3>
+                </div>
+                <p class="modale-hint">
+                    Ton compte a été créé avant qu'on ajoute ces informations. 
+                    Merci de les compléter pour continuer.
+                </p>
+                <form id="form-completer-profil" class="auth-form">
+                    <label for="profil-prenom">Prénom</label>
+                    <input type="text" id="profil-prenom" placeholder="Sylvain" required minlength="2">
+
+                    <label for="profil-nom">Nom de famille</label>
+                    <input type="text" id="profil-nom" placeholder="Madia" required minlength="2">
+
+                    <label for="profil-telephone">Numéro de téléphone</label>
+                    <input type="tel" id="profil-telephone" placeholder="+243-823456789" required pattern="^\+\d{1,4}-\d{6,15}$">
+                    <p class="auth-hint">Format : +243-823456789</p>
+
+                    <button type="submit" class="btn-primaire btn-large">
+                        ✅ Enregistrer
+                    </button>
+                </form>
+            </div>
         </div>
 
     </main>

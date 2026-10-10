@@ -2,8 +2,6 @@
 // AUTHENTIFICATION - FRONTEND
 // ============================================
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
     
     // ===== RÉFÉRENCES =====
@@ -16,12 +14,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const btnDeconnexion = document.getElementById("btn-deconnexion");
     const lienAuth = document.getElementById("lien-auth");
     
+    // Modale profil
+    const modaleProfil = document.getElementById("modale-profil");
+    const formCompleterProfil = document.getElementById("form-completer-profil");
+    
     // ===== VÉRIFIER SI DÉJÀ CONNECTÉ =====
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user") || "null");
     
     if (token && user) {
-        // Vérifier que le token est encore valide
         fetch(`${API_URL}/auth/me`, {
             headers: { "Authorization": `Bearer ${token}` }
         })
@@ -30,11 +31,17 @@ document.addEventListener("DOMContentLoaded", function() {
             return r.json();
         })
         .then(data => {
-            // Token valide → afficher l'écran "déjà connecté"
-            afficherDejaConnecte(data.data.username);
+            // Mettre à jour les infos locales
+            localStorage.setItem("user", JSON.stringify(data.data));
+            
+            afficherDejaConnecte(data.data);
+            
+            // ✅ Si le profil est incomplet, afficher la modale
+            if (!data.profil_complet) {
+                afficherModaleProfil();
+            }
         })
         .catch(() => {
-            // Token invalide → nettoyer
             localStorage.removeItem("token");
             localStorage.removeItem("user");
         });
@@ -80,13 +87,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 throw new Error(data.error || "Erreur de connexion");
             }
             
-            // Sauvegarder le token
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
             
             afficherMessage("✅ Connexion réussie ! Redirection...", "succes");
             
-            // Rediriger après 1 seconde
+            // ✅ Si profil incomplet, forcer la modale
+            if (!data.profil_complet) {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+                return;
+            }
+            
             setTimeout(() => {
                 window.location.href = "profil.html";
             }, 1000);
@@ -100,15 +113,26 @@ document.addEventListener("DOMContentLoaded", function() {
     formInscription.addEventListener("submit", async function(e) {
         e.preventDefault();
         
+        const prenom = document.getElementById("register-prenom").value.trim();
+        const nom = document.getElementById("register-nom").value.trim();
         const username = document.getElementById("register-username").value.trim();
         const email = document.getElementById("register-email").value.trim();
+        const telephone = document.getElementById("register-telephone").value.trim();
         const password = document.getElementById("register-password").value;
+        
+        // Vérifier le format du téléphone
+        if (!/^\+\d{1,4}-\d{6,15}$/.test(telephone)) {
+            afficherMessage("❌ Format de téléphone invalide. Exemple : +243-823456789", "erreur");
+            return;
+        }
         
         try {
             const reponse = await fetch(`${API_URL}/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, email, password })
+                body: JSON.stringify({ 
+                    username, email, password, prenom, nom, telephone 
+                })
             });
             
             const data = await reponse.json();
@@ -117,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 throw new Error(data.error || "Erreur d'inscription");
             }
             
-            // Sauvegarder le token
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
             
@@ -132,6 +155,46 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     
+    // ===== FORMULAIRE COMPLÉTER PROFIL =====
+    if (formCompleterProfil) {
+        formCompleterProfil.addEventListener("submit", async function(e) {
+            e.preventDefault();
+            
+            const prenom = document.getElementById("profil-prenom").value.trim();
+            const nom = document.getElementById("profil-nom").value.trim();
+            const telephone = document.getElementById("profil-telephone").value.trim();
+            
+            if (!/^\+\d{1,4}-\d{6,15}$/.test(telephone)) {
+                alert("Format de téléphone invalide. Exemple : +243-823456789");
+                return;
+            }
+            
+            try {
+                const reponse = await fetch(`${API_URL}/auth/completer-profil`, {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ prenom, nom, telephone })
+                });
+                
+                const data = await reponse.json();
+                
+                if (!reponse.ok) {
+                    throw new Error(data.error || "Erreur");
+                }
+                
+                localStorage.setItem("user", JSON.stringify(data.user));
+                alert("✅ Profil complété !");
+                window.location.reload();
+                
+            } catch (erreur) {
+                alert("❌ " + erreur.message);
+            }
+        });
+    }
+    
     // ===== DÉCONNEXION =====
     if (btnDeconnexion) {
         btnDeconnexion.addEventListener("click", function() {
@@ -142,14 +205,24 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     // ===== FONCTIONS UTILITAIRES =====
-    function afficherDejaConnecte(username) {
+    function afficherDejaConnecte(user) {
         formConnexion.classList.add("cache");
         formInscription.classList.add("cache");
         document.querySelector(".auth-onglets").classList.add("cache");
         dejaConnecte.classList.remove("cache");
-        usernameDejaConnecte.textContent = username;
-        lienAuth.textContent = `👤 ${username}`;
+        
+        // Afficher prenom nom si dispo
+        const nomComplet = user.prenom && user.nom 
+            ? `${user.prenom} ${user.nom}` 
+            : user.username;
+        
+        usernameDejaConnecte.textContent = nomComplet;
+        lienAuth.textContent = `👤 ${nomComplet}`;
         lienAuth.classList.add("connecte");
+    }
+    
+    function afficherModaleProfil() {
+        if (modaleProfil) modaleProfil.classList.remove("cache");
     }
     
     function afficherMessage(texte, type) {

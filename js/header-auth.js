@@ -25,12 +25,17 @@ document.addEventListener("DOMContentLoaded", function() {
             nav.appendChild(lienAuth);
         }
     }
-    
-    if (user && token) {
+       if (user && token) {
         // ===== CONNECTÉ =====
-        lienAuth.textContent = `👤 ${user.username} ▼`;
+        // ✅ Afficher prenom + nom au lieu de username
+        const nomAffiche = user.prenom && user.nom 
+            ? `${user.prenom} ${user.nom}` 
+            : user.username;
+        
+        lienAuth.textContent = `👤 ${nomAffiche} ▼`;
         lienAuth.href = "#";
         lienAuth.classList.add("connecte");
+        // ... (le reste inchangé)
         
               // Charger le nombre de messages non lus (avec rafraîchissement auto)
         demarrerRafraichissementBadge(token);
