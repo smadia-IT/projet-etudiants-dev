@@ -748,15 +748,40 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     
-    // Envoyer l'audio
+        // Envoyer l'audio
     if (btnEnvoyerAudio) {
         btnEnvoyerAudio.addEventListener("click", async () => {
-            if (!audioBlob || !conversationActuelleId) return;
-            
-            arreterEnregistrement();
+            if (!conversationActuelleId) return;
             
             btnEnvoyerAudio.disabled = true;
             btnEnvoyerAudio.textContent = "⏳";
+            
+            // Si l'enregistrement est encore en cours, l'arrêter et attendre
+            if (mediaRecorder && mediaRecorder.state !== "inactive") {
+                await new Promise(resolve => {
+                    mediaRecorder.addEventListener("stop", resolve, { once: true });
+                    mediaRecorder.stop();
+                });
+                
+                // Arrêter le timer
+                if (timerAudio) {
+                    clearInterval(timerAudio);
+                    timerAudio = null;
+                }
+                
+                // Arrêter le stream
+                if (mediaRecorder.stream) {
+                    mediaRecorder.stream.getTracks().forEach(t => t.stop());
+                }
+            }
+            
+            // Maintenant, audioBlob devrait être rempli
+            if (!audioBlob) {
+                alert("❌ Aucun enregistrement à envoyer");
+                btnEnvoyerAudio.disabled = false;
+                btnEnvoyerAudio.textContent = "✅";
+                return;
+            }
             
             try {
                 // Préparer le FormData
