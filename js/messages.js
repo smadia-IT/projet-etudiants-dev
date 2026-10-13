@@ -365,19 +365,44 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================
     // CRÉER UN MESSAGE AVEC AVATAR
     // ============================================
-    function creerMessageAvecAvatar(msg) {
-    // Structure ULTRA simple : une seule bulle, comme le chat IA
-    const bulle = document.createElement("div");
-    const estMoi = msg.expediteur_id === user.id;
-    bulle.className = estMoi ? "message-bulle moi" : "message-bulle lui";
-    
-    const date = new Date(msg.date);
-    const heureStr = date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
-    
-    bulle.innerHTML = `${escapeHtml(msg.contenu)}<span class="message-date">${heureStr}</span>`;
-    
-    return bulle;
-}
+        function creerMessageAvecAvatar(msg) {
+        const ligne = document.createElement("div");
+        const estMoi = msg.expediteur_id === user.id;
+        ligne.className = "message-ligne " + (estMoi ? "moi" : "lui");
+        
+        const initiale = msg.expediteur_username 
+            ? msg.expediteur_username.charAt(0).toUpperCase() 
+            : "?";
+        
+        const date = new Date(msg.date);
+        const heureStr = date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+        
+        // Contenu : audio ou texte
+        let contenuHTML;
+        if (msg.audio_url) {
+            contenuHTML = `
+                <div class="message-audio">
+                    <audio controls preload="metadata" src="${msg.audio_url}"></audio>
+                </div>
+            `;
+        } else {
+            contenuHTML = escapeHtml(msg.contenu);
+        }
+        
+        ligne.innerHTML = `
+            <div class="message-avatar">${initiale}</div>
+            <div class="message-contenu">
+                <div class="message-bulle ${estMoi ? "moi" : "lui"}">
+                    ${contenuHTML}
+                </div>
+                <div class="message-statut">
+                    <span>${heureStr}</span>
+                </div>
+            </div>
+        `;
+        
+        return ligne;
+    }
     
     // ============================================
     // ENVOYER UN MESSAGE
@@ -621,4 +646,161 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     
     console.log("✅ Page messages initialisée pour", user.username);
+        // ============================================
+    // MESSAGES VOCAUX
+    // ============================================
+    
+    const btnAudio = document.getElementById("btn-audio");
+    const zoneAudio = document.getElementById("zone-audio");
+    const btnAnnulerAudio = document.getElementById("btn-annuler-audio");
+    const btnEnvoyerAudio = document.getElementById("btn-envoyer-audio");
+    const audioDuree = document.getElementById("audio-duree");
+    const audioPreview = document.getElementById("audio-preview");
+    
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let audioBlob = null;
+    let timerAudio = null;
+    let secondesAudio = 0;
+    const DUREE_MAX = 60; // 60 secondes
+    
+    // Démarrer l'enregistrement
+    if (btnAudio) {
+        btnAudio.addEventListener("click", async () => {
+            if (!conversationActuelleId) {
+                alert("Sélectionne d'abord une conversation");
+                return;
+            }
+            
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                
+                // Choisir le meilleur codec disponible
+                let options = { mimeType: "audio/webm" };
+                if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+                    options = { mimeType: "audio/mp4" };
+                }
+                
+                mediaRecorder = new MediaRecorder(stream, options);
+                audioChunks = [];
+                secondesAudio = 0;
+                
+                mediaRecorder.addEventListener("dataavailable", (e) => {
+                    if (e.data.size > 0) audioChunks.push(e.data);
+                });
+                
+                mediaRecorder.addEventListener("stop", () => {
+                    audioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType });
+                    audioPreview.src = URL.createObjectURL(audioBlob);
+                    
+                    // Arrêter le stream
+                    stream.getTracks().forEach(t => t.stop());
+                });
+                
+                mediaRecorder.start();
+                
+                // Afficher la zone audio
+                zoneAudio.classList.remove("cache");
+                btnAudio.classList.add("cache");
+                
+                // Démarrer le timer
+                audioDuree.textContent = "0:00";
+                timerAudio = setInterval(() => {
+                    secondesAudio++;
+                    const min = Math.floor(secondesAudio / 60);
+                    const sec = secondesAudio % 60;
+                    audioDuree.textContent = `${min}:${sec.toString().padStart(2, "0")}`;
+                    
+                    // Arrêt auto à 60 sec
+                    if (secondesAudio >= DUREE_MAX) {
+                        arreterEnregistrement();
+                    }
+                }, 1000);
+                
+            } catch (erreur) {
+                console.error("Erreur micro:", erreur);
+                alert("❌ Impossible d'accéder au micro. Vérifie tes permissions.");
+            }
+        });
+    }
+    
+    function arreterEnregistrement() {
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+            mediaRecorder.stop();
+        }
+        if (timerAudio) {
+            clearInterval(timerAudio);
+            timerAudio = null;
+        }
+    }
+    
+    // Annuler l'enregistrement
+    if (btnAnnulerAudio) {
+        btnAnnulerAudio.addEventListener("click", () => {
+            arreterEnregistrement();
+            
+            // Reset
+            audioBlob = null;
+            secondesAudio = 0;
+            audioPreview.src = "";
+            zoneAudio.classList.add("cache");
+            btnAudio.classList.remove("cache");
+        });
+    }
+    
+    // Envoyer l'audio
+    if (btnEnvoyerAudio) {
+        btnEnvoyerAudio.addEventListener("click", async () => {
+            if (!audioBlob || !conversationActuelleId) return;
+            
+            arreterEnregistrement();
+            
+            btnEnvoyerAudio.disabled = true;
+            btnEnvoyerAudio.textContent = "⏳";
+            
+            try {
+                // Préparer le FormData
+                const formData = new FormData();
+                const extension = audioBlob.type.includes("mp4") ? "mp4" : "webm";
+                formData.append("audio", audioBlob, `vocal.${extension}`);
+                
+                // Envoyer au backend
+                const reponse = await fetch(`${API_URL}/messages/${conversationActuelleId}/audio`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: formData
+                });
+                
+                const data = await reponse.json();
+                if (!data.success) throw new Error(data.error);
+                
+                // Ajouter le message à la conversation
+                historiqueMessages.appendChild(creerMessageAvecAvatar(data.data));
+                historiqueMessages.scrollTop = historiqueMessages.scrollHeight;
+                
+                // Mettre à jour l'ID du dernier message
+                if (data.data.id > dernierMessageId) {
+                    dernierMessageId = data.data.id;
+                }
+                
+                // Reset la zone
+                audioBlob = null;
+                secondesAudio = 0;
+                audioPreview.src = "";
+                zoneAudio.classList.add("cache");
+                btnAudio.classList.remove("cache");
+                
+                // Rafraîchir les conversations
+                chargerConversations();
+                
+            } catch (erreur) {
+                alert("❌ " + erreur.message);
+            } finally {
+                btnEnvoyerAudio.disabled = false;
+                btnEnvoyerAudio.textContent = "✅";
+            }
+        });
+    }
 });

@@ -114,8 +114,11 @@
                             <!-- Rempli par JS -->
                         </div>
 
-                        <!-- Formulaire d'envoi -->
-                                                <form id="form-envoi" class="form-envoi">
+                                               <!-- Formulaire d'envoi -->
+                        <form id="form-envoi" class="form-envoi">
+                            <button type="button" id="btn-audio" class="btn-audio" title="Enregistrer un message vocal">
+                                🎤
+                            </button>
                             <textarea 
                                 id="input-message" 
                                 placeholder="Écris ton message... (Maj+Entrée pour un saut de ligne)" 
@@ -127,6 +130,21 @@
                                 ➤
                             </button>
                         </form>
+
+                        <!-- Zone d'enregistrement audio -->
+                        <div id="zone-audio" class="zone-audio cache">
+                            <button type="button" id="btn-annuler-audio" class="btn-annuler-audio" title="Annuler">
+                                🗑️
+                            </button>
+                            <div class="audio-enregistrement">
+                                <div class="audio-point-rouge"></div>
+                                <span id="audio-duree">0:00</span>
+                            </div>
+                            <audio id="audio-preview" class="audio-preview" controls></audio>
+                            <button type="button" id="btn-envoyer-audio" class="btn-envoyer-audio" title="Envoyer">
+                                ✅
+                            </button>
+                        </div>
                     </div>
 
                 </div>
