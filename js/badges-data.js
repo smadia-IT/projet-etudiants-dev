@@ -85,6 +85,25 @@ const BADGES = [
         icone: "👑",
         description: "Atteindre 2000 points en une partie",
         condition: (stats) => stats.meilleurScore >= 2000
+    },
+
+        {
+        id: "coffre-regulier",
+        nom: "Coffre Régulier",
+        description: "Tu as ouvert ton coffre 2 jours d'affilée !",
+        icone: "🥉"
+    },
+    {
+        id: "coffre-assidu",
+        nom: "Coffre Assidu",
+        description: "Tu as ouvert ton coffre 5 jours d'affilée !",
+        icone: "🥈"
+    },
+    {
+        id: "coffre-legende",
+        nom: "Légende des Coffres",
+        description: "Tu as ouvert ton coffre 7 jours d'affilée ! Incroyable !",
+        icone: "🥇"
     }
 ];
 

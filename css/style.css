@@ -4844,3 +4844,211 @@ body.dark .bloc-exemple p { color: var(--couleur-texte); }
     color: var(--couleur-texte-clair);
     font-weight: bold;
 }
+/* ============================================================
+   35. COFFRE QUOTIDIEN
+   ============================================================ */
+
+#coffre-quotidien {
+    margin-bottom: var(--espace-grand);
+    animation: apparition 0.5s ease;
+}
+
+.carte-coffre {
+    background: linear-gradient(135deg, #ffc107, #ff9800);
+    color: white;
+    border-radius: var(--rayon-moyen);
+    padding: var(--espace-tres-grand) var(--espace-grand);
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.carte-coffre::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    animation: briller 3s ease infinite;
+}
+
+@keyframes briller {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20%, 20%); }
+}
+
+.coffre-emoji {
+    font-size: 72px;
+    margin-bottom: var(--espace-moyen);
+    animation: secouer 2s ease infinite;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes secouer {
+    0%, 100% { transform: rotate(0); }
+    10%, 30%, 50% { transform: rotate(-8deg); }
+    20%, 40% { transform: rotate(8deg); }
+}
+
+.carte-coffre h2 {
+    color: white;
+    border: none;
+    margin: 0 0 var(--espace-petit) 0;
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.carte-coffre p {
+    font-size: 16px;
+    margin-bottom: var(--espace-moyen);
+    position: relative;
+    z-index: 1;
+}
+
+.coffre-streak {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: var(--espace-moyen);
+    position: relative;
+    z-index: 1;
+}
+
+.carte-coffre .btn-primaire {
+    background-color: white;
+    color: #ff9800;
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.carte-coffre .btn-primaire:hover {
+    background-color: #fff8e1;
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   MODALE DE RÉCOMPENSE
+   ============================================ */
+.modale-coffre {
+    text-align: center;
+    max-width: 450px;
+}
+
+.coffre-animation {
+    font-size: 100px;
+    margin-bottom: var(--espace-grand);
+    animation: pop-cadeau 0.6s ease;
+}
+
+@keyframes pop-cadeau {
+    0% { transform: scale(0.5) rotate(-20deg); opacity: 0; }
+    60% { transform: scale(1.2) rotate(10deg); }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.modale-coffre h2 {
+    color: var(--couleur-principale);
+    border: none;
+    margin-bottom: var(--espace-grand);
+    font-size: 28px;
+    text-align: center;
+}
+
+.recompense-points {
+    background: linear-gradient(135deg, var(--couleur-accent), #ff9800);
+    color: white;
+    padding: var(--espace-grand);
+    border-radius: var(--rayon-moyen);
+    margin-bottom: var(--espace-moyen);
+}
+
+.recompense-valeur {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.recompense-label {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+.recompense-speciale {
+    font-style: italic;
+    color: var(--couleur-texte-clair);
+    margin: var(--espace-moyen) 0;
+    padding: var(--espace-moyen);
+    background: var(--couleur-fond);
+    border-radius: var(--rayon-petit);
+}
+
+.recompense-mot {
+    background: var(--couleur-principale-claire);
+    padding: var(--espace-moyen);
+    border-radius: var(--rayon-moyen);
+    margin: var(--espace-moyen) 0;
+    text-align: left;
+}
+
+.mot-titre {
+    font-weight: bold;
+    color: var(--couleur-principale);
+    margin-bottom: var(--espace-petit);
+}
+
+.mot-definition {
+    font-size: 14px;
+    color: var(--couleur-texte);
+    line-height: 1.5;
+}
+
+.recompense-total {
+    font-weight: bold;
+    color: var(--couleur-principale);
+    margin-top: var(--espace-moyen);
+}
+
+/* ============================================
+   POINTS DANS LE HEADER
+   ============================================ */
+.points-header {
+    display: inline-block;
+    background-color: rgba(255, 193, 7, 0.25);
+    color: white;
+    padding: 6px 12px;
+    border-radius: var(--rayon-petit);
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: var(--espace-petit);
+    white-space: nowrap;
+}
+
+body.dark .points-header {
+    background-color: rgba(255, 193, 7, 0.3);
+}
+
+/* ============================================
+   MODE SOMBRE
+   ============================================ */
+body.dark .carte-coffre {
+    background: linear-gradient(135deg, #d39e00, #b87333);
+}
+
+body.dark .recompense-speciale {
+    background: #0f0f1e;
+    color: var(--couleur-texte);
+}
+
+body.dark .recompense-mot {
+    background: var(--couleur-principale-claire);
+}

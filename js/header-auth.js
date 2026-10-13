@@ -32,6 +32,28 @@ document.addEventListener("DOMContentLoaded", function() {
             ? `${user.prenom} ${user.nom}` 
             : user.username;
         
+             // Charger les points
+        let pointsAffiches = "";
+        fetch(`${API_URL}/coffres/statut`, {
+            headers: { "Authorization": `Bearer ${token}` }
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                const badge = document.getElementById("points-header");
+                if (badge) badge.textContent = `⭐ ${data.points}`;
+                else {
+                    // Créer le badge s'il n'existe pas
+                    const span = document.createElement("span");
+                    span.id = "points-header";
+                    span.className = "points-header";
+                    span.textContent = `⭐ ${data.points}`;
+                    lienAuth.parentElement.insertBefore(span, lienAuth);
+                }
+            }
+        })
+        .catch(() => {});
+
         lienAuth.textContent = `👤 ${nomAffiche} ▼`;
         lienAuth.href = "#";
         lienAuth.classList.add("connecte");
