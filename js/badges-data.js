@@ -104,6 +104,12 @@ const BADGES = [
         nom: "Légende des Coffres",
         description: "Tu as ouvert ton coffre 7 jours d'affilée ! Incroyable !",
         icone: "🥇"
+    },
+        {
+        id: "curieux",
+        nom: "Curieux",
+        description: "Tu as utilisé le chatbot d'aide !",
+        icone: "🧐"
     }
 ];
 
