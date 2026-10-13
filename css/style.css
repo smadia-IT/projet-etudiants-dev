@@ -5675,3 +5675,163 @@ body.dark .message-audio audio {
     min-width: 140px !important;
     max-width: 220px !important;
 }
+
+
+/* ============================================================
+   REFONTE MESSAGERIE — INSPIRÉE DU CHAT IA
+   ============================================================ */
+
+/* Ligne de message (avatar + bulle) */
+.message-ligne {
+    display: flex !important;
+    gap: 8px !important;
+    align-items: flex-end !important;
+    width: 100% !important;
+}
+
+.message-ligne.moi {
+    flex-direction: row-reverse !important;
+}
+
+.message-ligne.lui {
+    flex-direction: row !important;
+}
+
+/* Avatar */
+.message-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, var(--couleur-principale), var(--couleur-principale-fonce)) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    flex-shrink: 0 !important;
+    text-transform: uppercase !important;
+}
+
+.message-ligne.moi .message-avatar {
+    background: linear-gradient(135deg, #28a745, #218838) !important;
+}
+
+/* Conteneur de la bulle — MAX 70% de largeur */
+.message-contenu {
+    display: flex !important;
+    flex-direction: column !important;
+    max-width: 70% !important;
+    min-width: 0 !important;
+}
+
+/* Bulle — COPIÉE DU CHAT IA */
+.message-bulle {
+    padding: 10px 15px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+    text-align: left !important;
+    border-radius: 15px !important;
+    display: inline-block !important;
+    max-width: 100% !important;
+}
+
+.message-bulle.moi {
+    background-color: var(--couleur-principale) !important;
+    color: white !important;
+    border-radius: 15px 15px 0 15px !important;
+}
+
+.message-bulle.lui {
+    background-color: var(--couleur-carte) !important;
+    color: var(--couleur-texte) !important;
+    border-radius: 15px 15px 15px 0 !important;
+    box-shadow: var(--ombre-legere) !important;
+}
+
+/* Statut (heure) */
+.message-statut {
+    font-size: 10px !important;
+    color: var(--couleur-texte-clair) !important;
+    margin-top: 2px !important;
+    padding: 0 4px !important;
+}
+
+.message-ligne.moi .message-statut {
+    text-align: right !important;
+}
+
+.message-ligne.lui .message-statut {
+    text-align: left !important;
+}
+
+/* Lecteur audio compact */
+.audio-player {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-width: 150px !important;
+}
+
+.audio-btn-play {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    border: none !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+.message-bulle.lui .audio-btn-play {
+    background-color: var(--couleur-principale) !important;
+}
+
+.audio-progress {
+    flex: 1 !important;
+    height: 4px !important;
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    border-radius: 2px !important;
+    cursor: pointer !important;
+    min-width: 60px !important;
+    overflow: hidden !important;
+}
+
+.message-bulle.lui .audio-progress {
+    background-color: var(--couleur-bordure) !important;
+}
+
+.audio-progress-bar {
+    height: 100% !important;
+    width: 0% !important;
+    background-color: white !important;
+    transition: width 0.1s linear !important;
+}
+
+.message-bulle.lui .audio-progress-bar {
+    background-color: var(--couleur-principale) !important;
+}
+
+.audio-time {
+    font-size: 11px !important;
+    font-weight: bold !important;
+    color: white !important;
+    min-width: 30px !important;
+    text-align: right !important;
+}
+
+.message-bulle.lui .audio-time {
+    color: var(--couleur-texte-clair) !important;
+}
+
+/* Mode sombre */
+body.dark .message-bulle.lui {
+    background-color: #2a3a5c !important;
+}
