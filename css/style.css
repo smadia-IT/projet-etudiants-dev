@@ -4162,6 +4162,7 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
    BULLES DE MESSAGE (façon chat IA)
    ============================================ */
 .message-bulle {
+    text-align: left !important;
     padding: 10px 15px;
     border-radius: 15px;
     font-size: 14px;
@@ -4171,7 +4172,6 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     overflow-wrap: break-word;
     white-space: pre-wrap;
     max-width: 100%;
-    text-align: left;           /* ← Texte à gauche */
     display: inline-block;
     box-sizing: border-box;
 }
@@ -5527,7 +5527,14 @@ body.dark .message-audio audio {
 .audio-player {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px;.audio-player {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 0;
+    min-width: 140px;
+    max-width: 220px;
+}
     padding: 4px 0;
     min-width: 180px;
     max-width: 100%;
@@ -5626,4 +5633,12 @@ body.dark .message-audio audio {
         font-size: 11px;
         min-width: 30px;
     }
+}
+/* Force l'alignement à gauche dans les messages */
+.message-ligne,
+.message-contenu,
+.message-bulle,
+.message-bulle.moi,
+.message-bulle.lui {
+    text-align: left !important;
 }
