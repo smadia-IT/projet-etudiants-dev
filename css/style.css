@@ -4167,14 +4167,14 @@ body.dark .menu-filtres .item-domaine .compteur-domaine {
     font-size: 14px;
     line-height: 1.4;
     word-wrap: break-word;
-    overflow-wrap: break-word;
     word-break: normal;
+    overflow-wrap: break-word;
     white-space: pre-wrap;
-    max-width: 70%;         /* ← comme le chat IA */
-    text-align: left;
-    animation: message-apparition 0.3s ease;
+    max-width: 100%;
+    text-align: left;           /* ← Texte à gauche */
+    display: inline-block;
+    box-sizing: border-box;
 }
-
 .message-bulle.moi {
     align-self: flex-end;
     background-color: var(--couleur-principale);
@@ -5519,4 +5519,111 @@ body.dark .btn-annuler-audio:hover {
 
 body.dark .message-audio audio {
     background-color: #2a3a5c;
+}
+/* ============================================================
+   38. LECTEUR AUDIO CUSTOM (compact, dans les bulles)
+   ============================================================ */
+
+.audio-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+    min-width: 180px;
+    max-width: 100%;
+}
+
+.audio-btn-play {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition-rapide);
+    padding-left: 3px; /* pour centrer visuellement le ▶ */
+}
+
+.audio-btn-play:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+/* Pour les bulles de l'autre (fond clair) */
+.message-bulle.lui .audio-btn-play {
+    background-color: var(--couleur-principale);
+    color: white;
+    padding-left: 3px;
+}
+
+.message-bulle.lui .audio-btn-play:hover {
+    background-color: var(--couleur-principale-fonce);
+}
+
+/* Barre de progression */
+.audio-progress {
+    flex: 1;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    overflow: hidden;
+    min-width: 60px;
+    position: relative;
+}
+
+.message-bulle.lui .audio-progress {
+    background-color: var(--couleur-bordure);
+}
+
+.audio-progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: white;
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+.message-bulle.lui .audio-progress-bar {
+    background-color: var(--couleur-principale);
+}
+
+/* Durée */
+.audio-time {
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    font-variant-numeric: tabular-nums;
+    min-width: 35px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.message-bulle.lui .audio-time {
+    color: var(--couleur-texte-clair);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .audio-player {
+        min-width: 150px;
+        gap: 8px;
+    }
+    
+    .audio-btn-play {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .audio-time {
+        font-size: 11px;
+        min-width: 30px;
+    }
 }

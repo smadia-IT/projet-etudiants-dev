@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================
     // CRÉER UN MESSAGE AVEC AVATAR
     // ============================================
-        function creerMessageAvecAvatar(msg) {
+          function creerMessageAvecAvatar(msg) {
         const ligne = document.createElement("div");
         const estMoi = msg.expediteur_id === user.id;
         ligne.className = "message-ligne " + (estMoi ? "moi" : "lui");
@@ -380,9 +380,16 @@ document.addEventListener("DOMContentLoaded", function() {
         // Contenu : audio ou texte
         let contenuHTML;
         if (msg.audio_url) {
+            // ✅ Lecteur audio custom compact
             contenuHTML = `
-                <div class="message-audio">
-                    <audio controls preload="metadata" src="${msg.audio_url}"></audio>
+                <div class="audio-player" data-src="${msg.audio_url}">
+                    <button class="audio-btn-play" title="Lire">
+                        <span class="audio-play-icon">▶</span>
+                    </button>
+                    <div class="audio-progress">
+                        <div class="audio-progress-bar"></div>
+                    </div>
+                    <span class="audio-time">0:00</span>
                 </div>
             `;
         } else {
@@ -401,9 +408,85 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         `;
         
+        // ✅ Initialiser le lecteur audio si présent
+        const audioPlayer = ligne.querySelector(".audio-player");
+        if (audioPlayer) {
+            initialiserAudioPlayer(audioPlayer);
+        }
+        
         return ligne;
     }
     
+    // ============================================
+    // LECTEUR AUDIO CUSTOM
+    // ============================================
+    function initialiserAudioPlayer(container) {
+        const btnPlay = container.querySelector(".audio-btn-play");
+        const iconPlay = container.querySelector(".audio-play-icon");
+        const progressBar = container.querySelector(".audio-progress-bar");
+        const timeDisplay = container.querySelector(".audio-time");
+        const src = container.dataset.src;
+        
+        // Audio caché (pas affiché)
+        const audio = new Audio(src);
+        audio.preload = "metadata";
+        
+        let isPlaying = false;
+        
+        // Charger la durée
+        audio.addEventListener("loadedmetadata", () => {
+            timeDisplay.textContent = formaterDuree(audio.duration);
+        });
+        
+        // Play / Pause
+        btnPlay.addEventListener("click", () => {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                // Arrêter les autres lecteurs
+                document.querySelectorAll("audio").forEach(a => a.pause());
+                audio.play();
+            }
+        });
+        
+        audio.addEventListener("play", () => {
+            isPlaying = true;
+            iconPlay.textContent = "⏸";
+        });
+        
+        audio.addEventListener("pause", () => {
+            isPlaying = false;
+            iconPlay.textContent = "▶";
+        });
+        
+        audio.addEventListener("ended", () => {
+            isPlaying = false;
+            iconPlay.textContent = "▶";
+            progressBar.style.width = "0%";
+            timeDisplay.textContent = formaterDuree(audio.duration);
+        });
+        
+        // Progression
+        audio.addEventListener("timeupdate", () => {
+            const progression = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = progression + "%";
+            timeDisplay.textContent = formaterDuree(audio.currentTime);
+        });
+        
+        // Clic sur la barre → seek
+        container.querySelector(".audio-progress").addEventListener("click", (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const pourcentage = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = pourcentage * audio.duration;
+        });
+    }
+    
+    function formaterDuree(secondes) {
+        if (isNaN(secondes)) return "0:00";
+        const min = Math.floor(secondes / 60);
+        const sec = Math.floor(secondes % 60);
+        return `${min}:${sec.toString().padStart(2, "0")}`;
+    }
     // ============================================
     // ENVOYER UN MESSAGE
     // ============================================
