@@ -5642,3 +5642,36 @@ body.dark .message-audio audio {
 .message-bulle.lui {
     text-align: left !important;
 }
+/* ============================================================
+   FIX DÉFINITIF — ALIGNEMENT DES BULLES
+   ============================================================ */
+.message-contenu {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    min-width: 0 !important;
+    flex: 1 !important;
+    align-items: flex-start !important;
+}
+
+.message-ligne.moi .message-contenu {
+    align-items: flex-end !important;
+}
+
+.message-ligne.lui .message-contenu {
+    align-items: flex-start !important;
+}
+
+/* La bulle ne doit pas s'étirer */
+.message-bulle {
+    flex-shrink: 0 !important;
+    align-self: flex-start !important;
+}
+
+.message-bulle.moi {
+    align-self: flex-end !important;
+}
+.audio-player {
+    min-width: 140px !important;
+    max-width: 220px !important;
+}
