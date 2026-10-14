@@ -3555,3 +3555,30 @@ body.dark .historique-messages {
         max-width: 100%;
     }
 }
+/* ============================================
+   MESSAGERIE MOBILE — BOUTON D'ENVOI VISIBLE
+   ============================================ */
+@media (max-width: 768px) {
+    /* Pas de bouton chatbot sur la messagerie : il masque l'envoi */
+    body.page-messages .btn-chatbot,
+    body.page-messages #chatbot-panneau {
+        display: none !important;
+    }
+
+    /* Champ de saisie plus large, barre de défilement discrète */
+    #input-message {
+        scrollbar-width: thin;
+        scrollbar-color: var(--couleur-bordure) transparent;
+    }
+    #input-message::-webkit-scrollbar {
+        width: 4px;
+    }
+    #input-message::-webkit-scrollbar-thumb {
+        background: var(--couleur-bordure);
+        border-radius: 2px;
+    }
+
+    .form-envoi .btn-envoyer-message {
+        flex-shrink: 0;
+    }
+}
