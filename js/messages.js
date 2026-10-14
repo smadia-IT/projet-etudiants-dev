@@ -1,7 +1,11 @@
 // ============================================
 // PAGE MESSAGES - GESTION DE LA MESSAGERIE
 // ============================================
-
+function escapeHtml(texte) {
+    const div = document.createElement("div");
+    div.textContent = texte ?? "";
+    return div.innerHTML;
+}
 document.addEventListener("DOMContentLoaded", function() {
     
     // ===== VÉRIFIER CONNEXION =====
@@ -88,17 +92,18 @@ document.addEventListener("DOMContentLoaded", function() {
         if (conv.user_id === conversationActuelleId) {
             item.classList.add("actif");
         }
-        
-        const initiale = conv.username.charAt(0).toUpperCase();
-        const apercu = conv.dernier_message.length > 30 
-            ? conv.dernier_message.substring(0, 30) + "..." 
+                const nomSur = escapeHtml(conv.username);
+        const initiale = escapeHtml(conv.username.charAt(0).toUpperCase());
+        const apercuBrut = conv.dernier_message.length > 30
+            ? conv.dernier_message.substring(0, 30) + "..."
             : conv.dernier_message;
+        const apercuSur = escapeHtml(apercuBrut);
         const prefixe = conv.dernier_expediteur === user.id ? "Toi : " : "";
-        
+
         const date = new Date(conv.date_dernier);
         const maintenant = new Date();
         const diffHeures = (maintenant - date) / (1000 * 60 * 60);
-        
+
         let dateAffichage;
         if (diffHeures < 24) {
             dateAffichage = date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
@@ -107,17 +112,12 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             dateAffichage = date.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
         }
-        
-        item.innerHTML = `
-            <div class="conv-avatar">${initiale}</div>
-            <div class="conv-info">
-                <div class="conv-username">${conv.username}</div>
-                <div class="conv-apercu">${prefixe}${apercu}</div>
-            </div>
-            <div class="conv-meta">
-                <span class="conv-date">${dateAffichage}</span>
-                ${conv.nb_non_lus > 0 ? `<span class="conv-badge">${conv.nb_non_lus}</span>` : ""}
-                <button class="conv-supprimer" title="Masquer la conversation" data-user-id="${conv.user_id}">🗑️</button>
+
+              item.innerHTML = `
+            <div class="conv-avatar">${escapeHtml(ami.username.charAt(0).toUpperCase())}</div>
+            <div class="ami-modale-info">
+                <div class="ami-modale-nom">${escapeHtml(ami.username)}</div>
+                <div class="ami-modale-email">${escapeHtml(ami.email)}</div>
             </div>
         `;
         
@@ -177,8 +177,10 @@ document.addEventListener("DOMContentLoaded", function() {
         messagesVide.classList.add("cache");
         conversationActive.classList.remove("cache");
         
-        usernameConversation.textContent = username;
-        avatarConversation.textContent = username.charAt(0).toUpperCase();
+                carte.innerHTML = `
+                    <div class="conv-avatar">${escapeHtml(ami.username.charAt(0).toUpperCase())}</div>
+                    <div class="ami-nom">${escapeHtml(ami.username)}</div>
+                `;
         
         // Marquer les items actifs
         document.querySelectorAll(".conv-item").forEach(item => {
@@ -381,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let contenuHTML;
     if (msg.audio_url) {
         contenuHTML = `
-            <div class="audio-player" data-src="${msg.audio_url}">
+            <div class="audio-player" data-src="${escapeHtml(msg.audio_url)}">
                 <button class="audio-btn-play" title="Lire">
                     <span class="audio-play-icon">▶</span>
                 </button>
