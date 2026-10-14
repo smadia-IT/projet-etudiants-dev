@@ -3321,3 +3321,69 @@ body {
         min-height: 44px;
     }
 }
+/* ============================================
+   MESSAGERIE — MOBILE PLEIN ÉCRAN
+   ============================================ */
+@media (max-width: 768px) {
+    body.page-messages #footer,
+    body.page-messages .titre-page,
+    body.page-messages .sous-titre-page {
+        display: none;
+    }
+    body.page-messages .conteneur {
+        padding: var(--espace-petit);
+    }
+    body.page-messages .messages-layout {
+        height: calc(100dvh - 170px);
+        margin-top: 0;
+    }
+}
+
+/* ============================================
+   BULLES GROUPÉES (même auteur = bloc continu)
+   ============================================ */
+.message-ligne + .message-ligne {
+    margin-top: 2px;
+}
+.message-ligne.moi + .message-ligne.lui,
+.message-ligne.lui + .message-ligne.moi {
+    margin-top: 12px;
+}
+/* Avatar uniquement sur le dernier message d'un bloc */
+.message-ligne.moi:has(+ .message-ligne.moi) .message-avatar,
+.message-ligne.lui:has(+ .message-ligne.lui) .message-avatar {
+    visibility: hidden;
+}
+/* Coins arrondis à l'intérieur du bloc */
+.message-ligne.moi:has(+ .message-ligne.moi) .message-bulle.moi {
+    border-radius: 15px 15px 6px 15px;
+}
+.message-ligne.lui:has(+ .message-ligne.lui) .message-bulle.lui {
+    border-radius: 15px 15px 15px 6px;
+}
+
+/* ============================================
+   AMBIANCE DE LA DISCUSSION
+   ============================================ */
+.historique-messages {
+    background: linear-gradient(180deg, var(--couleur-fond), var(--couleur-principale-claire));
+}
+body.dark .historique-messages {
+    background: linear-gradient(180deg, #0f0f1e, #16213e);
+}
+
+/* ============================================
+   BOUTON D'ENVOI : ÉTAT SELON LE CONTENU
+   ============================================ */
+.btn-envoyer-message {
+    transition: opacity 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+}
+/* Champ vide : bouton estompé */
+.form-envoi:has(#input-message:placeholder-shown) #btn-envoyer-message {
+    opacity: 0.45;
+}
+/* Champ rempli : bouton plein et bien visible */
+.form-envoi:not(:has(#input-message:placeholder-shown)) #btn-envoyer-message {
+    opacity: 1;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
+}
