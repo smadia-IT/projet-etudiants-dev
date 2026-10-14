@@ -3731,3 +3731,52 @@ body, a, button, input, textarea, select {
         font-size: 16px;
     }
 }
+/* ============================================
+   MODE HORS LIGNE
+   ============================================ */
+.bandeau-hors-ligne {
+    background-color: #fff3cd;
+    color: #664d03;
+    border-bottom: 2px solid #ffc107;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+body.dark .bandeau-hors-ligne {
+    background-color: #3a2f0b;
+    color: #ffe69c;
+}
+
+.message-connexion-requise {
+    background-color: var(--couleur-principale-claire);
+    color: var(--couleur-principale-fonce);
+    border-radius: var(--rayon-moyen);
+    padding: var(--espace-moyen);
+    margin: var(--espace-petit) 0;
+    text-align: center;
+    line-height: 1.5;
+}
+body.dark .message-connexion-requise {
+    color: var(--couleur-texte);
+}
+
+body.hors-ligne button:disabled,
+body.hors-ligne input:disabled,
+body.hors-ligne textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* ============================================
+   PERFORMANCE — PAS D'EFFET À CHAQUE CHANGEMENT DE PAGE
+   ============================================ */
+#chargement-overlay {
+    display: none !important;
+}
+
+.carte-apercu, .carte-continuer, .carte-mot, .carte-doc,
+#coffre-quotidien, .carte-accueil, .carte-apprentissage,
+.carte-question, .ecran-quiz, .feedback, .auth-conteneur,
+.amis-onglet-contenu, .chatbot-message {
+    animation: none !important;
+}
