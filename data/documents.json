@@ -52,5 +52,14 @@
         "fichier": "documents/reseau/annales-2025.pdf",
         "taille": "680 Ko",
         "date": "2026-09-05"
-    }
+    },
+    {
+    "titre": "Le modèle OSI en 7 couches",
+    "description": "Les sept couches du modèle OSI, expliquées avec des exemples.",
+    "domaine": "Réseau",
+    "type": "Fiche",
+    "fichier": "documents/reseau/modele-osi.pdf",
+    "taille": "300 Ko",
+    "date": "2026-10-14"
+}
 ]
