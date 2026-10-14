@@ -3256,3 +3256,68 @@ body {
     background-color: white;
     color: #1a73e8;
 }
+/* ============================================
+   MESSAGERIE — VERSION MOBILE COMPACTE
+   ============================================ */
+@media (max-width: 768px) {
+    .messages-layout {
+        display: flex;
+        flex-direction: column;
+        height: calc(100dvh - 200px);
+        min-height: 420px;
+        gap: var(--espace-petit);
+        margin-top: var(--espace-moyen);
+    }
+
+    /* Liste des conversations : bande horizontale compacte */
+    .messages-sidebar {
+        flex: 0 0 auto;
+        max-height: none;
+    }
+    .sidebar-entete {
+        padding: var(--espace-petit) var(--espace-moyen);
+    }
+    .liste-conversations {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: var(--espace-petit);
+        padding: var(--espace-petit);
+    }
+    .liste-conversations .conv-item {
+        flex: 0 0 auto;
+        min-width: 170px;
+        border-bottom: none;
+    }
+    .conv-apercu {
+        display: none;
+    }
+
+    /* Discussion : prend tout l'espace restant */
+    .messages-principal {
+        flex: 1;
+        min-height: 0;
+    }
+    .conversation-active {
+        flex: 1;
+        min-height: 0;
+    }
+    .conversation-entete {
+        padding: var(--espace-petit) var(--espace-moyen);
+    }
+    .historique-messages {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+        padding: var(--espace-moyen);
+    }
+
+    /* Zone de saisie */
+    .form-envoi {
+        padding: var(--espace-petit);
+        align-items: flex-end;
+    }
+    #input-message {
+        min-height: 44px;
+    }
+}
