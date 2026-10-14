@@ -24,18 +24,18 @@
         }
     ],
     "screenshots": [
-        {
-            "src": "/screenshots/accueil-pc.png",
-            "sizes": "1280x720",
-            "type": "image/png",
-            "form_factor": "wide",
-            "label": "Accueil sur PC"
-        },
-        {
-            "src": "/screenshots/accueil-mobile.jpg",
-            "sizes": "540x960",
-            "type": "image/png",
-            "label": "Accueil sur mobile"
-        }
-    ]
+    {
+        "src": "/screenshots/accueil-pc.png",
+        "sizes": "1842x1048",
+        "type": "image/png",
+        "form_factor": "wide",
+        "label": "Accueil sur PC"
+    },
+    {
+        "src": "/screenshots/accueil-mobile.jpg",
+        "sizes": "571x1179",
+        "type": "image/jpeg",
+        "label": "Accueil sur mobile"
+    }
+]
 }
