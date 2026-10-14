@@ -80,9 +80,13 @@ document.addEventListener("DOMContentLoaded", function() {
         sujetContenu.textContent = post.contenu;
         
         // Bouton supprimer (si je suis l'auteur)
+        // Bouton supprimer (si je suis l'auteur) — écouteur ajouté une seule fois
         if (user && post.user_id === user.id) {
             btnSupprimerSujet.classList.remove("cache");
-            btnSupprimerSujet.addEventListener("click", supprimerSujet);
+            if (!btnSupprimerSujet.dataset.ecoute) {
+                btnSupprimerSujet.addEventListener("click", supprimerSujet);
+                btnSupprimerSujet.dataset.ecoute = "1";
+            }
         }
         
         // Commentaires
