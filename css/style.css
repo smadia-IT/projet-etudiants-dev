@@ -3053,3 +3053,84 @@ body.dark .message-bulle.lui {
         padding-right: 80px;
     }
 }
+
+/* ============================================
+   PAGE DOCUMENTS — AMÉLIORATIONS
+   ============================================ */
+
+/* Le compteur était masqué par la classe .compteur */
+#compteur-doc {
+    display: block !important;
+    font-size: 14px;
+    color: var(--couleur-texte-clair);
+    font-style: italic;
+    margin: 0;
+}
+
+#liste-documents {
+    gap: var(--espace-grand);
+}
+
+.carte-doc {
+    border-top: 4px solid var(--couleur-principale);
+}
+
+.carte-doc-entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espace-petit);
+    flex-wrap: wrap;
+}
+
+.badge-nouveau {
+    background-color: #28a745;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+/* Remplace #4a4a4a, illisible en mode sombre */
+.info-doc {
+    color: var(--couleur-texte-clair);
+}
+
+.domaine-doc {
+    font-weight: bold;
+    color: var(--couleur-principale);
+}
+
+.carte-doc .btn-telecharger {
+    margin-top: auto;
+    text-align: center;
+}
+
+.btn-reinit {
+    margin-top: var(--espace-moyen);
+    padding: 10px 20px;
+    background-color: var(--couleur-principale);
+    color: white;
+    border: none;
+    border-radius: var(--rayon-petit);
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-reinit:hover {
+    background-color: var(--couleur-principale-fonce);
+}
+
+/* Badges de type lisibles en mode sombre */
+body.dark .type-badge.fiche { background-color: #1e3a5f; color: #90caf9; }
+body.dark .type-badge.resume { background-color: #3a1f4a; color: #ce93d8; }
+body.dark .type-badge.exercice { background-color: #1b3a1e; color: #81c784; }
+body.dark .type-badge.annale { background-color: #3a2410; color: #ffb74d; }
+
+@media (max-width: 480px) {
+    #liste-documents {
+        grid-template-columns: 1fr;
+    }
+}
