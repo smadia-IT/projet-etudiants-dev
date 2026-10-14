@@ -3465,3 +3465,93 @@ body.dark .historique-messages {
         display: none;
     }
 }
+/* ============================================
+   PAGE AMIS — REFONTE VISUELLE
+   ============================================ */
+
+/* Onglets : une seule ligne, défilement horizontal si besoin */
+.amis-onglets {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: var(--espace-petit);
+    margin: var(--espace-moyen) 0 var(--espace-grand);
+    scrollbar-width: none;
+}
+.amis-onglets::-webkit-scrollbar {
+    display: none;
+}
+.amis-onglet {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: var(--espace-petit) var(--espace-moyen);
+    border-radius: var(--rayon-petit) var(--rayon-petit) 0 0;
+}
+.amis-onglet.actif {
+    background-color: var(--couleur-principale-claire);
+}
+
+/* Titres de section (Demandes reçues / envoyées) */
+.sous-section h3 {
+    color: var(--couleur-principale);
+    font-size: 17px;
+    margin-bottom: var(--espace-moyen);
+}
+
+/* Grille : plusieurs colonnes sur PC */
+.liste-amis {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--espace-moyen);
+}
+
+/* Cartes : même style que les cartes de l'accueil */
+.carte-utilisateur {
+    border-top: 4px solid var(--couleur-principale);
+    padding: var(--espace-grand);
+}
+.carte-utilisateur:hover {
+    border-top-color: var(--couleur-accent);
+}
+.carte-utilisateur-entete {
+    gap: var(--espace-moyen);
+}
+.carte-utilisateur-nom {
+    font-size: 16px;
+    color: var(--couleur-texte) !important;
+}
+
+/* Boutons d'action : même hauteur, même largeur */
+.actions-utilisateur {
+    display: flex;
+    gap: var(--espace-petit);
+}
+.actions-utilisateur .btn-action {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 8px;
+}
+
+/* États vides : une vraie carte */
+.liste-amis .etat-vide {
+    background-color: var(--couleur-carte);
+    border-radius: var(--rayon-moyen);
+    box-shadow: var(--ombre-legere);
+    padding: var(--espace-grand);
+    color: var(--couleur-texte-clair);
+    line-height: 1.6;
+}
+
+/* Mobile : cartes plus compactes */
+@media (max-width: 768px) {
+    .liste-amis {
+        grid-template-columns: 1fr;
+    }
+    .carte-utilisateur {
+        padding: var(--espace-moyen);
+    }
+    .actions-utilisateur .btn-action {
+        font-size: 13px;
+    }
+    .input-recherche {
+        max-width: 100%;
+    }
+}
