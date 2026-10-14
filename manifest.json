@@ -32,7 +32,7 @@
             "label": "Accueil sur PC"
         },
         {
-            "src": "/screenshots/accueil-mobile.png",
+            "src": "/screenshots/accueil-mobile.jpg",
             "sizes": "540x960",
             "type": "image/png",
             "label": "Accueil sur mobile"
