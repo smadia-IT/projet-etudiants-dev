@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function lirePrenom() {
             try {
-                const utilisateur = JSON.parse(localStorage.getItem("utilisateur") || "null");
+                const utilisateur = JSON.parse(localStorage.getItem("user") || "null");
                 if (utilisateur && utilisateur.prenom) return utilisateur.prenom;
             } catch (erreur) {}
             return localStorage.getItem("prenom") || "ami";
