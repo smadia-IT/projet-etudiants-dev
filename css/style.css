@@ -3387,3 +3387,81 @@ body.dark .historique-messages {
     opacity: 1;
     box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
 }
+/* ============================================
+   MESSAGERIE MOBILE — ÉCRANS SÉPARÉS (STYLE WHATSAPP)
+   ============================================ */
+
+/* Bouton retour : caché sur PC, visible sur mobile */
+.btn-retour-liste {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--couleur-principale-claire);
+    color: var(--couleur-principale);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: inherit;
+}
+
+@media (max-width: 768px) {
+    .btn-retour-liste {
+        display: flex;
+    }
+
+    /* Liste des conversations : verticale, pleine largeur */
+    body.page-messages .liste-conversations {
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 0;
+        gap: 0;
+    }
+    body.page-messages .liste-conversations .conv-item {
+        min-width: 0;
+        border-bottom: 1px solid var(--couleur-bordure);
+        border-radius: 0;
+        padding: 12px 14px;
+    }
+    body.page-messages .conv-apercu {
+        display: block;
+    }
+    body.page-messages .messages-sidebar {
+        flex: 1;
+        min-height: 0;
+    }
+
+    /* Le message « Choisis une conversation » ne sert plus sur mobile */
+    body.page-messages .messages-vide {
+        display: none;
+    }
+
+    /* Écran 1 : aucune conversation ouverte → on voit la liste */
+    /* Écran 2 : conversation ouverte → on cache la liste */
+    body.page-messages:has(#conversation-active:not(.cache)) .messages-sidebar {
+        display: none;
+    }
+
+    /* La conversation prend tout l'écran */
+    body.page-messages .messages-principal {
+        flex: 1;
+        min-height: 0;
+    }
+    body.page-messages .conversation-active {
+        flex: 1;
+        min-height: 0;
+    }
+
+    /* Entête : flèche à gauche, bouton « Voir mes amis » masqué pour gagner de la place */
+    body.page-messages .conversation-entete {
+        padding: var(--espace-petit) var(--espace-moyen);
+        gap: var(--espace-petit);
+    }
+    body.page-messages .conversation-entete .btn-action-small {
+        display: none;
+    }
+}
