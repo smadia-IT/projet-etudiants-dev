@@ -33,7 +33,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (token && user) {
         btnNouveauSujet.classList.remove("cache");
     }
-    
+    // Indiquer aux visiteurs comment créer un sujet
+    if (!token || !user) {
+        const barre = document.querySelector(".forum-actions");
+        const indice = document.createElement("p");
+        indice.className = "info-connexion";
+        indice.innerHTML = `<a href="auth.html">Connecte-toi</a> pour créer un sujet.`;
+        barre.appendChild(indice);
+    }
     // ===== CHARGER LES STATS =====
     async function chargerStats() {
         try {
