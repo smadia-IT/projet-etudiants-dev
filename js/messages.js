@@ -572,10 +572,14 @@ function formaterDuree(secondes) {
                 
                 if (data.success && data.count > 0) {
                     // Ajouter seulement les nouveaux
+                    let venantDeLautre = false;
                     data.data.forEach(msg => {
                         historiqueMessages.appendChild(creerMessageAvecAvatar(msg));
                         dernierMessageId = Math.max(dernierMessageId, msg.id);
+                        if (msg.expediteur_id !== user.id) venantDeLautre = true;
                     });
+                    // Son et vibration seulement si c'est l'autre personne qui écrit
+                    if (venantDeLautre) signalerNouveauMessage();
                     // Scroll en bas
                     historiqueMessages.scrollTop = historiqueMessages.scrollHeight;
                     
