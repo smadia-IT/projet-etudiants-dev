@@ -93,17 +93,19 @@ self.addEventListener("push", (event) => {
         }
     }
 
-    const options = {
-        body: data.body,
-        icon: data.icon,
-        badge: data.badge,
-        vibrate: [200, 100, 200],
-        data: { url: data.url },
-        actions: [
-            { action: "open", title: "Ouvrir" },
-            { action: "close", title: "Fermer" }
-        ]
-    };
+  const options = {
+    body: data.body,
+    icon: data.icon,
+    badge: data.badge,
+    tag: data.tag || "etudiants-it",
+    renotify: true,
+    vibrate: [200, 100, 200],
+    data: { url: data.url },
+    actions: [
+        { action: "open", title: "Ouvrir" },
+        { action: "close", title: "Fermer" }
+    ]
+};
 
     event.waitUntil(
         self.registration.showNotification(data.title, options)

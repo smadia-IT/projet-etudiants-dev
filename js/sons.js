@@ -9,6 +9,10 @@ function initAudio() {
     if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
     }
+    // Sur Android, le son peut être suspendu jusqu'au premier geste de l'utilisateur
+    if (audioContext.state === "suspended") {
+        audioContext.resume();
+    }
     return audioContext;
 }
 
@@ -80,6 +84,22 @@ function sonVieGagnee() {
     setTimeout(() => jouerNote(1046.5, 0.2), 200);  // Do aigu
 }
 
+// ===== SON 8 : Nouveau message (deux notes douces) =====
+function sonNouveauMessage() {
+    jouerNote(880, 0.12, "sine", 0.25);
+    setTimeout(() => jouerNote(1175, 0.2, "sine", 0.25), 120);
+}
+
+// ===== VIBRATION : Nouveau message =====
+function vibrerNouveauMessage() {
+    if (navigator.vibrate) navigator.vibrate([120, 60, 120]);
+}
+
+// À appeler à chaque nouveau message reçu de l'autre personne
+function signalerNouveauMessage() {
+    sonNouveauMessage();
+    vibrerNouveauMessage();
+}
 // Initialiser l'audio au premier clic n'importe où
 document.addEventListener("click", function init() {
     initAudio();

@@ -3603,3 +3603,17 @@ body.dark .historique-messages {
     background-color: #dc3545;
     color: white;
 }
+/* ============================================
+   STABILITÉ MOBILE
+   ============================================ */
+html {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+img, video, iframe, canvas, svg {
+    max-width: 100%;
+}
+body, a, button, input, textarea, select {
+    touch-action: manipulation;
+}
