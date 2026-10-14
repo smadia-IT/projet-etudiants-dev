@@ -3224,3 +3224,10 @@ body.dark #hero {
     font-size: 16px;
     color: var(--couleur-texte-clair);
 }
+/* ============================================
+   FOND ET TEXTE DE LA PAGE SELON LE THÈME
+   ============================================ */
+body {
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+}
