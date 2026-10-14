@@ -3134,3 +3134,75 @@ body.dark .type-badge.annale { background-color: #3a2410; color: #ffb74d; }
         grid-template-columns: 1fr;
     }
 }
+/* ============================================
+   ACCUEIL — REFONTE VISUELLE
+   ============================================ */
+
+/* Hero en dégradé avec une touche de lumière */
+#hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a73e8 0%, #6a5cff 100%);
+    padding: var(--espace-tres-grand) var(--espace-grand);
+}
+body.dark #hero {
+    background: linear-gradient(135deg, #1a73e8 0%, #6a5cff 100%);
+}
+#hero h1 {
+    color: white;
+}
+#hero .hero-sous-titre {
+    color: rgba(255, 255, 255, 0.9);
+}
+#hero::after {
+    content: "";
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+}
+#hero .btn-secondaire {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+#hero .btn-secondaire:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Cartes d'accès rapide : une bordure d'accent */
+.carte-apercu {
+    border-top: 4px solid var(--couleur-principale);
+}
+.carte-apercu:hover {
+    border-top-color: var(--couleur-accent);
+}
+
+/* PC : trois colonnes équilibrées (2 lignes de 3) */
+@media (min-width: 769px) {
+    .grille-apercu {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile : deux colonnes compactes au lieu d'une longue liste */
+@media (max-width: 480px) {
+    .grille-apercu {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--espace-moyen);
+    }
+    .carte-apercu {
+        padding: var(--espace-moyen) var(--espace-petit);
+    }
+    .apercu-icone {
+        font-size: 36px;
+        margin-bottom: var(--espace-petit);
+    }
+    .carte-apercu p {
+        font-size: 12px;
+    }
+}
