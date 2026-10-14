@@ -2,6 +2,23 @@
 // UTILITAIRE : GÉNÉRATION D'AVATAR
 // ============================================
 
+// Protège le texte avant de l'insérer dans du HTML
+function echapperAvatar(texte) {
+    const div = document.createElement("div");
+    div.textContent = texte ?? "";
+    return div.innerHTML;
+}
+
+// Vérifie que l'URL est bien une adresse web (http ou https)
+function urlAvatarSure(url) {
+    try {
+        const adresse = new URL(url);
+        return adresse.protocol === "https:" || adresse.protocol === "http:" ? adresse.href : null;
+    } catch (erreur) {
+        return null;
+    }
+}
+
 /**
  * Génère le HTML d'un avatar (photo ou initiale)
  * @param {Object} utilisateur - Objet avec {avatar_url, prenom, nom, username}
@@ -9,27 +26,27 @@
  * @returns {string} HTML de l'avatar
  */
 function genererAvatarHTML(utilisateur, taille = "moyen") {
-    const nomComplet = (utilisateur.prenom && utilisateur.nom)
-        ? `${utilisateur.prenom} ${utilisateur.nom}`
-        : utilisateur.username;
-    
-    const initiale = (utilisateur.prenom || utilisateur.username || "?").charAt(0).toUpperCase();
-    
+    const nomComplet = getNomComplet(utilisateur);
+    const initiale = echapperAvatar(
+        (utilisateur.prenom || utilisateur.username || "?").charAt(0).toUpperCase()
+    );
+
     const classes = {
         petit: "avatar-petit",
         moyen: "avatar-moyen",
         grand: "avatar-grand"
     };
-    
     const classe = classes[taille] || classes.moyen;
-    
-    if (utilisateur.avatar_url) {
+
+    const urlSure = urlAvatarSure(utilisateur.avatar_url);
+
+    if (urlSure) {
         return `<div class="avatar-utilisateur-photo ${classe}">
-            <img src="${utilisateur.avatar_url}" alt="${escapeHtmlAvatar(nomComplet)}">
+            <img src="${echapperAvatar(urlSure)}" alt="${echapperAvatar(nomComplet)}">
         </div>`;
-    } else {
-        return `<div class="avatar-utilisateur-initiale ${classe}">${initiale}</div>`;
     }
+
+    return `<div class="avatar-utilisateur-initiale ${classe}">${initiale}</div>`;
 }
 
 /**
@@ -39,12 +56,5 @@ function getNomComplet(utilisateur) {
     if (utilisateur.prenom && utilisateur.nom) {
         return `${utilisateur.prenom} ${utilisateur.nom}`;
     }
-    return utilisateur.username;
-}
-
-function escapeHtmlAvatar(text) {
-    if (!text) return "";
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
+    return utilisateur.username || "";
 }
