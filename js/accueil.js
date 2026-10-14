@@ -12,23 +12,35 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(erreur => console.error("Erreur :", erreur));
     
-    function afficherMotDuJour(mots) {
+        function afficherMotDuJour(mots) {
         const aujourdhui = new Date();
         const debutAnnee = new Date(aujourdhui.getFullYear(), 0, 0);
-        const difference = aujourdhui - debutAnnee;
-        const unJourEnMs = 1000 * 60 * 60 * 24;
-        const numeroJour = Math.floor(difference / unJourEnMs);
-        
-        const index = numeroJour % mots.length;
-        const motDuJour = mots[index];
-        
+        const numeroJour = Math.floor((aujourdhui - debutAnnee) / (1000 * 60 * 60 * 24));
+
+        const motDuJour = mots[numeroJour % mots.length];
+        const dansRevision = estDansListeRevision(motDuJour.mot);
+
         contenuMotJour.innerHTML = `
             <div class="carte-jour">
                 <h3>${motDuJour.mot}</h3>
                 <p>${motDuJour.definition}</p>
                 <span class="domaine">${motDuJour.domaine}</span>
+                <div class="actions-mot-jour">
+                    <button id="btn-reviser-mot-jour" class="btn-reviser-jour ${dansRevision ? "est-dans-liste" : ""}">
+                        📖 ${dansRevision ? "Dans ma révision" : "Réviser ce mot"}
+                    </button>
+                </div>
             </div>
         `;
+
+        document.getElementById("btn-reviser-mot-jour").addEventListener("click", function () {
+            if (estDansListeRevision(motDuJour.mot)) {
+                retirerMotRevision(motDuJour.mot);
+            } else {
+                ajouterMotRevision(motDuJour.mot);
+            }
+            afficherMotDuJour(mots);
+        });
     }
 
     // ============================================

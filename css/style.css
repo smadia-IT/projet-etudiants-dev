@@ -3231,3 +3231,28 @@ body {
     background-color: var(--couleur-fond);
     color: var(--couleur-texte);
 }
+/* ============================================
+   BOUTON RÉVISER SUR LE MOT DU JOUR
+   ============================================ */
+.actions-mot-jour {
+    margin-top: var(--espace-moyen);
+}
+.btn-reviser-jour {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all var(--transition-rapide);
+}
+.btn-reviser-jour:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+.btn-reviser-jour.est-dans-liste {
+    background-color: white;
+    color: #1a73e8;
+}
