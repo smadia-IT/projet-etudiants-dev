@@ -3,7 +3,12 @@
 // ============================================
 
 
-
+// Protège le texte affiché contre l'injection de HTML
+function escapeHtml(texte) {
+    const div = document.createElement("div");
+    div.textContent = texte ?? "";
+    return div.innerHTML;
+}
 document.addEventListener("DOMContentLoaded", function() {
     
     // ===== VÉRIFIER CONNEXION =====
@@ -176,18 +181,19 @@ document.addEventListener("DOMContentLoaded", function() {
         carte.className = "carte-utilisateur";
         
         // ✅ Nom complet : prenom + nom, sinon fallback sur username
-        const nomComplet = (u.prenom && u.nom) 
-            ? `${u.prenom} ${u.nom}` 
+        const nomComplet = (u.prenom && u.nom)
+            ? `${u.prenom} ${u.nom}`
             : u.username;
-        
-        // Initiale pour l'avatar
-        const initiale = (u.prenom || u.username).charAt(0).toUpperCase();
+
+        // Version sûre, utilisable dans le HTML
+        const nomSur = escapeHtml(nomComplet);
+        const idSur = parseInt(u.id, 10) || 0;
         
         let actionsHTML = "";
         
         if (type === "ami") {
             actionsHTML = `
-                <button class="btn-action btn-message" data-action="message" data-user="${u.id}" data-username="${nomComplet}">
+                <button class="btn-action btn-message" data-action="message" data-user="${idSur}" data-username="${nomSur}">
                     💬 Message
                 </button>
                 <button class="btn-action btn-retirer" data-action="retirer" data-amitie="${u.amitie_id}">
@@ -243,11 +249,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
         // ✅ Carte SANS email + avatar avec photo
-        carte.innerHTML = `
+               carte.innerHTML = `
             <div class="carte-utilisateur-entete">
-                <a href="profil-public.html?id=${u.id}" style="text-decoration:none;">${genererAvatarHTML(u, "moyen")}</a>
+                <a href="profil-public.html?id=${idSur}" style="text-decoration:none;">${genererAvatarHTML(u, "moyen")}</a>
                 <div>
-                    <a href="profil-public.html?id=${u.id}" class="carte-utilisateur-nom" style="text-decoration:none;color:inherit;">${nomComplet}</a>
+                    <a href="profil-public.html?id=${idSur}" class="carte-utilisateur-nom" style="text-decoration:none;color:inherit;">${nomSur}</a>
                 </div>
             </div>
             <div class="actions-utilisateur">
@@ -259,8 +265,8 @@ document.addEventListener("DOMContentLoaded", function() {
         carte.querySelectorAll("[data-action]").forEach(btn => {
             btn.addEventListener("click", () => {
                 const action = btn.dataset.action;
-                const amitieId = btn.dataset.amitie;
-                const userId = btn.dataset.user;
+                const amitieId = parseInt(btn.dataset.amitie, 10) || 0;
+                const userId = parseInt(btn.dataset.user, 10) || 0;
                 const username = btn.dataset.username;
                 
                 if (action === "retirer") retirerAmi(amitieId);
