@@ -3043,3 +3043,13 @@ body.dark .message-bulle.lui {
     background-color: #2a3a5c;
 }
 
+/* ============================================
+   MOBILE — LE BOUTON CHATBOT NE CACHE PAS L'ENVOI
+   ============================================ */
+@media (max-width: 480px) {
+    #zone-saisie,
+    .form-envoi,
+    .chatbot-saisie {
+        padding-right: 80px;
+    }
+}
