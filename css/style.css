@@ -3582,3 +3582,24 @@ body.dark .historique-messages {
         flex-shrink: 0;
     }
 }
+/* ============================================
+   QUIZ — BOUTON QUITTER LA PARTIE
+   ============================================ */
+.btn-quitter-partie {
+    display: inline-block;
+    margin: var(--espace-petit) 0;
+    padding: 6px 14px;
+    background: none;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all var(--transition-rapide);
+}
+.btn-quitter-partie:hover {
+    background-color: #dc3545;
+    color: white;
+}

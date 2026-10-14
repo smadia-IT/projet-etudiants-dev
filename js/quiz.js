@@ -602,5 +602,25 @@ document.addEventListener("DOMContentLoaded", function() {
             gameoverRecord.textContent = `🏆 Meilleur score : ${meilleurScore} points`;
         }
     }
+        // ===== QUITTER LA PARTIE =====
+    const btnQuitterPartie = document.getElementById("btn-quitter-partie");
+    if (btnQuitterPartie) {
+        btnQuitterPartie.addEventListener("click", function () {
+            if (!confirm("Quitter la partie en cours ? Ton score ne sera pas enregistré.")) return;
+            arreterTimer();
+            ecranJeu.classList.add("cache");
+            ecranGameOver.classList.add("cache");
+            ecranAccueil.classList.remove("cache");
+            afficherStatsAccueil();
+        });
+    }
+
+    // ===== ARRÊT DU MINUTEUR QUAND L'ONGLET N'EST PLUS VISIBLE =====
+    document.addEventListener("visibilitychange", function () {
+        if (document.hidden && timerInterval) {
+            arreterTimer();
+        }
+    });
+    window.addEventListener("pagehide", arreterTimer);
     
 });
