@@ -112,15 +112,18 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             dateAffichage = date.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
         }
-
-              item.innerHTML = `
-            <div class="conv-avatar">${escapeHtml(ami.username.charAt(0).toUpperCase())}</div>
-            <div class="ami-modale-info">
-                <div class="ami-modale-nom">${escapeHtml(ami.username)}</div>
-                <div class="ami-modale-email">${escapeHtml(ami.email)}</div>
+        item.innerHTML = `
+            <div class="conv-avatar">${initiale}</div>
+            <div class="conv-info">
+                <div class="conv-username">${nomSur}</div>
+                <div class="conv-apercu">${prefixe}${apercuSur}</div>
+            </div>
+            <div class="conv-meta">
+                <span class="conv-date">${dateAffichage}</span>
+                ${conv.nb_non_lus > 0 ? `<span class="conv-badge">${conv.nb_non_lus}</span>` : ""}
+                <button class="conv-supprimer" title="Masquer la conversation" data-user-id="${parseInt(conv.user_id, 10) || 0}">🗑️</button>
             </div>
         `;
-        
         // Clic sur l'item → ouvrir
         item.addEventListener("click", (e) => {
             if (e.target.closest(".conv-supprimer")) return; // ne pas ouvrir si on clique sur supprimer
@@ -177,10 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
         messagesVide.classList.add("cache");
         conversationActive.classList.remove("cache");
         
-                carte.innerHTML = `
-                    <div class="conv-avatar">${escapeHtml(ami.username.charAt(0).toUpperCase())}</div>
-                    <div class="ami-nom">${escapeHtml(ami.username)}</div>
-                `;
+             
         
         // Marquer les items actifs
         document.querySelectorAll(".conv-item").forEach(item => {
@@ -667,11 +667,11 @@ function formaterDuree(secondes) {
         
         const initiale = ami.username.charAt(0).toUpperCase();
         
-        item.innerHTML = `
-            <div class="conv-avatar">${initiale}</div>
+            item.innerHTML = `
+            <div class="conv-avatar">${escapeHtml(ami.username.charAt(0).toUpperCase())}</div>
             <div class="ami-modale-info">
-                <div class="ami-modale-nom">${ami.username}</div>
-                <div class="ami-modale-email">${ami.email}</div>
+                <div class="ami-modale-nom">${escapeHtml(ami.username)}</div>
+                <div class="ami-modale-email">${escapeHtml(ami.email)}</div>
             </div>
         `;
         
