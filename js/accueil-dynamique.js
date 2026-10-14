@@ -114,5 +114,37 @@ document.addEventListener("DOMContentLoaded", function() {
     contenu.innerHTML = cartes.join("");
     document.getElementById("continuer").classList.remove("cache");
     
+        // ===== SALUTATION PERSONNALISÉE =====
+    (function () {
+        const main = document.querySelector("main.conteneur");
+        if (!main) return;
 
+        function lirePrenom() {
+            try {
+                const utilisateur = JSON.parse(localStorage.getItem("utilisateur") || "null");
+                if (utilisateur && utilisateur.prenom) return utilisateur.prenom;
+            } catch (erreur) {}
+            return localStorage.getItem("prenom") || "ami";
+        }
+
+        const prenom = lirePrenom();
+        const prenomAffiche = prenom.charAt(0).toUpperCase() + prenom.slice(1);
+
+        let phrase;
+        if (partiesJouees === 0) {
+            phrase = "Bienvenue ! Lance ton premier quiz pour commencer 🚀";
+        } else if (listeRevision.length > 0) {
+            phrase = `Tu as ${listeRevision.length} mot(s) à réviser aujourd'hui 📚`;
+        } else {
+            phrase = "Content de te revoir, continue sur ta lancée 💪";
+        }
+
+        const bloc = document.createElement("section");
+        bloc.className = "salutation";
+        bloc.innerHTML = `
+            <h2>Salut ${prenomAffiche} 👋</h2>
+            <p>${phrase}</p>
+        `;
+        main.prepend(bloc);
+    })();
 });

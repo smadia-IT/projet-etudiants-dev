@@ -3206,3 +3206,21 @@ body.dark #hero {
         font-size: 12px;
     }
 }
+/* ============================================
+   SALUTATION PERSONNALISÉE (ACCUEIL)
+   ============================================ */
+.salutation {
+    margin-bottom: var(--espace-grand);
+}
+.salutation h2 {
+    border: none;
+    padding: 0;
+    margin: 0 0 var(--espace-petit) 0;
+    font-size: 24px;
+    color: var(--couleur-texte);
+}
+.salutation p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--couleur-texte-clair);
+}
