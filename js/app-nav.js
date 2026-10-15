@@ -140,19 +140,7 @@
             });
         });
 
-        // Paramètres
-        const titreParam = document.createElement("div");
-        titreParam.className = "app-menu-section";
-        titreParam.textContent = "Paramètres";
-        tiroir.appendChild(titreParam);
-
-            
-        tiroir.appendChild(creerLienMenu("🌓", "Changer de thème", null, function () {
-            const btnTheme = document.getElementById("btn-theme");
-            if (btnTheme) btnTheme.click();
-            fermerMenu();
-        }));
-        tiroir.appendChild(creerLienMenu("🚪", "Se déconnecter", null, deconnecter));
+        
 
         document.body.appendChild(overlay);
         document.body.appendChild(tiroir);
