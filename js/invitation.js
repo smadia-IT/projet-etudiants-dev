@@ -11,7 +11,7 @@
     bandeau.className = "invitation-bandeau";
     bandeau.innerHTML = `
         <div class="invitation-texte">
-            <strong>Rejoins Étudiants IT</strong> : quiz, messagerie, amis et forum, gratuitement.
+            <strong>Rejoins Étudiants IT</strong> : quiz,dictionnaire, messagerie, amis et forum, gratuitement.
         </div>
         <a href="auth.html" class="btn-primaire invitation-btn">Créer mon compte</a>
     `;
