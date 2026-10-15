@@ -43,7 +43,7 @@ const PushManager = {
     // ============================================
     // S'ABONNER AUX NOTIFICATIONS
     // ============================================
-    async subscribe() {
+       async subscribe() {
         const token = localStorage.getItem("token");
         if (!token) {
             console.warn("Utilisateur non connecté");
@@ -51,23 +51,27 @@ const PushManager = {
         }
 
         try {
-            // Récupérer la clé publique VAPID
+            // Attendre que le service worker soit prêt
+            const registration = await navigator.serviceWorker.ready;
+            this.registration = registration;
+
+            // Clé publique VAPID
             const reponse = await fetch(`${API_URL}/push/public-key`);
             const data = await reponse.json();
-            if (!data.success) throw new Error("Clé publique introuvable");
+            if (!data.success || !data.publicKey) {
+                throw new Error("Clé publique VAPID introuvable sur le serveur");
+            }
 
-            const publicKey = data.publicKey;
+            const applicationServerKey = this.urlBase64ToUint8Array(data.publicKey);
 
-            // Convertir la clé en Uint8Array
-            const applicationServerKey = this.urlBase64ToUint8Array(publicKey);
-
-            // Créer l'abonnement
-            const subscription = await this.registration.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: applicationServerKey
-            });
-
-            console.log("✅ Abonnement créé :", subscription);
+            // Créer l'abonnement (ou récupérer celui qui existe déjà)
+            let subscription = await registration.pushManager.getSubscription();
+            if (!subscription) {
+                subscription = await registration.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey
+                });
+            }
 
             // Envoyer au backend
             const subReponse = await fetch(`${API_URL}/push/subscribe`, {
@@ -80,17 +84,17 @@ const PushManager = {
             });
 
             const subData = await subReponse.json();
-            if (!subData.success) throw new Error(subData.error);
+            if (!subData.success) throw new Error(subData.error || "Échec côté serveur");
 
-            console.log("✅ Abonnement envoyé au serveur");
+            console.log("✅ Abonnement enregistré");
             return true;
 
         } catch (erreur) {
             console.error("❌ Erreur abonnement :", erreur);
+            alert("Erreur notifications : " + erreur.message);
             return false;
         }
     },
-
     // ============================================
     // SE DÉSABONNER
     // ============================================
