@@ -222,11 +222,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const permission = Notification.permission;
         const abonne = await PushManager.estAbonne();
-
         if (permission === "denied") {
-            statutNotifs.textContent = "🚫 Notifications bloquées. Autorise-les dans les paramètres de ton navigateur.";
+            statutNotifs.innerHTML = `
+                <span>🔕 Les notifications sont désactivées pour Étudiants IT sur ce téléphone.</span><br>
+                <button id="btn-aide-notifs" class="btn-secondaire" style="margin-top:10px;">Comment les activer ?</button>
+                <div id="aide-notifs" class="cache" style="text-align:left;margin-top:12px;font-size:14px;line-height:1.7;">
+                    <strong>Sur Chrome (Android) :</strong><br>
+                    1. Appuie sur le cadenas 🔒 à gauche de l'adresse, ou sur ⋮ → Paramètres.<br>
+                    2. Ouvre <em>Notifications</em> (ou Paramètres des sites → Notifications).<br>
+                    3. Choisis <strong>Autoriser</strong> pour projet-etudiants-it.vercel.app.<br>
+                    4. Reviens sur cette page et recharge-la.<br><br>
+                    <strong>Si tu as installé l'appli :</strong><br>
+                    Paramètres du téléphone → Applications → Étudiants IT (ou Chrome) → Notifications → Activer.
+                </div>
+            `;
             btnActiverNotifs.classList.add("cache");
             btnDesactiverNotifs.classList.add("cache");
+
+            document.getElementById("btn-aide-notifs").addEventListener("click", function () {
+                document.getElementById("aide-notifs").classList.toggle("cache");
+            });
         } else if (abonne) {
             statutNotifs.textContent = "✅ Notifications activées";
             btnActiverNotifs.classList.add("cache");
