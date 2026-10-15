@@ -145,7 +145,7 @@
         titreParam.textContent = "Paramètres";
         tiroir.appendChild(titreParam);
 
-        tiroir.appendChild(creerLienMenu("⚙️", "Paramètres et notifications", "profil.html"));
+               tiroir.appendChild(creerLienMenu("⚙️", "Paramètres et notifications", "profil.html#notifications"));
         tiroir.appendChild(creerLienMenu("🌓", "Changer de thème", null, function () {
             const btnTheme = document.getElementById("btn-theme");
             if (btnTheme) btnTheme.click();
