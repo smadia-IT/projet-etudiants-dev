@@ -408,6 +408,16 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         </div>
     `;
+        // Bouton supprimer : uniquement sur mes propres messages
+    if (estMoi && msg.id) {
+        const statut = ligne.querySelector(".message-statut");
+        const btnSupprimer = document.createElement("button");
+        btnSupprimer.className = "btn-supprimer-message";
+        btnSupprimer.dataset.id = msg.id;
+        btnSupprimer.title = "Supprimer ce message";
+        btnSupprimer.textContent = "🗑️";
+        statut.appendChild(btnSupprimer);
+    }
     
     // Initialiser le lecteur audio custom si présent
     const audioPlayer = ligne.querySelector(".audio-player");
@@ -492,6 +502,32 @@ function formaterDuree(secondes) {
     const sec = Math.floor(secondes % 60);
     return `${min}:${sec.toString().padStart(2, "0")}`;
 }
+
+    // ============================================
+    // SUPPRIMER UN MESSAGE (mes propres messages)
+    // ============================================
+    historiqueMessages.addEventListener("click", async function (e) {
+        const btn = e.target.closest(".btn-supprimer-message");
+        if (!btn) return;
+
+        if (!confirm("Supprimer ce message ?")) return;
+
+        const ligne = btn.closest(".message-ligne");
+        btn.disabled = true;
+
+        try {
+            const reponse = await fetch(`${API_URL}/messages/${btn.dataset.id}`, {
+                method: "DELETE",
+                headers
+            });
+            const data = await reponse.json();
+            if (!data.success) throw new Error(data.error);
+            ligne.remove();
+        } catch (erreur) {
+            alert("Erreur : " + erreur.message);
+            btn.disabled = false;
+        }
+    });
     // ============================================
     // ENVOYER UN MESSAGE
     // ============================================

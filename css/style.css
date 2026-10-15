@@ -3980,3 +3980,28 @@ body.hors-ligne textarea:disabled {
 .btn-valider {
     width: 100%;
 }
+/* ============================================
+   MESSAGERIE — SUPPRIMER SON MESSAGE
+   ============================================ */
+.message-ligne.moi .message-statut {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+}
+.btn-supprimer-message {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    opacity: 0.5;
+    padding: 0 4px;
+    font-family: inherit;
+}
+.btn-supprimer-message:hover {
+    opacity: 1;
+}
+.btn-supprimer-message:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
