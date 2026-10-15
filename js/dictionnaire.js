@@ -217,6 +217,10 @@ document.addEventListener("DOMContentLoaded", function () {
         mots.forEach(function (unMot) {
             const carte = document.createElement("div");
             carte.className = "carte-mot";
+                        carte.dataset.domaine = unMot.domaine
+                .toLowerCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s+/g, "-");
 
             const favori = motsFavoris.includes(unMot.mot);
             const dansRevision = revisionSet.has(unMot.mot);

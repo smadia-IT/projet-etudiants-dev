@@ -3824,3 +3824,91 @@ body.hors-ligne textarea:disabled {
 #liste-mots .carte-mot:hover {
     transform: none;
 }
+/* ============================================
+   DICTIONNAIRE — COULEUR PAR DOMAINE
+   ============================================ */
+
+/* Couleur de base : variables de thème */
+#liste-mots .carte-mot {
+    --couleur-domaine: var(--couleur-principale);
+    --couleur-domaine-claire: var(--couleur-principale-claire);
+    border-left: 5px solid var(--couleur-domaine);
+    background: linear-gradient(135deg, var(--couleur-carte) 60%, var(--couleur-domaine-claire));
+    border-radius: var(--rayon-moyen);
+    padding: var(--espace-grand);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-petit);
+}
+
+/* Une couleur par domaine */
+#liste-mots .carte-mot[data-domaine="programmation"] {
+    --couleur-domaine: #1a73e8;
+    --couleur-domaine-claire: rgba(26, 115, 232, 0.12);
+}
+#liste-mots .carte-mot[data-domaine="intelligence-artificielle"] {
+    --couleur-domaine: #8e44ad;
+    --couleur-domaine-claire: rgba(142, 68, 173, 0.12);
+}
+#liste-mots .carte-mot[data-domaine="reseau"] {
+    --couleur-domaine: #16a085;
+    --couleur-domaine-claire: rgba(22, 160, 133, 0.12);
+}
+#liste-mots .carte-mot[data-domaine="cybersecurite"] {
+    --couleur-domaine: #e74c3c;
+    --couleur-domaine-claire: rgba(231, 76, 60, 0.12);
+}
+#liste-mots .carte-mot[data-domaine="base-de-donnees"] {
+    --couleur-domaine: #f39c12;
+    --couleur-domaine-claire: rgba(243, 156, 18, 0.12);
+}
+
+/* Titre et étiquette prennent la couleur du domaine */
+#liste-mots .carte-mot h3 {
+    color: var(--couleur-domaine);
+    font-size: 18px;
+    line-height: 1.3;
+}
+#liste-mots .carte-mot .domaine {
+    background-color: var(--couleur-domaine);
+    color: white;
+    font-weight: bold;
+}
+
+/* Bouton favori plus visible */
+#liste-mots .btn-favori-carte {
+    font-size: 22px;
+    color: var(--couleur-domaine);
+}
+
+/* Bouton Réviser en plein */
+#liste-mots .btn-reviser {
+    background-color: var(--couleur-domaine);
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 16px;
+}
+#liste-mots .btn-reviser:hover {
+    filter: brightness(1.1);
+}
+#liste-mots .btn-reviser.est-dans-liste {
+    background-color: #28a745;
+}
+
+/* Niveaux plus lisibles */
+#liste-mots .niveau {
+    font-size: 12px;
+    padding: 4px 10px;
+}
+
+/* Mobile : cartes sur une colonne */
+@media (max-width: 480px) {
+    #liste-mots {
+        grid-template-columns: 1fr;
+    }
+    #liste-mots .carte-mot h3 {
+        font-size: 16px;
+    }
+}
