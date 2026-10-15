@@ -3817,3 +3817,10 @@ body.hors-ligne textarea:disabled {
     padding: 8px 14px;
     font-size: 14px;
 }
+/* Dictionnaire : pas d'animation sur chaque carte (trop lent avec 758 mots) */
+#liste-mots .carte-mot {
+    animation: none;
+}
+#liste-mots .carte-mot:hover {
+    transform: none;
+}

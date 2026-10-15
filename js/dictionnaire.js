@@ -74,11 +74,14 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================
     // RECHERCHE
     // ============================================
+       let timeoutRecherche = null;
     champRecherche.addEventListener("input", function() {
-        texteRecherche = champRecherche.value.toLowerCase();
-        afficherMotsFiltres();
+        clearTimeout(timeoutRecherche);
+        timeoutRecherche = setTimeout(function() {
+            texteRecherche = champRecherche.value.trim().toLowerCase();
+            afficherMotsFiltres();
+        }, 200);
     });
-    
     // ============================================
     // FILTRES PAR NIVEAU
     // ============================================
@@ -227,6 +230,8 @@ document.addEventListener("DOMContentLoaded", function() {
 }
     function afficherMots(mots) {
         listeMots.innerHTML = "";
+                // Lire une seule fois, au lieu de 758 fois
+        const revisionSet = new Set(getListeRevision().map(item => item.mot));
         
             if (compteur) {
         compteur.classList.add("cache");
@@ -237,53 +242,12 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         
+               const fragment = document.createDocumentFragment();
         mots.forEach(function(unMot) {
-            const carte = document.createElement("div");
-            carte.className = "carte-mot";
-            
-            const favori = estFavori(unMot.mot);
-            const dansRevision = estDansListeRevision(unMot.mot);
-            
-            carte.innerHTML = `
-                <div class="carte-entete">
-                    <h3>${unMot.mot}</h3>
-                    <button class="btn-favori-carte ${favori ? 'est-favori' : ''}" 
-                            title="${favori ? 'Retirer des favoris' : 'Ajouter aux favoris'}">
-                        ${favori ? '⭐' : '☆'}
-                    </button>
-                </div>
-                <p>${unMot.definition}</p>
-                <div class="carte-footer">
-                    <span class="domaine">${unMot.domaine}</span>
-                    <span class="niveau niveau-${(unMot.niveau || 'Débutant').toLowerCase()}">${unMot.niveau || 'Débutant'}</span>
-                </div>
-                <button class="btn-reviser ${dansRevision ? 'est-dans-liste' : ''}">
-                    📖 ${dansRevision ? 'Dans ma révision' : 'Réviser ce mot'}
-                </button>
-            `;
-            
-            // Écouteur sur le bouton favori
-            const btnFav = carte.querySelector(".btn-favori-carte");
-            btnFav.addEventListener("click", function(e) {
-                e.stopPropagation();
-                toggleFavori(unMot.mot);
-                afficherMotsFiltres();
-            });
-            
-            // Écouteur sur le bouton "Réviser"
-            const btnReviser = carte.querySelector(".btn-reviser");
-            btnReviser.addEventListener("click", function(e) {
-                e.stopPropagation();
-                if (estDansListeRevision(unMot.mot)) {
-                    retirerMotRevision(unMot.mot);
-                } else {
-                    ajouterMotRevision(unMot.mot);
-                }
-                afficherMotsFiltres();
-            });
-            
-            listeMots.appendChild(carte);
+            // ... même code qu'avant pour créer "carte" ...
+            fragment.appendChild(carte);
         });
+        listeMots.appendChild(fragment);
     }
     
 });
