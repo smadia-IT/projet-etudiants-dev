@@ -70,4 +70,93 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+        // ===== NOTIFICATIONS =====
+    const btnActiverNotifs = document.getElementById("btn-activer-notifs");
+    const btnDesactiverNotifs = document.getElementById("btn-desactiver-notifs");
+    const statutNotifs = document.getElementById("statut-notifs");
+
+    async function majStatutNotifs() {
+        if (!statutNotifs) return;
+
+        if (!("Notification" in window)) {
+            statutNotifs.textContent = "❌ Non supporté par ton navigateur";
+            return;
+        }
+
+        if (Notification.permission === "denied") {
+            statutNotifs.innerHTML = `
+                <span>🔕 Les notifications sont désactivées pour Étudiants IT sur ce téléphone.</span><br>
+                <button id="btn-aide-notifs" class="btn-secondaire" style="margin-top:10px;">Comment les activer ?</button>
+                <div id="aide-notifs" class="cache" style="text-align:left;margin-top:12px;font-size:14px;line-height:1.7;">
+                    <strong>Sur Chrome (Android) :</strong><br>
+                    1. Appuie sur le cadenas 🔒 à gauche de l'adresse, ou sur ⋮ → Paramètres.<br>
+                    2. Ouvre <em>Notifications</em> (ou Paramètres des sites → Notifications).<br>
+                    3. Choisis <strong>Autoriser</strong> pour projet-etudiants-it.vercel.app.<br>
+                    4. Reviens sur cette page et recharge-la.<br><br>
+                    <strong>Si tu as installé l'appli :</strong><br>
+                    Paramètres du téléphone → Applications → Étudiants IT (ou Chrome) → Notifications → Activer.
+                </div>
+            `;
+            btnActiverNotifs.classList.add("cache");
+            btnDesactiverNotifs.classList.add("cache");
+
+            document.getElementById("btn-aide-notifs").addEventListener("click", function () {
+                document.getElementById("aide-notifs").classList.toggle("cache");
+            });
+            return;
+        }
+
+        const abonne = await PushManager.estAbonne();
+
+        if (abonne) {
+            statutNotifs.textContent = "✅ Notifications activées";
+            btnActiverNotifs.classList.add("cache");
+            btnDesactiverNotifs.classList.remove("cache");
+        } else {
+            statutNotifs.textContent = "";
+            btnActiverNotifs.classList.remove("cache");
+            btnDesactiverNotifs.classList.add("cache");
+        }
+    }
+
+    if (btnActiverNotifs) {
+        btnActiverNotifs.addEventListener("click", async () => {
+            btnActiverNotifs.disabled = true;
+            btnActiverNotifs.textContent = "⏳ Activation...";
+
+            const autorise = await PushManager.demanderPermission();
+            if (!autorise) {
+                alert("❌ Tu as refusé les notifications. Autorise-les dans les paramètres du navigateur.");
+                btnActiverNotifs.disabled = false;
+                btnActiverNotifs.textContent = "🔔 Activer les notifications";
+                majStatutNotifs();
+                return;
+            }
+
+            const ok = await PushManager.subscribe();
+            btnActiverNotifs.disabled = false;
+            btnActiverNotifs.textContent = "🔔 Activer les notifications";
+
+            if (ok) {
+                alert("✅ Notifications activées !");
+                majStatutNotifs();
+            } else {
+                alert("❌ Erreur lors de l'activation");
+            }
+        });
+    }
+
+    if (btnDesactiverNotifs) {
+        btnDesactiverNotifs.addEventListener("click", async () => {
+            if (!confirm("Désactiver les notifications ?")) return;
+            const ok = await PushManager.unsubscribe();
+            if (ok) {
+                alert("✅ Notifications désactivées");
+                setTimeout(majStatutNotifs, 1000);
+            }
+        });
+    }
+
+    majStatutNotifs();
+
 });

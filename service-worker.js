@@ -1,4 +1,4 @@
-const CACHE_PAGES = "etudiants-it-v6";
+const CACHE_PAGES = "etudiants-it-v7";
 const CACHE_API = "etudiants-it-api-v1";
 
 const API_ORIGINE = "https://projet-etudiants-it-backend.onrender.com";
