@@ -59,17 +59,29 @@ document.addEventListener("DOMContentLoaded", function () {
     function getNbTelechargements(titre) {
         return lireStorage("compteursTelechargements", {})[titre] || 0;
     }
+        // Masquer les outils de recherche tant qu'il n'y a aucun document
+    function masquerOutilsSiVide(estVide) {
+        document.querySelectorAll("#recherche-doc, #filtres-type, #filtres-docs, .barre-tri")
+            .forEach(el => el.classList.toggle("cache", estVide));
+    }
 
     // ===== CHARGEMENT =====
-    listeDocuments.innerHTML = "<p class='etat-vide'>Chargement des documents…</p>";
 
     fetch("data/documents.json")
         .then(function (reponse) {
             if (!reponse.ok) throw new Error("HTTP " + reponse.status);
             return reponse.json();
         })
-        .then(function (docs) {
-            tousLesDocuments = docs;
+              .then(function (docs) {
+            tousLesDocuments = docs || [];
+                        masquerOutilsSiVide(tousLesDocuments.length === 0);
+
+            // Aucun document pour l'instant : on garde le message du HTML
+            if (tousLesDocuments.length === 0) {
+                afficherTelechargements();
+                return;
+            }
+
             afficherDocuments();
             afficherTelechargements();
         })
