@@ -741,15 +741,11 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => afficherNotificationBadge(badge), index * 1000);
         });
 
-        // --- CORRECTION ICI ---
-        console.log("Score final atteint :", score);
-        const elementScoreGo = document.getElementById("gameover-score");
-        if (elementScoreGo) {
-            elementScoreGo.innerHTML = `
-                Score de cette partie : <strong>${score} point(s)</strong><br>
-                <span style="font-size: 14px;">Questions répondues : ${questionsRepondues}</span>
-            `;
-        }
+        // Score de la partie (celui qui vient d'être joué)
+        gameoverScore.innerHTML = `
+            Score de cette partie : <strong>${score} point(s)</strong><br>
+            <span style="font-size: 14px;">Questions répondues : ${questionsRepondues}</span>
+        `;
 
         if (gameoverRecord) {
             gameoverRecord.textContent = `🏆 Meilleur score : ${meilleurScore} points`;
