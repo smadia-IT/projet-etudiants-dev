@@ -170,10 +170,40 @@
     document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") fermerMenu();
     });
+        // ----- Badge de messages non lus -----
+    async function majBadgeMessages() {
+        const token = localStorage.getItem("token");
+        const onglet = document.querySelector('.app-nav-bas a[href="messages.html"]');
+        if (!token || !onglet || typeof API_URL === "undefined") return;
 
-    function init() {
+        try {
+            const reponse = await fetch(`${API_URL}/messages/non-lus/count`, {
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+            const data = await reponse.json();
+            if (!data.success) return;
+
+            let badge = onglet.querySelector(".app-nav-badge");
+            if (data.count > 0) {
+                if (!badge) {
+                    badge = document.createElement("span");
+                    badge.className = "app-nav-badge";
+                    onglet.appendChild(badge);
+                }
+                badge.textContent = data.count > 9 ? "9+" : data.count;
+            } else if (badge) {
+                badge.remove();
+            }
+        } catch (erreur) {
+            // Hors ligne ou serveur indisponible : on ignore
+        }
+    }
+
+        function init() {
         creerNavBas();
         creerMenu();
+        majBadgeMessages();
+        setInterval(majBadgeMessages, 15000);
     }
 
     if (document.readyState === "loading") {
