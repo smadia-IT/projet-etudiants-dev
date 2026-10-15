@@ -412,6 +412,24 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         </div>
     `;
+    // Réactions sous la bulle
+    const conteneurReactions = document.createElement("div");
+    conteneurReactions.className = "reactions-message";
+    const emojis = ["👍", "❤️", "😂"];
+    const reactions = msg.reactions || [];
+    const maReaction = reactions.find(r => r.user_id === user.id);
+
+    emojis.forEach(emoji => {
+        const nb = reactions.filter(r => r.emoji === emoji).length;
+        const btn = document.createElement("button");
+        btn.className = "btn-reaction" + (maReaction && maReaction.emoji === emoji ? " active" : "");
+        btn.dataset.messageId = msg.id;
+        btn.dataset.emoji = emoji;
+        btn.textContent = nb > 0 ? `${emoji} ${nb}` : emoji;
+        conteneurReactions.appendChild(btn);
+    });
+
+    ligne.querySelector(".message-contenu").appendChild(conteneurReactions);
         // Bouton supprimer : uniquement sur mes propres messages
     if (estMoi && msg.id) {
         const statut = ligne.querySelector(".message-statut");
@@ -529,6 +547,37 @@ function formaterDuree(secondes) {
             ligne.remove();
         } catch (erreur) {
             alert("Erreur : " + erreur.message);
+            btn.disabled = false;
+        }
+    });
+        // ============================================
+    // RÉACTIONS AUX MESSAGES
+    // ============================================
+    historiqueMessages.addEventListener("click", async function (e) {
+        const btn = e.target.closest(".btn-reaction");
+        if (!btn) return;
+
+        const messageId = btn.dataset.messageId;
+        const emoji = btn.dataset.emoji;
+        const estActive = btn.classList.contains("active");
+
+        btn.disabled = true;
+        try {
+            const reponse = await fetch(`${API_URL}/messages/${messageId}/reaction`, {
+                method: estActive ? "DELETE" : "POST",
+                headers,
+                body: estActive ? undefined : JSON.stringify({ emoji })
+            });
+            const data = await reponse.json();
+            if (!data.success) throw new Error(data.error);
+
+            // Recharger la conversation pour afficher les compteurs à jour
+            if (conversationActuelleId) {
+                await chargerMessages(conversationActuelleId);
+            }
+        } catch (erreur) {
+            alert("Erreur : " + erreur.message);
+        } finally {
             btn.disabled = false;
         }
     });

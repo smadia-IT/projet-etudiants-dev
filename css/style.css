@@ -4005,3 +4005,35 @@ body.hors-ligne textarea:disabled {
     opacity: 0.3;
     cursor: not-allowed;
 }
+/* ============================================
+   RÉACTIONS AUX MESSAGES
+   ============================================ */
+.reactions-message {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+}
+.btn-reaction {
+    background-color: var(--couleur-carte);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--couleur-texte);
+    transition: transform var(--transition-rapide);
+}
+.btn-reaction:hover {
+    transform: scale(1.1);
+}
+.btn-reaction.active {
+    border-color: var(--couleur-principale);
+    background-color: var(--couleur-principale-claire);
+    font-weight: bold;
+}
+.btn-reaction:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
