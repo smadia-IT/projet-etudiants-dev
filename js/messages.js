@@ -179,6 +179,10 @@ document.addEventListener("DOMContentLoaded", function() {
         // Mettre à jour l'UI
         messagesVide.classList.add("cache");
         conversationActive.classList.remove("cache");
+                // En-tête de la conversation
+        const nomAffiche = username || "Ami";
+        usernameConversation.textContent = nomAffiche;
+        avatarConversation.textContent = nomAffiche.charAt(0).toUpperCase();
         
              
         
@@ -640,14 +644,7 @@ function formaterDuree(secondes) {
         }
     }
     
-    // ============================================
-    // UTILITAIRE : ÉCHAPPER LE HTML
-    // ============================================
-    function escapeHtml(text) {
-        const div = document.createElement("div");
-        div.textContent = text;
-        return div.innerHTML;
-    }
+   
     
     // ============================================
     // MODALE NOUVEAU MESSAGE
@@ -726,13 +723,13 @@ function formaterDuree(secondes) {
     // ============================================
     // GESTION DES PARAMÈTRES D'URL
     // ============================================
-    function lireParametresURL() {
+        function lireParametresURL() {
         const params = new URLSearchParams(window.location.search);
         const userId = params.get("user");
-        const username = params.get("username");
-        
+        const username = params.get("username"); // déjà décodé par URLSearchParams
+
         if (userId && username) {
-            ouvrirConversation(parseInt(userId), decodeURIComponent(username));
+            ouvrirConversation(parseInt(userId, 10), username);
         }
     }
     
