@@ -228,29 +228,71 @@ document.addEventListener("DOMContentLoaded", function() {
     
     afficherMots(resultats);
 }
-    function afficherMots(mots) {
+        function afficherMots(mots) {
         listeMots.innerHTML = "";
-                // Lire une seule fois, au lieu de 758 fois
-        const revisionSet = new Set(getListeRevision().map(item => item.mot));
-        
-            if (compteur) {
-        compteur.classList.add("cache");
-    }
-        
+
+        if (compteur) {
+            compteur.classList.add("cache");
+        }
+
         if (mots.length === 0) {
             listeMots.innerHTML = "<p>Aucun mot trouvé 😕</p>";
             return;
         }
-        
-               const fragment = document.createDocumentFragment();
+
+        // Lire une seule fois la liste de révision
+        const revisionSet = new Set(getListeRevision().map(item => item.mot));
+
+        const fragment = document.createDocumentFragment();
+
         mots.forEach(function(unMot) {
-            // ... même code qu'avant pour créer "carte" ...
+            const carte = document.createElement("div");
+            carte.className = "carte-mot";
+
+            const favori = motsFavoris.includes(unMot.mot);
+            const dansRevision = revisionSet.has(unMot.mot);
+
+            carte.innerHTML = `
+                <div class="carte-entete">
+                    <h3>${escapeHtml(unMot.mot)}</h3>
+                    <button class="btn-favori-carte ${favori ? "est-favori" : ""}"
+                            title="${favori ? "Retirer des favoris" : "Ajouter aux favoris"}">
+                        ${favori ? "⭐" : "☆"}
+                    </button>
+                </div>
+                <p>${escapeHtml(unMot.definition)}</p>
+                <div class="carte-footer">
+                    <span class="domaine">${escapeHtml(unMot.domaine)}</span>
+                    <span class="niveau niveau-${(unMot.niveau || "Débutant").toLowerCase()}">${escapeHtml(unMot.niveau || "Débutant")}</span>
+                </div>
+                <button class="btn-reviser ${dansRevision ? "est-dans-liste" : ""}">
+                    📖 ${dansRevision ? "Dans ma révision" : "Réviser ce mot"}
+                </button>
+            `;
+
+            // Bouton favori
+            carte.querySelector(".btn-favori-carte").addEventListener("click", function(e) {
+                e.stopPropagation();
+                toggleFavori(unMot.mot);
+                afficherMotsFiltres();
+            });
+
+            // Bouton Réviser
+            carte.querySelector(".btn-reviser").addEventListener("click", function(e) {
+                e.stopPropagation();
+                if (estDansListeRevision(unMot.mot)) {
+                    retirerMotRevision(unMot.mot);
+                } else {
+                    ajouterMotRevision(unMot.mot);
+                }
+                afficherMotsFiltres();
+            });
+
             fragment.appendChild(carte);
         });
+
         listeMots.appendChild(fragment);
     }
-    
-});
 
 // ============================================
 // UTILITAIRE : ÉCHAPPER LE HTML
