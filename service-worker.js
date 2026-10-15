@@ -1,4 +1,4 @@
-const CACHE_PAGES = "etudiants-it-v5";
+const CACHE_PAGES = "etudiants-it-v6";
 const CACHE_API = "etudiants-it-api-v1";
 
 const API_ORIGINE = "https://projet-etudiants-it-backend.onrender.com";
@@ -15,7 +15,7 @@ const FICHIERS_ESSENTIELS = [
     "/js/header-auth.js", "/js/avatar-utils.js", "/js/push.js", "/js/chatbot.js",
     "/js/accueil.js", "/js/accueil-dynamique.js", "/js/badges.js", "/js/badges-data.js",
     "/js/revision-data.js", "/js/revision.js", "/js/dictionnaire.js", "/js/quiz.js",
-    "/js/sons.js", "/js/documents.js", "/js/chat.js", "/js/hors-ligne.js",
+    "/js/sons.js", "/js/documents.js","/parametres.html", "/js/parametres.js", "/js/chat.js", "/js/hors-ligne.js",
     "/js/messages.js", "/js/messages-mobile.js", "/js/notif-sonore.js",
     "/js/amis.js", "/js/forum.js", "/js/sujet.js", "/js/profil.js", "/js/profil-public.js",
     "/data/dictionnaire.json", "/data/documents.json",

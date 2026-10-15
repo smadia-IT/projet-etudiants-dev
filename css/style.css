@@ -4226,3 +4226,38 @@ body.hors-ligne textarea:disabled {
         display: none;
     }
 }
+/* ============================================
+   INVITATION VISITEURS
+   ============================================ */
+.invitation-bandeau {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espace-moyen);
+    background: linear-gradient(135deg, #1a73e8 0%, #6a5cff 100%);
+    color: white;
+    border-radius: var(--rayon-moyen);
+    padding: var(--espace-moyen) var(--espace-grand);
+    margin-bottom: var(--espace-grand);
+    box-shadow: var(--ombre-moyenne);
+}
+.invitation-texte {
+    font-size: 15px;
+    flex: 1;
+    min-width: 200px;
+}
+.invitation-btn {
+    background-color: white;
+    color: #1a73e8;
+    white-space: nowrap;
+}
+.invitation-btn:hover {
+    background-color: #e8f0fe;
+}
+@media (max-width: 480px) {
+    .invitation-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

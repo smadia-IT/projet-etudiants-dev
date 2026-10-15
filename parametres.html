@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Paramètres — Étudiants IT</title>
+    <meta name="description" content="Réglages de ton compte et de l'application.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body class="page-parametres">
+
+    <header id="header">
+        <div class="header-contenu">
+            <a href="index.html" class="logo">🎓 <span>Étudiants IT</span></a>
+            <nav class="nav-principale">
+                <a href="index.html">Accueil</a>
+                <a href="dictionnaire.html">Dictionnaire</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="amis.html">Amis</a>
+                <a href="messages.html">Messages</a>
+                <a href="parametres.html" class="actif">Paramètres</a>
+                <button id="btn-theme" class="btn-theme" title="Changer de thème">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteneur">
+
+        <h1 class="titre-page">⚙️ Paramètres</h1>
+        <p class="sous-titre-page">Gère ton compte, tes notifications et l'application.</p>
+
+        <!-- COMPTE -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">👤 Mon compte</h2>
+            <div class="carte-notif-profil">
+                <p id="param-nom" class="texte-notif"></p>
+                <a href="profil.html" class="btn-secondaire">Voir mon profil</a>
+            </div>
+        </section>
+
+        <!-- APPARENCE -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">🎨 Apparence</h2>
+            <div class="carte-notif-profil">
+                <p class="texte-notif">Choisis le thème clair ou sombre.</p>
+                <button id="param-theme" class="btn-primaire">🌙 Basculer le thème</button>
+            </div>
+        </section>
+
+        <!-- NOTIFICATIONS -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">🔔 Notifications</h2>
+            <div class="carte-notif-profil">
+                <p class="texte-notif">
+                    Messages, demandes d'amis, réponses au forum et rappels.
+                </p>
+                <a href="profil.html#notifications" class="btn-primaire">Gérer les notifications</a>
+            </div>
+        </section>
+
+        <!-- CONFIDENTIALITÉ -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">🔒 Confidentialité</h2>
+            <div class="carte-notif-profil">
+                <p class="texte-notif">
+                    Tes données restent sur ton appareil et dans ton compte. Tu peux les effacer à tout moment.
+                </p>
+                <a href="profil.html#zone-danger" class="btn-secondaire">Réinitialiser mes données</a>
+            </div>
+        </section>
+
+        <!-- APPLICATION -->
+        <section class="section-profil">
+            <h2 class="titre-section-profil">📲 Application</h2>
+            <div class="carte-notif-profil">
+                <p id="param-install-texte" class="texte-notif">
+                    Installe Étudiants IT sur ton écran d'accueil pour un accès rapide.
+                </p>
+                <button id="param-installer" class="btn-primaire cache">📲 Installer l'application</button>
+                <p id="param-install-aide" class="texte-notif cache"></p>
+            </div>
+        </section>
+
+        <!-- DÉCONNEXION -->
+        <section class="section-profil section-danger">
+            <h2 class="titre-section-profil">🚪 Session</h2>
+            <button id="param-deconnexion" class="btn-danger">Se déconnecter</button>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer-contenu">
+            <div class="footer-section footer-logo">
+                <p class="footer-titre">🎓 Étudiants IT</p>
+                <p>La plateforme des étudiants en informatique.</p>
+            </div>
+            <div class="footer-section footer-propos">
+                <p class="footer-titre">À propos</p>
+                <p>Projet en construction 🚀</p>
+                <p>© 2026 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/push.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/chargement.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav-dropdown.js"></script>
+    <script src="js/app-nav.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/parametres.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/notif-banniere.js"></script>
+</body>
+
+</html>

@@ -16,10 +16,11 @@
     ];
 
     const MENU = [
-        {
+                {
             titre: "Mon espace",
             liens: [
                 { href: "profil.html", icone: "👤", label: "Mon profil" },
+                { href: "parametres.html", icone: "⚙️", label: "Paramètres" },
                 { href: "badges.html", icone: "🏆", label: "Badges" },
                 { href: "revision.html", icone: "📚", label: "Révision" }
             ]
