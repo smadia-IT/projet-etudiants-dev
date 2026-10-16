@@ -4317,3 +4317,23 @@ body.hors-ligne textarea:disabled {
         text-align: center;
     }
 }
+/* ============================================
+   TÉLÉPHONE AVEC INDICATIF FIXE
+   ============================================ */
+.tel-groupe {
+    display: flex;
+    gap: var(--espace-petit);
+    align-items: center;
+}
+.tel-indicatif {
+    padding: 12px 14px;
+    background-color: var(--couleur-fond);
+    border: 2px solid var(--couleur-bordure);
+    border-radius: var(--rayon-petit);
+    font-weight: bold;
+    color: var(--couleur-principale);
+    white-space: nowrap;
+}
+.tel-groupe input {
+    flex: 1;
+}
