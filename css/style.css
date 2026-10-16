@@ -4419,3 +4419,182 @@ body.hors-ligne textarea:disabled {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
+/* ============================================
+   CLOCHE — VERSION COMPLÈTE
+   ============================================ */
+
+/* Overlay sombre derrière le panneau (mobile et PC) */
+.cloche-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1399;
+}
+
+/* Panneau : à droite sur PC, plein écran sur téléphone */
+.cloche-panneau {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(380px, 100vw);
+    background: var(--couleur-carte);
+    box-shadow: var(--ombre-forte);
+    z-index: 1400;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0);
+    transition: transform 0.25s ease;
+}
+.cloche-panneau.cache {
+    display: none;
+}
+body.cloche-ouverte {
+    overflow: hidden;
+}
+
+.cloche-entete {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-petit);
+    padding: var(--espace-moyen) var(--espace-grand);
+    background: linear-gradient(135deg, #1a73e8 0%, #6a5cff 100%);
+    color: white;
+}
+.cloche-entete h3 {
+    margin: 0;
+    flex: 1;
+    font-size: 18px;
+    color: white;
+    border: none;
+    padding: 0;
+}
+.cloche-retour {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+}
+.cloche-tout-lu {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.cloche-liste {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: var(--espace-grand);
+}
+
+.cloche-groupe {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--couleur-texte-clair);
+    padding: var(--espace-moyen) var(--espace-grand) var(--espace-petit);
+}
+
+.cloche-item {
+    display: flex;
+    gap: var(--espace-moyen);
+    padding: var(--espace-moyen) var(--espace-grand);
+    border-bottom: 1px solid var(--couleur-bordure);
+    cursor: pointer;
+    transition: background-color var(--transition-rapide);
+}
+.cloche-item:hover {
+    background-color: var(--couleur-fond);
+}
+.cloche-item.non-lu {
+    background-color: var(--couleur-principale-claire);
+    border-left: 4px solid var(--couleur-principale);
+}
+.cloche-item-icone {
+    font-size: 26px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+.cloche-item-contenu {
+    flex: 1;
+    min-width: 0;
+}
+.cloche-item-titre {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--couleur-texte);
+    margin-bottom: 2px;
+}
+.cloche-item-message {
+    font-size: 13px;
+    color: var(--couleur-texte-clair);
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.cloche-item-date {
+    font-size: 11px;
+    color: var(--couleur-texte-clair);
+    margin-top: 4px;
+}
+
+.cloche-vide-bloc {
+    text-align: center;
+    padding: var(--espace-tres-grand) var(--espace-grand);
+    color: var(--couleur-texte-clair);
+}
+.cloche-vide-icone {
+    font-size: 48px;
+    margin-bottom: var(--espace-moyen);
+}
+.cloche-vide {
+    text-align: center;
+    padding: var(--espace-grand);
+    color: var(--couleur-texte-clair);
+}
+
+/* Badge : rond, bien visible */
+.cloche-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 10px;
+    background: #dc3545;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: center;
+    box-shadow: 0 0 0 2px var(--couleur-principale);
+}
+.cloche-badge.cache {
+    display: none;
+}
+
+/* Sur PC, le panneau reste à droite, sans couvrir tout l'écran */
+@media (min-width: 769px) {
+    .cloche-panneau {
+        top: 72px;
+        bottom: auto;
+        max-height: calc(100vh - 100px);
+        border-radius: var(--rayon-moyen);
+        right: 24px;
+    }
+}

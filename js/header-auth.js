@@ -410,3 +410,269 @@ function escapeHtmlNotif(text) {
     div.textContent = text;
     return div.innerHTML;
 }
+
+// ============================================
+// CLOCHE DE NOTIFICATIONS
+// ============================================
+function creerClocheNotifications(nav, user, token) {
+    if (document.getElementById("cloche-notifs")) return;
+
+    const btnTheme = document.getElementById("btn-theme");
+
+    const cloche = document.createElement("div");
+    cloche.id = "cloche-notifs";
+    cloche.className = "cloche-notifs";
+    cloche.innerHTML = `
+        <button class="cloche-btn" id="cloche-btn" title="Notifications" aria-label="Notifications">
+            🔔
+            <span class="cloche-badge cache" id="cloche-badge">0</span>
+        </button>
+        <div class="cloche-overlay cache" id="cloche-overlay"></div>
+        <div class="cloche-panneau cache" id="cloche-panneau">
+            <div class="cloche-entete">
+                <button class="cloche-retour" id="cloche-retour" aria-label="Fermer">←</button>
+                <h3>Notifications</h3>
+                <button class="cloche-tout-lu" id="cloche-tout-lu">Tout lire</button>
+            </div>
+            <div class="cloche-liste" id="cloche-liste">
+                <p class="cloche-vide">Chargement...</p>
+            </div>
+        </div>
+    `;
+
+    if (btnTheme) {
+        nav.insertBefore(cloche, btnTheme);
+    } else {
+        nav.appendChild(cloche);
+    }
+
+    const btn = document.getElementById("cloche-btn");
+    const panneau = document.getElementById("cloche-panneau");
+    const overlay = document.getElementById("cloche-overlay");
+
+    function ouvrir() {
+        panneau.classList.remove("cache");
+        overlay.classList.remove("cache");
+        document.body.classList.add("cloche-ouverte");
+        chargerNotifications(token);
+    }
+
+    function fermer() {
+        panneau.classList.add("cache");
+        overlay.classList.add("cache");
+        document.body.classList.remove("cloche-ouverte");
+    }
+
+    btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (panneau.classList.contains("cache")) ouvrir();
+        else fermer();
+    });
+
+    document.getElementById("cloche-retour").addEventListener("click", fermer);
+    overlay.addEventListener("click", fermer);
+    panneau.addEventListener("click", function (e) { e.stopPropagation(); });
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") fermer();
+    });
+
+    document.getElementById("cloche-tout-lu").addEventListener("click", async function (e) {
+        e.stopPropagation();
+        try {
+            await fetch(`${API_URL}/notifications/tout-lu`, {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+            await chargerNotifications(token);
+            chargerCompteurNotifs(token);
+        } catch (erreur) {
+            console.error("Erreur tout-lu:", erreur);
+        }
+    });
+
+    chargerCompteurNotifs(token);
+    setInterval(() => chargerCompteurNotifs(token), 30000);
+}
+
+// ----- Compteur et badge -----
+async function chargerCompteurNotifs(token) {
+    try {
+        const reponse = await fetch(`${API_URL}/notifications/non-lus/count`, {
+            headers: { "Authorization": `Bearer ${token}` }
+        });
+        const data = await reponse.json();
+        if (!data.success) return;
+
+        const badge = document.getElementById("cloche-badge");
+        const btn = document.getElementById("cloche-btn");
+        if (!badge || !btn) return;
+
+        const nouveau = data.count;
+        const precedent = parseInt(sessionStorage.getItem("nbNotifs") || "-1", 10);
+
+        if (nouveau > 0) {
+            badge.textContent = nouveau > 99 ? "99+" : nouveau;
+            badge.classList.remove("cache");
+        } else {
+            badge.classList.add("cache");
+        }
+
+        if (precedent >= 0 && nouveau > precedent) {
+            animerCloche(btn, badge);
+            afficherToast("🔔 Nouvelle notification");
+        }
+
+        sessionStorage.setItem("nbNotifs", String(nouveau));
+    } catch (erreur) {
+        console.error("Erreur compteur notifs:", erreur);
+    }
+}
+
+// ----- Liste regroupée par date -----
+async function chargerNotifications(token) {
+    const liste = document.getElementById("cloche-liste");
+    if (!liste) return;
+
+    try {
+        const reponse = await fetch(`${API_URL}/notifications?limit=50`, {
+            headers: { "Authorization": `Bearer ${token}` }
+        });
+        const data = await reponse.json();
+        if (!data.success) throw new Error(data.error);
+
+        if (data.count === 0) {
+            liste.innerHTML = `
+                <div class="cloche-vide-bloc">
+                    <div class="cloche-vide-icone">🔕</div>
+                    <p>Aucune notification pour le moment.</p>
+                </div>`;
+            return;
+        }
+
+        liste.innerHTML = "";
+        const groupes = regrouperParDate(data.data);
+        Object.keys(groupes).forEach(function (titre) {
+            const entete = document.createElement("div");
+            entete.className = "cloche-groupe";
+            entete.textContent = titre;
+            liste.appendChild(entete);
+
+            groupes[titre].forEach(function (notif) {
+                liste.appendChild(creerItemNotif(notif, token));
+            });
+        });
+    } catch (erreur) {
+        console.error("Erreur chargement notifs:", erreur);
+        liste.innerHTML = `<p class="cloche-vide">Impossible de charger les notifications.</p>`;
+    }
+}
+
+function regrouperParDate(notifs) {
+    const groupes = {};
+    const maintenant = new Date();
+    const aujourdhui = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate());
+    const hier = new Date(aujourdhui);
+    hier.setDate(hier.getDate() - 1);
+    const semaine = new Date(aujourdhui);
+    semaine.setDate(semaine.getDate() - 7);
+
+    notifs.forEach(function (n) {
+        const d = new Date(n.date);
+        let titre;
+        if (d >= aujourdhui) titre = "Aujourd'hui";
+        else if (d >= hier) titre = "Hier";
+        else if (d >= semaine) titre = "Cette semaine";
+        else titre = "Plus ancien";
+
+        if (!groupes[titre]) groupes[titre] = [];
+        groupes[titre].push(n);
+    });
+    return groupes;
+}
+
+// ----- Une notification -----
+function creerItemNotif(notif, token) {
+    const item = document.createElement("div");
+    item.className = "cloche-item" + (notif.lu ? "" : " non-lu");
+
+    const icones = { message: "💬", ami: "👥", forum: "📝", rappel: "⏰", badge: "🏆" };
+    const icone = icones[notif.type] || "🔔";
+
+    item.innerHTML = `
+        <div class="cloche-item-icone">${icone}</div>
+        <div class="cloche-item-contenu">
+            <div class="cloche-item-titre">${escapeHtmlNotif(notif.titre)}</div>
+            ${notif.message ? `<div class="cloche-item-message">${escapeHtmlNotif(notif.message)}</div>` : ""}
+            <div class="cloche-item-date">${formaterDateNotif(notif.date)}</div>
+        </div>
+    `;
+
+    item.addEventListener("click", async function () {
+        if (!notif.lu) {
+            try {
+                await fetch(`${API_URL}/notifications/${notif.id}/lu`, {
+                    method: "POST",
+                    headers: { "Authorization": `Bearer ${token}` }
+                });
+            } catch (erreur) {
+                console.error("Erreur marquer lu:", erreur);
+            }
+        }
+        if (notif.lien) {
+            window.location.href = notif.lien;
+        } else {
+            chargerNotifications(token);
+            chargerCompteurNotifs(token);
+        }
+    });
+
+    return item;
+}
+
+function formaterDateNotif(dateISO) {
+    const date = new Date(dateISO);
+    const diffMin = Math.floor((Date.now() - date) / 60000);
+    const diffH = Math.floor(diffMin / 60);
+    const diffJ = Math.floor(diffH / 24);
+
+    if (diffMin < 1) return "à l'instant";
+    if (diffMin < 60) return `il y a ${diffMin} min`;
+    if (diffH < 24) return `il y a ${diffH} h`;
+    if (diffJ < 7) return `il y a ${diffJ} j`;
+    return date.toLocaleDateString("fr-FR", { day: "2-digit", month: "short" });
+}
+
+// ----- Animation et alerte -----
+function animerCloche(btn, badge) {
+    btn.classList.remove("cloche-secoue");
+    void btn.offsetWidth;
+    btn.classList.add("cloche-secoue");
+    setTimeout(() => btn.classList.remove("cloche-secoue"), 1000);
+}
+
+function afficherToast(texte) {
+    const toast = document.createElement("div");
+    toast.className = "toast-notif";
+    toast.textContent = texte;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add("visible"));
+
+    toast.addEventListener("click", function () {
+        const btn = document.getElementById("cloche-btn");
+        if (btn) btn.click();
+        toast.remove();
+    });
+
+    setTimeout(function () {
+        toast.classList.remove("visible");
+        setTimeout(() => toast.remove(), 300);
+    }, 3500);
+}
+
+function escapeHtmlNotif(texte) {
+    if (!texte) return "";
+    const div = document.createElement("div");
+    div.textContent = texte;
+    return div.innerHTML;
+}
