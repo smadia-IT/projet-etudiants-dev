@@ -75,20 +75,49 @@
             <!-- FORMULAIRE INSCRIPTION -->
             <form id="form-inscription" class="auth-form cache">
                 <label for="register-prenom">Prénom</label>
-                <input type="text" id="register-prenom" placeholder="Sylvain" required minlength="2">
+                <input type="text" id="register-prenom" placeholder="ton prenom" required minlength="2">
 
                 <label for="register-nom">Nom de famille</label>
-                <input type="text" id="register-nom" placeholder="Madia" required minlength="2">
+                <input type="text" id="register-nom" placeholder="ton nom de famille" required minlength="2">
 
                 <label for="register-username">Nom d'utilisateur</label>
-                <input type="text" id="register-username" placeholder="sylvain" required minlength="3">
+                <input type="text" id="register-username" placeholder="ex : sylvain" required minlength="3">
 
                 <label for="register-email">Email</label>
                 <input type="email" id="register-email" placeholder="sylvain@exemple.com" required>
 
-                <label for="register-telephone">Numéro de téléphone</label>
-                <input type="tel" id="register-telephone" placeholder="+243-823456789" required pattern="^\+\d{1,4}-\d{6,15}$">
-                <p class="auth-hint">Format : indicatif pays - numéro (ex: +243-823456789)</p>
+               <label for="pays">Pays</label>
+<select id="pays" required>
+    <option value="">-- Choisis ton pays --</option>
+    <option value="+243" selected>🇨🇩 RD Congo</option>
+    <option value="+33">🇫🇷 France</option>
+    <option value="+32">🇧🇪 Belgique</option>
+    <option value="+41">🇨🇭 Suisse</option>
+    <option value="+1">🇺🇸 États-Unis / Canada</option>
+    <option value="+221">🇸🇳 Sénégal</option>
+    <option value="+225">🇨🇮 Côte d'Ivoire</option>
+    <option value="+237">🇨🇲 Cameroun</option>
+    <option value="+229">🇧🇯 Bénin</option>
+    <option value="+228">🇹🇬 Togo</option>
+    <option value="+226">🇧🇫 Burkina Faso</option>
+    <option value="+223">🇲🇱 Mali</option>
+    <option value="+227">🇳🇪 Niger</option>
+    <option value="+242">🇨🇬 Congo-Brazzaville</option>
+    <option value="+241">🇬🇦 Gabon</option>
+    <option value="+212">🇲🇦 Maroc</option>
+    <option value="+213">🇩🇿 Algérie</option>
+    <option value="+216">🇹🇳 Tunisie</option>
+    <option value="+31">🇳🇱 Pays-Bas</option>
+    <option value="+49">🇩🇪 Allemagne</option>
+    <option value="+44">🇬🇧 Royaume-Uni</option>
+    <option value="+34">🇪🇸 Espagne</option>
+    <option value="+39">🇮🇹 Italie</option>
+    <option value="+86">🇨🇳 Chine</option>
+</select>
+
+<label for="telephone">Numéro de téléphone</label>
+<input type="tel" id="telephone" placeholder="+243 823456789" required>
+<p class="auth-hint">Le numéro est complété automatiquement avec l'indicatif du pays.</p>
 
                 <label for="register-password">Mot de passe</label>
                 <input type="password" id="register-password" placeholder="••••••••" required minlength="8">
@@ -129,8 +158,8 @@
                     <input type="text" id="profil-nom" placeholder="Madia" required minlength="2">
 
                     <label for="profil-telephone">Numéro de téléphone</label>
-                    <input type="tel" id="profil-telephone" placeholder="+243-823456789" required pattern="^\+\d{1,4}-\d{6,15}$">
-                    <p class="auth-hint">Format : +243-823456789</p>
+                                       <input type="tel" id="profil-telephone" placeholder="+243 823456789" required pattern="^\+\d{1,4}[\s-]+\d{6,15}$">
+                    <p class="auth-hint">Format : +243 823456789</p>
 
                     <button type="submit" class="btn-primaire btn-large">
                         ✅ Enregistrer
@@ -177,6 +206,7 @@
     <script src="js/theme.js"></script>
     <script src="js/nav-dropdown.js"></script>
     <script src="js/header-auth.js"></script>
+    <script src="js/inscription-pays.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/chatbot.js"></script>
     <script src="js/push.js"></script>
