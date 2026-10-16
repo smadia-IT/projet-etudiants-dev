@@ -117,16 +117,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const nom = document.getElementById("register-nom").value.trim();
         const username = document.getElementById("register-username").value.trim();
         const email = document.getElementById("register-email").value.trim();
-               const telephone = formaterTelephone();
-                       if (!telephone) {
+                   const telephone = document.getElementById("telephone").value.trim();
+        const password = document.getElementById("register-password").value;
+
+        if (!telephone) {
             afficherMessage("❌ Choisis ton pays avant d'entrer ton numéro.", "erreur");
             return;
         }
-        const password = document.getElementById("register-password").value;
-        
-        // Vérifier le format du téléphone
-        if (!/^\+\d{1,4}-\d{6,15}$/.test(telephone)) {
-            afficherMessage("❌ Format de téléphone invalide. Exemple : +243-823456789", "erreur");
+
+        if (!/^\+\d{1,4}[\s-]+\d{6,15}$/.test(telephone)) {
+            afficherMessage("❌ Numéro invalide. Exemple : +243 823456789", "erreur");
             return;
         }
         
@@ -168,8 +168,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const nom = document.getElementById("profil-nom").value.trim();
             const telephone = document.getElementById("profil-telephone").value.trim();
             
-            if (!/^\+\d{1,4}-\d{6,15}$/.test(telephone)) {
-                alert("Format de téléphone invalide. Exemple : +243-823456789");
+                      if (!/^\+\d{1,4}[\s-]+\d{6,15}$/.test(telephone)) {
+                alert("Numéro invalide. Exemple : +243 823456789");
                 return;
             }
             
