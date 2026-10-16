@@ -8,6 +8,7 @@
 
     // Refus récent : on ne redérange pas pendant 7 jours
     const CLE_REFUS = "installationRefus";
+
     const dernierRefus = parseInt(localStorage.getItem(CLE_REFUS) || "0", 10);
     if (dernierRefus && Date.now() - dernierRefus < 7 * 24 * 60 * 60 * 1000) return;
 
@@ -62,12 +63,14 @@
                     <button id="btn-install-non" class="btn-secondaire">Plus tard</button>
                 </div>
             `;
-        } else {
+            } else {
             bandeau.innerHTML = `
                 <div class="banniere-texte">
-                    📲 <strong>Installe Étudiants IT</strong> depuis le menu ⋮ de Chrome, puis <strong>Installer l'application</strong>.
+                    📲 <strong>Installe Étudiants IT</strong> sur ton écran d'accueil.<br>
+                    <span class="banniere-aide">Menu ⋮ de Chrome → <strong>Installer l'application</strong>.</span>
                 </div>
                 <div class="banniere-actions">
+                    <button id="btn-install-oui" class="btn-primaire">Installer</button>
                     <button id="btn-install-non" class="btn-secondaire">Plus tard</button>
                 </div>
             `;
@@ -75,13 +78,19 @@
 
         document.body.appendChild(bandeau);
 
-        const btnOui = document.getElementById("btn-install-oui");
+               const btnOui = document.getElementById("btn-install-oui");
         if (btnOui) {
             btnOui.addEventListener("click", async function () {
-                invitationInstall.prompt();
-                await invitationInstall.userChoice;
-                invitationInstall = null;
-                bandeau.remove();
+                if (invitationInstall) {
+                    // Chrome a proposé l'installation : on la lance directement
+                    invitationInstall.prompt();
+                    await invitationInstall.userChoice;
+                    invitationInstall = null;
+                    bandeau.remove();
+                } else {
+                    // Pas d'installation directe : on explique la marche à suivre
+                    alert("Ouvre le menu ⋮ de Chrome (en haut à droite), puis touche « Installer l'application ».");
+                }
             });
         }
 
