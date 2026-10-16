@@ -711,12 +711,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnSuivant.classList.remove("cache");
         btnSuivant.textContent = "Question suivante →";
     }
-        // ============================================
-    // ACHAT D'UNE VIE AVEC DES POINTS
-    // ============================================
-    function coutProchaineVie() {
-        return COUT_VIE_BASE * (achatsDeVie + 1);
-    }
+        
 
        // ============================================
     // ACHAT D'UNE VIE (solde géré par le serveur)
