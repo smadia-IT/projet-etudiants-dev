@@ -4598,3 +4598,31 @@ body.cloche-ouverte {
         right: 24px;
     }
 }
+/* ============================================
+   CLOCHE — DÉFILEMENT ET BARRE DU BAS
+   ============================================ */
+.cloche-panneau {
+    /* Le panneau s'arrête au-dessus de la barre du bas sur mobile */
+    bottom: 0;
+    height: 100dvh;
+    min-height: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.cloche-liste {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Espace pour que le dernier élément reste au-dessus de la barre du bas */
+    padding-bottom: 90px;
+}
+
+@media (max-width: 768px) {
+    .cloche-panneau {
+        z-index: 1500;
+    }
+    .cloche-liste {
+        padding-bottom: 96px;
+    }
+}
