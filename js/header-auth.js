@@ -210,6 +210,9 @@ function creerClocheNotifications(nav, user, token) {
     document.addEventListener("click", function() {
         panneau.classList.add("cache");
     });
+        document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") panneau.classList.add("cache");
+    });
     
     // Tout marquer comme lu
     btnToutLu.addEventListener("click", async function(e) {
@@ -233,27 +236,73 @@ function creerClocheNotifications(nav, user, token) {
 // ============================================
 // Charger le compteur de notifs
 // ============================================
+// ============================================
+// COMPTEUR DE NOTIFICATIONS + ALERTE
+// ============================================
 async function chargerCompteurNotifs(token) {
     try {
         const reponse = await fetch(`${API_URL}/notifications/non-lus/count`, {
             headers: { "Authorization": `Bearer ${token}` }
         });
         const data = await reponse.json();
-        
         if (!data.success) return;
-        
+
         const badge = document.getElementById("cloche-badge");
-        if (!badge) return;
-        
-        if (data.count > 0) {
-            badge.textContent = data.count > 99 ? "99+" : data.count;
+        const btn = document.getElementById("cloche-btn");
+        if (!badge || !btn) return;
+
+        const nouveau = data.count;
+        const precedent = parseInt(sessionStorage.getItem("nbNotifs") || "-1", 10);
+
+        if (nouveau > 0) {
+            badge.textContent = nouveau > 99 ? "99+" : nouveau;
             badge.classList.remove("cache");
         } else {
             badge.classList.add("cache");
         }
+
+        // Une nouvelle notification est arrivée depuis la dernière vérification
+        if (precedent >= 0 && nouveau > precedent) {
+            animerCloche(btn, badge);
+            afficherToast("🔔 Tu as une nouvelle notification");
+        }
+
+        sessionStorage.setItem("nbNotifs", String(nouveau));
     } catch (erreur) {
         console.error("Erreur compteur notifs:", erreur);
     }
+}
+
+// Fait sonner la cloche visuellement
+function animerCloche(btn, badge) {
+    btn.classList.remove("cloche-secoue");
+    void btn.offsetWidth; // relance l'animation
+    btn.classList.add("cloche-secoue");
+    badge.classList.remove("pulse");
+    void badge.offsetWidth;
+    badge.classList.add("pulse");
+    setTimeout(() => btn.classList.remove("cloche-secoue"), 1000);
+}
+
+// Petite alerte en haut de l'écran ; un clic ouvre le panneau
+function afficherToast(texte) {
+    const toast = document.createElement("div");
+    toast.className = "toast-notif";
+    toast.textContent = texte;
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => toast.classList.add("visible"));
+
+    toast.addEventListener("click", function () {
+        const btn = document.getElementById("cloche-btn");
+        if (btn) btn.click();
+        toast.remove();
+    });
+
+    setTimeout(() => {
+        toast.classList.remove("visible");
+        setTimeout(() => toast.remove(), 300);
+    }, 3500);
 }
 
 // ============================================
