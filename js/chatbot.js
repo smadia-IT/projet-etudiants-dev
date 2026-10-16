@@ -155,39 +155,39 @@ document.addEventListener("DOMContentLoaded", function() {
         if (question) envoyerQuestion(question);
     });
     
-    async function envoyerQuestion(question) {
-        if (enCours) return;
-        enCours = true;
-        
-        // Afficher la question
-        afficherMessage("user", question);
-        input.value = "";
-        
-        // Cacher les suggestions
-        suggestions.classList.add("cache");
-        
-        // Message de chargement
-        const chargement = document.createElement("div");
-        chargement.className = "chatbot-message bot chargement";
-        chargement.textContent = "⏳ Réfléchit...";
-        messages.appendChild(chargement);
-        messages.scrollTop = messages.scrollHeight;
-        
-        try {
+            try {
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+                chargement.remove();
+                afficherMessage("bot", "🔒 Connecte-toi pour utiliser l'aide. Tu peux le faire depuis la page Connexion.");
+                return;
+            }
+
             const reponse = await fetch(`${API_URL}/chatbot/ask`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({
                     question: question,
-                    historique: historique.slice(-4)
+                    historique: historique.slice(-4),
+                    contexte: {
+                        connecte: true,
+                        pageActuelle: window.location.pathname.split("/").pop() || "index.html",
+                        notificationsActivees: ("Notification" in window) && Notification.permission === "granted"
+                    }
                 })
             });
-            
+
             const data = await reponse.json();
             chargement.remove();
-            
+
             if (data.success) {
                 afficherMessage("bot", data.reponse);
+            } else if (reponse.status === 401) {
+                afficherMessage("bot", "🔒 Ta session a expiré. Reconnecte-toi, s'il te plaît.");
             } else {
                 afficherMessage("bot", "❌ Désolé, je n'arrive pas à répondre. Réessaie !");
             }
@@ -198,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function() {
             enCours = false;
             input.focus();
         }
-    }
     
     // ============================================
     // UTILITAIRE
