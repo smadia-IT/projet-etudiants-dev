@@ -88,6 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let questionsRepondues = 0;
     let viesPerdues = 0;
+        let achatsDeVie = 0; // nombre de vies achetées pendant cette partie
+    const COUT_VIE_BASE = 10;
 
     let partieEnCours = false;
     let enPause = false;
@@ -263,6 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
         streakMaxPartie = 0;
         questionsRepondues = 0;
         viesPerdues = 0;
+                achatsDeVie = 0;
         partieEnCours = true;
         enPause = false;
         if (ecranPauseEl) ecranPauseEl.classList.add("cache");
@@ -621,8 +624,8 @@ document.addEventListener("DOMContentLoaded", function () {
             feedback.innerHTML = feedbackMauvaise(question);
         }
 
-        if (vies <= 0) {
-            setTimeout(afficherGameOver, 1500);
+             if (vies <= 0) {
+            proposerAchatVie();
             return;
         }
 
@@ -707,6 +710,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
         btnSuivant.classList.remove("cache");
         btnSuivant.textContent = "Question suivante →";
+    }
+        // ============================================
+    // ACHAT D'UNE VIE AVEC DES POINTS
+    // ============================================
+    function coutProchaineVie() {
+        return COUT_VIE_BASE * (achatsDeVie + 1);
+    }
+
+    function lireSolde() {
+        return parseInt(localStorage.getItem("points") || "0", 10);
+    }
+
+    function ecrireSolde(valeur) {
+        localStorage.setItem("points", String(valeur));
+        const headerPoints = document.getElementById("points-header");
+        if (headerPoints) headerPoints.textContent = valeur;
+    }
+
+    function acheterVie() {
+        const cout = coutProchaineVie();
+        const solde = lireSolde();
+
+        if (solde < cout) {
+            alert(`Il te faut ${cout} points pour une vie. Tu en as ${solde}.`);
+            return false;
+        }
+
+        ecrireSolde(solde - cout);
+        achatsDeVie++;
+        vies++;
+        majVies();
+        sonVieGagnee();
+        return true;
+    }
+        function proposerAchatVie() {
+        const cout = coutProchaineVie();
+        const solde = lireSolde();
+
+        arreterTimer();
+        btnSuivant.classList.add("cache");
+        feedback.classList.remove("cache");
+        feedback.classList.add("erreur");
+        feedback.innerHTML = `
+            💔 Plus de vies !<br>
+            Tu as <strong>${solde} points</strong>.
+            Une vie coûte <strong>${cout} points</strong>.
+            <div class="achat-vie-actions">
+                <button id="btn-acheter-vie" class="btn-primaire" ${solde < cout ? "disabled" : ""}>
+                    ❤️ Acheter une vie (${cout} pts)
+                </button>
+                <button id="btn-fin-partie" class="btn-secondaire">Terminer la partie</button>
+            </div>
+        `;
+
+        document.getElementById("btn-acheter-vie")?.addEventListener("click", function () {
+            if (acheterVie()) {
+                // Reprendre la question suivante
+                feedback.classList.add("cache");
+                questionSuivante();
+            }
+        });
+
+        document.getElementById("btn-fin-partie")?.addEventListener("click", afficherGameOver);
     }
 
     // ============================================

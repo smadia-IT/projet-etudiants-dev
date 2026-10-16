@@ -4360,3 +4360,19 @@ body.hors-ligne textarea:disabled {
     background-color: var(--couleur-principale);
     color: white;
 }
+/* ============================================
+   QUIZ — ACHAT DE VIE
+   ============================================ */
+.achat-vie-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-petit);
+    margin-top: var(--espace-moyen);
+}
+.achat-vie-actions button {
+    width: 100%;
+}
+.achat-vie-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
