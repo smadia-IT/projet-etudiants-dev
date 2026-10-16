@@ -1,5 +1,5 @@
 // ============================================
-// PAGE DICTIONNAIRE
+// PAGE DICTIONNAIRE — VERSION RAPIDE
 // ============================================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -15,8 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnPrincipal = document.getElementById("btn-filtre-principal");
     const labelActuel = document.getElementById("filtre-actuel-label");
 
+    // ===== RÉGLAGES =====
+    const TAILLE_PAGE = 40;
+    const comparerMots = new Intl.Collator("fr", { sensitivity: "base" });
+
     // ===== ÉTAT =====
     let tousLesMots = [];
+    let motsFiltres = [];
+    let nbAffiches = TAILLE_PAGE;
     let filtreActif = "tous";
     let filtreNiveauActif = "tous";
     let filtreFavorisActif = false;
@@ -24,24 +30,26 @@ document.addEventListener("DOMContentLoaded", function () {
     let texteRecherche = "";
     let timeoutRecherche = null;
 
-    // ============================================
-    // FAVORIS
-    // ============================================
+    // ===== FAVORIS =====
     function chargerFavoris() {
-        const stockes = localStorage.getItem("motsFavoris");
-        motsFavoris = stockes ? JSON.parse(stockes) : [];
+        try {
+            motsFavoris = JSON.parse(localStorage.getItem("motsFavoris") || "[]");
+        } catch (erreur) {
+            motsFavoris = [];
+        }
     }
 
     function sauvegarderFavoris() {
         localStorage.setItem("motsFavoris", JSON.stringify(motsFavoris));
     }
 
-    function estFavori(mot) {
-        return motsFavoris.includes(mot);
+    function majCompteurFavoris() {
+        const nb = motsFavoris.length;
+        compteurFavoris.textContent = `${nb} favori${nb > 1 ? "s" : ""}`;
     }
 
     function toggleFavori(mot) {
-        if (estFavori(mot)) {
+        if (motsFavoris.includes(mot)) {
             motsFavoris = motsFavoris.filter(m => m !== mot);
         } else {
             motsFavoris.push(mot);
@@ -50,65 +58,52 @@ document.addEventListener("DOMContentLoaded", function () {
         majCompteurFavoris();
     }
 
-    function majCompteurFavoris() {
-        const nb = motsFavoris.length;
-        compteurFavoris.textContent = `${nb} favori${nb > 1 ? "s" : ""}`;
-    }
-
-    // ============================================
-    // CHARGEMENT DES DONNÉES
-    // ============================================
     chargerFavoris();
     majCompteurFavoris();
 
+    // ===== CHARGEMENT DES DONNÉES =====
     fetch("data/dictionnaire.json")
-        .then(response => response.json())
+        .then(reponse => reponse.json())
         .then(mots => {
             tousLesMots = mots;
-            console.log(`${tousLesMots.length} mots chargés depuis le JSON`);
             genererFiltresDomaines();
-            afficherMotsFiltres();
+            filtrer();
         })
-        .catch(erreur => console.error("Erreur chargement dictionnaire :", erreur));
+        .catch(erreur => {
+            console.error("Erreur chargement dictionnaire :", erreur);
+            listeMots.innerHTML = "<p class='etat-vide'>Impossible de charger le dictionnaire 😕</p>";
+        });
 
-    // ============================================
-    // RECHERCHE (avec délai pour ne pas recalculer à chaque lettre)
-    // ============================================
+    // ===== RECHERCHE (avec délai) =====
     champRecherche.addEventListener("input", function () {
         clearTimeout(timeoutRecherche);
         timeoutRecherche = setTimeout(function () {
             texteRecherche = champRecherche.value.trim().toLowerCase();
-            afficherMotsFiltres();
+            filtrer();
         }, 200);
     });
 
-    // ============================================
-    // FILTRES PAR NIVEAU
-    // ============================================
+    // ===== FILTRES PAR NIVEAU =====
     boutonsNiveau.forEach(function (bouton) {
         bouton.addEventListener("click", function () {
             boutonsNiveau.forEach(b => b.classList.remove("actif"));
             bouton.classList.add("actif");
             filtreNiveauActif = bouton.dataset.niveau;
-            afficherMotsFiltres();
+            filtrer();
         });
     });
 
-    // ============================================
-    // FILTRE FAVORIS
-    // ============================================
+    // ===== FILTRE FAVORIS =====
     btnFavoris.addEventListener("click", function () {
         filtreFavorisActif = !filtreFavorisActif;
         btnFavoris.classList.toggle("actif", filtreFavorisActif);
         btnFavoris.textContent = filtreFavorisActif
             ? "⭐ Afficher tout"
             : "☆ Afficher mes favoris";
-        afficherMotsFiltres();
+        filtrer();
     });
 
-    // ============================================
-    // MENU DES DOMAINES
-    // ============================================
+    // ===== MENU DES DOMAINES =====
     function genererFiltresDomaines() {
         if (!menuFiltres || !btnPrincipal || !labelActuel) return;
 
@@ -121,14 +116,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         menuFiltres.appendChild(creerItemDomaine("tous", "Tous les domaines", tousLesMots.length));
 
-        const sep = document.createElement("div");
-        sep.className = "separateur-menu";
-        menuFiltres.appendChild(sep);
+        const separateur = document.createElement("div");
+        separateur.className = "separateur-menu";
+        menuFiltres.appendChild(separateur);
 
-        const domainesUniques = [...new Set(tousLesMots.map(m => m.domaine))];
-        domainesUniques.sort((a, b) => a.localeCompare(b));
+        const domaines = [...new Set(tousLesMots.map(m => m.domaine))]
+            .sort((a, b) => comparerMots.compare(a, b));
 
-        domainesUniques.forEach(function (domaine) {
+        domaines.forEach(function (domaine) {
             menuFiltres.appendChild(creerItemDomaine(domaine, domaine, compteurDomaines[domaine]));
         });
     }
@@ -152,15 +147,12 @@ document.addEventListener("DOMContentLoaded", function () {
             menuFiltres.querySelectorAll(".item-domaine").forEach(i => i.classList.remove("actif"));
             item.classList.add("actif");
             menuFiltres.classList.add("cache");
-            afficherMotsFiltres();
+            filtrer();
         });
 
         return item;
     }
 
-    // ============================================
-    // OUVERTURE / FERMETURE DU MENU
-    // ============================================
     if (btnPrincipal && menuFiltres) {
         btnPrincipal.addEventListener("click", function (e) {
             e.stopPropagation();
@@ -176,103 +168,139 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ============================================
-    // FILTRAGE
-    // ============================================
-    function afficherMotsFiltres() {
-        const resultats = tousLesMots.filter(function (unMot) {
+    // ===== FILTRER ET TRIER =====
+    function filtrer() {
+        motsFiltres = tousLesMots.filter(function (unMot) {
             const correspondDomaine = filtreActif === "tous" || unMot.domaine === filtreActif;
             const correspondNiveau = filtreNiveauActif === "tous" || unMot.niveau === filtreNiveauActif;
-            const correspondTexte =
+            const correspondTexte = texteRecherche === "" ||
                 unMot.mot.toLowerCase().includes(texteRecherche) ||
                 unMot.definition.toLowerCase().includes(texteRecherche);
-            const correspondFavoris = !filtreFavorisActif || estFavori(unMot.mot);
+            const correspondFavoris = !filtreFavorisActif || motsFavoris.includes(unMot.mot);
 
             return correspondDomaine && correspondNiveau && correspondTexte && correspondFavoris;
         });
 
-        resultats.sort((a, b) => a.mot.localeCompare(b.mot, "fr", { sensitivity: "base" }));
+        motsFiltres.sort((a, b) => comparerMots.compare(a.mot, b.mot));
 
-        afficherMots(resultats);
+        // Nouvelle recherche : on repart de la première page
+        nbAffiches = TAILLE_PAGE;
+        afficherListe();
     }
 
-    // ============================================
-    // AFFICHAGE DES CARTES
-    // ============================================
-    function afficherMots(mots) {
+    // ===== AFFICHAGE PAR PAGES =====
+    function afficherListe() {
         listeMots.innerHTML = "";
 
         if (compteur) compteur.classList.add("cache");
 
-        if (mots.length === 0) {
-            listeMots.innerHTML = "<p>Aucun mot trouvé 😕</p>";
+        if (motsFiltres.length === 0) {
+            listeMots.innerHTML = "<p class='etat-vide'>Aucun mot trouvé 😕</p>";
             return;
         }
 
-        // Lire une seule fois la liste de révision
         const revisionSet = new Set(getListeRevision().map(item => item.mot));
-
         const fragment = document.createDocumentFragment();
 
-        mots.forEach(function (unMot) {
-            const carte = document.createElement("div");
-            carte.className = "carte-mot";
-                        carte.dataset.domaine = unMot.domaine
-                .toLowerCase()
-                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-                .replace(/\s+/g, "-");
-
-            const favori = motsFavoris.includes(unMot.mot);
-            const dansRevision = revisionSet.has(unMot.mot);
-            const niveau = unMot.niveau || "Débutant";
-
-            carte.innerHTML = `
-                <div class="carte-entete">
-                    <h3>${escapeHtml(unMot.mot)}</h3>
-                    <button class="btn-favori-carte ${favori ? "est-favori" : ""}"
-                            title="${favori ? "Retirer des favoris" : "Ajouter aux favoris"}">
-                        ${favori ? "⭐" : "☆"}
-                    </button>
-                </div>
-                <p>${escapeHtml(unMot.definition)}</p>
-                <div class="carte-footer">
-                    <span class="domaine">${escapeHtml(unMot.domaine)}</span>
-                    <span class="niveau niveau-${niveau.toLowerCase()}">${escapeHtml(niveau)}</span>
-                </div>
-                <button class="btn-reviser ${dansRevision ? "est-dans-liste" : ""}">
-                    📖 ${dansRevision ? "Dans ma révision" : "Réviser ce mot"}
-                </button>
-            `;
-
-            carte.querySelector(".btn-favori-carte").addEventListener("click", function (e) {
-                e.stopPropagation();
-                toggleFavori(unMot.mot);
-                afficherMotsFiltres();
-            });
-
-            carte.querySelector(".btn-reviser").addEventListener("click", function (e) {
-                e.stopPropagation();
-                if (estDansListeRevision(unMot.mot)) {
-                    retirerMotRevision(unMot.mot);
-                } else {
-                    ajouterMotRevision(unMot.mot);
-                }
-                afficherMotsFiltres();
-            });
-
-            fragment.appendChild(carte);
+        motsFiltres.slice(0, nbAffiches).forEach(function (unMot) {
+            fragment.appendChild(creerCarte(unMot, revisionSet));
         });
 
         listeMots.appendChild(fragment);
+
+        const restants = motsFiltres.length - nbAffiches;
+        if (restants > 0) {
+            const bouton = document.createElement("button");
+            bouton.id = "btn-voir-plus";
+            bouton.className = "btn-voir-plus";
+            bouton.textContent = `Voir plus de mots (${restants} restant${restants > 1 ? "s" : ""})`;
+            listeMots.appendChild(bouton);
+        }
     }
 
-}); // fin du DOMContentLoaded
+    function creerCarte(unMot, revisionSet) {
+        const carte = document.createElement("div");
+        carte.className = "carte-mot";
+        carte.dataset.mot = unMot.mot;
+        carte.dataset.domaine = normaliserDomaine(unMot.domaine);
+
+        const favori = motsFavoris.includes(unMot.mot);
+        const dansRevision = revisionSet.has(unMot.mot);
+        const niveau = unMot.niveau || "Débutant";
+
+        carte.innerHTML = `
+            <div class="carte-entete">
+                <h3>${escapeHtml(unMot.mot)}</h3>
+                <button class="btn-favori-carte ${favori ? "est-favori" : ""}"
+                        title="${favori ? "Retirer des favoris" : "Ajouter aux favoris"}">
+                    ${favori ? "⭐" : "☆"}
+                </button>
+            </div>
+            <p>${escapeHtml(unMot.definition)}</p>
+            <div class="carte-footer">
+                <span class="domaine">${escapeHtml(unMot.domaine)}</span>
+                <span class="niveau niveau-${niveau.toLowerCase()}">${escapeHtml(niveau)}</span>
+            </div>
+            <button class="btn-reviser ${dansRevision ? "est-dans-liste" : ""}">
+                📖 ${dansRevision ? "Dans ma révision" : "Réviser ce mot"}
+            </button>
+        `;
+
+        return carte;
+    }
+
+    // ===== UN SEUL ÉCOUTEUR POUR TOUTE LA LISTE =====
+    listeMots.addEventListener("click", function (e) {
+
+        // Bouton « Voir plus »
+        if (e.target.closest("#btn-voir-plus")) {
+            nbAffiches += TAILLE_PAGE;
+            afficherListe();
+            return;
+        }
+
+        const carte = e.target.closest(".carte-mot");
+        if (!carte) return;
+
+        const mot = carte.dataset.mot;
+
+        // Favori
+        if (e.target.closest(".btn-favori-carte")) {
+            toggleFavori(mot);
+            if (filtreFavorisActif) {
+                filtrer();
+            } else {
+                afficherListe();
+            }
+            return;
+        }
+
+        // Réviser
+        if (e.target.closest(".btn-reviser")) {
+            if (estDansListeRevision(mot)) {
+                retirerMotRevision(mot);
+            } else {
+                ajouterMotRevision(mot);
+            }
+            afficherListe();
+        }
+    });
+
+});
 
 // ============================================
-// UTILITAIRE : ÉCHAPPER LE HTML
+// UTILITAIRES (hors DOMContentLoaded)
 // ============================================
-function escapeHtml(text) {
+function escapeHtml(texte) {
     const div = document.createElement("div");
-    div.textContent = text ?? "";
+    div.textContent = texte ?? "";
     return div.innerHTML;
+}
+
+function normaliserDomaine(texte) {
+    return (texte || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, "-");
 }
