@@ -4671,3 +4671,45 @@ body.cloche-ouverte {
         overflow-y: auto;
     }
 }
+/* ============================================
+   BANNIÈRE D'INSTALLATION
+   ============================================ */
+#banniere-installation {
+    position: fixed;
+    left: var(--espace-moyen);
+    right: var(--espace-moyen);
+    bottom: 84px;
+    z-index: 1300;
+    background-color: var(--couleur-carte);
+    border-left: 4px solid var(--couleur-principale);
+    border-radius: var(--rayon-moyen);
+    box-shadow: var(--ombre-forte);
+    padding: var(--espace-moyen);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espace-petit);
+    max-width: 640px;
+    margin: 0 auto;
+    animation: apparition 0.4s ease;
+}
+#banniere-installation .banniere-texte {
+    font-size: 14px;
+    color: var(--couleur-texte);
+    flex: 1;
+    min-width: 200px;
+    line-height: 1.5;
+}
+#banniere-installation .banniere-aide {
+    color: var(--couleur-texte-clair);
+    font-size: 13px;
+}
+#banniere-installation .banniere-actions {
+    display: flex;
+    gap: var(--espace-petit);
+}
+#banniere-installation button {
+    padding: 8px 14px;
+    font-size: 14px;
+}
