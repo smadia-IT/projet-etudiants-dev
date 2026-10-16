@@ -718,63 +718,88 @@ document.addEventListener("DOMContentLoaded", function () {
         return COUT_VIE_BASE * (achatsDeVie + 1);
     }
 
-    function lireSolde() {
-        return parseInt(localStorage.getItem("points") || "0", 10);
+       // ============================================
+    // ACHAT D'UNE VIE (solde géré par le serveur)
+    // ============================================
+    function coutProchaineVie() {
+        return COUT_VIE_BASE * (achatsDeVie + 1);
     }
 
-    function ecrireSolde(valeur) {
-        localStorage.setItem("points", String(valeur));
-        const headerPoints = document.getElementById("points-header");
-        if (headerPoints) headerPoints.textContent = valeur;
+    async function lireSoldeServeur() {
+        const reponse = await fetch(`${API_URL}/coffres/statut`, {
+            headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
+        });
+        const data = await reponse.json();
+        if (!data.success) throw new Error(data.error);
+        return data.points || 0;
     }
 
-    function acheterVie() {
-        const cout = coutProchaineVie();
-        const solde = lireSolde();
+    function majPointsHeader(valeur) {
+        const badge = document.getElementById("points-header");
+        if (badge) badge.textContent = `⭐ ${valeur}`;
+    }
 
-        if (solde < cout) {
-            alert(`Il te faut ${cout} points pour une vie. Tu en as ${solde}.`);
-            return false;
-        }
+    async function acheterVie() {
+        const reponse = await fetch(`${API_URL}/coffres/acheter-vie`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({ achats: achatsDeVie })
+        });
+        const data = await reponse.json();
+        if (!data.success) throw new Error(data.error);
 
-        ecrireSolde(solde - cout);
         achatsDeVie++;
         vies++;
         majVies();
+        majPointsHeader(data.points);
         sonVieGagnee();
-        return true;
-    }
-        function proposerAchatVie() {
-        const cout = coutProchaineVie();
-        const solde = lireSolde();
-
+    }    async function proposerAchatVie() {
         arreterTimer();
         btnSuivant.classList.add("cache");
-        feedback.classList.remove("cache");
+        feedback.classList.remove("cache", "succes");
         feedback.classList.add("erreur");
+
+        let solde = 0;
+        let erreurSolde = null;
+        try {
+            solde = await lireSoldeServeur();
+        } catch (erreur) {
+            erreurSolde = erreur.message;
+        }
+
+        const cout = coutProchaineVie();
+        const peutAcheter = !erreurSolde && solde >= cout;
+
         feedback.innerHTML = `
             💔 Plus de vies !<br>
-            Tu as <strong>${solde} points</strong>.
-            Une vie coûte <strong>${cout} points</strong>.
+            ${erreurSolde
+                ? "Connecte-toi pour pouvoir acheter une vie."
+                : `Tu as <strong>${solde} points</strong>. Une vie coûte <strong>${cout} points</strong>.`}
             <div class="achat-vie-actions">
-                <button id="btn-acheter-vie" class="btn-primaire" ${solde < cout ? "disabled" : ""}>
+                <button id="btn-acheter-vie" class="btn-primaire" ${peutAcheter ? "" : "disabled"}>
                     ❤️ Acheter une vie (${cout} pts)
                 </button>
                 <button id="btn-fin-partie" class="btn-secondaire">Terminer la partie</button>
             </div>
         `;
 
-        document.getElementById("btn-acheter-vie")?.addEventListener("click", function () {
-            if (acheterVie()) {
-                // Reprendre la question suivante
+        document.getElementById("btn-acheter-vie")?.addEventListener("click", async function () {
+            this.disabled = true;
+            try {
+                await acheterVie();
                 feedback.classList.add("cache");
                 questionSuivante();
+            } catch (erreur) {
+                alert(erreur.message);
+                this.disabled = false;
             }
         });
 
         document.getElementById("btn-fin-partie")?.addEventListener("click", afficherGameOver);
     }
-
     // ============================================
     // FIN DE PARTIE
     // ============================================
