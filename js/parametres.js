@@ -158,5 +158,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     majStatutNotifs();
+        // ===== SUPPRESSION DU COMPTE =====
+    const btnSupprimerCompte = document.getElementById("param-supprimer-compte");
+    if (btnSupprimerCompte) {
+        btnSupprimerCompte.addEventListener("click", async function () {
+            if (!confirm("Supprimer définitivement ton compte et toutes tes données ? Cette action est irréversible.")) return;
+
+            const motDePasse = prompt("Pour confirmer, saisis ton mot de passe :");
+            if (!motDePasse) return;
+
+            try {
+                const reponse = await fetch(`${API_URL}/auth/compte`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`
+                    },
+                    body: JSON.stringify({ password: motDePasse })
+                });
+                const data = await reponse.json();
+                if (!data.success) throw new Error(data.error);
+
+                localStorage.clear();
+                alert("Ton compte a été supprimé. À bientôt !");
+                window.location.href = "index.html";
+            } catch (erreur) {
+                alert("❌ " + erreur.message);
+            }
+        });
+    }
 
 });
