@@ -4713,3 +4713,40 @@ body.cloche-ouverte {
     padding: 8px 14px;
     font-size: 14px;
 }
+
+/* ============================================
+   COFFRE QUOTIDIEN — PLUS COMPACT
+   ============================================ */
+.carte-coffre {
+    padding: var(--espace-moyen) var(--espace-grand) !important;
+}
+.carte-coffre .coffre-emoji {
+    font-size: 40px !important;
+    margin-bottom: var(--espace-petit) !important;
+}
+.carte-coffre h2 {
+    font-size: 18px !important;
+    margin-bottom: 4px !important;
+}
+.carte-coffre p {
+    font-size: 14px !important;
+    margin-bottom: var(--espace-petit) !important;
+}
+.carte-coffre .coffre-streak {
+    margin-bottom: var(--espace-petit) !important;
+    font-size: 13px !important;
+}
+.carte-coffre .btn-primaire {
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+}
+
+/* Sur téléphone : une ligne compacte */
+@media (max-width: 768px) {
+    .carte-coffre {
+        padding: var(--espace-petit) var(--espace-moyen) !important;
+    }
+    .carte-coffre .coffre-emoji {
+        font-size: 32px !important;
+    }
+}

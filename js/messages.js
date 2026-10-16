@@ -467,8 +467,17 @@ function initialiserAudioPlayer(container) {
     let isPlaying = false;
     
     // Charger la durée
+       // Durée : parfois inconnue au départ (WebM), on la calcule en lisant
     audio.addEventListener("loadedmetadata", () => {
-        timeDisplay.textContent = formaterDuree(audio.duration);
+        if (isFinite(audio.duration)) {
+            timeDisplay.textContent = formaterDuree(audio.duration);
+        }
+    });
+
+    audio.addEventListener("durationchange", () => {
+        if (isFinite(audio.duration)) {
+            timeDisplay.textContent = formaterDuree(audio.duration);
+        }
     });
     
     // Play / Pause
@@ -500,12 +509,12 @@ function initialiserAudioPlayer(container) {
     });
     
     // Progression
-    audio.addEventListener("timeupdate", () => {
-        if (audio.duration) {
+        audio.addEventListener("timeupdate", () => {
+        if (isFinite(audio.duration) && audio.duration > 0) {
             const progression = (audio.currentTime / audio.duration) * 100;
             progressBar.style.width = progression + "%";
-            timeDisplay.textContent = formaterDuree(audio.currentTime);
         }
+        timeDisplay.textContent = formaterDuree(audio.currentTime);
     });
     
     // Clic sur la barre → seek
@@ -519,7 +528,7 @@ function initialiserAudioPlayer(container) {
 }
 
 function formaterDuree(secondes) {
-    if (isNaN(secondes)) return "0:00";
+    if (!isFinite(secondes) || isNaN(secondes)) return "0:00";
     const min = Math.floor(secondes / 60);
     const sec = Math.floor(secondes % 60);
     return `${min}:${sec.toString().padStart(2, "0")}`;
@@ -871,7 +880,7 @@ function formaterDuree(secondes) {
                     stream.getTracks().forEach(t => t.stop());
                 });
                 
-                mediaRecorder.start();
+                               mediaRecorder.start(1000); // un morceau toutes les secondes
                 
                 // Afficher la zone audio
                 zoneAudio.classList.remove("cache");
