@@ -4337,3 +4337,26 @@ body.hors-ligne textarea:disabled {
 .tel-groupe input {
     flex: 1;
 }
+/* ============================================
+   DICTIONNAIRE — BOUTON VOIR PLUS
+   ============================================ */
+#liste-mots .btn-voir-plus {
+    grid-column: 1 / -1;
+    justify-self: center;
+    display: block;
+    margin: var(--espace-moyen) auto;
+    padding: 12px 28px;
+    background-color: var(--couleur-carte);
+    border: 2px solid var(--couleur-principale);
+    color: var(--couleur-principale);
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color var(--transition-rapide), color var(--transition-rapide);
+}
+#liste-mots .btn-voir-plus:hover {
+    background-color: var(--couleur-principale);
+    color: white;
+}

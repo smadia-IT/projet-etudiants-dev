@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const bouton = document.createElement("button");
             bouton.id = "btn-voir-plus";
             bouton.className = "btn-voir-plus";
-            bouton.textContent = `Voir plus de mots (${restants} restant${restants > 1 ? "s" : ""})`;
+            bouton.textContent = "Voir plus de mots";
             listeMots.appendChild(bouton);
         }
     }
