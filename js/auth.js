@@ -117,7 +117,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const nom = document.getElementById("register-nom").value.trim();
         const username = document.getElementById("register-username").value.trim();
         const email = document.getElementById("register-email").value.trim();
-        const telephone = document.getElementById("register-telephone").value.trim();
+               const telephone = formaterTelephone();
+                       if (!telephone) {
+            afficherMessage("❌ Choisis ton pays avant d'entrer ton numéro.", "erreur");
+            return;
+        }
         const password = document.getElementById("register-password").value;
         
         // Vérifier le format du téléphone
