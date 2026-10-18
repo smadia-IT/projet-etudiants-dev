@@ -52,10 +52,7 @@
         <div class="auth-conteneur">
 
             <!-- ONGLETS -->
-            <div class="auth-onglets">
-                <button class="auth-onglet actif" data-onglet="connexion">Connexion</button>
-                <button class="auth-onglet" data-onglet="inscription">Inscription</button>
-            </div>
+          
 
             <!-- MESSAGE D'ERREUR / SUCCÈS -->
             <div id="auth-message" class="auth-message cache"></div>
@@ -71,6 +68,10 @@
                 <button type="submit" class="btn-primaire btn-large">
                     🔓 Se connecter
                 </button>
+                                <p class="auth-pied">
+                    Pas encore de compte ?
+                    <button type="button" class="auth-lien" data-vers="inscription">Créer un compte</button>
+                </p>
             </form>
             <!-- FORMULAIRE INSCRIPTION -->
             <form id="form-inscription" class="auth-form cache">
@@ -129,6 +130,10 @@
                 <button type="submit" class="btn-primaire btn-large">
                     ✨ Créer mon compte
                 </button>
+                                <p class="auth-pied">
+                    Tu as déjà un compte ?
+                    <button type="button" class="auth-lien" data-vers="connexion">Se connecter</button>
+                </p>
             </form>
 
             <!-- AFFICHAGE SI CONNECTÉ -->

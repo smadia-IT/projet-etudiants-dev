@@ -44,23 +44,24 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // ===== ONGLETS =====
-    onglets.forEach(onglet => {
-        onglet.addEventListener("click", function () {
-            const cible = onglet.dataset.onglet;
+        // ===== BASCULE CONNEXION / INSCRIPTION =====
+    function basculer(vers) {
+        if (vers === "inscription") {
+            formConnexion.classList.add("cache");
+            formInscription.classList.remove("cache");
+        } else {
+            formInscription.classList.add("cache");
+            formConnexion.classList.remove("cache");
+        }
+        cacherMessage();
+    }
+        if (new URLSearchParams(window.location.search).get("inscription") === "1") {
+        basculer("inscription");
+    }
 
-            onglets.forEach(o => o.classList.remove("actif"));
-            onglet.classList.add("actif");
-
-            if (cible === "connexion") {
-                formConnexion.classList.remove("cache");
-                formInscription.classList.add("cache");
-            } else {
-                formConnexion.classList.add("cache");
-                formInscription.classList.remove("cache");
-            }
-
-            cacherMessage();
+    document.querySelectorAll(".auth-lien").forEach(function (lien) {
+        lien.addEventListener("click", function () {
+            basculer(lien.dataset.vers);
         });
     });
 
@@ -200,7 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function afficherDejaConnecte(user) {
         formConnexion.classList.add("cache");
         formInscription.classList.add("cache");
-        document.querySelector(".auth-onglets").classList.add("cache");
+              const onglets = document.querySelector(".auth-onglets");
+        if (onglets) onglets.classList.add("cache");
         dejaConnecte.classList.remove("cache");
 
         const nomComplet = user.prenom && user.nom
