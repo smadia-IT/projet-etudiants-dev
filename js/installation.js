@@ -7,6 +7,18 @@
     const estInstallee = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
     if (estInstallee) return;
 
+        // Mémorise l'installation : la bannière ne revient plus dans le navigateur
+    if (estInstallee) {
+        localStorage.setItem("appInstallee", "1");
+        return;
+    }
+    if (localStorage.getItem("appInstallee") === "1") return;
+        window.addEventListener("appinstalled", function () {
+        localStorage.setItem("appInstallee", "1");
+        const bandeau = document.getElementById("banniere-installation");
+        if (bandeau) bandeau.remove();
+    });
+
     const estIphone = /iPhone|iPad|iPod/.test(navigator.userAgent);
     let invitationInstall = null;
     let bandeauAffiche = false;
