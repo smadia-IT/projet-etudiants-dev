@@ -127,6 +127,12 @@
         entete.appendChild(avatar);
         entete.appendChild(nom);
         tiroir.appendChild(entete);
+            // Visiteurs non connectés : bouton d'inscription en haut du menu
+    if (!lireUtilisateur()) {
+        const lienInscription = creerLienMenu("✨", "Créer mon compte", "auth.html?inscription=1");
+        tiroir.insertBefore(lienInscription, tiroir.firstChild.nextSibling);
+    }
+        
 
         // Sections
         MENU.forEach(function (section) {

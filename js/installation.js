@@ -1,89 +1,100 @@
 // ============================================
-// BANNIÈRE D'INSTALLATION (Android et iPhone)
+// INSTALLATION DE L'APPLI (PC, Android, iPhone)
 // ============================================
 (function () {
-    const estInstallee = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+    const CLE_INSTALLEE = "appInstallee";
 
-    // Déjà installée : on le mémorise et on ne montre rien
+    // Déjà installée (ouverte depuis son icône) : on le retient et on ne montre rien
+    const estInstallee = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
     if (estInstallee) {
-        localStorage.setItem("appInstallee", "1");
+        localStorage.setItem(CLE_INSTALLEE, "1");
         return;
     }
-    if (localStorage.getItem("appInstallee") === "1") return;
+    if (localStorage.getItem(CLE_INSTALLEE) === "1") return;
 
-    const estIphone = /iPhone|iPad|iPod/.test(navigator.userAgent);
-    let invitationInstall = null;
-    let bandeauAffiche = false;
+    const ua = navigator.userAgent;
+    const estIphone = /iPhone|iPad|iPod/.test(ua);
+    const estChromeIOS = estIphone && /CriOS/.test(ua); // Chrome sur iPhone ne peut pas installer l'appli
 
-    window.addEventListener("appinstalled", function () {
-        localStorage.setItem("appInstallee", "1");
-        const bandeau = document.getElementById("banniere-installation");
-        if (bandeau) {
-            bandeau.innerHTML = `<div class="banniere-texte">✅ <strong>C'est installé !</strong> Retrouve Étudiants IT sur ton écran d'accueil.</div>`;
-            setTimeout(() => bandeau.remove(), 4000);
-        }
-    });
+    // Événement d'installation (PC, Android). Il ne peut servir qu'une fois.
+    let invitation = null;
+    let bandeau = null;
 
-    // Chrome Android : l'installation directe est proposée
     window.addEventListener("beforeinstallprompt", function (e) {
         e.preventDefault();
-        invitationInstall = e;
-        afficher();
+        invitation = e;
+        majBandeau();
     });
 
-    // iPhone : pas d'événement, on affiche après 3 secondes
-    // Autres navigateurs : si Chrome ne propose rien, on affiche après 5 secondes
-    if (estIphone) {
-        setTimeout(afficher, 3000);
-    } else {
-        setTimeout(function () {
-            if (!invitationInstall) afficher();
-        }, 5000);
-    }
+    window.addEventListener("appinstalled", function () {
+        localStorage.setItem(CLE_INSTALLEE, "1");
+        if (bandeau) {
+            bandeau.innerHTML = `<div class="banniere-texte">✅ <strong>Étudiants IT est installée !</strong> Retrouve-la sur ton écran d'accueil.</div>`;
+            setTimeout(() => bandeau.remove(), 5000);
+        }
+    });
+
+    setTimeout(afficher, 2500);
 
     function afficher() {
-        if (bandeauAffiche) return;
-        bandeauAffiche = true;
-
-        const bandeau = document.createElement("div");
+        if (bandeau) return;
+        bandeau = document.createElement("div");
         bandeau.id = "banniere-installation";
-
-        let texte;
-        if (estIphone) {
-            texte = `📲 <strong>Installe Étudiants IT</strong> sur ton écran d'accueil.<br>
-                <span class="banniere-aide">Touche <strong>Partager</strong> ⬆️ puis <strong>Sur l'écran d'accueil</strong>.</span>`;
-        } else {
-            texte = `📲 <strong>Installe Étudiants IT</strong> sur ton écran d'accueil.<br>
-                <span class="banniere-aide">Menu (les 3 points) de Chrome → <strong>Installer l'application</strong>.</span>`;
-        }
-
         bandeau.innerHTML = `
-            <div class="banniere-texte">${texte}</div>
+            <div class="banniere-texte" id="install-texte"></div>
             <div class="banniere-actions">
-                <button id="btn-install-oui" class="btn-primaire">Installer</button>
+                <button id="btn-install" class="btn-primaire">Installer</button>
             </div>
         `;
         document.body.appendChild(bandeau);
+        document.getElementById("btn-install").addEventListener("click", onInstaller);
+        majBandeau();
+    }
 
-        document.getElementById("btn-install-oui").addEventListener("click", async function () {
-            if (invitationInstall) {
-                const bouton = document.getElementById("btn-install-oui");
-                bouton.disabled = true;
-                bouton.textContent = "⏳ Installation...";
-                invitationInstall.prompt();
-                const choix = await invitationInstall.userChoice;
-                invitationInstall = null;
-                if (choix.outcome === "accepted") {
-                    bouton.textContent = "⏳ Ajout en cours...";
-                } else {
-                    bouton.disabled = false;
-                    bouton.textContent = "Installer";
-                }
+    function majBandeau() {
+        if (!bandeau) return;
+        const texte = document.getElementById("install-texte");
+        const bouton = document.getElementById("btn-install");
+
+        if (estChromeIOS) {
+            texte.innerHTML = `📲 Pour installer l'appli sur iPhone, ouvre ce site dans <strong>Safari</strong>.`;
+            bouton.style.display = "none";
+        } else if (estIphone) {
+            texte.innerHTML = `📲 <strong>Installe Étudiants IT</strong> sur ton écran d'accueil.`;
+            bouton.textContent = "Comment ?";
+        } else if (invitation) {
+            texte.innerHTML = `📲 <strong>Installe Étudiants IT</strong> pour un accès rapide, comme une vraie appli.`;
+            bouton.textContent = "Installer";
+        } else {
+            texte.innerHTML = `📲 <strong>Installe Étudiants IT</strong> depuis le menu (les 3 points) de Chrome.`;
+            bouton.textContent = "Comment ?";
+        }
+    }
+
+    async function onInstaller() {
+        const bouton = document.getElementById("btn-install");
+
+        if (invitation) {
+            const evenement = invitation;
+            invitation = null;
+            bouton.disabled = true;
+            bouton.textContent = "⏳ En cours...";
+            evenement.prompt(); // doit être appelé directement depuis le clic
+            const choix = await evenement.userChoice;
+            bouton.disabled = false;
+            if (choix.outcome === "accepted") {
+                bouton.textContent = "⏳ Ajout en cours...";
             } else {
-                alert(estIphone
-                    ? "Touche le bouton Partager ⬆️ en bas de Safari, puis « Sur l'écran d'accueil »."
-                    : "Ouvre le menu (les 3 points) de Chrome, puis touche « Installer l'application ».");
+                bouton.textContent = "Comment ?";
+                alert("Pas de souci. Tu pourras l'installer plus tard depuis le menu (les 3 points) de Chrome → « Installer l'application ».");
             }
-        });
+            return;
+        }
+
+        if (estIphone) {
+            alert("Touche le bouton Partager ⬆️ en bas de Safari, puis « Sur l'écran d'accueil », puis « Ajouter ».");
+        } else {
+            alert("Ouvre le menu (les 3 points) de Chrome, puis touche « Installer l'application ».");
+        }
     }
 })();
