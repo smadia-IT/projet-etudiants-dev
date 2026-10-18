@@ -11,11 +11,13 @@
         return;
     }
     if (localStorage.getItem("appInstallee") === "1") return;
-
     window.addEventListener("appinstalled", function () {
         localStorage.setItem("appInstallee", "1");
         const bandeau = document.getElementById("banniere-installation");
-        if (bandeau) bandeau.remove();
+        if (bandeau) {
+            bandeau.innerHTML = `<div class="banniere-texte">✅ <strong>C'est installé !</strong> Retrouve Étudiants IT sur ton écran d'accueil.</div>`;
+            setTimeout(() => bandeau.remove(), 4000);
+        }
     });
 
     const estIphone = /iPhone|iPad|iPod/.test(navigator.userAgent);
