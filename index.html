@@ -143,29 +143,31 @@
             <h2>🎯 Continuer où j'en étais</h2>
             <div id="contenu-continuer" class="contenu-continuer"></div>
         </section>
-<!-- INSTALLER L'APPLI -->
-<section id="installer-appli">
-    <h2>📲 Installer l'application</h2>
-    <p>Étudiants IT s'utilise comme une vraie appli, en plein écran, avec une icône sur ton écran d'accueil.</p>
+<!-- APPLICATION -->
+<section class="section-profil" id="application">
+    <h2 class="titre-section-profil">📲 Application</h2>
+    <div class="carte-notif-profil">
+        <p id="param-install-texte" class="texte-notif">
+            Étudiants IT s'utilise comme une vraie appli, en plein écran.
+        </p>
+        <button id="param-installer" class="btn-primaire cache">📲 Installer l'application</button>
+        <p id="param-install-aide" class="texte-notif cache"></p>
 
-    <div class="hero-actions">
-        <a id="btn-android" href="telechargements/etudiants-it.apk" class="btn-primaire" download>🤖 Installer l'appli Android</a>
+        <a id="btn-android" href="telechargements/etudiants-it.apk" class="btn-primaire" download>🤖 Télécharger l'appli Android</a>
+
+        <details id="guide-iphone" style="margin-top:16px;">
+            <summary><strong>🍎 Sur iPhone</strong></summary>
+            <ol>
+                <li>Ouvre ce site dans <strong>Safari</strong> (pas Chrome).</li>
+                <li>Touche le bouton Partager ⬆️ en bas de l'écran.</li>
+                <li>Fais défiler et touche <strong>« Sur l'écran d'accueil »</strong>.</li>
+                <li>Touche <strong>« Ajouter »</strong> en haut à droite.</li>
+            </ol>
+        </details>
     </div>
-
-    <details id="guide-iphone" open>
-        <summary><strong>🍎 Sur iPhone (méthode Safari)</strong></summary>
-        <ol>
-            <li>Ouvre ce site dans <strong>Safari</strong> (pas Chrome).</li>
-            <li>Touche le bouton Partager ⬆️ en bas de l'écran.</li>
-            <li>Fais défiler et touche <strong>« Sur l'écran d'accueil »</strong>.</li>
-            <li>Touche <strong>« Ajouter »</strong> en haut à droite.</li>
-        </ol>
-        <p class="texte-notif">L'icône apparaît sur ton écran d'accueil. Ouvre-la à partir de là.</p>
-    </details>
 </section>
-
 <script>
-    // Sur iPhone, le fichier .apk ne sert à rien : on cache le bouton Android
+    // Le fichier .apk ne fonctionne que sur Android
     if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
         document.getElementById("btn-android").style.display = "none";
     }
