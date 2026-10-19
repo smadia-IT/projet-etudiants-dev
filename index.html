@@ -143,20 +143,33 @@
             <h2>🎯 Continuer où j'en étais</h2>
             <div id="contenu-continuer" class="contenu-continuer"></div>
         </section>
-
-        <!-- INSTALLER L'APPLI -->
+<!-- INSTALLER L'APPLI -->
 <section id="installer-appli">
     <h2>📲 Installer l'application</h2>
-    <p>Étudiants IT s'utilise comme une vraie appli, en plein écran.</p>
+    <p>Étudiants IT s'utilise comme une vraie appli, en plein écran, avec une icône sur ton écran d'accueil.</p>
+
     <div class="hero-actions">
-        <a href="telechargements/etudiants-it.apk" class="btn-primaire" download>🤖 Installer l'appli Android</a>
-        <a href="https://projet-etudiants-it.vercel.app" class="btn-secondaire">🍎 Ajouter sur iPhone (Safari)</a>
+        <a id="btn-android" href="telechargements/etudiants-it.apk" class="btn-primaire" download>🤖 Installer l'appli Android</a>
     </div>
-    <p class="texte-notif">
-        Android : ouvre le fichier téléchargé et autorise l'installation pour ton navigateur, la première fois.<br>
-        iPhone : ouvre le site dans Safari, touche Partager ⬆️, puis « Sur l'écran d'accueil ».
-    </p>
+
+    <details id="guide-iphone" open>
+        <summary><strong>🍎 Sur iPhone (méthode Safari)</strong></summary>
+        <ol>
+            <li>Ouvre ce site dans <strong>Safari</strong> (pas Chrome).</li>
+            <li>Touche le bouton Partager ⬆️ en bas de l'écran.</li>
+            <li>Fais défiler et touche <strong>« Sur l'écran d'accueil »</strong>.</li>
+            <li>Touche <strong>« Ajouter »</strong> en haut à droite.</li>
+        </ol>
+        <p class="texte-notif">L'icône apparaît sur ton écran d'accueil. Ouvre-la à partir de là.</p>
+    </details>
 </section>
+
+<script>
+    // Sur iPhone, le fichier .apk ne sert à rien : on cache le bouton Android
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+        document.getElementById("btn-android").style.display = "none";
+    }
+</script>
 
         <!-- APERÇU DES FONCTIONNALITÉS -->
         <section id="apercu">
