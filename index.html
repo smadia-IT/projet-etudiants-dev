@@ -143,35 +143,9 @@
             <h2>🎯 Continuer où j'en étais</h2>
             <div id="contenu-continuer" class="contenu-continuer"></div>
         </section>
-<!-- APPLICATION -->
-<section class="section-profil" id="application">
-    <h2 class="titre-section-profil">📲 Application</h2>
-    <div class="carte-notif-profil">
-        <p id="param-install-texte" class="texte-notif">
-            Étudiants IT s'utilise comme une vraie appli, en plein écran.
-        </p>
-        <button id="param-installer" class="btn-primaire cache">📲 Installer l'application</button>
-        <p id="param-install-aide" class="texte-notif cache"></p>
-
-        <a id="btn-android" href="telechargements/etudiants-it.apk" class="btn-primaire" download>🤖 Télécharger l'appli Android</a>
-
-        <details id="guide-iphone" style="margin-top:16px;">
-            <summary><strong>🍎 Sur iPhone</strong></summary>
-            <ol>
-                <li>Ouvre ce site dans <strong>Safari</strong> (pas Chrome).</li>
-                <li>Touche le bouton Partager ⬆️ en bas de l'écran.</li>
-                <li>Fais défiler et touche <strong>« Sur l'écran d'accueil »</strong>.</li>
-                <li>Touche <strong>« Ajouter »</strong> en haut à droite.</li>
-            </ol>
-        </details>
-    </div>
-</section>
-<script>
-    // Le fichier .apk ne fonctionne que sur Android
-    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
-        document.getElementById("btn-android").style.display = "none";
-    }
-</script>
+<p class="texte-notif" style="text-align:center;">
+    📲 Pour installer l'appli, va dans <a href="parametres.html#application">Paramètres → Application</a>.
+</p>
 
         <!-- APERÇU DES FONCTIONNALITÉS -->
         <section id="apercu">
