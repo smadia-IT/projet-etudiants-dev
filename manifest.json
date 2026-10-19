@@ -1,14 +1,16 @@
 {
-    "id": "/?source=pwa",
+    "id": "/",
     "name": "Étudiants IT",
     "short_name": "Étudiants IT",
     "description": "La plateforme des étudiants en informatique",
     "start_url": "/index.html",
     "scope": "/",
     "display": "standalone",
+    "orientation": "any",
     "background_color": "#1a73e8",
     "theme_color": "#1a73e8",
     "lang": "fr",
+    "categories": ["education", "productivity"],
     "icons": [
         {
             "src": "/icon-192.png",
@@ -24,18 +26,18 @@
         }
     ],
     "screenshots": [
-    {
-        "src": "/screenshots/accueil-pc.png",
-        "sizes": "1842x1048",
-        "type": "image/png",
-        "form_factor": "wide",
-        "label": "Accueil sur PC"
-    },
-    {
-        "src": "/screenshots/accueil-mobile.jpg",
-        "sizes": "571x1179",
-        "type": "image/jpeg",
-        "label": "Accueil sur mobile"
-    }
-]
+        {
+            "src": "/screenshots/accueil-pc.png",
+            "sizes": "1842x1048",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Accueil sur PC"
+        },
+        {
+            "src": "/screenshots/accueil-mobile.jpg",
+            "sizes": "571x1179",
+            "type": "image/jpeg",
+            "label": "Accueil sur mobile"
+        }
+    ]
 }
