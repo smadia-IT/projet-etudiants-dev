@@ -2,9 +2,15 @@
 // INSTALLATION DE L'APPLI (PC, Android, iPhone)
 // ============================================
 (function () {
+    const CLE_REFUS = "installRefusLe";
+    const DELAI_REFUS = 7 * 24 * 60 * 60 * 1000; // une semaine
+
     // Déjà ouverte depuis son icône : aucun bandeau
     const estInstallee = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
     if (estInstallee) return;
+
+    // L'utilisateur a fermé le bandeau il y a moins d'une semaine
+    if (Date.now() - Number(localStorage.getItem(CLE_REFUS) || 0) < DELAI_REFUS) return;
 
     const ua = navigator.userAgent;
     const estIphone = /iPhone|iPad|iPod/.test(ua);
@@ -19,15 +25,14 @@
         setTimeout(afficher, 2500);
     });
 
-    // Une fois installée, le bandeau disparaît
     window.addEventListener("appinstalled", masquer);
 
-    // Sur iPhone, il n'y a pas d'événement : on affiche le bandeau directement
+    // Sur iPhone, il n'y a pas d'événement : on affiche directement
     if (estIphone) setTimeout(afficher, 2500);
 
     function afficher() {
         if (bandeau) return;
-        if (!invitation && !estIphone) return; // rien à proposer
+        if (!invitation && !estIphone) return;
 
         bandeau = document.createElement("div");
         bandeau.id = "banniere-installation";
@@ -35,6 +40,7 @@
             <div class="banniere-texte"></div>
             <div class="banniere-actions">
                 <button id="btn-install" class="btn-primaire">Installer</button>
+                <button id="btn-fermer-install" class="btn-secondaire" title="Fermer" aria-label="Fermer">✕</button>
             </div>
         `;
         document.body.appendChild(bandeau);
@@ -49,6 +55,10 @@
         }
 
         bandeau.querySelector("#btn-install").addEventListener("click", onInstaller);
+        bandeau.querySelector("#btn-fermer-install").addEventListener("click", function () {
+            localStorage.setItem(CLE_REFUS, String(Date.now()));
+            masquer();
+        });
     }
 
     async function onInstaller() {
@@ -56,12 +66,8 @@
             const evenement = invitation;
             invitation = null; // Chrome n'accepte cet événement qu'une fois
             evenement.prompt(); // doit être appelé directement depuis le clic
-            const choix = await evenement.userChoice;
-            if (choix.outcome === "accepted") {
-                masquer(); // l'événement appinstalled le fait aussi
-            } else {
-                masquer(); // refusé : on cache le bandeau pour cette visite
-            }
+            await evenement.userChoice;
+            masquer();
             return;
         }
 
