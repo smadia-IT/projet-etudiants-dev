@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/((?!maintenance\\.html|\\.well-known/|telechargements/).*)",
+            "destination": "/maintenance.html"
+        }
+    ]
+}
