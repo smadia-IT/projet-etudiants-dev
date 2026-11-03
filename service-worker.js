@@ -1,4 +1,4 @@
-const CACHE_PAGES = "etudiants-it-v9";
+const CACHE_PAGES = "etudiants-it-v10";
 const CACHE_API = "etudiants-it-api-v1";
 
 const API_ORIGINE = "https://projet-etudiants-it-backend.onrender.com";
@@ -9,7 +9,7 @@ const ORIGINES_CACHEES = [API_ORIGINE, SUPABASE_ORIGINE];
 const FICHIERS_ESSENTIELS = [
     "/", "/index.html", "/dictionnaire.html", "/revision.html", "/quiz.html",
     "/documents.html", "/messages.html", "/amis.html", "/chat.html",
-    "/forum.html", "/profil.html", "/offline.html",
+    "/forum.html", "/profil.html", "/offline.html","/maintenance.html",
     "/css/style.css",
     "/js/config.js","/js/installation.js","/js/invitation.js","/js/app-nav.js", "/js/chargement.js", "/js/theme.js", "/js/nav-dropdown.js",
     "/js/header-auth.js", "/js/avatar-utils.js", "/js/push.js", "/js/chatbot.js",
@@ -100,6 +100,7 @@ self.addEventListener("fetch", (event) => {
     if (url.origin !== self.location.origin) return;
 
     // 3. Pages et fichiers du site
+       // 3. Pages et fichiers du site
     event.respondWith(
         fetch(requete)
             .then((reponse) => {
@@ -109,14 +110,14 @@ self.addEventListener("fetch", (event) => {
                 }
                 return reponse;
             })
-            .catch(() =>
-                // ignoreSearch : messages.html?user=8 utilise la page messages.html en cache
-                caches.match(requete, { ignoreSearch: true }).then((enCache) => {
-                    if (enCache) return enCache;
-                    if (requete.mode === "navigate") return caches.match("/offline.html");
-                    return Response.error();
-                })
-            )
+            .catch(() => {
+                // Hors ligne, une navigation affiche la page de maintenance
+                if (requete.mode === "navigate") {
+                    return caches.match("/maintenance.html");
+                }
+                return caches.match(requete, { ignoreSearch: true })
+                    .then((enCache) => enCache || Response.error());
+            })
     );
 });
 
